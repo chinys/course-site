@@ -26,24 +26,4 @@ def on_startup():
 def health_check():
     return {"status": "ok"}
 
-@app.get("/fix_db")
-def fix_db():
-    from sqlmodel import Session
-    from core.database import engine
-    from sqlalchemy import text
-    try:
-        with Session(engine) as session:
-            # Delete duplicates keeping the minimum ID
-            session.exec(text('''
-                DELETE FROM lesson 
-                WHERE id NOT IN (
-                    SELECT MIN(id) 
-                    FROM lesson 
-                    GROUP BY course_id, title
-                )
-            '''))
-            session.commit()
-        return {"status": "success", "message": "Duplicate lessons purged successfully."}
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
 
