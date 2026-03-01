@@ -69,3 +69,6 @@ uv run uvicorn main:app --reload --port 3004
 ## 🌟 최근 주요 업데이트 내역
 
 - **관리자 로그인 편의성 (보안 강화)**: 관리자 로그인 폼에 쿠키를 활용한 **'아이디 저장(Remember ID)'** 및 세션 만료기간(JWT)을 30일로 연장하는 **'자동 로그인(Auto Login)'** 기능을 추가했습니다.
+
+- **정적페이지 추가**: Github Pages 기능을 활용하여 바로 접속가능할 수 있도록 정적파일로 변환 후 업로드함 (루트에 index.html과 build 폴더 추가됨. 불필요할 경우 이것들만 지우면 원래 파일과 동일함)
+접속주소 : https://chinys.github.io/course-site/
