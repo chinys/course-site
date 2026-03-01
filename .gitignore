@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+env.bak/
+venv.bak/
+
+# Environment variables
+.env
+*.env
+.env.private
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Database file
+db.sqlite3
+*.db
