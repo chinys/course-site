@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. 철근공사 개요 및 자재 승인 (Overview &amp; Material Approval) | 철근공사(Rebar Work)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+</head>
+
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+    <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex flex-1">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/course-site/build/index.html" class="text-xl font-bold text-white">Course Platform</a>
+                    </div>
+                    <div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+                        <a href="/course-site/build/index.html" class="text-indigo-100 font-medium hover:text-white transition-colors">Home</a>
+
+                        <!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+                        
+                        
+                        <div class="relative group">
+                            <button
+                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    
+                                    
+                                    <a href="/course-site/build/courses/1.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
+                                        role="menuitem">건설 EPC</a>
+                                    
+                                    <a href="/course-site/build/courses/2.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
+                                        role="menuitem">철골공사(Steel Structure)</a>
+                                    
+                                    <a href="/course-site/build/courses/3.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
+                                        role="menuitem">철근공사(Rebar Work)</a>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <button
+                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    
+                                    
+                                    <a href="/course-site/build/courses/5.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
+                                        role="menuitem">건설법규</a>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <button
+                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    
+                                    
+                                    <a href="/course-site/build/courses/4.html"
+                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
+                                        role="menuitem">이미지영어</a>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <button
+                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    
+                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative group">
+                            <button
+                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                공지사항
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div
+                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    
+                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+        
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+
+    <!-- Sidebar / Lessons list -->
+    <div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+        <div class="bg-white shadow rounded-lg flex flex-col h-full">
+            <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    <a href="/course-site/build/courses/3.html" class="hover:text-indigo-600">철근공사(Rebar Work)</a>
+                </h3>
+            </div>
+            <ul role="list" class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5">
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/14.html"
+                        class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium">
+                        1. 철근공사 개요 및 자재 승인 (Overview &amp; Material Approval)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/15.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        2. 철근 가공 및 조립 준비 (Rebar Fabrication &amp; Preparation)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/16.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        3. 기초 및 지중보 철근 배근 (Foundation &amp; Tie Beam Rebar)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/17.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        4. 기둥 및 벽체 철근 배근 (Column &amp; Wall Rebar)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/18.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        5. 보 및 슬래브 철근 배근 (Beam &amp; Slab Rebar)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/19.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        6. 철근 이음 및 정착 (Rebar Splicing &amp; Anchorage)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/20.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        7. 검측 및 품질 관리 (Inspection &amp; Quality Control)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/course-site/build/courses/3/lessons/21.html"
+                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+                        8. [철근용어] 철근공사 종합 용어 사전 (Rebar Glossary)
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+                <h1 class="text-2xl font-bold text-gray-900">1. 철근공사 개요 및 자재 승인 (Overview &amp; Material Approval)</h1>
+            </div>
+
+            <div class="px-4 py-8 sm:px-8">
+                <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+                <div class="prose max-w-none text-gray-800">
+                    <h2>1. 철근공사 개요 및 자재 승인 (Overview & Material Approval)</h2>
+<p>철근(Rebar)은 콘크리트의 치명적인 단점인 '인장력(Tension) 취약성'을 보완해주는 핵심 구조 자재입니다. 철근공사의 시작은 설계 도서에 맞는 자재를 적법하게 승인받고 반입하는 것부터 출발합니다.</p>
+
+<h3>1.1 철근콘크리트 구조(RC장려)의 원리</h3>
+<p>콘크리트는 누르는 힘(압축력)에는 매우 강하지만, 당기는 힘(인장력)에는 맥없이 끊어집니다. 반면 철근은 인장력에 엄청나게 강합니다. 이 둘의 열팽창계수(온도에 따라 늘어나는 정도)가 기적적으로 일치하여, 온도 변화에도 박리되지 않고 한 몸처럼 거동하는 것이 RC(Reinforced Concrete) 구조의 핵심입니다.</p>
+
+<h3>1.2 철근(Deformed Bar)의 종류와 식별</h3>
+<p>현장에서 쓰이는 철근은 표면에 돌기(마디와 리브)가 있는 이형철근(Deformed Bar)입니다. 이는 콘크리트와의 부착력(Bond Strength)을 극대화하기 위함입니다.</p>
+<ul>
+    <li><strong>강도별 분류:</strong> 일반철근(SD400), 고장력철근(SD500), 초고장력철근(SD600) 등으로 나뉩니다. 예를 들어 SD400은 항복강도가 400MPa 이상임을 뜻합니다.</li>
+    <li><strong>식별 마크(롤링 마크):</strong> 철근 표면에는 제조사, 규격, 강도를 나타내는 문자와 선이 양각으로 새겨져 있습니다. 최근에는 강도를 직관적으로 알 수 있도록 철근 단면에 색상을 칠합니다. (예: SD400=황색, SD500=흑색, SD600=녹색)</li>
+</ul>
+
+<h3>1.3 자재 승인서(Material Approval) 제출 및 검토</h3>
+<p>감리단(CS)에 아래의 서류를 공사 시작 한 달 전까지 제출하여 승인받아야 합니다.</p>
+<ul>
+    <li>KS 인증서 사본 및 공장 등록증</li>
+    <li>밀 시트(Mill Sheet, 품질 검사 증명서): 해당 로트(Lot)의 화학 성분과 기계적 성질(항복강도, 인장강도, 연신율)이 KS 기준을 통과했음을 증명하는 공장 발행 성적서.</li>
+    <li>배합 비례표 및 구조계산서 상의 요구 강도 일치 여부 확인서.</li>
+</ul>
+
+<h3>1.4 철근 반입 및 저장 (Storage)</h3>
+<p>반입된 철근이 비를 맞거나 진흙에 닿지 않도록 관리하는 것이 품질의 첫 단추입니다.</p>
+<ul>
+    <li><strong>반입 검수:</strong> 송장(Invoice)과 밀 시트 번호 일치 여부, 규격(지름), 롤링 마크의 색상 띠, 녹 발생 여부를 육안 검사합니다.</li>
+    <li><strong>보관 기준:</strong> 지면에 직접 닿지 않도록 각재(침목)를 최소 20cm 높이로 깔고 적재합니다. 장기간 보관 시 습기로 인한 방청(녹) 방지를 위해 타포린 천막이나 비닐로 덮어(Tarping) 빗물을 차단합니다. 붉은 녹(비산녹)은 부착력을 높인다는 일부 주장도 있으나, 비늘처럼 떨어지는 들뜬 녹은 와이어 브러시로 반드시 제거해야 합니다.</li>
+</ul>
+<img src='/static/uploads/epc_construction.png' style='width:100%; max-width:600px; border-radius:8px; margin-top:20px;' alt='Temporary Placeholder' />
+                </div>
+            </div>
+
+            <div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+                
+                <div></div>
+                
+
+                
+                <a href="/course-site/build/courses/3/lessons/15.html"
+                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Next &rarr;
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-500">&copy; 2026 Course Platform. All rights reserved.</p>
+            <div>
+                <a href="/admin" target='_blank' class="text-sm text-gray-400 hover:text-gray-700 transition">⚙️ 관리자 모드
+                    (Admin)</a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
