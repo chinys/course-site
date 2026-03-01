@@ -22,8 +22,4 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 def on_startup():
     create_db_and_tables()
 
-@app.get("/health")
-def health_check():
-    return {"status": "ok"}
-
 

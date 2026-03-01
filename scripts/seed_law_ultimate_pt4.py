@@ -13,13 +13,21 @@ def seed_law_course_ultimate_pt4():
     course_id = row[0]
 
     html = _build_html()
-    lessons = [('14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 10종 (풀버전)', html, 14)]
-    for title, content, order in lessons:
+    title = '14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 10종 (풀버전)'
+    
+    cursor.execute("SELECT id FROM lesson WHERE course_id = ? AND title = ?", (course_id, title))
+    lesson_row = cursor.fetchone()
+    
+    if lesson_row:
+        cursor.execute("UPDATE lesson SET content = ? WHERE id = ?", (html, lesson_row[0]))
+        print("[법무 심화 14강] 기존 내용 업데이트 완료")
+    else:
         cursor.execute("INSERT INTO lesson (title, content, course_id, \"order\") VALUES (?, ?, ?, ?)",
-                       (title, content, course_id, order))
+                       (title, html, course_id, 14))
+        print("[법무 심화 14강] 강구조물 실무 특화 계약서 양식 추가 완료")
+        
     conn.commit()
     conn.close()
-    print("[법무 심화 14강] 강구조물 실무 특화 계약서 양식 추가 완료")
 
 
 def _build_html():
