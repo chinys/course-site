@@ -1,0 +1,61 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Course Details | Admin{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+    <a href="/admin" class="text-indigo-600 hover:text-indigo-900 transition flex items-center gap-1">
+        &larr; Back to Dashboard
+    </a>
+</div>
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+        <div>
+            <div class="flex items-center gap-3">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">{{ course.title }}</h3>
+                <a href="/admin/courses/{{ course.id }}/edit"
+                    class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded hover:bg-indigo-100 transition">Edit
+                    Course</a>
+            </div>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ course.description }}</p>
+        </div>
+        {% if course.thumbnail_url %}
+        <div class="flex-shrink-0 h-20 w-32 relative">
+            <img class="h-20 w-32 object-cover rounded-md" src="{{ course.thumbnail_url }}" alt="Thumbnail">
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center border-b border-gray-200">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Curriculum (Lessons)</h3>
+        <a href="/admin/courses/{{ course.id }}/lessons/new"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+            Add New Lesson
+        </a>
+    </div>
+
+    <ul role="list" class="divide-y divide-gray-200">
+        {% if lessons %}
+        {% for lesson in lessons %}
+        <li>
+            <div class="px-4 py-4 sm:px-6 hover:bg-gray-50 flex justify-between items-center">
+                <div>
+                    <p class="text-sm font-medium text-indigo-600 truncate">{{ lesson.title }}</p>
+                    <p class="text-xs text-gray-500 mt-1">Order: {{ lesson.order }}</p>
+                </div>
+                <div>
+                    <a href="/admin/courses/{{ course.id }}/lessons/{{ lesson.id }}/edit"
+                        class="text-sm font-medium text-indigo-600 hover:text-indigo-900">Edit</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li class="px-4 py-5 sm:px-6 text-center text-gray-500">No lessons added yet.</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
