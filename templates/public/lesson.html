@@ -35,7 +35,8 @@
 
             <div class="px-4 py-8 sm:px-8">
                 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-                <div class="prose max-w-none text-gray-800">
+                <div id="markdown-source" style="display:none;">{{ lesson.content }}</div>
+                <div class="prose max-w-none text-gray-800" id="rendered-content">
                     {{ lesson.content | safe }}
                 </div>
             </div>
@@ -66,4 +67,23 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
 {% endblock %}

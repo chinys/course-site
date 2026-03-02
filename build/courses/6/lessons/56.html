@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>6. FastAPI 고급 의존성 주입(Dependency Injection)과 제어 역전 | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                공지사항
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/62.html">
+                        1. FastAPI 입문: ASGI와 프레임워크의 탄생 배경
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/63.html">
+                        2. 경로 매개변수(Path)와 쿼리 스트링(Query)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/64.html">
+                        3. Pydantic을 이용한 Request Body와 데이터 검증
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/65.html">
+                        4. Response Models (응답 객체)와 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/66.html">
+                        5. 예외 처리(Error Handling)와 폼 데이터(Form/Upload)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/56.html">
+                        6. FastAPI 고급 의존성 주입(Dependency Injection)과 제어 역전
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/57.html">
+                        7. SQLAlchemy 2.0 비동기(Async) 처리와 Repository 패턴
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/58.html">
+                        8. 심화 보안: OAuth2 JWT 갱신(Refresh) 흐름과 RBAC
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/59.html">
+                        9. 실시간 통신 및 스트리밍 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/60.html">
+                        10. 미들웨어(Middleware)와 애플리케이션 프로파일링
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/61.html">
+                        11. 프로덕션 레벨 배포 및 무중단 CI/CD
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">6. FastAPI 고급 의존성 주입(Dependency Injection)과 제어 역전</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<div id="markdown-source" style="display:none;"># FastAPI 실무: 한계 없는 의존성 주입 (Dependency Injection)
+
+FastAPI가 다른 파이썬 웹 프레임워크와 차별화되는 가장 큰 무기는 강력한 **의존성 주입(Dependency Injection, DI) 시스템**입니다. 
+초급 강의에서는 데이터베이스 세션을 주입받거나 현재 로그인한 유저를 가져오는 등 단순한 패턴만 배우지만, 실무 환경에서는 그보다 훨씬 복잡한 상황들을 마주하게 됩니다.
+
+## 1. 제어의 역전(Inversion of Control)과 DI 체인 구축하기
+
+현업에서는 API 엔드포인트(라우터)에 비즈니스 로직을 모두 때려 넣으면 스파게티 코드가 됩니다.
+단일 책임 원칙(SRP)을 지키기 위해 여러 클래스와 함수로 로직을 쪼개다 보면 자연스럽게 클래스 간에 의존성이 생깁니다.
+
+FastAPI의 DI는 **의존성의 의존성**을 무한으로 체인(Chain) 형태로 주입받을 수 있도록 설계되었습니다.
+
+```python
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+# 1. 가장 밑단의 DB 세션 의존성
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# 2. 레포지토리에 DB를 주입
+class UserRepository:
+    def __init__(self, db: Session = Depends(get_db)):
+        self.db = db
+
+    def get_user_by_id(self, user_id: int):
+        return self.db.query(User).filter(User.id == user_id).first()
+
+# 3. 서비스 레이어에 레포지토리를 주입
+class UserService:
+    def __init__(self, repo: UserRepository = Depends(UserRepository)):
+        self.repo = repo
+        
+    def find_active_user(self, user_id: int):
+        user = self.repo.get_user_by_id(user_id)
+        if not user or not user.is_active:
+            raise HTTPException(status_code=400, detail="Inactive user")
+        return user
+
+# 4. 엔드포인트에 서비스를 주입
+@router.get("/users/{user_id}")
+def read_user(user_id: int, service: UserService = Depends(UserService)):
+    return service.find_active_user(user_id)
+```
+
+위의 예제처럼 `Depends`를 클래스 자체에 사용하면, FastAPI는 해당 클래스의 `__init__` 메서드 매개변수들을 분석하여 재귀적으로 의존성을 생성해 줍니다.
+라우터 레이어에서는 `UserService`라는 완성된 객체 하나만 주입받아 사용하면 되므로 코드가 극도로 깔끔해지고 응집도(Cohesion)가 높아집니다.
+
+---
+
+## 2. Yield 기반 의존성: 리소스 관리의 정석
+
+데이터베이스 연결 닫기, 임시 파일 삭제, 혹은 캐시 커넥션 반환과 같이 **사후 처리(Cleanup) 로직**이 필요한 경우 `yield` 예약어를 사용해야 합니다.
+이 기능에 대한 완벽한 이해 없이 코딩하면 치명적인 메모리 누수(Memory Leak)와 커넥션 풀 고갈을 겪게 됩니다.
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+async def get_redis_client():
+    client = RedisClient.create()
+    logger.info("Redis 연결 생성")
+    
+    try:
+        # yield 전에는 요청 처리 전에 실행될 로직
+        yield client
+    except Exception as e:
+        # FastAPI 과정에서 예외가 났을 때 처리할 곳
+        logger.error(f"Redis 에러 발생: {e}")
+        raise e
+    finally:
+        # 클라이언트에게 응답이 다 나간 직후 마지막으로 실행
+        await client.close()
+        logger.info("Redis 연결 안전하게 해제됨")
+```
+
+**실무 주의사항**: `yield`가 있는 의존성 블록 내부에 `BackgroundTasks`가 있다면, `finally` 블록의 해제가 완료된 **후에** 백그라운드 태스크가 실행됨을 명심하십시오. 만약 백그라운드에서 DB 의존성을 써야 한다면 `yield`로 생성된 세션 대신 **별도의 세션 팩토리**나 컨텍스트 관리자를 백그라운드 함수 안에서 직접 호출해야 안전합니다.
+
+---
+
+## 3. 의존성 캐싱 (Dependency Caching)
+
+하나의 HTTP Request 라이프사이클 안에서 **동일한 의존성 함수가 여러 곳에서 호출될 때**, FastAPI는 기본적으로 해당 의존성을 단 1번만 실행하고 그 결과값을 메모리에 캐싱(Caching)합니다.
+
+이 속성을 이용해 한 사이클에서 인증(Authentication) 로직을 중복 실행하지 않고 성능을 높일 수 있습니다.
+
+```python
+def verify_token(token: str = Header(...)):
+    print("값비싼 토큰 검증 로직 수행 중...")  # 이 부분은 단 한 번만 찍힙니다.
+    return decode(token)
+
+def require_admin(user: dict = Depends(verify_token)):
+    if not user.get("is_admin"):
+        raise HTTPException(status_code=403, detail="Not an admin")
+    return user
+
+@router.get("/admin/dashboard")
+def get_dashboard(
+    token_data: dict = Depends(verify_token),  # 호출 1
+    admin_data: dict = Depends(require_admin)  # 호출 2 (내부에서 다시 verify_token 호출)
+):
+    # 비록 verify_token이 의존성 트리에 2번 등장하지만
+    # FastAPI는 캐싱되어 있는 첫 번째 결과값을 그대로 활용합니다.
+    return {"message": "dashboard data"}
+```
+단, 매 호출마다 새로 계산된 값을 받고 싶다면 `Depends(dependency_func, use_cache=False)` 와 같이 캐시 플래그를 꺼주어야 합니다.
+(예: 현재 시각 밀리초 단위 생성기, 난수 발생기 등).
+
+---
+
+## 4. 커스텀 컨텍스트와 다중 테넌시(Multi-tenancy)
+
+단일 서버로 여러 고객사(Tenant)에게 SaaS 서비스를 제공하는 B2B 시스템을 구축한다고 가정합시다. 고객사마다 독립된 데이터베이스 스키마나 인스턴스를 바라봐야 한다면, 이를 `Depends` 안에서 분기 처리하는 것이 가장 깔끔한 방법입니다.
+
+```python
+from fastapi import Request
+
+def get_tenant_id(request: Request) -&gt; str:
+    # 헤더나 서브도메인에서 테넌트 식별자를 추출
+    tenant_id = request.headers.get("X-Tenant-ID")
+    if not tenant_id:
+        raise HTTPException(status_code=400, detail="Tenant ID is required")
+    return tenant_id
+
+# 요청을 보낸 테넌트의 DB 세션만을 생성하여 주입
+def get_tenant_db(tenant_id: str = Depends(get_tenant_id)):
+    engine = get_engine_for_tenant(tenant_id)
+    session = Session(engine)
+    try:
+        yield session
+    finally:
+        session.close()
+
+@router.get("/companies/users")
+def get_company_users(db: Session = Depends(get_tenant_db)):
+    # 이 라우터는 100개의 테넌트가 각기 다른 DB를 사용하지만 
+    # 코드는 전혀 수정할 필요가 없는 구조가 됩니다.
+    return db.query(User).all()
+```
+
+이 패턴의 파괴적인 장점은 라우터 함수(`/companies/users`)가 "우리가 어떤 테넌트의 데이터베이스를 쓰고 있는가?" 에 대해 전혀 몰라도 상관이 없다는 점입니다. 완벽하게 비즈니스 로직과 컨텍스트 로직이 분리됩니다.
+
+---
+
+## 5. 실무 필수: 테스트 환경에서의 Dependency Override
+
+시스템이 커지고 외부 API 연동이 포함되면서, 이를 모두 Mocking 하여 격리된(Unit) 환경에서 테스트하는 것이 매우 중요해집니다.
+`app.dependency_overrides` 맵을 사용하면 FastAPI 애플리케이션의 의존성을 런타임에 동적으로 교체(Swap)할 수 있습니다.
+
+**실제 코드(main.py)**:
+```python
+def fetch_weather_from_third_party():
+    # 외부 유료 API 네트워크 호출
+    return httpx.get("https://api.weather.com/v1/...").json()
+
+@app.get("/weather/today")
+def today_weather(data: dict = Depends(fetch_weather_from_third_party)):
+    return {"weather": data}
+```
+
+**테스트 코드(test_main.py)**:
+```python
+from fastapi.testclient import TestClient
+from main import app, fetch_weather_from_third_party
+
+client = TestClient(app)
+
+# 1. 목업(Mock) 함수 생성
+def override_weather():
+    return {"status": "sunny", "temp": 25}
+
+# 2. 의존성 바꿔치기 (Override)
+app.dependency_overrides[fetch_weather_from_third_party] = override_weather
+
+def test_today_weather():
+    # 3. 네트워크 통신 없이 순식간에 테스트 통과!
+    response = client.get("/weather/today")
+    assert response.status_code == 200
+    assert response.json() == {"weather": {"status": "sunny", "temp": 25}}
+    
+# 4. 테스트 종료 후 초기화
+app.dependency_overrides.clear()
+```
+
+위 5가지 DI의 핵심 활용법을 마스터한다면 어떤 규모의 복잡한 서비스라도 깔끔하고 확장 가능한 FastAPI 아키텍처를 설계할 수 있을 것입니다.
+</div>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # FastAPI 실무: 한계 없는 의존성 주입 (Dependency Injection)
+
+FastAPI가 다른 파이썬 웹 프레임워크와 차별화되는 가장 큰 무기는 강력한 **의존성 주입(Dependency Injection, DI) 시스템**입니다. 
+초급 강의에서는 데이터베이스 세션을 주입받거나 현재 로그인한 유저를 가져오는 등 단순한 패턴만 배우지만, 실무 환경에서는 그보다 훨씬 복잡한 상황들을 마주하게 됩니다.
+
+## 1. 제어의 역전(Inversion of Control)과 DI 체인 구축하기
+
+현업에서는 API 엔드포인트(라우터)에 비즈니스 로직을 모두 때려 넣으면 스파게티 코드가 됩니다.
+단일 책임 원칙(SRP)을 지키기 위해 여러 클래스와 함수로 로직을 쪼개다 보면 자연스럽게 클래스 간에 의존성이 생깁니다.
+
+FastAPI의 DI는 **의존성의 의존성**을 무한으로 체인(Chain) 형태로 주입받을 수 있도록 설계되었습니다.
+
+```python
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+# 1. 가장 밑단의 DB 세션 의존성
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# 2. 레포지토리에 DB를 주입
+class UserRepository:
+    def __init__(self, db: Session = Depends(get_db)):
+        self.db = db
+
+    def get_user_by_id(self, user_id: int):
+        return self.db.query(User).filter(User.id == user_id).first()
+
+# 3. 서비스 레이어에 레포지토리를 주입
+class UserService:
+    def __init__(self, repo: UserRepository = Depends(UserRepository)):
+        self.repo = repo
+        
+    def find_active_user(self, user_id: int):
+        user = self.repo.get_user_by_id(user_id)
+        if not user or not user.is_active:
+            raise HTTPException(status_code=400, detail="Inactive user")
+        return user
+
+# 4. 엔드포인트에 서비스를 주입
+@router.get("/users/{user_id}")
+def read_user(user_id: int, service: UserService = Depends(UserService)):
+    return service.find_active_user(user_id)
+```
+
+위의 예제처럼 `Depends`를 클래스 자체에 사용하면, FastAPI는 해당 클래스의 `__init__` 메서드 매개변수들을 분석하여 재귀적으로 의존성을 생성해 줍니다.
+라우터 레이어에서는 `UserService`라는 완성된 객체 하나만 주입받아 사용하면 되므로 코드가 극도로 깔끔해지고 응집도(Cohesion)가 높아집니다.
+
+---
+
+## 2. Yield 기반 의존성: 리소스 관리의 정석
+
+데이터베이스 연결 닫기, 임시 파일 삭제, 혹은 캐시 커넥션 반환과 같이 **사후 처리(Cleanup) 로직**이 필요한 경우 `yield` 예약어를 사용해야 합니다.
+이 기능에 대한 완벽한 이해 없이 코딩하면 치명적인 메모리 누수(Memory Leak)와 커넥션 풀 고갈을 겪게 됩니다.
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+async def get_redis_client():
+    client = RedisClient.create()
+    logger.info("Redis 연결 생성")
+    
+    try:
+        # yield 전에는 요청 처리 전에 실행될 로직
+        yield client
+    except Exception as e:
+        # FastAPI 과정에서 예외가 났을 때 처리할 곳
+        logger.error(f"Redis 에러 발생: {e}")
+        raise e
+    finally:
+        # 클라이언트에게 응답이 다 나간 직후 마지막으로 실행
+        await client.close()
+        logger.info("Redis 연결 안전하게 해제됨")
+```
+
+**실무 주의사항**: `yield`가 있는 의존성 블록 내부에 `BackgroundTasks`가 있다면, `finally` 블록의 해제가 완료된 **후에** 백그라운드 태스크가 실행됨을 명심하십시오. 만약 백그라운드에서 DB 의존성을 써야 한다면 `yield`로 생성된 세션 대신 **별도의 세션 팩토리**나 컨텍스트 관리자를 백그라운드 함수 안에서 직접 호출해야 안전합니다.
+
+---
+
+## 3. 의존성 캐싱 (Dependency Caching)
+
+하나의 HTTP Request 라이프사이클 안에서 **동일한 의존성 함수가 여러 곳에서 호출될 때**, FastAPI는 기본적으로 해당 의존성을 단 1번만 실행하고 그 결과값을 메모리에 캐싱(Caching)합니다.
+
+이 속성을 이용해 한 사이클에서 인증(Authentication) 로직을 중복 실행하지 않고 성능을 높일 수 있습니다.
+
+```python
+def verify_token(token: str = Header(...)):
+    print("값비싼 토큰 검증 로직 수행 중...")  # 이 부분은 단 한 번만 찍힙니다.
+    return decode(token)
+
+def require_admin(user: dict = Depends(verify_token)):
+    if not user.get("is_admin"):
+        raise HTTPException(status_code=403, detail="Not an admin")
+    return user
+
+@router.get("/admin/dashboard")
+def get_dashboard(
+    token_data: dict = Depends(verify_token),  # 호출 1
+    admin_data: dict = Depends(require_admin)  # 호출 2 (내부에서 다시 verify_token 호출)
+):
+    # 비록 verify_token이 의존성 트리에 2번 등장하지만
+    # FastAPI는 캐싱되어 있는 첫 번째 결과값을 그대로 활용합니다.
+    return {"message": "dashboard data"}
+```
+단, 매 호출마다 새로 계산된 값을 받고 싶다면 `Depends(dependency_func, use_cache=False)` 와 같이 캐시 플래그를 꺼주어야 합니다.
+(예: 현재 시각 밀리초 단위 생성기, 난수 발생기 등).
+
+---
+
+## 4. 커스텀 컨텍스트와 다중 테넌시(Multi-tenancy)
+
+단일 서버로 여러 고객사(Tenant)에게 SaaS 서비스를 제공하는 B2B 시스템을 구축한다고 가정합시다. 고객사마다 독립된 데이터베이스 스키마나 인스턴스를 바라봐야 한다면, 이를 `Depends` 안에서 분기 처리하는 것이 가장 깔끔한 방법입니다.
+
+```python
+from fastapi import Request
+
+def get_tenant_id(request: Request) -&gt; str:
+    # 헤더나 서브도메인에서 테넌트 식별자를 추출
+    tenant_id = request.headers.get("X-Tenant-ID")
+    if not tenant_id:
+        raise HTTPException(status_code=400, detail="Tenant ID is required")
+    return tenant_id
+
+# 요청을 보낸 테넌트의 DB 세션만을 생성하여 주입
+def get_tenant_db(tenant_id: str = Depends(get_tenant_id)):
+    engine = get_engine_for_tenant(tenant_id)
+    session = Session(engine)
+    try:
+        yield session
+    finally:
+        session.close()
+
+@router.get("/companies/users")
+def get_company_users(db: Session = Depends(get_tenant_db)):
+    # 이 라우터는 100개의 테넌트가 각기 다른 DB를 사용하지만 
+    # 코드는 전혀 수정할 필요가 없는 구조가 됩니다.
+    return db.query(User).all()
+```
+
+이 패턴의 파괴적인 장점은 라우터 함수(`/companies/users`)가 "우리가 어떤 테넌트의 데이터베이스를 쓰고 있는가?" 에 대해 전혀 몰라도 상관이 없다는 점입니다. 완벽하게 비즈니스 로직과 컨텍스트 로직이 분리됩니다.
+
+---
+
+## 5. 실무 필수: 테스트 환경에서의 Dependency Override
+
+시스템이 커지고 외부 API 연동이 포함되면서, 이를 모두 Mocking 하여 격리된(Unit) 환경에서 테스트하는 것이 매우 중요해집니다.
+`app.dependency_overrides` 맵을 사용하면 FastAPI 애플리케이션의 의존성을 런타임에 동적으로 교체(Swap)할 수 있습니다.
+
+**실제 코드(main.py)**:
+```python
+def fetch_weather_from_third_party():
+    # 외부 유료 API 네트워크 호출
+    return httpx.get("https://api.weather.com/v1/...").json()
+
+@app.get("/weather/today")
+def today_weather(data: dict = Depends(fetch_weather_from_third_party)):
+    return {"weather": data}
+```
+
+**테스트 코드(test_main.py)**:
+```python
+from fastapi.testclient import TestClient
+from main import app, fetch_weather_from_third_party
+
+client = TestClient(app)
+
+# 1. 목업(Mock) 함수 생성
+def override_weather():
+    return {"status": "sunny", "temp": 25}
+
+# 2. 의존성 바꿔치기 (Override)
+app.dependency_overrides[fetch_weather_from_third_party] = override_weather
+
+def test_today_weather():
+    # 3. 네트워크 통신 없이 순식간에 테스트 통과!
+    response = client.get("/weather/today")
+    assert response.status_code == 200
+    assert response.json() == {"weather": {"status": "sunny", "temp": 25}}
+    
+# 4. 테스트 종료 후 초기화
+app.dependency_overrides.clear()
+```
+
+위 5가지 DI의 핵심 활용법을 마스터한다면 어떤 규모의 복잡한 서비스라도 깔끔하고 확장 가능한 FastAPI 아키텍처를 설계할 수 있을 것입니다.
+
+                </div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/66.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/57.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

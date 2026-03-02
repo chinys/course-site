@@ -1,340 +1,277 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5. [건산법 시공관리] 현장대리인과 품질/안전 관리 | 건설법규</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5. [건산법 시공관리] 현장대리인과 품질/안전 관리 | 건설법규</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 </head>
-
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
-    <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex flex-1">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="/course-site/build/index.html" class="text-xl font-bold text-white">Course Platform</a>
-                    </div>
-                    <div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
-                        <a href="/course-site/build/index.html" class="text-indigo-100 font-medium hover:text-white transition-colors">Home</a>
-
-                        <!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
-                        
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 건설관련
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/1.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">건설 EPC</a>
-                                    
-                                    <a href="/course-site/build/courses/2.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">철골공사(Steel Structure)</a>
-                                    
-                                    <a href="/course-site/build/courses/3.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">철근공사(Rebar Work)</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 법무관련
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/5.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">건설법규</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 언어학습
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/4.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">이미지영어</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 프로그래밍
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 공지사항
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-        
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
 <div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
-
-    <!-- Sidebar / Lessons list -->
-    <div class="w-full lg:w-[480px] shrink-0 lg:h-full">
-        <div class="bg-white shadow rounded-lg flex flex-col h-full">
-            <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    <a href="/course-site/build/courses/5.html" class="hover:text-indigo-600">건설법규</a>
-                </h3>
-            </div>
-            <ul role="list" class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5">
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/42.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/5.html">건설법규</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/42.html">
                         1. [건산법 총칙] 건설산업기본법의 목적과 적용 범위
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/43.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/43.html">
                         2. [건산법 등록] 건설업의 등록체계 및 결격사유
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/44.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/44.html">
                         3. [건산법 도급/하도급-1] 도급의 원칙과 하도급 제한
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/45.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/45.html">
                         4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금의 보호
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/46.html"
-                        class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/5/lessons/46.html">
                         5. [건산법 시공관리] 현장대리인과 품질/안전 관리
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/47.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/47.html">
                         6. [하도급법-1] 하도급거래 공정화 법률의 적용과 서면발급
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/48.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/48.html">
                         7. [하도급법-2] 하도급대금의 결정 및 지급 보장
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/49.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/49.html">
                         8. [표준도급계약서] 발주자와 원청(종합) 간의 계약서 분석
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/50.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/50.html">
                         9. [표준하도급계약서] 원청과 전문건설사(하청) 간의 계약서
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/51.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/51.html">
                         10. [안전] 산업안전보건법 및 중대재해처벌법 (CEO리스크)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/52.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/52.html">
                         11. [실무 심화] 재하도급 제한과 불법 파견의 회피 전략
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/53.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/53.html">
                         12. [실무 심화] 매매계약(물품공급)과 도급계약의 구분
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/54.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/54.html">
                         13. [실무 심화] 장비임대차 계약 vs 장대비(장비+대력) 도급
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/5/lessons/55.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/55.html">
                         14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 10종 (풀버전)
                     </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-        <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="px-4 py-6 sm:px-8 border-b border-gray-200">
-                <h1 class="text-2xl font-bold text-gray-900">5. [건산법 시공관리] 현장대리인과 품질/안전 관리</h1>
-            </div>
-
-            <div class="px-4 py-8 sm:px-8">
-                <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-                <div class="prose max-w-none text-gray-800">
-                    <h2 class="text-2xl font-bold mb-4">시공관리와 건설기술인(현장소장)의 배치</h2>
-            <p class="text-lg text-gray-700 mb-6">모든 건설현장에는 법이 정한 자격과 등급을 갖춘 <strong>현장대리인(건설기술인)</strong>이 상주해야 하며, 이들이 제대로 관리하지 않으면 공사 자체가 중지될 수 있습니다.</p>
-            
-            <h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">1. 건설기술인의 배치 의무 (제40조)</h3>
-            <p class="text-gray-800 mb-4">건설사업자는 공사현장의 공정, 안전, 품질 관리를 위해 <strong>해당 공종에 맞는 분야 및 등급(초급, 중급, 고급, 특급)의 건설기술인 1명 이상</strong>을 배치해야 합니다.</p>
-            
-            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 mb-6 text-sm text-gray-800">
-                <h4 class="font-bold text-yellow-800 text-lg mb-2">🚧 무단 이탈 금지 및 중복 배치 제한</h4>
-                <ul class="list-disc pl-5 space-y-2">
-                    <li>배치된 기술인은 발주자의 승낙 없이 <strong>절대 현장을 무단으로 이탈해서는 안 됩니다.</strong></li>
-                    <li><strong>1인 1현장 원칙:</strong> 원칙적으로 1명의 현장소장은 1개의 현장만 맡아야 합니다.</li>
-                    <li><strong>예외 (중복 배치 허용):</strong> 공사예정금액이 5억원 미만인 동일 시/군 내의 현장 3개까지는 발주자의 승인을 얻어 1명이 관리할 수 있습니다. (3억 미만은 5개까지) 이것을 어기고 '면허 대여 현장'에서 이름만 올려두면 자격증이 취소됩니다.</li>
-                </ul>
-            </div>
-
-            <h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">2. 표지의 게시 (제42조)</h3>
-            <p class="text-gray-800 mb-3">착공과 동시에 발주자, 설계자, 시공자(원청 및 하청 포함), 감리자, 현장소장의 실명이 기재된 <strong>'건설공사 표지판'</strong>을 공사현장 입구의 눈에 잘 띄는 곳에 설치해야 합니다. (실명제 강화)</p>
-
-            <h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">3. 하도급 관리계획의 통보 (제29조 4항)</h3>
-            <div class="bg-gray-100 p-4 rounded text-sm text-gray-700">
-                <p>일정규모(국가 공사 등) 이상의 공사를 수주한 종합건설사는 자신이 직접 시공할 부분과, 하도급을 줄 파트에 대해 <strong>'어떤 업체에 얼마에 하도급을 주겠다'는 하도급 관리계획서</strong>를 입찰 시 발주처에 제출하고 이행해야 합니다. 이를 지키지 않으면 벌점 및 계약 해지의 사유가 됩니다.</p>
-                <p class="mt-2 text-red-600 font-semibold">특히 관급공사에서는 KISCON(건설산업지식정보시스템)에 계약 후 30일 이내에 원하도급 계약 내용, 현장소장 정보를 모든 의무적으로 입력(통보)해야 합니다 미통보시 과태료 부과 대상입니다.</p>
-            </div>
-                </div>
-            </div>
-
-            <div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
-                
-                <a href="/course-site/build/courses/5/lessons/45.html"
-                    class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    &larr; Previous
-                </a>
-                
-
-                
-                <a href="/course-site/build/courses/5/lessons/47.html"
-                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Next &rarr;
-                </a>
-                
-            </div>
-        </div>
-    </div>
+</li>
+</ul>
 </div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">5. [건산법 시공관리] 현장대리인과 품질/안전 관리</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<div id="markdown-source" style="display:none;">&lt;h2 class="text-2xl font-bold mb-4"&gt;시공관리와 건설기술인(현장소장)의 배치&lt;/h2&gt;
+            &lt;p class="text-lg text-gray-700 mb-6"&gt;모든 건설현장에는 법이 정한 자격과 등급을 갖춘 &lt;strong&gt;현장대리인(건설기술인)&lt;/strong&gt;이 상주해야 하며, 이들이 제대로 관리하지 않으면 공사 자체가 중지될 수 있습니다.&lt;/p&gt;
+            
+            &lt;h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4"&gt;1. 건설기술인의 배치 의무 (제40조)&lt;/h3&gt;
+            &lt;p class="text-gray-800 mb-4"&gt;건설사업자는 공사현장의 공정, 안전, 품질 관리를 위해 &lt;strong&gt;해당 공종에 맞는 분야 및 등급(초급, 중급, 고급, 특급)의 건설기술인 1명 이상&lt;/strong&gt;을 배치해야 합니다.&lt;/p&gt;
+            
+            &lt;div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 mb-6 text-sm text-gray-800"&gt;
+                &lt;h4 class="font-bold text-yellow-800 text-lg mb-2"&gt;🚧 무단 이탈 금지 및 중복 배치 제한&lt;/h4&gt;
+                &lt;ul class="list-disc pl-5 space-y-2"&gt;
+                    &lt;li&gt;배치된 기술인은 발주자의 승낙 없이 &lt;strong&gt;절대 현장을 무단으로 이탈해서는 안 됩니다.&lt;/strong&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;1인 1현장 원칙:&lt;/strong&gt; 원칙적으로 1명의 현장소장은 1개의 현장만 맡아야 합니다.&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;예외 (중복 배치 허용):&lt;/strong&gt; 공사예정금액이 5억원 미만인 동일 시/군 내의 현장 3개까지는 발주자의 승인을 얻어 1명이 관리할 수 있습니다. (3억 미만은 5개까지) 이것을 어기고 '면허 대여 현장'에서 이름만 올려두면 자격증이 취소됩니다.&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
 
-    </main>
+            &lt;h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4"&gt;2. 표지의 게시 (제42조)&lt;/h3&gt;
+            &lt;p class="text-gray-800 mb-3"&gt;착공과 동시에 발주자, 설계자, 시공자(원청 및 하청 포함), 감리자, 현장소장의 실명이 기재된 &lt;strong&gt;'건설공사 표지판'&lt;/strong&gt;을 공사현장 입구의 눈에 잘 띄는 곳에 설치해야 합니다. (실명제 강화)&lt;/p&gt;
 
-    <footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-500">&copy; 2026 Course Platform. All rights reserved.</p>
-            <div>
-                <a href="/admin" target='_blank' class="text-sm text-gray-400 hover:text-gray-700 transition">⚙️ 관리자 모드
+            &lt;h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4"&gt;3. 하도급 관리계획의 통보 (제29조 4항)&lt;/h3&gt;
+            &lt;div class="bg-gray-100 p-4 rounded text-sm text-gray-700"&gt;
+                &lt;p&gt;일정규모(국가 공사 등) 이상의 공사를 수주한 종합건설사는 자신이 직접 시공할 부분과, 하도급을 줄 파트에 대해 &lt;strong&gt;'어떤 업체에 얼마에 하도급을 주겠다'는 하도급 관리계획서&lt;/strong&gt;를 입찰 시 발주처에 제출하고 이행해야 합니다. 이를 지키지 않으면 벌점 및 계약 해지의 사유가 됩니다.&lt;/p&gt;
+                &lt;p class="mt-2 text-red-600 font-semibold"&gt;특히 관급공사에서는 KISCON(건설산업지식정보시스템)에 계약 후 30일 이내에 원하도급 계약 내용, 현장소장 정보를 모든 의무적으로 입력(통보)해야 합니다 미통보시 과태료 부과 대상입니다.&lt;/p&gt;
+            &lt;/div&gt;</div>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2 class="text-2xl font-bold mb-4">시공관리와 건설기술인(현장소장)의 배치</h2>
+<p class="text-lg text-gray-700 mb-6">모든 건설현장에는 법이 정한 자격과 등급을 갖춘 <strong>현장대리인(건설기술인)</strong>이 상주해야 하며, 이들이 제대로 관리하지 않으면 공사 자체가 중지될 수 있습니다.</p>
+<h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">1. 건설기술인의 배치 의무 (제40조)</h3>
+<p class="text-gray-800 mb-4">건설사업자는 공사현장의 공정, 안전, 품질 관리를 위해 <strong>해당 공종에 맞는 분야 및 등급(초급, 중급, 고급, 특급)의 건설기술인 1명 이상</strong>을 배치해야 합니다.</p>
+<div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 mb-6 text-sm text-gray-800">
+<h4 class="font-bold text-yellow-800 text-lg mb-2">🚧 무단 이탈 금지 및 중복 배치 제한</h4>
+<ul class="list-disc pl-5 space-y-2">
+<li>배치된 기술인은 발주자의 승낙 없이 <strong>절대 현장을 무단으로 이탈해서는 안 됩니다.</strong></li>
+<li><strong>1인 1현장 원칙:</strong> 원칙적으로 1명의 현장소장은 1개의 현장만 맡아야 합니다.</li>
+<li><strong>예외 (중복 배치 허용):</strong> 공사예정금액이 5억원 미만인 동일 시/군 내의 현장 3개까지는 발주자의 승인을 얻어 1명이 관리할 수 있습니다. (3억 미만은 5개까지) 이것을 어기고 '면허 대여 현장'에서 이름만 올려두면 자격증이 취소됩니다.</li>
+</ul>
+</div>
+<h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">2. 표지의 게시 (제42조)</h3>
+<p class="text-gray-800 mb-3">착공과 동시에 발주자, 설계자, 시공자(원청 및 하청 포함), 감리자, 현장소장의 실명이 기재된 <strong>'건설공사 표지판'</strong>을 공사현장 입구의 눈에 잘 띄는 곳에 설치해야 합니다. (실명제 강화)</p>
+<h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-300 pb-2 mb-4">3. 하도급 관리계획의 통보 (제29조 4항)</h3>
+<div class="bg-gray-100 p-4 rounded text-sm text-gray-700">
+<p>일정규모(국가 공사 등) 이상의 공사를 수주한 종합건설사는 자신이 직접 시공할 부분과, 하도급을 줄 파트에 대해 <strong>'어떤 업체에 얼마에 하도급을 주겠다'는 하도급 관리계획서</strong>를 입찰 시 발주처에 제출하고 이행해야 합니다. 이를 지키지 않으면 벌점 및 계약 해지의 사유가 됩니다.</p>
+<p class="mt-2 text-red-600 font-semibold">특히 관급공사에서는 KISCON(건설산업지식정보시스템)에 계약 후 30일 이내에 원하도급 계약 내용, 현장소장 정보를 모든 의무적으로 입력(통보)해야 합니다 미통보시 과태료 부과 대상입니다.</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/45.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/47.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
                     (Admin)</a>
-            </div>
-        </div>
-    </footer>
-    
+</div>
+</div>
+</footer>
 </body>
-
 </html>

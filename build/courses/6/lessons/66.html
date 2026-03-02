@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5. 예외 처리(Error Handling)와 폼 데이터(Form/Upload) | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                공지사항
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/62.html">
+                        1. FastAPI 입문: ASGI와 프레임워크의 탄생 배경
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/63.html">
+                        2. 경로 매개변수(Path)와 쿼리 스트링(Query)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/64.html">
+                        3. Pydantic을 이용한 Request Body와 데이터 검증
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/65.html">
+                        4. Response Models (응답 객체)와 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/66.html">
+                        5. 예외 처리(Error Handling)와 폼 데이터(Form/Upload)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/56.html">
+                        6. FastAPI 고급 의존성 주입(Dependency Injection)과 제어 역전
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/57.html">
+                        7. SQLAlchemy 2.0 비동기(Async) 처리와 Repository 패턴
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/58.html">
+                        8. 심화 보안: OAuth2 JWT 갱신(Refresh) 흐름과 RBAC
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/59.html">
+                        9. 실시간 통신 및 스트리밍 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/60.html">
+                        10. 미들웨어(Middleware)와 애플리케이션 프로파일링
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/61.html">
+                        11. 프로덕션 레벨 배포 및 무중단 CI/CD
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">5. 예외 처리(Error Handling)와 폼 데이터(Form/Upload)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<div id="markdown-source" style="display:none;"># 5강. 에러 다루기와 고급 입력 방식 (Error Handling &amp; Form Data)
+
+비즈니스 로직을 짜다 보면 무수한 에러(아이디 중복, 잔액 부족, 권한 차단)들이 발생합니다.
+또한 JSON이 아닌 구식 `multipart/form-data` 나 파일 업로드(File Upload)를 처리해야 하는 케이스도 실무에 빈번합니다. 이 두 가지를 완벽하게 통제해 보겠습니다.
+
+---
+
+## 1. 정석적인 예외 던지기: HTTPException
+
+FastAPI는 에러 로직을 마주쳤을 때 파이썬 내장 `Exception` 이 아니라, 웹용 규격인 `HTTPException`을 일으키게(`raise`) 설계되었습니다.
+
+```python
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+items_db = {"1": "Laptop", "2": "Mouse"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: str):
+    if item_id not in items_db:
+        # 이 코드를 마주친 즉시 로직이 중단되고 404 에러와 JSON 메시지가 클라이언트에 날아갑니다.
+        raise HTTPException(
+            status_code=404, 
+            detail="요청하신 아이템을 찾을 수 없습니다."
+        )
+    return {"item": items_db[item_id]}
+```
+
+여기에 사용자 정의 헤더를 추가해서 에러와 함께 보낼 수도 있습니다. (예: 인증 실패 시 인증 스킴(`Bearer`)을 같이 보내야 하는 규약이 있을 때).
+
+---
+
+## 2. 전역 예외 처리기 (Custom Exception Handlers)
+
+어느 라우터에서 `UserNotFound` 라는 커스텀 에러 클래스가 터졌든 간에, 중앙에서 하나의 일관된 포맷(예: 사내 표준 에러 포맷 `{"code": "ERR_001", "msg": "..."}`)으로 포장(Wrapping)해서 내보내고 싶다면 как할까요?
+
+**전역 예외 처리기에 함수를 등록**해 두면 됩니다.
+
+```python
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
+app = FastAPI()
+
+class UnicornException(Exception):
+    def __init__(self, name: str):
+        self.name = name
+
+# UnicornException 클래스가 앱 내 어디서든 터지면 무조건 이 함수가 캐치합니다!
+@app.exception_handler(UnicornException)
+async def unicorn_exception_handler(request: Request, exc: UnicornException):
+    return JSONResponse(
+        status_code=418,  # I'm a teapot
+        content={"message": f"이런! {exc.name} 유니콘이 말썽을 부리고 있군요."}
+    )
+
+@app.get("/unicorns/{name}")
+async def read_unicorn(name: str):
+    if name == "yolo":
+        # 그냥 파이썬 에러를 발생시킴
+        raise UnicornException(name=name)
+    return {"unicorn_name": name}
+```
+
+---
+
+## 3. 웹사이트의 터줏대감: 폼 데이터(Form Data) 수신
+
+기존 웹사이트의 간단한 `&lt;form&gt;` 제출(로그인 태그 등)은 JSON이 아닌 `application/x-www-form-urlencoded` 타입을 던집니다.
+이를 처리하려면 별도 패키지인 `python-multipart` 가 설치되어 있어야 합니다. (`pip install python-multipart`)
+
+그리고 `Form` 이라는 특별한 디펜던시 마커를 사용합니다.
+
+```python
+from fastapi import FastAPI, Form
+
+app = FastAPI()
+
+@app.post("/login/")
+async def login(username: str = Form(...), password: str = Form(...)):
+    # Swagger에서 실행해 보면 JSON 입력칸이 아니라 폼(인풋 박스) 입력칸으로 바뀐 것을 볼 수 있습니다.
+    return {"username": username, "status": "Form Data Received"}
+```
+
+---
+
+## 4. 파일 업로드 (UploadFile과 File)
+
+사용자의 프로필 이미지, 엑셀 문서 등을 서버에 업로드 받는 것은 현대 웹의 알파이자 오메가입니다.
+FastAPI는 파이썬 비동기 철학에 걸맞게 `UploadFile` 이라는 아주 똑똑한 클래스를 지원합니다. (메모리에 다 올리지 않고 청크스트림으로 임시 파일 스풀링(Spooling)을 하여 서버가 뻗는 걸 방지함).
+
+```python
+from fastapi import FastAPI, File, UploadFile
+import shutil
+
+app = FastAPI()
+
+@app.post("/uploadprofile/")
+async def upload_profile_image(file: UploadFile = File(...)):
+    # 1. 업로드된 파일의 메타데이터 확인
+    file_name = file.filename
+    content_type = file.content_type
+    
+    # 2. 이미지 파일만 허용하기 (간단한 예시)
+    if not content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Only images are allowed!")
+        
+    # 3. 서버 하드 디스크에 파일 비동기 혹은 스플릿 안전 저장하기
+    with open(f"uploaded_{file_name}", "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+        
+    return {
+        "info": f"파일 {file_name} 이 안전하게 서버에 저장되었습니다."
+    }
+```
+여기까지 기초 코스를 수료하신 것을 축하합니다! 
+FastAPI의 라우터, 입력(Request), 출력(Response), 예외처리, 파일 업로드를 마스터했으니, 
+이제 6강부터 시작되는 진짜 실무, "엔터프라이즈 레벨의 아키텍처"를 구축하는 험난한 여행을 떠날 준비가 되셨을 겁니다. 화이팅!
+</div>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 5강. 에러 다루기와 고급 입력 방식 (Error Handling &amp; Form Data)
+
+비즈니스 로직을 짜다 보면 무수한 에러(아이디 중복, 잔액 부족, 권한 차단)들이 발생합니다.
+또한 JSON이 아닌 구식 `multipart/form-data` 나 파일 업로드(File Upload)를 처리해야 하는 케이스도 실무에 빈번합니다. 이 두 가지를 완벽하게 통제해 보겠습니다.
+
+---
+
+## 1. 정석적인 예외 던지기: HTTPException
+
+FastAPI는 에러 로직을 마주쳤을 때 파이썬 내장 `Exception` 이 아니라, 웹용 규격인 `HTTPException`을 일으키게(`raise`) 설계되었습니다.
+
+```python
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+items_db = {"1": "Laptop", "2": "Mouse"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: str):
+    if item_id not in items_db:
+        # 이 코드를 마주친 즉시 로직이 중단되고 404 에러와 JSON 메시지가 클라이언트에 날아갑니다.
+        raise HTTPException(
+            status_code=404, 
+            detail="요청하신 아이템을 찾을 수 없습니다."
+        )
+    return {"item": items_db[item_id]}
+```
+
+여기에 사용자 정의 헤더를 추가해서 에러와 함께 보낼 수도 있습니다. (예: 인증 실패 시 인증 스킴(`Bearer`)을 같이 보내야 하는 규약이 있을 때).
+
+---
+
+## 2. 전역 예외 처리기 (Custom Exception Handlers)
+
+어느 라우터에서 `UserNotFound` 라는 커스텀 에러 클래스가 터졌든 간에, 중앙에서 하나의 일관된 포맷(예: 사내 표준 에러 포맷 `{"code": "ERR_001", "msg": "..."}`)으로 포장(Wrapping)해서 내보내고 싶다면 как할까요?
+
+**전역 예외 처리기에 함수를 등록**해 두면 됩니다.
+
+```python
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
+app = FastAPI()
+
+class UnicornException(Exception):
+    def __init__(self, name: str):
+        self.name = name
+
+# UnicornException 클래스가 앱 내 어디서든 터지면 무조건 이 함수가 캐치합니다!
+@app.exception_handler(UnicornException)
+async def unicorn_exception_handler(request: Request, exc: UnicornException):
+    return JSONResponse(
+        status_code=418,  # I'm a teapot
+        content={"message": f"이런! {exc.name} 유니콘이 말썽을 부리고 있군요."}
+    )
+
+@app.get("/unicorns/{name}")
+async def read_unicorn(name: str):
+    if name == "yolo":
+        # 그냥 파이썬 에러를 발생시킴
+        raise UnicornException(name=name)
+    return {"unicorn_name": name}
+```
+
+---
+
+## 3. 웹사이트의 터줏대감: 폼 데이터(Form Data) 수신
+
+기존 웹사이트의 간단한 `<form>` 제출(로그인 태그 등)은 JSON이 아닌 `application/x-www-form-urlencoded` 타입을 던집니다.
+이를 처리하려면 별도 패키지인 `python-multipart` 가 설치되어 있어야 합니다. (`pip install python-multipart`)
+
+그리고 `Form` 이라는 특별한 디펜던시 마커를 사용합니다.
+
+```python
+from fastapi import FastAPI, Form
+
+app = FastAPI()
+
+@app.post("/login/")
+async def login(username: str = Form(...), password: str = Form(...)):
+    # Swagger에서 실행해 보면 JSON 입력칸이 아니라 폼(인풋 박스) 입력칸으로 바뀐 것을 볼 수 있습니다.
+    return {"username": username, "status": "Form Data Received"}
+```
+
+---
+
+## 4. 파일 업로드 (UploadFile과 File)
+
+사용자의 프로필 이미지, 엑셀 문서 등을 서버에 업로드 받는 것은 현대 웹의 알파이자 오메가입니다.
+FastAPI는 파이썬 비동기 철학에 걸맞게 `UploadFile` 이라는 아주 똑똑한 클래스를 지원합니다. (메모리에 다 올리지 않고 청크스트림으로 임시 파일 스풀링(Spooling)을 하여 서버가 뻗는 걸 방지함).
+
+```python
+from fastapi import FastAPI, File, UploadFile
+import shutil
+
+app = FastAPI()
+
+@app.post("/uploadprofile/")
+async def upload_profile_image(file: UploadFile = File(...)):
+    # 1. 업로드된 파일의 메타데이터 확인
+    file_name = file.filename
+    content_type = file.content_type
+    
+    # 2. 이미지 파일만 허용하기 (간단한 예시)
+    if not content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Only images are allowed!")
+        
+    # 3. 서버 하드 디스크에 파일 비동기 혹은 스플릿 안전 저장하기
+    with open(f"uploaded_{file_name}", "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+        
+    return {
+        "info": f"파일 {file_name} 이 안전하게 서버에 저장되었습니다."
+    }
+```
+여기까지 기초 코스를 수료하신 것을 축하합니다! 
+FastAPI의 라우터, 입력(Request), 출력(Response), 예외처리, 파일 업로드를 마스터했으니, 
+이제 6강부터 시작되는 진짜 실무, "엔터프라이즈 레벨의 아키텍처"를 구축하는 험난한 여행을 떠날 준비가 되셨을 겁니다. 화이팅!
+
+                </form></div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/65.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/56.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

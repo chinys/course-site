@@ -1,386 +1,314 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11. [실전] 길 찾기와 대중교통: 공간 지각력의 결정체 | 이미지영어</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>11. [실전] 길 찾기와 대중교통: 공간 지각력의 결정체 | 이미지영어</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 </head>
-
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
-    <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex flex-1">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a href="/course-site/build/index.html" class="text-xl font-bold text-white">Course Platform</a>
-                    </div>
-                    <div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
-                        <a href="/course-site/build/index.html" class="text-indigo-100 font-medium hover:text-white transition-colors">Home</a>
-
-                        <!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
-                        
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 건설관련
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/1.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">건설 EPC</a>
-                                    
-                                    <a href="/course-site/build/courses/2.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">철골공사(Steel Structure)</a>
-                                    
-                                    <a href="/course-site/build/courses/3.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">철근공사(Rebar Work)</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 법무관련
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/5.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">건설법규</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 언어학습
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    
-                                    <a href="/course-site/build/courses/4.html"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900"
-                                        role="menuitem">이미지영어</a>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 프로그래밍
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative group">
-                            <button
-                                class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
                                 공지사항
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <!-- Dropdown Menu -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-1" role="menu" aria-orientation="vertical">
-                                    
-                                    <span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-        
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
 <div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
-
-    <!-- Sidebar / Lessons list -->
-    <div class="w-full lg:w-[480px] shrink-0 lg:h-full">
-        <div class="bg-white shadow rounded-lg flex flex-col h-full">
-            <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    <a href="/course-site/build/courses/4.html" class="hover:text-indigo-600">이미지영어</a>
-                </h3>
-            </div>
-            <ul role="list" class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5">
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/22.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/4.html">이미지영어</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/22.html">
                         1. 원어민의 사고방식: 나로부터 확장되는 물리적 화살표
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/23.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/23.html">
                         2. 필수 기본 동사 20개의 뼈대와 예문
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/24.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/24.html">
                         3. 핵심 전치사 15개의 기하학적 도형과 예문
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/25.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/25.html">
                         4. 원어민의 필살기: 동사 + 전치사 (구동사 완벽 분해)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/26.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/26.html">
                         5. 질문의 기술 1: 조동사를 맨 앞으로 (Do/Does/Did)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/27.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/27.html">
                         6. 질문의 기술 2: 의문사(Wh-) 창끝 찌르기
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/28.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/28.html">
                         7. 시제의 본질 (Simple vs Continuous vs Perfect)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/29.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/29.html">
                         8. [실전] 아침 기상부터 출근까지: 아침의 구동사들
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/30.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/30.html">
                         9. [실전] 식당 주문과 식사: Take, Have, For 의 향연
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/31.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/31.html">
                         10. [실전] 쇼핑과 흥정: 가치 교환의 양팔저울 (For)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/32.html"
-                        class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/4/lessons/32.html">
                         11. [실전] 길 찾기와 대중교통: 공간 지각력의 결정체
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/33.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/33.html">
                         12. [실전] 병원과 증상 설명: Have 통증, Take 약물
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/34.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/34.html">
                         13. [실전] 전화 영어: 보이지 않는 전파 끈 붙잡기 (Hold)
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/35.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/35.html">
                         14. [실전] 공항과 호텔: 가장 설레는 공간 이동의 마법수
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/36.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/36.html">
                         15. [실전] 감정과 인간관계: 내 멘탈을 쥐락펴락 하는 동사
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/37.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/37.html">
                         16. [실전] 예약과 계획: 시간의 축을 컨트롤 하는 전치사
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/38.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/38.html">
                         17. [실전] 긴급 상황: 터지고 막히고 뚫리는 물리량
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/39.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/39.html">
                         18. [실전 종합] 스포츠와 취미: Do vs Play vs Go
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/40.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/40.html">
                         19. [실전 종합] 부드러운 쿠션어: Could / Would 조동사의 방패막이 조력자
                     </a>
-                </li>
-                
-                <li>
-                    <a href="/course-site/build/courses/4/lessons/41.html"
-                        class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/4/lessons/41.html">
                         20. [최종 미션] 하루종일 영어로 생각하기: 머릿속 영사기 돌리는 법
                     </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-        <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="px-4 py-6 sm:px-8 border-b border-gray-200">
-                <h1 class="text-2xl font-bold text-gray-900">11. [실전] 길 찾기와 대중교통: 공간 지각력의 결정체</h1>
-            </div>
-
-            <div class="px-4 py-8 sm:px-8">
-                <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-                <div class="prose max-w-none text-gray-800">
-                    <h2>어디서 돌고, 무엇을 타는가? 방향 전치사 실전</h2>
-            <p>외국인 관람객이나 여행자가 가장 무서워하는 것이 길찾기입니다.</p>
-
-            <ul class="list-disc pl-6 space-y-4 text-gray-800">
-                <li><strong class="text-blue-600 text-lg">Get to</strong> vs <strong class="text-blue-600 text-lg">Arrive at</strong><br>
-                "How can I get to the station?" (역이라는 과녁(To)에 내 몸 픽셀을 어떻게 진입(Get)시킬 수 있나?)<br>
-                "I arrived at the station." (지도상에 역이라는 좌표점(At)에 무사히 골인함)</li>
-                
-                <li><strong class="text-blue-600 text-lg">Go straight along vs Go through</strong><br>
-                "Go straight along the street." (거리를 나타내는 2D 선(Line)을 따라 착 붙어서 쭉 가라)<br>
-                "Go through the tunnel." (터널이라는 무서운 3D 원통 공간 입구로 들어가서 반대편까지 관통해 이겨내라)</li>
-
-                <li><strong class="text-blue-600 text-lg">Turn right at the corner</strong><br>
-                "Turn right at the corner." (모퉁이라는 지도상 점(At) 좌표에서 몸의 방향을 돌려라(Turn))</li>
-
-                <li><strong class="text-blue-600 text-lg">Get on vs Get in (대중교통 승차의 절대 규칙)</strong><br>
-                <div class="bg-indigo-50 p-3 mt-2 rounded border border-indigo-100">
-                    <p class="mb-1"><strong>🚌 ON (표면 접착): 서서 걸어 다닐 수 있는 넓은 플랫폼 탑승</strong></p>
-                    <p class="text-sm text-gray-600 ml-4 mb-3">내 두 발이 바닥 면(On)에 닿은 채로 서서 걸을 수 있는 공간입니다.<br>
-                    <span class="font-bold text-indigo-600">ex) get on the bus / on the train / on the plane / on the subway</span></p>
-                    
-                    <p class="mb-1"><strong>🚕 IN (3D 박스 진입): 허리를 구부리고 수납되어야 하는 좁은 공간 탑승</strong></p>
-                    <p class="text-sm text-gray-600 ml-4">서서 걷기는 불가능하며, 몸을 접어 좁은 상자(In) 속으로 수납되는 그림입니다.<br>
-                    <span class="font-bold text-indigo-600">ex) get in the car / in the taxi / in the helicopter</span></p>
-                </div>
-                </li>
-            </ul>
-                </div>
-            </div>
-
-            <div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
-                
-                <a href="/course-site/build/courses/4/lessons/31.html"
-                    class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    &larr; Previous
-                </a>
-                
-
-                
-                <a href="/course-site/build/courses/4/lessons/33.html"
-                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Next &rarr;
-                </a>
-                
-            </div>
-        </div>
-    </div>
+</li>
+</ul>
 </div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">11. [실전] 길 찾기와 대중교통: 공간 지각력의 결정체</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<div id="markdown-source" style="display:none;">&lt;h2&gt;어디서 돌고, 무엇을 타는가? 방향 전치사 실전&lt;/h2&gt;
+            &lt;p&gt;외국인 관람객이나 여행자가 가장 무서워하는 것이 길찾기입니다.&lt;/p&gt;
 
-    </main>
+            &lt;ul class="list-disc pl-6 space-y-4 text-gray-800"&gt;
+                &lt;li&gt;&lt;strong class="text-blue-600 text-lg"&gt;Get to&lt;/strong&gt; vs &lt;strong class="text-blue-600 text-lg"&gt;Arrive at&lt;/strong&gt;&lt;br&gt;
+                "How can I get to the station?" (역이라는 과녁(To)에 내 몸 픽셀을 어떻게 진입(Get)시킬 수 있나?)&lt;br&gt;
+                "I arrived at the station." (지도상에 역이라는 좌표점(At)에 무사히 골인함)&lt;/li&gt;
+                
+                &lt;li&gt;&lt;strong class="text-blue-600 text-lg"&gt;Go straight along vs Go through&lt;/strong&gt;&lt;br&gt;
+                "Go straight along the street." (거리를 나타내는 2D 선(Line)을 따라 착 붙어서 쭉 가라)&lt;br&gt;
+                "Go through the tunnel." (터널이라는 무서운 3D 원통 공간 입구로 들어가서 반대편까지 관통해 이겨내라)&lt;/li&gt;
 
-    <footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-500">&copy; 2026 Course Platform. All rights reserved.</p>
-            <div>
-                <a href="/admin" target='_blank' class="text-sm text-gray-400 hover:text-gray-700 transition">⚙️ 관리자 모드
+                &lt;li&gt;&lt;strong class="text-blue-600 text-lg"&gt;Turn right at the corner&lt;/strong&gt;&lt;br&gt;
+                "Turn right at the corner." (모퉁이라는 지도상 점(At) 좌표에서 몸의 방향을 돌려라(Turn))&lt;/li&gt;
+
+                &lt;li&gt;&lt;strong class="text-blue-600 text-lg"&gt;Get on vs Get in (대중교통 승차의 절대 규칙)&lt;/strong&gt;&lt;br&gt;
+                &lt;div class="bg-indigo-50 p-3 mt-2 rounded border border-indigo-100"&gt;
+                    &lt;p class="mb-1"&gt;&lt;strong&gt;🚌 ON (표면 접착): 서서 걸어 다닐 수 있는 넓은 플랫폼 탑승&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p class="text-sm text-gray-600 ml-4 mb-3"&gt;내 두 발이 바닥 면(On)에 닿은 채로 서서 걸을 수 있는 공간입니다.&lt;br&gt;
+                    &lt;span class="font-bold text-indigo-600"&gt;ex) get on the bus / on the train / on the plane / on the subway&lt;/span&gt;&lt;/p&gt;
+                    
+                    &lt;p class="mb-1"&gt;&lt;strong&gt;🚕 IN (3D 박스 진입): 허리를 구부리고 수납되어야 하는 좁은 공간 탑승&lt;/strong&gt;&lt;/p&gt;
+                    &lt;p class="text-sm text-gray-600 ml-4"&gt;서서 걷기는 불가능하며, 몸을 접어 좁은 상자(In) 속으로 수납되는 그림입니다.&lt;br&gt;
+                    &lt;span class="font-bold text-indigo-600"&gt;ex) get in the car / in the taxi / in the helicopter&lt;/span&gt;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;</div>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2>어디서 돌고, 무엇을 타는가? 방향 전치사 실전</h2>
+<p>외국인 관람객이나 여행자가 가장 무서워하는 것이 길찾기입니다.</p>
+<ul class="list-disc pl-6 space-y-4 text-gray-800">
+<li><strong class="text-blue-600 text-lg">Get to</strong> vs <strong class="text-blue-600 text-lg">Arrive at</strong><br/>
+                "How can I get to the station?" (역이라는 과녁(To)에 내 몸 픽셀을 어떻게 진입(Get)시킬 수 있나?)<br/>
+                "I arrived at the station." (지도상에 역이라는 좌표점(At)에 무사히 골인함)</li>
+<li><strong class="text-blue-600 text-lg">Go straight along vs Go through</strong><br/>
+                "Go straight along the street." (거리를 나타내는 2D 선(Line)을 따라 착 붙어서 쭉 가라)<br/>
+                "Go through the tunnel." (터널이라는 무서운 3D 원통 공간 입구로 들어가서 반대편까지 관통해 이겨내라)</li>
+<li><strong class="text-blue-600 text-lg">Turn right at the corner</strong><br/>
+                "Turn right at the corner." (모퉁이라는 지도상 점(At) 좌표에서 몸의 방향을 돌려라(Turn))</li>
+<li><strong class="text-blue-600 text-lg">Get on vs Get in (대중교통 승차의 절대 규칙)</strong><br/>
+<div class="bg-indigo-50 p-3 mt-2 rounded border border-indigo-100">
+<p class="mb-1"><strong>🚌 ON (표면 접착): 서서 걸어 다닐 수 있는 넓은 플랫폼 탑승</strong></p>
+<p class="text-sm text-gray-600 ml-4 mb-3">내 두 발이 바닥 면(On)에 닿은 채로 서서 걸을 수 있는 공간입니다.<br/>
+<span class="font-bold text-indigo-600">ex) get on the bus / on the train / on the plane / on the subway</span></p>
+<p class="mb-1"><strong>🚕 IN (3D 박스 진입): 허리를 구부리고 수납되어야 하는 좁은 공간 탑승</strong></p>
+<p class="text-sm text-gray-600 ml-4">서서 걷기는 불가능하며, 몸을 접어 좁은 상자(In) 속으로 수납되는 그림입니다.<br/>
+<span class="font-bold text-indigo-600">ex) get in the car / in the taxi / in the helicopter</span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/4/lessons/31.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/4/lessons/33.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
                     (Admin)</a>
-            </div>
-        </div>
-    </footer>
-    
+</div>
+</div>
+</footer>
 </body>
-
 </html>
