@@ -18,7 +18,7 @@ def seed_law_course_ultimate_pt3():
         (
             '11. [실무 심화] 재하도급 제한과 불법 파견의 회피 전략', 
             '''<h2 class="text-2xl font-bold mb-4">건설공사 도급계약의 형태적 판단 기준</h2>
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 text-gray-900 border border-blue-200 p-6 rounded-xl shadow-sm mb-8">
+            <div class="bg-gray-100 text-gray-900 border border-gray-300 p-6 rounded-xl shadow-sm mb-8">
                 <p class="text-lg leading-relaxed mb-4">전문건설업체가 공사를 원활하게 수행하기 위해 자재를 사고, 장비를 빌리고, 인력을 고용합니다. 하지만 이 모든 계약을 <strong>명의만 위장하여 사실상 '건설공사 하도급'으로 줘버리면 건산법 위반(불법 재하도급)</strong>이 됩니다.</p>
                 <p class="text-blue-800 font-semibold border-l-4 border-blue-500 pl-3">국토교통부와 경찰 수사관들은 "계약서의 제목"을 보지 않고, <strong>"실질적인 계약의 내용과 지휘·감독의 본질"</strong>을 파악하여 불법 하도급 여부를 판단합니다.</p>
             </div>

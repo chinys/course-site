@@ -73,4 +73,11 @@ uv run uvicorn main:app --reload --port 3004
 - **정적페이지 추가**: Github Pages 기능을 활용하여 바로 접속가능할 수 있도록 정적파일로 변환 후 업로드함 (루트에 index.html과 build 폴더 추가됨. 불필요할 경우 이것들만 지우면 원래 파일과 동일함)
 - 접속주소 : [https://chinys.github.io/course-site/](https://chinys.github.io/course-site/)
 
+### 🔨 정적 사이트 빌드 스크립트 (Static Site Export)
+DB 데이터(강좌) 추가 등 백엔드 변경 사항이 있을 경우, 프론트엔드 GitHub Pages 배포용 정적 폴더(`build/`)를 업데이트하기 위해 아래 스크립트를 실행합니다.
+```bash
+uv run python scripts/export_site.py
+```
+> **참고:** 실행이 끝나고 나면 `build/` 폴더 전체와 루트 `index.html`을 GitHub로 Push하기만 하면 라이브 사이트 내용이 갱신됩니다.
+
 
