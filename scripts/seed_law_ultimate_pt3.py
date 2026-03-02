@@ -6,8 +6,7 @@ def seed_law_course_ultimate_pt3():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    course_title = '[건설법규]'
-    cursor.execute('SELECT id FROM course WHERE title = ?', (course_title,))
+    cursor.execute("SELECT id FROM course WHERE title LIKE '%건설법규%'")
     row = cursor.fetchone()
     if not row:
         print("Course not found, run pt1 and pt2 first.")
