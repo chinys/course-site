@@ -51,8 +51,13 @@ def rewrite_html(html_bytes):
     return str(soup)
 
 def export_site():
-    if not os.path.exists(BUILD_DIR):
-        os.makedirs(BUILD_DIR)
+    if os.path.exists(BUILD_DIR):
+        shutil.rmtree(BUILD_DIR)
+    os.makedirs(BUILD_DIR)
+    
+    # Create .nojekyll for Github Pages
+    with open(os.path.join(BUILD_DIR, ".nojekyll"), "w") as f:
+        f.write("")
         
     client = TestClient(app)
     
