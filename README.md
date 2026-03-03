@@ -22,8 +22,10 @@
   - `admin.py`: 강좌/강의 CRUD API 및 수정 렌더링, 관리자 대시보드 뷰
   - `public.py`: 사용자 공개 뷰 (메인, 상세, 강의 열람 렌더링)
 - `scripts/`: 초기 DB 세팅 관리자 생성(`create_admin.py`) 및 더미 데이터(EPC, 철골, 철근 매뉴얼) 시딩 스크립트 모음
+  - `generate_docx.py`: 건설법규 14강 계약서 10종을 Word(.docx) 파일로 변환 생성
 - `templates/`: Jinja2 서버 사이드 렌더링용 HTML 파일 모음 (`admin/`, `public/`)
 - `static/`: 클라이언트 제공 정적 파일 (`uploads/` 경로에 강의용 이미지, 썸네일 탑재)
+  - `downloads/`: 건설법규 14강 계약서 10종 DOCX 다운로드 파일
 
 ## 🛠 처음 시작하기 (Installation & Setup)
 
@@ -68,10 +70,19 @@ uv run uvicorn main:app --reload --port 3004
 
 ## 🌟 최근 주요 업데이트 내역
 
+- **건설법규 14강 계약서 DOCX 다운로드 기능 추가**: 「민법상 계약유형별 분류 체계」 표에 각 계약서별 **📄 docx 다운로드** 버튼을 추가했습니다. 10종 계약서(전문 + 매뉴얼 지침)를 Word 파일로 바로 다운로드할 수 있습니다. HTML 테이블은 Word 테이블로 변환됩니다.
+
 - **관리자 로그인 편의성 (보안 강화)**: 관리자 로그인 폼에 쿠키를 활용한 **'아이디 저장(Remember ID)'** 및 세션 만료기간(JWT)을 30일로 연장하는 **'자동 로그인(Auto Login)'** 기능을 추가했습니다.
 
 - **정적페이지 추가**: Github Pages 기능을 활용하여 바로 접속가능할 수 있도록 정적파일로 변환 후 업로드함 (루트에 index.html과 build 폴더 추가됨. 불필요할 경우 이것들만 지우면 원래 파일과 동일함)
 - 접속주소 : [https://chinys.github.io/course-site/](https://chinys.github.io/course-site/)
+
+### 📄 계약서 DOCX 파일 재생성
+건설법규 14강의 계약서 내용이 수정된 경우, 아래 명령으로 DOCX 파일을 재생성하고 DB를 업데이트합니다.
+```bash
+uv run python scripts/generate_docx.py
+uv run python scripts/seed_law_ultimate_pt4.py
+```
 
 ### 🔨 정적 사이트 빌드 스크립트 (Static Site Export)
 DB 데이터(강좌) 추가 등 백엔드 변경 사항이 있을 경우, 프론트엔드 GitHub Pages 배포용 정적 폴더(`build/`)를 업데이트하기 위해 아래 스크립트를 실행합니다.
