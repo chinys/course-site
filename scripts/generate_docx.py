@@ -32,9 +32,18 @@ def _set_kr(run, size=Pt(10), bold=False):
 
 def _strip(text):
     """HTML 태그 제거 + 엔티티 디코딩"""
+    # Replace <br> with newline
     text = re.sub(r'<br\s*/?>', '\n', text)
+    # Replace closing tags of block elements with double newline to preserve spacing
+    text = re.sub(r'</(p|div|ul|ol|h[1-6])>', '\n\n', text)
+    # Replace closing tags of list items with a single newline
+    text = re.sub(r'</li>', '\n', text)
+    # Remove all remaining HTML tags
     text = re.sub(r'<[^>]+>', '', text)
-    return html_mod.unescape(text).strip()
+    # Decode entities, strip multiple blank lines down to max 2, and trim
+    text = html_mod.unescape(text)
+    text = re.sub(r'\n{3,}', '\n\n', text).strip()
+    return text
 
 
 def _parse_table_rows(table_html):
@@ -196,11 +205,11 @@ def generate_all():
         ('E1', '화물(강재) 운반 용역계약서 (E-1)', se, '<!-- E-1', None),
     ]
 
-    print('📄 DOCX 계약서 생성 시작...\n')
+    print('DOCX 계약서 생성 시작...\n')
     for cid, title, src, comment, next_comment in contracts:
         start_idx = src.find(comment)
         if start_idx < 0:
-            print(f'  ❌ {cid} 블록을 찾을 수 없습니다.')
+            print(f'  [실패] {cid} 블록을 찾을 수 없습니다.')
             continue
         if next_comment:
             end_idx = src.find(next_comment, start_idx + len(comment))
@@ -210,7 +219,7 @@ def generate_all():
         contract_part, manual_part = _split_contract_and_manual(block)
         _build_docx(title, contract_part, manual_part, f'contract_{cid}.docx')
 
-    print(f'\n✅ 모든 계약서 DOCX 생성 완료! → {OUT_DIR}')
+    print(f'\n[성공] 모든 계약서 DOCX 생성 완료! -> {OUT_DIR}')
 
 
 if __name__ == '__main__':
