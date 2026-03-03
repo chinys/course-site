@@ -83,6 +83,9 @@ def _add_body(doc, text):
     for line in text.split('\n'):
         line = line.strip()
         if not line:
+            p = doc.add_paragraph()
+            p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.line_spacing = Pt(16)
             continue
         p = doc.add_paragraph()
         p.paragraph_format.space_after = Pt(2)
