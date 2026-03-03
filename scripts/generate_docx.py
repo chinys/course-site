@@ -161,23 +161,34 @@ def _build_docx(title, contract_html, manual_html, filename):
 
 def _split_contract_and_manual(block_html):
     """계약서 div (bg-gray-50)과 매뉴얼 div (💡) 분리"""
+    # 1. 계약서 부분 찾기
+    contract = ''
     marker = 'bg-gray-50 border border-gray-300'
     idx = block_html.find(marker)
-    contract = ''
     if idx >= 0:
         tag_end = block_html.find('>', idx)
         if tag_end >= 0:
             rest = block_html[tag_end + 1:]
-            manual_marker = rest.find('매뉴얼 지침')
-            if manual_marker > 0:
-                contract = rest[:manual_marker]
+            
+            # 매뉴얼 지침 시작 부분 찾기 (💡 아이콘이 있는 div 기준)
+            manual_start_marker = '💡'
+            manual_idx = rest.find(manual_start_marker)
+            
+            if manual_idx >= 0:
+                # 💡 이전까지가 계약서 본문 (보통 </div> </div> 가 사이에 있음)
+                contract = rest[:manual_idx]
             else:
                 contract = rest
 
-    manual_start = block_html.find('매뉴얼 지침')
+    # 2. 매뉴얼 부분 찾기
     manual = ''
-    if manual_start > 0:
-        manual = block_html[manual_start:]
+    manual_idx = block_html.find('💡')
+    if manual_idx >= 0:
+        # 💡 이후 텍스트 중 실제 '매뉴얼 지침' 텍스트 시작점을 찾음
+        title_idx = block_html.find('매뉴얼 지침', manual_idx)
+        if title_idx >= 0:
+            manual = block_html[title_idx:]
+            
     return contract, manual
 
 
