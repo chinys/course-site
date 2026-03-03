@@ -25,6 +25,8 @@ def rewrite_html(html_bytes):
         href = a['href']
         if href == "/":
             a['href'] = f"{PREFIX}/index.html"
+        elif href.startswith("/static/"):
+            a['href'] = f"{PREFIX}{href}"
         elif href.startswith("/courses/"):
             parts = href.split("/")
             if len(parts) == 3: # /courses/1
