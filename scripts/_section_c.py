@@ -11,7 +11,7 @@ def section_c():
 
 <!-- C-1: NDT -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-C1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-purple-500">&nbsp;</div>
 
@@ -119,7 +119,7 @@ def section_c():
 
 <!-- C-2: 함바식당 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-C2" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-purple-400">&nbsp;</div>
 

@@ -11,7 +11,7 @@ def section_e():
 
 <!-- E-1: 화물운반 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-E1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-rose-500">&nbsp;</div>
 

@@ -11,7 +11,7 @@ def section_a():
 
 <!-- A-1: 외주 가공제작 물품공급 (일반 — 매도인 자재 조달) -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-A1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500">&nbsp;</div>
 
@@ -208,7 +208,7 @@ def section_a():
 
 <!-- A-2: 외주 사급가공 계약서 (매수인 자재·DWG 제공, 매도인 가공만) -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-A2" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-blue-400">&nbsp;</div>
 
@@ -441,7 +441,7 @@ def section_a():
 
 <!-- A-3: 사내가공제작(사내도장) 계약서 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-A3" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-blue-300">&nbsp;</div>
 

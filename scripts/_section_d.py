@@ -11,7 +11,7 @@ def section_d():
 
 <!-- D-1: 기술자문 위촉 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-D1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-teal-500">&nbsp;</div>
 
@@ -169,7 +169,7 @@ def section_d():
 
 <!-- D-2: 일용직 근로계약서 (NEW) -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-D2" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-teal-400">&nbsp;</div>
 

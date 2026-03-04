@@ -11,7 +11,7 @@ def section_b():
 
 <!-- B-1 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-B1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-orange-500">&nbsp;</div>
 
@@ -125,7 +125,7 @@ def section_b():
 
 <!-- B-2: 가설재 임대차 -->
 
-<div class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+<div id="contract-B2" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
 <div class="absolute top-0 left-0 w-1 h-full bg-orange-400">&nbsp;</div>
 
