@@ -1,0 +1,9 @@
+@echo off
+echo Running seed script...
+python seed_law_ultimate_pt4.py
+echo Running extraction script...
+python _extract_db_content.py
+echo Running docx generation...
+set PYTHONIOENCODING=utf-8
+..\.venv\Scripts\python.exe generate_docx.py
+echo All done.

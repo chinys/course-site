@@ -75,7 +75,7 @@ def _intro():
 
 <td class="border p-2">A-1</td>
 
-<td class="border p-2">물품공급 계약서(자재 포함 외주)</td>
+<td class="border p-2">물품공급(제조납품) 계약서</td>
 
 <td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A1.docx" target="_blank" rel="noopener" download="contract_A1.docx">📄 docx</a></td>
 
@@ -85,7 +85,7 @@ def _intro():
 
 <td class="border p-2">A-2</td>
 
-<td class="border p-2">외주가공 계약서(자재 사급 외주)</td>
+<td class="border p-2">외주가공(제조위탁) 계약서</td>
 
 <td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A2.docx" target="_blank" rel="noopener" download="contract_A2.docx">📄 docx</a></td>
 
@@ -95,7 +95,7 @@ def _intro():
 
 <td class="border p-2">A-3</td>
 
-<td class="border p-2">사내가공제작(사내도장) 계약서</td>
+<td class="border p-2">사내가공(제조위탁) 계약서</td>
 
 <td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A3.docx" target="_blank" rel="noopener" download="contract_A3.docx">📄 docx</a></td>
 

@@ -25,22 +25,60 @@ def section_c():
 
 <h4 class="text-center font-bold text-2xl mb-8">기술&middot;품질용역 위탁계약서</h4>
 
-<strong>OOO건설(주)</strong> (이하 "발주자"라 한다)와 <strong>OOO검사엔지니어링(주)</strong> (이하 "수급인"이라 한다)는 비파괴검사 용역의 위탁에 관하여 다음과 같이 계약한다.<br><br><strong>제1조 (목적)</strong><br>본 계약은 "발주자"가 시공 중인 [OO신축공사] 현장의 강구조물 용접 접합부를 대상으로, 용접 결함의 유무를 정밀 판별하기 위하여 "수급인"에게 비파괴검사 및 그 결과 보고를 엔지니어링 용역으로서 위탁함을 목적으로 한다.<br><br><strong>제2조 (역무의 범위)</strong><br>① 검사 종류 및 물량: UT(초음파탐상) OOO포인트, RT(방사선투과) OOO필름, MT(자분탐상) OOO포인트 등 전체 검사 물량은 설계도서의 검사 비율표에 따른다.<br>② 적용 기준: KBC(한국건축구조기준), KS B 0896(초음파탐상시험), KS B 0845(방사선투과시험) 등 관련 규격을 적용한다.<br>③ 검사 완료 후 7일 이내에 검사성적서 원본을 "발주자"에게 서면으로 제출하여야 한다.<br><br><strong>제3조 (건설 시공 행위의 배제)</strong><br>① 본 계약은 「건설기술 진흥법」 제60조에 따른 건설공사의 <strong>품질검사 (엔지니어링) 기술용역</strong>에 해당하는 순수 품질검사 용역으로서, 건설산업기본법 제2조의 건설공사 하도급계약이 아님을 쌍방이 확인한다.<br>② "수급인"은 용접부 수정(가우징, 재용접 등) 및 볼팅, 이음판 교체 등 <strong>어떠한 건설 시공 및 설치 행위에도 관여하지 아니한다.</strong><br>③ 불합격 판정된 용접 부위의 수정 시공은 전적으로 "발주자" 소속의 직영 인력에 의하여 별도 수행한다.<br><br><strong>제4조 (용역 대금)</strong><br>① 총 용역 대금은 일금 OOO원整 (부가가치세 별도)으로 한다.<br>② 세금계산서 발행 시 품목은 "철골 용접부 비파괴검사(NDT) 기술용역비"로 기재한다.<br>③ 대금은 검사성적서 접수 확인 후 30일 이내에 "수급인" 지정 계좌로 지급한다.<br><br><strong>제5조 (검사 완료 기한 및 재검사)</strong><br>① "수급인"은 "발주자"의 검사 요청일로부터 <strong>3영업일 이내에 검사를 완료</strong>하여야 한다. 기한 내 미완료 시, "발주자"는 타 검사업체에 대체 발주할 수 있으며, 이에 대해 "수급인"은 이의를 제기할 수 없다.<br>② 검사 결과에 이의가 있는 경우, <strong>1회에 한해 무상 재검사를 수행</strong>한다. 재검사 결과가 최초 결과와 상이한 경우, 쌍방이 협의하여 제3의 검사기관에 의뢰할 수 있다.<br><br><strong>제6조 (안전 및 방사선 관리)</strong><br>① RT(방사선투과) 촬영은 원칙적으로 야간(PM 22:00 이후)에 진행하고, 작업 시 방사선 관리구역을 설정하며, 원자력안전법 및 방사선 안전관리 등의 기술기준에 관한 규칙에 정한 방사선 취급 기준을 일체 준수한다.<br>② "발주자"는 "수급인"의 RT 촬영 시간을 배려하여, 해당 시간대 관련 구역의 출입을 통제하여야 한다.<br><br><strong>제7조 (비밀유지 의무)</strong><br>"수급인"은 용역 과정에서 취득한 "발주자"의 설계도서, 검사 결과, 시공 관련 정보 일체를 제3자에게 누설하지 아니한다. 본 의무는 계약 종료 후에도 존속한다.<br><br><strong>제8조 (검사성적서 귀속)</strong><br>검사성적서 원본의 소유권 및 사용 권한은 "발주자"에게 귀속된다. "수급인"은 사본을 보관할 수 있으나, "발주자"의 동의 없이 이를 외부에 제공하여서는 아니 된다.<br><br><strong>제9조 (계약 해지)</strong><br>① "수급인"의 검사 기사가 만취 상태에서 현장 검사를 시도한 경우, 자격증 미소지자를 파견한 경우, 허위 성적서를 작성한 사실이 적발된 경우, "발주자"는 별도의 최고 없이 즉시 해지하고 법적 조치를 취할 수 있다.<br>② "발주자"가 대금을 60일 이상 체불한 경우, "수급인"은 용역을 중단할 수 있다.<br><br><strong>부 칙</strong><br>본 계약의 성립을 증명하기 위하여 본서 2부를 작성하고, 쌍방이 서명 또는 기명날인한 후 각 1부씩 보관한다.<br><br>년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일
+위탁자(이하 "甲") <strong>O O O O (주)</strong>와 수탁자(이하 "乙") <strong>O O O O (주)</strong>는 비파괴검사 용역의 위탁에 관하여 다음과 같이 계약한다.<br><br>
 
-<table class="w-full text-left border-collapse mt-4" style="height: 124px; width: 98.9257%;">
+<table class="w-full text-left border-collapse border border-gray-400 mb-8">
+  <tbody>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 대 상 현 장 명</th>
+      <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">2. 용 역 범 위</th>
+      <td class="border border-gray-400 p-2">UT OOO포인트, RT OOO필름, MT OOO포인트 등 (설계도서 기준)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">3. 용 역 기 간</th>
+      <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (검사 완료 시까지)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">4. 용 역 대 금</th>
+      <td class="border border-gray-400 p-2">총액 금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO / 부가세 별도)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <td class="border border-gray-400 p-2">성적서 접수 후 30일 이내 지정 계좌 지급 / 품목: "비파괴검사(NDT) 기술용역비"</td>
+    </tr>
+  </tbody>
+</table>
 
-<tbody>
+<strong>제1조 (목적)</strong><br>본 계약은 "甲"이 시공 중인 위 현장의 강구조물 용접 접합부를 대상으로, 용접 결함의 유무를 정밀 판별하기 위하여 "乙"에게 비파괴검사 및 그 결과 보고를 엔지니어링 용역으로서 위탁함을 목적으로 한다.<br><br>
 
-<tr>
+<strong>제2조 (적용 기준 및 성적서 제출)</strong><br>
+① KBC(한국건축구조기준), KS B 0896(초음파탐상시험) 등 관련 규격을 적용한다.<br>
+② 검사 완료 후 7일 이내에 검사성적서 원본을 "甲"에게 서면으로 제출하여야 한다.<br><br>
 
-<td class="w-1/2 p-4 align-top" style="width: 50%;"><strong>[발주자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : OOO건설 주식회사<br>현장소장 : 대 리 인 &nbsp;&nbsp; 박 소 장 &nbsp;&nbsp; (서명)<br>연락처 : 02-1234-5678</td>
+<strong>제3조 (건설 시공 행위의 배제)</strong><br>
+① 본 계약은 「건설기술 진흥법」 제60조에 따른 건설공사의 <strong>품질검사 (엔지니어링) 기술용역</strong>에 해당하는 순수 품질검사 용역으로서, 건설공사 하도급계약이 아님을 쌍방이 확인한다.<br>
+② <strong>"乙"은 용접부 수정(가우징, 재용접 등) 및 볼팅, 이음판 교체 등 어떠한 건설 시공 및 설치 행위에도 관여하지 아니한다.</strong> (수정 시공은 전적으로 "甲" 소속 직영 인력 수행)<br><br>
 
-<td class="w-1/2 p-4 align-top" style="width: 50%;"><strong>[수급인 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : OOO검사엔지니어링(주)<br>대표자 : &nbsp;&nbsp; 김 검 사 &nbsp;&nbsp; (서명)<br>자격 : 비파괴검사기술사 / 방사선취급자면허</td>
+<strong>제4조 (검사 기한 및 재검사, 안전)</strong><br>
+① 검사 요청일로부터 <strong>3영업일 이내에 검사를 완료</strong>하여야 하며, 미완료 시 "甲"은 타 업체로 대체 발주할 수 있다.<br>
+② 결과 이의 시 1회 무상 재검사를 실시하며, RT 방사선 촬영 시 원자력안전법 등 취급 기준을 일체 준수하여 심야(22:00 이후)에 통제하에 진행한다.<br><br>
 
-</tr>
+<strong>제5조 (비밀유지 및 소유권)</strong><br>
+① 검사 결과 등 취득 정보 일체의 비밀 유지를 준수한다.<br>
+② 성적서 원본의 소유권은 "甲"에게 귀속된다.<br><br>
 
-</tbody>
+<strong>부 칙</strong><br>본 계약의 성립을 증명하기 위하여 본서 2부를 작성하고, 쌍방이 기명날인한 후 각 1부씩 보관한다.<br><br>년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일
 
+<table class="w-full text-left border-collapse mt-4">
+  <tbody>
+    <tr>
+      <td class="w-1/2 p-4 align-top"><strong>[위탁자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+      <td class="w-1/2 p-4 align-top"><strong>[수탁자 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+    </tr>
+  </tbody>
 </table>
 
 </div>
@@ -52,53 +90,31 @@ def section_c():
 <div class="mt-3 pt-3 border-t border-purple-200"><strong class="block mb-1">📌 원가 분류 및 대금 청구 시 유의사항 (C-1):</strong>
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
-
-<tbody>
-
-<tr class="bg-purple-100">
-
-<th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
-
-<th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
-
-<th class="border border-purple-200 p-1.5 text-left">사유</th>
-
-</tr>
-
-<tr class="bg-green-50">
-
-<td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
-
-<td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
-
-<td class="border border-purple-200 p-1.5 font-bold">품질검사 용역 위탁 &rarr; 경비 &gt; 시험검사비</td>
-
-</tr>
-
-<tr>
-
-<td class="border border-purple-200 p-1.5">자재비&middot;노무비&middot;장비비</td>
-
-<td class="border border-purple-200 p-1.5 text-red-600 font-bold">❌</td>
-
-<td class="border border-purple-200 p-1.5">순수 기술용역 위탁이므로 해당 없음</td>
-
-</tr>
-
-</tbody>
-
+  <tbody>
+    <tr class="bg-purple-100">
+      <th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
+      <th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
+      <th class="border border-purple-200 p-1.5 text-left">사유</th>
+    </tr>
+    <tr class="bg-green-50">
+      <td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
+      <td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
+      <td class="border border-purple-200 p-1.5 font-bold">품질검사 용역 위탁 &rarr; 경비 &gt; 시험검사비</td>
+    </tr>
+    <tr>
+      <td class="border border-purple-200 p-1.5">자재비&middot;노무비&middot;장비비</td>
+      <td class="border border-purple-200 p-1.5 text-red-600 font-bold">❌</td>
+      <td class="border border-purple-200 p-1.5">순수 기술용역 위탁이므로 해당 없음</td>
+    </tr>
+  </tbody>
 </table>
 
 <p class="text-xs">&there4; 노무비닷컴, 하도급지킴이 등에서 대금 청구 시 <strong>"기타(경비) &rarr; 시험검사비"</strong>로 분류하십시오.</p>
 
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 <!-- C-2: 함바식당 -->
@@ -117,22 +133,57 @@ def section_c():
 
 <h4 class="text-center font-bold text-2xl mb-8">건설현장 급식(함바식당) 운영 위탁계약서</h4>
 
-<strong>OOO건설(주)</strong> (이하 "위탁자"라 한다)와 <strong>OOO식당</strong> (이하 "수탁자"라 한다)는 건설현장 근로자 급식 운영에 관하여 다음과 같이 위탁계약을 체결한다.<br><br><strong>제1조 (계약의 목적)</strong><br>본 계약은 "위탁자"가 시공 중인 [OO신축현장]에 투입되는 근로자들의 복지 증진 및 안정적 식사 제공을 위하여, 현장 내 지정 급식시설(이하 "함바식당")의 운영&middot;관리 일체를 "수탁자"에게 위탁함을 목적으로 한다.<br><br><strong>제2조 (위탁 업무의 범위)</strong><br>① "수탁자"는 다음 각 호의 업무를 자기의 비용과 책임으로 수행한다.<br>&nbsp;&nbsp; 1. 식자재의 구매, 검수, 보관 및 조리<br>&nbsp;&nbsp; 2. 급식시설(조리실, 식당홀, 보관창고) 내부의 일상 청소 및 위생 관리<br>&nbsp;&nbsp; 3. 조리 종사자의 고용, 교육 및 인건비 지급<br>&nbsp;&nbsp; 4. 식기 세척, 잔반 처리 및 음식물 폐기물의 적법한 위탁 처리<br>② "위탁자"는 현장 내 급식시설의 건축물(컨테이너, 조립식 등)과 기본 설비(급수, 배수, 전기)를 설치하여 "수탁자"에게 무상 제공한다. 단, 조리용 기구&middot;비품&middot;식자재 등 운영에 필요한 소모성 집기는 "수탁자"가 자비로 조달한다.<br><br><strong>제3조 (계약의 법적 성격 및 건산법 배제)</strong><br>① 본 계약은 「식품위생법」 제2조에 따른 식품접객업(집단급식소 위탁급식) 운영 위탁에 해당하며, 건설산업기본법에 의한 건설공사 하도급계약이 아님을 쌍방이 확인한다.<br>② "수탁자"는 건설현장 내에서 급식 조리&middot;배식 업무 이외의 어떠한 건설 시공 행위에도 관여하지 아니하며, "수탁자"의 종업원이 건설 작업에 투입되어서도 아니 된다.<br><br><strong>제4조 (급식 인원 및 식단 운영)</strong><br>① 예상 급식 인원: 1일 평균 약 OOO명 (공정 진행에 따라 변동 가능)<br>② 급식 시간: 중식 11:30 ~ 13:00 / 석식 17:30 ~ 18:30 (야간 작업 시 야식 별도 협의)<br>③ 식단: 한식 기준 밥, 국, 반찬 3종 이상을 기본으로 하며, 월 1회 이상 식단표를 "위탁자"에게 사전 제출하여 승인을 받는다.<br>④ "수탁자"는 계절별 식중독 예방을 위해 반드시 당일 조리 원칙을 준수하고, 전일 잔반을 재사용하여서는 아니 된다.<br>⑤ "수탁자"는 주요 식자재(쌀, 육류, 김치 등)의 원산지를 식당 내 게시하고, 식품 알레르기 유발 물질이 포함된 메뉴에는 별도 표시를 하여야 한다.<br><br><strong>제5조 (위탁 대금 및 정산)</strong><br>① 급식 단가: 1식당 금 OOO원 (부가가치세 별도)으로 한다.<br>② 정산 방식: 매월 말일 기준으로 실제 급식 인원(식수 카운트 또는 식권 회수 매수)을 집계하여 정산한다.<br>③ "수탁자"는 익월 5일까지 전월분 세금계산서(품목: <strong>급식 위탁 운영비</strong>)를 발행하고, "위탁자"는 세금계산서 접수일로부터 30일 이내에 "수탁자" 지정 계좌로 대금을 지급한다.<br>④ 현장 인원이 계약 시 예상 인원 대비 30% 이상 증감한 경우, 양 당사자는 단가 조정을 위한 협의를 할 수 있다.<br><br><strong>제6조 (위생 관리 및 법적 의무)</strong><br>① "수탁자"는 식품위생법, 식품안전관리인증기준(HACCP 권장) 및 관할 보건소의 지도&middot;점검 기준을 준수하여야 한다.<br>② 조리 종사자 전원은 반드시 유효한 건강진단서(보건증)를 소지하여야 하며, "위탁자"의 요청 시 이를 즉시 제시하여야 한다.<br>③ "수탁자"는 조리실 내 방충&middot;방서(쥐) 시설을 갖추고, 식자재 보관 냉장&middot;냉동 온도를 매일 기록&middot;관리하여야 한다.<br>④ "위탁자"는 수시로 급식시설에 대한 위생 점검을 실시할 수 있으며, "수탁자"는 이에 적극 협조하여야 한다.<br><br><strong>제7조 (식중독 등 사고 발생 시 책임)</strong><br>① "수탁자"의 식자재 관리 부실, 부패&middot;변질 식재료 사용, 조리 종사자의 비위생적 취급 등에 기인하여 집단 식중독 또는 이물질 사고가 발생한 경우, 그에 따른 치료비, 영업정지 벌금, 민&middot;형사상 책임은 전적으로 "수탁자"가 부담한다.<br>② "수탁자"는 <strong>식품배상책임보험(Product Liability, PL보험)</strong>에 가입하여야 하며, "위탁자"의 요청 시 보험증권 사본을 제출하여야 한다.<br>③ 단, "위탁자"가 제공한 급수시설의 수질 오염, 건축물(컨테이너) 구조 결함 등 "위탁자" 측 시설의 하자에 기인한 사고의 책임은 "위탁자"가 부담한다.<br><br><strong>제8조 (계약 기간 및 해지)</strong><br>① 본 계약의 유효 기간은 202X년 X월 X일부터 본 현장 공사 준공일(또는 별도 합의 종료일)까지로 한다.<br>② 다음 각 호의 사유가 발생한 경우, "위탁자"는 7일 전 서면 통보로 본 계약을 해지할 수 있다.<br>&nbsp;&nbsp; 1. 관할 보건소로부터 영업정지 이상의 행정처분을 받은 경우.<br>&nbsp;&nbsp; 2. 식중독 사고가 발생하여 근로자 3인 이상이 입원 치료를 받은 경우.<br>&nbsp;&nbsp; 3. "위탁자"의 위생 점검 시정 요구에 2회 이상 불응한 경우.<br>③ 계약 해지 시 해지일까지의 급식 대금은 실 식수를 기준으로 정산하며, "수탁자"는 해지일로부터 7일 이내에 급식시설 내 자기 소유 물품을 반출하고 시설을 원상 복구하여 인도한다.<br><br><strong>부 칙</strong><br>본 계약의 성립을 증명하기 위하여 본서 2부를 작성하고, 쌍방이 서명 또는 기명날인한 후 각 1부씩 보관한다.<br><br>년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일
+위탁자(이하 "甲") <strong>O O O O (주)</strong>와 수탁자(이하 "乙") <strong>O O O O (식당)</strong>는 건설현장 근로자 급식 운영에 관하여 다음과 같이 위탁계약을 체결한다.<br><br>
 
-<table class="w-full text-left border-collapse mt-4" style="height: 123px; width: 97.6723%;">
+<table class="w-full text-left border-collapse border border-gray-400 mb-8">
+  <tbody>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 운 영 현 장 명</th>
+      <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축현장 급식시설 (함바) ]</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">2. 예상 급식 인원</th>
+      <td class="border border-gray-400 p-2">1일 평균 약 O O O 명 (공정에 따라 변동)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">3. 위 탁 기 간</th>
+      <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 준공 등 종료일 시까지</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">4. 식 대 단 가</th>
+      <td class="border border-gray-400 p-2">1식당 금 <strong>O O O O</strong>원 (공급가액: ₩O,OOO / 부가세 별도)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <td class="border border-gray-400 p-2">월말 식대 정산, 익월 5일 세금계산서 발행(품목:"급식 위탁 운영비")</td>
+    </tr>
+  </tbody>
+</table>
 
-<tbody>
+<strong>제1조 (목적 및 업무 범위)</strong><br>
+① 본 계약은 "甲" 시공 현장의 근로자 급식시설(함바식당) 운영 및 관리 일체를 "乙"에게 위탁함을 목적으로 한다.<br>
+② "乙"은 식자재 구매&middot;검수&middot;조리, 위생 관리, 종사자 인건비 지급, 잔반 처리를 전부 자기 비용과 책임으로 수행한다.<br><br>
 
-<tr>
+<strong>제2조 (계약의 법적 성격 및 건산법 배제)</strong><br>
+① 본 계약은 「식품위생법」 제2조에 따른 <strong>식품접객업(집단급식소 위탁급식) 운영 위탁</strong>이며, 건설공사 하도급계약이 아님을 쌍방이 확인한다.<br>
+② <strong>"乙" 종업원은 현장 내 배식 업무 외 어떠한 건설 시공 행위에도 관여할 수 없다.</strong><br><br>
 
-<td class="w-1/2 p-4 align-top" style="width: 50%;"><strong>[위탁자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : OOO건설 주식회사<br>현장소장 : 대 리 인 &nbsp;&nbsp; 박 소 장 &nbsp;&nbsp; (서명)<br>연락처 : 02-1234-5678</td>
+<strong>제3조 (위생 관리 및 법적 의무)</strong><br>
+① "乙"은 식품위생법 등 관련 법령 준수, 조리 종사자 보건증 전원 소지, 당일 조리 원칙(잔반 재사용 금지)을 철저히 지켜야 한다.<br>
+② <strong>"乙"은 식품배상책임보험(PL보험)에 의무 가입</strong>해야 하며 증권 사본을 제출한다. 식중독 책임 등 일체의 민형사상 책임은 "乙"이 부담한다.<br><br>
 
-<td class="w-1/2 p-4 align-top" style="width: 50%;"><strong>[수탁자 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : OOO식당 (개인사업자 또는 법인)<br>대표자 : &nbsp;&nbsp; 이 함 바 &nbsp;&nbsp; (서명)<br>사업자등록번호 : 123-45-67890</td>
+<strong>제4조 (계약의 해지)</strong><br>
+보건소 행정처분, 식중독 발생(근로자 입원), 위생 불량 시정조치 불응(2회 이상) 시 "甲"은 서면 통보 후 즉시 계약을 해지할 수 있다.<br><br>
 
-</tr>
+<strong>부 칙</strong><br>본 계약의 성립을 증명하기 위하여 본서 2부를 작성하고, 쌍방이 기명날인한 후 각 1부씩 보관한다.<br><br>년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일
 
-</tbody>
-
+<table class="w-full text-left border-collapse mt-4">
+  <tbody>
+    <tr>
+      <td class="w-1/2 p-4 align-top"><strong>[위탁자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+      <td class="w-1/2 p-4 align-top"><strong>[수탁자 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (식당)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+    </tr>
+  </tbody>
 </table>
 
 </div>
@@ -144,53 +195,30 @@ def section_c():
 <div class="mt-3 pt-3 border-t border-purple-200"><strong class="block mb-1">📌 원가 분류 및 대금 청구 시 유의사항 (C-2):</strong>
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
-
-<tbody>
-
-<tr class="bg-purple-100">
-
-<th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
-
-<th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
-
-<th class="border border-purple-200 p-1.5 text-left">사유</th>
-
-</tr>
-
-<tr class="bg-green-50">
-
-<td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
-
-<td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
-
-<td class="border border-purple-200 p-1.5 font-bold">근로자 급식 위탁 &rarr; 경비 &gt; 복리후생비(급식비)</td>
-
-</tr>
-
-<tr>
-
-<td class="border border-purple-200 p-1.5">자재비&middot;노무비&middot;장비비</td>
-
-<td class="border border-purple-200 p-1.5 text-red-600 font-bold">❌</td>
-
-<td class="border border-purple-200 p-1.5">급식 운영 위탁이므로 해당 없음</td>
-
-</tr>
-
-</tbody>
-
+  <tbody>
+    <tr class="bg-purple-100">
+      <th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
+      <th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
+      <th class="border border-purple-200 p-1.5 text-left">사유</th>
+    </tr>
+    <tr class="bg-green-50">
+      <td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
+      <td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
+      <td class="border border-purple-200 p-1.5 font-bold">근로자 급식 위탁 &rarr; 경비 &gt; 복리후생비(급식비)</td>
+    </tr>
+    <tr>
+      <td class="border border-purple-200 p-1.5">자재비&middot;노무비&middot;장비비</td>
+      <td class="border border-purple-200 p-1.5 text-red-600 font-bold">❌</td>
+      <td class="border border-purple-200 p-1.5">급식 운영 위탁이므로 해당 없음</td>
+    </tr>
+  </tbody>
 </table>
 
 <p class="text-xs">&there4; 노무비닷컴, 하도급지킴이 등에서 대금 청구 시 <strong>"기타(경비) &rarr; 복리후생비(급식비)"</strong>로 분류하십시오. 세금계산서 품목: <strong>"급식 위탁 운영비"</strong></p>
 
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </div>'''

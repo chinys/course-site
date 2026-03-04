@@ -7,6 +7,7 @@ import os, re, html as html_mod
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 from docx.oxml.ns import qn
 from lxml import etree
 
@@ -32,6 +33,8 @@ def _set_kr(run, size=Pt(10), bold=False):
 
 def _strip(text):
     """HTML 태그 제거 + 엔티티 디코딩"""
+    # HTML 내 연속된 공백이나 줄바꿈을 단일 공백으로 치환 (HTML 렌더링 방식과 동일하게)
+    text = re.sub(r'\s+', ' ', text)
     # Replace <br> with newline
     text = re.sub(r'<br\s*/?>', '\n', text)
     # Replace closing tags of block elements with double newline to preserve spacing
@@ -40,8 +43,14 @@ def _strip(text):
     text = re.sub(r'</li>', '\n', text)
     # Remove all remaining HTML tags
     text = re.sub(r'<[^>]+>', '', text)
-    # Decode entities, strip multiple blank lines down to max 2, and trim
+    # Decode entities
     text = html_mod.unescape(text)
+    
+    # 각 줄의 앞뒤 공백 제거
+    lines = [line.strip() for line in text.split('\n')]
+    text = '\n'.join(lines)
+    
+    # 연속된 빈 줄을 최대 2개로 제한
     text = re.sub(r'\n{3,}', '\n\n', text).strip()
     return text
 
@@ -75,7 +84,10 @@ def _add_word_table(doc, rows):
                 break
             cell = row.cells[j]
             cell.text = ''
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
             p = cell.paragraphs[0]
+            if is_header:
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             run = p.add_run(text)
             _set_kr(run, size=Pt(9), bold=is_header)
     doc.add_paragraph()  # 테이블 후 빈 줄
