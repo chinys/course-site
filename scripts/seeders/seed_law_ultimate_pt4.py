@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 def seed_law_course_ultimate_pt4():
-    db_path = os.path.join(os.path.dirname(__file__), '..', 'database.db')
+    db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'database.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("SELECT id FROM course WHERE title LIKE '%건설법규%'")
@@ -31,11 +31,13 @@ def seed_law_course_ultimate_pt4():
 
 
 def _build_html():
-    from _section_a import section_a
-    from _section_b import section_b
-    from _section_c import section_c
-    from _section_d import section_d
-    from _section_e import section_e
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+    from templates._section_a import section_a
+    from templates._section_b import section_b
+    from templates._section_c import section_c
+    from templates._section_d import section_d
+    from templates._section_e import section_e
     parts = [_intro(), section_a(), section_b(), section_c(), section_d(), section_e(), '</div>']
     return '\n'.join(parts)
 

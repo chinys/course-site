@@ -12,7 +12,7 @@ from docx.oxml.ns import qn
 from lxml import etree
 
 KOREAN_FONT = '나눔고딕'
-BASE_DIR = os.path.join(os.path.dirname(__file__), '..')
+BASE_DIR = os.path.join(os.path.dirname(__file__), '..', '..')
 OUT_DIR = os.path.join(BASE_DIR, 'static', 'downloads')
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -207,11 +207,11 @@ def _split_contract_and_manual(block_html):
 def generate_all():
     import sys
     sys.path.insert(0, os.path.join(BASE_DIR, 'scripts'))
-    from _section_a import section_a
-    from _section_b import section_b
-    from _section_c import section_c
-    from _section_d import section_d
-    from _section_e import section_e
+    from templates._section_a import section_a
+    from templates._section_b import section_b
+    from templates._section_c import section_c
+    from templates._section_d import section_d
+    from templates._section_e import section_e
 
     sa, sb, sc, sd, se = section_a(), section_b(), section_c(), section_d(), section_e()
 
