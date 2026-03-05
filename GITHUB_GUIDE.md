@@ -58,34 +58,61 @@
 
 이제 내 컴퓨터에서 작업 중인 폴더를 클라우드 저장소와 결합(동기화)할 차례입니다. 저장소의 기본 관리 브랜치명은 주로 `main`입니다.
 
-1. **원격 저장소 주소 연결하기 (`origin` 추가)**
-   - `origin`은 해당 원격 저장소의 긴 웹 주소를 짧게 대신 부르는 별칭(alias)입니다. 관례적으로 가장 많이 쓰입니다. (origin = 저장소 주소 본체)
+1. **로컬 저장소 초기화 및 기본 설정 (필수 사전 작업)**
+   - 해당 프로젝트 폴더로 터미널 경로를 맞춘 뒤, 내 PC에서도 Git을 쓸 수 있도록 세팅합니다.
+     ```bash
+     git init
+     git add .
+     git commit -m "첫 커밋"
+     git branch -M main
+     ```
+
+2. **원격 저장소 주소 연결하기 (`origin` 추가)**
+   - `origin`은 해당 원격 저장소의 웹 주소를 짧게 대신 부르는 별칭(alias)입니다.
      ```bash
      git remote add origin https://github.com/본인계정/저장소이름.git
      # (예시) git remote add origin https://github.com/gildong/course-site.git
      ```
 
-2. **프로젝트 병합하기 (`push` 오류 예방 ⭐️)**
-   - 만약 GitHub 창에서 README.md 등을 생성하고 체크(On)한 채로 만들었다면, 로컬 PC에는 그 파일이 없으므로 곧바로 올리려 할 때 충돌/거부 에러가 납니다. 이것을 해결하기 위해 먼저 '원격의 변화'를 당겨옵니다.
+3. **프로젝트 병합하기 (`push` 충돌/오류 예방 ⭐️)**
+   - 만약 GitHub 창에서 `README.md` 등을 미리 생성했다면, 로컬 PC에는 그 파일이 없어 바로 올리려 할 때 충돌 에러가 납니다. 먼저 '원격의 데이터'를 당겨와 합쳐줍니다.
      ```bash
      git pull origin main --allow-unrelated-histories
      ```
 
-3. **원격 저장소(GitHub)에 전송하기 (`push` 명령어)**
-   - 파일을 담고(add), 도장을 찍은(commit) 후, 마침내 클라우드로 밀어 올립니다.
+4. **원격 저장소(GitHub)에 밀어 올리기 (`push` 명령어)**
+   - 로컬에서 기록(commit)한 내용을 마침내 클라우드로 전송합니다.
      ```bash
-     git push origin main
+     git push -u origin main
      ```
 
 ---
 
-## 5. VSCode (Antigravity) GUI의 초간편 사용
+## 5. VSCode GUI의 초간편 사용 (Source Control)
 
-위 명령어들의 논리 구조를 이해했다면, 굳이 검은색 터미널 화면에 타이핑하지 않아도 VSCode 왼쪽의 **'소스 제어(Source Control, 나뭇가지 아이콘)'** 탭을 클릭해 버튼 조작만으로 편하게 다룰 수 있습니다.
+터미널 명령어의 원리를 이해했다면, VSCode 좌측의 **'소스 제어(Source Control, 나뭇가지 아이콘)'** 탭을 사용해 클릭만으로 훨씬 직관적이고 편하게 버전 관리를 할 수 있습니다.
 
-- **`+` (스테이징)**: 변경된 파일을 올릴 준비(`git add`)
-- **버튼 및 메시지 창 (커밋)**: 메모를 쓰고 **Commit** 버튼 클릭(`git commit`)
-- **`Sync Changes (변경 사항 동기화)`**: 커밋을 클라우드로 전송(`git push`). **반드시 VSCode 안에서 코드를 수정하고 ⇨ Commit 하고 ⇨ Push(또는 Sync)까지 완전히 끝내야만 GitHub 웹사이트에도 반영됩니다.**
+### 1) Repository 클론 (Clone) 방법
+- **(사전작업) 현재 폴더의 기존 git 흔적 제거?** 숨김 폴더인 .git을 제거하면 됨
+
+- **언제 쓰나요?** GitHub에 있는 원격 저장소를 내 PC로 처음 가져올 때 사용합니다.
+- **현재 폴더에 git clone 하기(터미널)** : git clone https://github.com/본인계정/저장소이름.git . (예: git clone https://github.com/chinys/course-site .) 맨 마지막에 현재 폴더를 가르키는 . 추가함
+- **git clone 다른 방법(참고만)** : 시작 화면이나 '소스 제어' 탭에서 **[리포지토리 복제 (Clone Repository)]**를 클릭합니다. 
+ 복사해 둔 GitHub 저장소 URL(`https://github.com/본인계정/저장소이름.git`)을 상단 검색창에 붙여넣고 Enter를 누릅니다.
+
+
+### 2) Git 초기화 (Initialize) 방법
+- **언제 쓰나요?** 내 PC에 있는 일반 프로젝트 폴더를 새롭게 Git으로 관리 시작하고 싶을 때 사용합니다. (`git init`과 동일)
+- 해당 폴더를 VSCode로 연 뒤, 좌측 '소스 제어' 탭으로 이동합니다.
+- 파란색 **[리포지토리 초기화 (Initialize Repository)]** 버튼을 클릭합니다.
+- 이후에는 GitHub에 빈 저장소를 생성하고, 설정 메뉴의 **[리포지토리 게시 (Publish Repository)]** 기능을 사용하거나 터미널에서 `git remote add origin`으로 원격 저장소와 연동할 수 있습니다.
+
+### 3) 커밋 & 푸쉬 (Commit & Push) 방법
+- **언제 쓰나요?** 코드를 수정/저장한 뒤 변경 내역을 기록하고 원격 저장소에 업데이트할 때 사용합니다.
+- **① 스테이징 (`+`)**: 수정된 파일 목록 옆의 **`+` (변경 사항 스테이징)** 버튼을 눌러 올릴 준비를 합니다. (`git add`)
+- **② 커밋 (Commit)**: 상단 메시지 입력창에 작업 내용(예: "로그인 기능 추가")을 적고 **[커밋 (Commit)]** 버튼을 클릭해 기록을 남깁니다. (`git commit`)
+- **③ 푸쉬 (Push)**: 파란색 **[변경 사항 동기화 (Sync Changes)]** 버튼을 클릭하여 커밋 기록을 클라우드에 전송합니다. (`git push`)
+- 💡 **주의점**: 코드를 파일에서 고치고 저장(`Ctrl+S`) ⇨ `+` 버튼(스테이징) ⇨ Commit ⇨ Sync(Push) 까지 순서대로 완전히 끝내야만 GitHub 웹사이트에 최신본이 반영됩니다.
 
 ---
 
