@@ -73,8 +73,8 @@ def section_e():
 <table class="w-full text-left border-collapse mt-4">
   <tbody>
     <tr>
-      <td class="w-1/2 p-4 align-top"><strong>[의뢰인 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
-      <td class="w-1/2 p-4 align-top"><strong>[운송인 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O 운수(주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+      <td class="w-1/2 p-4 align-top"><strong>[위탁자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+      <td class="w-1/2 p-4 align-top"><strong>[수탁자 / 乙]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O 운수(주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
     </tr>
   </tbody>
 </table>

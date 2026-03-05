@@ -168,7 +168,7 @@ def _build_docx(title, contract_html, manual_html, filename):
         _add_html_content(doc, manual_html)
 
     doc.save(os.path.join(OUT_DIR, filename))
-    print(f'  ✅ {filename} 생성 완료')
+    print(f'  [OK] {filename} 생성 완료')
 
 
 def _split_contract_and_manual(block_html):

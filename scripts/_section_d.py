@@ -232,7 +232,7 @@ def section_d():
 <table class="w-full text-left border-collapse mt-4">
   <tbody>
     <tr>
-      <td class="w-1/2 p-4 align-top"><strong>[사업주 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
+      <td class="w-1/2 p-4 align-top"><strong>[사용자 / 甲]</strong><br><br>상&nbsp;&nbsp;&nbsp;호 : <strong>O O O O (주)</strong><br>주&nbsp;&nbsp;&nbsp;소 : <br>대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)<br>연락처 : </td>
       <td class="w-1/2 p-4 align-top"><strong>[근로자 / 乙]</strong><br><br>성명 : <strong>O O O</strong> &nbsp;&nbsp; (인)<br>주민등록번호 : <br>계좌번호 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 은행<br>연락처 : </td>
     </tr>
   </tbody>
