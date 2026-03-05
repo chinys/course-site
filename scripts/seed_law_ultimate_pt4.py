@@ -69,9 +69,9 @@ def _intro():
 
 <tr>
 
-<td class="border p-2 font-bold text-blue-700" rowspan="3">A. 매매(물품공급) / 도급(가공)</td>
+<td class="border p-2 font-bold text-blue-700" rowspan="4">A. 매매(물품공급) / 도급(가공)</td>
 
-<td class="border p-2" rowspan="3">민법 &sect;563 / &sect;664</td>
+<td class="border p-2" rowspan="4">민법 &sect;563 / &sect;664</td>
 
 <td class="border p-2">A-1</td>
 
@@ -98,6 +98,16 @@ def _intro():
 <td class="border p-2">사내가공(제조위탁) 계약서 <a href="#contract-A3" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
 
 <td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A3.docx" target="_blank" rel="noopener" download="contract_A3.docx">📄 docx</a></td>
+
+</tr>
+
+<tr>
+
+<td class="border p-2">A-4</td>
+
+<td class="border p-2">물품공급(건설현장) 계약서 <a href="#contract-A4" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A4.docx" target="_blank" rel="noopener" download="contract_A4.docx">📄 docx</a></td>
 
 </tr>
 

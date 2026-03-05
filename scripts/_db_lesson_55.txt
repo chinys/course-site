@@ -26,9 +26,9 @@
 
 <tr>
 
-<td class="border p-2 font-bold text-blue-700" rowspan="3">A. 매매(물품공급) / 도급(가공)</td>
+<td class="border p-2 font-bold text-blue-700" rowspan="4">A. 매매(물품공급) / 도급(가공)</td>
 
-<td class="border p-2" rowspan="3">민법 &sect;563 / &sect;664</td>
+<td class="border p-2" rowspan="4">민법 &sect;563 / &sect;664</td>
 
 <td class="border p-2">A-1</td>
 
@@ -55,6 +55,16 @@
 <td class="border p-2">사내가공(제조위탁) 계약서 <a href="#contract-A3" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
 
 <td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A3.docx" target="_blank" rel="noopener" download="contract_A3.docx">📄 docx</a></td>
+
+</tr>
+
+<tr>
+
+<td class="border p-2">A-4</td>
+
+<td class="border p-2">물품공급(건설현장) 계약서 <a href="#contract-A4" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A4.docx" target="_blank" rel="noopener" download="contract_A4.docx">📄 docx</a></td>
 
 </tr>
 
@@ -892,6 +902,157 @@
 
 </div>
 
+<!-- A-4: 물품공급(건설현장) 계약서 -->
+
+<div id="contract-A4" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
+
+<div class="absolute top-0 left-0 w-1 h-full bg-blue-200">&nbsp;</div>
+
+<div class="p-6">
+
+<h3 class="text-xl font-bold text-gray-800 mb-2 flex items-center"><span class="bg-blue-100 text-blue-800 text-sm py-1 px-3 rounded-full mr-3">A-4</span> 물품공급(건설현장 납품용) 계약서</h3>
+
+<p class="text-gray-600 mb-6 text-sm"><strong>사용 목적:</strong> 건설현장에 소요되는 데크플레이트, 페인트, 안전망, 부자재, 공구류 등을 <strong>단순 납품(매매)</strong>받을 때 사용하는 계약서입니다. 재하도급으로 위장된 불법 시공 계약이라는 오해를 원천 차단하기 위해, 데크 설치, 도장, 안전망 결속 등 어떠한 현장 내 설치 및 시공 업무도 매수인의 직영 인력이 단독 수행하며, <strong>매도인은 지정 장소 납품(하차)에만 한정</strong>됨을 명백히 규정합니다.</p>
+
+<div class="bg-gray-50 border border-gray-300 p-8 rounded font-nanum text-sm text-gray-800 mb-4 leading-relaxed shadow-inner overflow-y-auto max-h-none">
+
+<div class="bg-gray-50 border border-gray-300 p-8 rounded font-nanum text-sm text-gray-800 mb-4 leading-relaxed shadow-inner overflow-y-auto max-h-none">
+
+<h4 class="text-center font-bold text-2xl mb-8">물품공급(건설현장 납품) 계약서</h4>
+
+이하 명시된 건설현장에 소요되는 주요 자재 및 소모품의 납품에 대하여 매수인(이하 "甲") <strong>O O O O (주)</strong>과 매도인(이하 "乙") <strong>O O O O (주)</strong>는 신의성실의 원칙에 따라 매매(물품공급) 계약을 체결하고, 이를 증명하기 위하여 본 계약서 2부를 작성하여 기명날인 후 각각 1부씩 보관한다.<br><br>
+
+<table class="w-full text-left border-collapse border border-gray-400 mb-8">
+  <tbody>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 발 주 번 호</th>
+      <td class="border border-gray-400 p-2">[ OOOOO-OO ]</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">2. 계 약 일 자</th>
+      <td class="border border-gray-400 p-2">202X년 X월 X일</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">3. 납 품 현 장</th>
+      <td class="border border-gray-400 p-2 text-blue-700 font-bold">[목적지 건설현장명 기재]</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200" rowspan="3">4. 계 약 금 액</th>
+      <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO)</td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (부가세액: ₩   O,OOO)</td>
+    </tr>
+    <tr>
+      <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (합계: ₩O,OOO,OOO)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <td class="border border-gray-400 p-2">현금 (납품 건별 익월 OO일 기성지급 또는 인도 시 전액 현금 지급)<br>
+        <span class="text-red-600 font-bold text-xs mt-1 block">※ 세금계산서 청구 품목명: "건설현장 자재납품비" 한정 (시공/설치 단어 절대 불가)</span>
+      </td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200">6. 납 품 기 간</th>
+      <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (발주서 분할 납품 가능)</td>
+    </tr>
+    <tr>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top">7. 세 부 내 역<br>(특약 사항)</th>
+      <td class="border border-gray-400 p-2">
+        1) 납품 내역: [데크플레이트, 보호망, 도료, 소모 공구 등 단가표 참조]<br>
+        2) 본 단가 및 청구 금원에는 제품 <strong>운반비 하역비 일체가 포함</strong>됨.<br>
+        <span class="text-red-600 font-bold">3) "乙"은 납품 외 건설 현장 시공(설치) 영역에는 절대 관여하지 아니한다.<br></span>
+        4) 하자보증금 유보 여부: 해당 없음 (또는 % 협의 기재)<br>
+        5) 지체상금률: 1일당 납기 미이행액의 <strong>O.O%</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<strong>제1조 (목적)</strong><br>
+본 조항들은 상기 건설현장에 소요되는 데크플레이트, 가설재 부속, 페인트 도료, 안전망, 전기/용접 소모품, 볼트 등 기타 건설 자재의 납품 계약을 규율하며, <strong>건설공사 상의 불법하도급계약과의 혼동을 부인</strong>하고 민법상 단순 매매(물품공급) 계약임을 상호 확약함을 목적으로 한다.<br><br>
+
+<strong>제2조 (납품의 범위와 시공 행위 철저 배제)</strong><br>
+① "乙"의 위 의무는 "甲"이 단위별 지시한 물품을 납기일에 맞춰 현장 적치장소에 <strong>안전하게 하차(인도)시키는 것으로 완전히 종료</strong>된다.<br>
+② <strong>"乙"은 어떤 명목으로도 현장 목적물에 대한 시공, 조립, 부착, 결속에 종사하지 않는다. 데크플레이트 깔기/도장 뿜칠/안전망 결속 등 물리적 설치 영역에 절대 관여하지 아니한다.<br></strong>
+③ 상기 2항의 철골 구조물 시공 등은 "甲" 소속 직영 인력 및 별도 설치 업체를 통하여 "甲"의 단독 책임 아래 수행한다.<br>
+④ 본건은 실질적, 외형적으로 건설산업기본법 상의 하도급 시공 공사가 아닌 민법상 자재 매매 계약임을 증명한다.<br><br>
+
+<strong>제3조 (물품의 검수 및 품질 보증)</strong><br>
+① "乙"은 관련 KS규격 또는 발주서에 완벽히 부합하는 정품 도료 및 자재를 인도하여야 한다.<br>
+② 납품 즉시 "甲" 대리인이 규격, 수량 및 파손을 검수하며, 불합격품 확인 시 "乙"은 즉각 보완 교체 또는 재납품하여 현장 공정에 지장을 주지 않아야 한다.<br><br>
+
+<strong>제4조 (지체상금 및 위험부담)</strong><br>
+① "乙"의 귀책으로 지정 납기가 상단 지연되어 "甲"의 현장 공정 계획에 차질이 초래된 경우, "乙"은 기재된 지체상금률에 따라 공제, 배상 책임을 진다.<br>
+② 물품의 멸실/훼손 위험 통제권은 현장 장소에 완전히 하차 후 인도 확인증(거래명세표, 송장 등)에 상호 날인, 승인된 시점에 "甲"에게 확정 이전된다.<br><br>
+
+<strong>제5조 (세금계산서의 발급 및 대금 처리품목 특정 명시)</strong><br>
+① 납품완료 후 "乙"이 발부하는 거래명세서 및 세금계산서 기재 품목명은 언제나 <strong>"자재비", "물품대", "자재/소모품 대금", "데크 단가", "도장재료"</strong> 등의 매매 명칭이어야 한다.<br>
+② "乙"의 청구는 <strong>"시공비", "인건비", "조립 공사비", "안전망 설치비"</strong> 등 제반 시공 용역 역무의 단어가 절대 포함 또는 합산 결제 청구되지 않는다.<br><br>
+
+<strong>제6조 (관할 법원)</strong><br>
+본 매매건 관련 분쟁 야기 시 상호 협의하되, "甲"의 본점 소재지 관할 법원을 전속적 1심 관할로 한다.<br><br>
+
+<strong>부 칙</strong><br>본 계약의 성립을 증명하기 위하여 본서 2부를 작성하고 계약 당사자가 기명날인 후 각 보관한다.<br><br>년 &nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp; 일
+
+<table class="w-full text-center border-collapse mt-8 mb-12">
+  <tbody>
+    <tr>
+      <td class="w-1/2 p-4 align-top">
+        <strong>[매수인 / 甲]</strong><br><br>
+        상&nbsp;&nbsp;&nbsp;호 : O O O O (주)<br>
+        주&nbsp;&nbsp;&nbsp;소 : <br>
+        대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)
+      </td>
+      <td class="w-1/2 p-4 align-top">
+        <strong>[매도인 / 乙]</strong><br><br>
+        상&nbsp;&nbsp;&nbsp;호 : O O O O (주)<br>
+        주&nbsp;&nbsp;&nbsp;소 : <br>
+        대표자 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div class="bg-blue-50 p-5 rounded text-sm text-blue-900 border border-blue-200 flex gap-3 mt-4"><span class="text-2xl flex-shrink-0 mt-1">💡</span>
+
+<div><strong class="text-base block mb-1">매뉴얼 지침 (A-4): 데크, 도장, 안전망 등 자재 납품 (시공 분리)</strong><br>
+건설 현장에서 대규모로 소모되는 자재나 데크플레이트, 각종 페인트를 단가 납품받을 때, 일부 납품업체가 서비스 차원 혹은 관행적으로 (무면허) 작업자를 현장에 몇 명 데려와 공사를 일부 "도급 설치"해버리거나 직영 근로자와 섞여서 혼재 작업(깔기/칠하기/안전망치기)을 하는 경우가 흔히 발생합니다.<br>
+<strong>노동부 근로감독 및 국토부 합동 수사 시 이 점이 적발되면, 납품업체는 무면허 시공(건산법)으로 적발되고 원청인 전문건설사는 "불법하도급 / 무면허 위장도급 지시"로 전환되어 양측 모두 구속 및 영업정지 등 강력한 법적 처벌</strong>을 받습니다. 자재 매매는 철저히 A-4 양식을 통해 "자재의 목적지 납품(하차)"으로 선을 긋고, 데크 결속/도장 뿜칠 설치 등 현물 투입은 당사 '직영 일용직 근로자(D-2 체결)'의 작업지휘 하에 수행됨을 증명해 내는 서류적 방파제로 단호하게 작성되어야 합니다.
+
+<div class="mt-3 pt-3 border-t border-blue-200"><strong class="block mb-1">📌 원가 분류 및 대금 청구 시 유의사항 (A-4):</strong>
+
+<table class="w-full text-xs border-collapse mt-1 mb-2">
+<tbody>
+<tr class="bg-blue-100">
+<th class="border border-blue-200 p-1.5 text-left">원가 항목</th>
+<th class="border border-blue-200 p-1.5 text-left w-12">해당</th>
+<th class="border border-blue-200 p-1.5 text-left">사유</th>
+</tr>
+<tr class="bg-green-50">
+<td class="border border-blue-200 p-1.5 font-bold">자재비</td>
+<td class="border border-blue-200 p-1.5 text-green-700 font-bold">✅</td>
+<td class="border border-blue-200 p-1.5 font-bold">순수 목적 현장 물품(자재/데크/도료/소모품) 매매 대금</td>
+</tr>
+<tr>
+<td class="border border-blue-200 p-1.5">노무비&middot;외주비</td>
+<td class="border border-blue-200 p-1.5 text-red-600 font-bold">❌</td>
+<td class="border border-blue-200 p-1.5">인력이 현장에 상주하거나 역무 기술/설치를 공사하는 하도급법 범주가 아님. 납품 운반비는 자재비/경비 원가에 용해 판단됨.</td>
+</tr>
+</tbody>
+</table>
+
+<p class="text-xs">&there4; 세금계산서 청구 품목에 "데크 설치비", "도장 인건비", "안전망 시공비" 등이 관행으로라도 기재되지 않도록 철저히 내부 검수하십시오. 전액 <strong>"자재대금/납품비"</strong> 명목으로 하도급지킴이나 일반 기성청구로 분류, 지출해야 문제되지 않습니다.</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
 </div>
 
 </div>
