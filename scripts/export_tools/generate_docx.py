@@ -3,7 +3,9 @@
 10종 계약서(+매뉴얼 지침)를 Word(.docx) 파일로 생성하여 static/downloads/ 에 저장합니다.
 HTML 테이블을 Word 테이블로 변환합니다.
 """
-import os, re, html as html_mod
+import os, re, html as html_mod, sys
+if sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH

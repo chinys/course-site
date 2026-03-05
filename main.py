@@ -15,8 +15,11 @@ app.include_router(public.router)
 app.include_router(auth.router)
 app.include_router(admin.router)
 
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Mount static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 
 @app.on_event("startup")
 def on_startup():

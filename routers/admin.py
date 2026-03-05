@@ -8,8 +8,10 @@ from models import User, Course, Lesson, Category
 import shutil
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 router = APIRouter(prefix="/admin", tags=["admin"])
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 @router.get("/login")
 def login_page(request: Request, error: str = None):
@@ -53,11 +55,12 @@ def create_course(
     thumbnail_url = None
     if thumbnail and thumbnail.filename:
         # Save file to static/uploads
-        os.makedirs("static/uploads", exist_ok=True)
-        file_path = f"static/uploads/{thumbnail.filename}"
+        upload_dir = os.path.join(BASE_DIR, "static", "uploads")
+        os.makedirs(upload_dir, exist_ok=True)
+        file_path = os.path.join(upload_dir, thumbnail.filename)
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(thumbnail.file, buffer)
-        thumbnail_url = f"/{file_path}"
+        thumbnail_url = f"/static/uploads/{thumbnail.filename}"
 
     new_course = Course(title=title, description=description, thumbnail_url=thumbnail_url)
     session.add(new_course)
@@ -152,11 +155,12 @@ def edit_course(
     
     if thumbnail and thumbnail.filename:
         # Save file to static/uploads
-        os.makedirs("static/uploads", exist_ok=True)
-        file_path = f"static/uploads/{thumbnail.filename}"
+        upload_dir = os.path.join(BASE_DIR, "static", "uploads")
+        os.makedirs(upload_dir, exist_ok=True)
+        file_path = os.path.join(upload_dir, thumbnail.filename)
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(thumbnail.file, buffer)
-        course.thumbnail_url = f"/{file_path}"
+        course.thumbnail_url = f"/static/uploads/{thumbnail.filename}"
         
     session.add(course)
     session.commit()

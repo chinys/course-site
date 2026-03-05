@@ -1,4 +1,6 @@
 @echo off
+chcp 65001 > nul
+set PYTHONIOENCODING=utf-8
 echo ==========================================
 echo   Course Site - Update ^& Build Pipeline
 echo ==========================================
@@ -13,7 +15,6 @@ echo [2/4] Extracting DB Content for validation...
 uv run python scripts\export_tools\_extract_db_content.py
 
 echo [3/4] Generating DOCX Contracts...
-set PYTHONIOENCODING=utf-8
 uv run python scripts\export_tools\generate_docx.py
 
 echo [4/4] Exporting Static Web Site...

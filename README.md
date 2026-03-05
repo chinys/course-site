@@ -21,11 +21,16 @@
   - `auth.py`: JWT 및 쿠키 기반 관리자 인증 로그인/로그아웃 처리
   - `admin.py`: 강좌/강의 CRUD API 및 수정 렌더링, 관리자 대시보드 뷰
   - `public.py`: 사용자 공개 뷰 (메인, 상세, 강의 열람 렌더링)
-- `scripts/`: 초기 DB 세팅 관리자 생성(`create_admin.py`) 및 더미 데이터(EPC, 철골, 철근 매뉴얼) 시딩 스크립트 모음
-  - `generate_docx.py`: 건설법규 14강 계약서 10종을 Word(.docx) 파일로 변환 생성
-- `templates/`: Jinja2 서버 사이드 렌더링용 HTML 파일 모음 (`admin/`, `public/`)
+- `scripts/`: 데이터베이스 초기 세팅, 유지보수, 문서 산출물 변환 기능 스크립트 모음
+  - `seeders/`: DB 초기 데이터 등록 및 강의 생성 (`seed_law_ultimate_pt4.py` 등)
+  - `templates/`: 계약서 등 HTML 조각 모듈 (`_section_a.py` 등)
+  - `export_tools/`: DOCX 변환 및 정적 웹사이트 빌드 추출 (`export_site.py`, `generate_docx.py` 등)
+  - `db_tools/`: DB 무결성 점검 및 텍스트 일괄 수정 (`check_db.py`, `replace_terms.py` 등)
+  - `media_tools/`: 썸네일/외부 에셋 다운로드 및 정리
+  - `update_all.bat`: DB 반영부터 DOCX 변환, 정적 사이트 추출까지 한 번에 실행하는 파이프라인
+- `templates/`: Jinja2 서버 사이드 렌더링용 HTML 템플릿 파일 모음 (`admin/`, `public/`)
 - `static/`: 클라이언트 제공 정적 파일 (`uploads/` 경로에 강의용 이미지, 썸네일 탑재)
-  - `downloads/`: 건설법규 14강 계약서 10종 DOCX 다운로드 파일
+  - `downloads/`: 건설법규 계약서 등 DOCX 다운로드 파일
 
 ## 🛠 처음 시작하기 (Installation & Setup)
 
@@ -49,7 +54,7 @@
 
 대시보드에 접근하기 위해서는 최초 관리자 계정이 필요합니다. 아래 명령을 통해 `database.db` 파일 생성과 더불어 기본 `ADMIN` 유저를 생성할 수 있습니다.
 ```bash
-uv run python scripts/create_admin.py
+uv run python scripts/db_tools/create_admin.py
 ```
 *(기본 계정: `admin@example.com` / `password123`)*
 
@@ -77,18 +82,11 @@ uv run uvicorn main:app --reload --port 3004
 - **정적페이지 추가**: Github Pages 기능을 활용하여 바로 접속가능할 수 있도록 정적파일로 변환 후 업로드함 (루트에 index.html과 build 폴더 추가됨. 불필요할 경우 이것들만 지우면 원래 파일과 동일함)
 - 접속주소 : [https://chinys.github.io/course-site/](https://chinys.github.io/course-site/)
 
-### 📄 계약서 DOCX 파일 재생성
-건설법규 14강의 계약서 내용이 수정된 경우, 아래 명령으로 DOCX 파일을 재생성하고 DB를 업데이트합니다.
+### 📄 한 번에 업데이트 (DB 갱신, DOCX 생성, 정적 사이트 빌드)
+건설법규 계약서 내용 등 백엔드 데이터가 변경된 경우, 모든 파이프라인(DB Seed 적용 -> DOCX 워드 파일 재생성 -> Github Pages용 정적 폴더 `build/` 렌더링)을 순서대로 자동 실행하는 일괄 배치 파일을 제공합니다.
 ```bash
-uv run python scripts/generate_docx.py
-uv run python scripts/seed_law_ultimate_pt4.py
+scripts\update_all.bat
 ```
-
-### 🔨 정적 사이트 빌드 스크립트 (Static Site Export)
-DB 데이터(강좌) 추가 등 백엔드 변경 사항이 있을 경우, 프론트엔드 GitHub Pages 배포용 정적 폴더(`build/`)를 업데이트하기 위해 아래 스크립트를 실행합니다.
-```bash
-uv run python scripts/export_site.py
-```
-> **참고:** 실행이 끝나고 나면 `build/` 폴더 전체와 루트 `index.html`을 GitHub로 Push하기만 하면 라이브 사이트 내용이 갱신됩니다.
+> **참고:** 스크립트 실행이 끝나고 나면 `build/` 폴더 내부에 최신 정적 사이트 코드가 담깁니다. `build/` 내부를 통째로 GitHub Repository에 Push하기만 하면 라이브 사이트 내용이 갱신됩니다. 상세한 개별 스크립트 구조와 실행법은 `scripts/README.md`를 참고하시기 바랍니다.
 
 

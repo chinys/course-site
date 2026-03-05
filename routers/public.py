@@ -5,8 +5,11 @@ from fastapi import Depends
 from core.database import get_session
 from models import Course, Lesson, Category
 
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 router = APIRouter(tags=["public"])
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 @router.get("/")
 def home(request: Request, session: Session = Depends(get_session)):

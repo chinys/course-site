@@ -1,5 +1,9 @@
 import sqlite3
 import os
+import sys
+
+if sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def seed_law_course_ultimate_pt4():
     db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'database.db')
