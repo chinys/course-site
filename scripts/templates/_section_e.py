@@ -7,13 +7,13 @@ def section_e():
 
 <h3 class="text-xl font-bold text-rose-800 mb-1">E. 운송 계약 &mdash; 상법 제125조</h3>
 
-<p class="text-sm text-gray-500 mb-6">물건의 운송을 인수하는 계약. A지점에서 B지점으로의 순수 운반행위에 한정.</p>
+<p class="text-sm text-gray-9000 mb-6">물건의 운송을 인수하는 계약. A지점에서 B지점으로의 순수 운반행위에 한정.</p>
 
 <!-- E-1: 화물운반 -->
 
 <div id="contract-E1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
-<div class="absolute top-0 left-0 w-1 h-full bg-rose-500">&nbsp;</div>
+<div class="absolute top-0 left-0 w-1 h-full bg-rose-50">&nbsp;</div>
 
 <div class="p-6">
 
@@ -30,23 +30,23 @@ def section_e():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 상 차 및 하 차 지</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 상 차 및 하 차 지</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">상차: [ OO공장 ] / 하차: [ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 운 송 품 목</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 운 송 품 목</th>
       <td class="border border-gray-400 p-2">강구조물(철골) 부재 및 기타 부자재 일체</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 운 송 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 운 송 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 공정 완료(철수) 시까지</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 운 임 (단가/총액)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 운 임 (단가/총액)</th>
       <td class="border border-gray-400 p-2">1대당 단가: 금 <strong>O O O O</strong>원 (또는 톤당 금 <strong>O O O</strong>원)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 결 제 조 건</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 결 제 조 건</th>
       <td class="border border-gray-400 p-2">월말 실적 정산 익월 15일 현금 / 품목: "강자재 운반비"</td>
     </tr>
   </tbody>
@@ -89,12 +89,12 @@ def section_e():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-rose-100">
+    <tr class="bg-rose-100 text-gray-900">
       <th class="border border-rose-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-rose-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-rose-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-rose-200 p-1.5 font-bold">기타(경비)</td>
       <td class="border border-rose-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-rose-200 p-1.5 font-bold">화물 운송 용역 &rarr; 경비 &gt; 운반비</td>

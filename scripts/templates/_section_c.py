@@ -7,13 +7,13 @@ def section_c():
 
 <h3 class="text-xl font-bold text-purple-800 mb-1">C. 위임&middot;위탁 계약 &mdash; 민법 제680조</h3>
 
-<p class="text-sm text-gray-500 mb-6">사무의 처리를 위탁하는 계약. 사무 처리의 결과가 아닌 행위 자체에 대해 보수를 지급.</p>
+<p class="text-sm text-gray-9000 mb-6">사무의 처리를 위탁하는 계약. 사무 처리의 결과가 아닌 행위 자체에 대해 보수를 지급.</p>
 
 <!-- C-1: NDT -->
 
 <div id="contract-C1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
-<div class="absolute top-0 left-0 w-1 h-full bg-purple-500">&nbsp;</div>
+<div class="absolute top-0 left-0 w-1 h-full bg-purple-50">&nbsp;</div>
 
 <div class="p-6">
 
@@ -30,23 +30,23 @@ def section_c():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 대 상 현 장 명</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 대 상 현 장 명</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 용 역 범 위</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 용 역 범 위</th>
       <td class="border border-gray-400 p-2">UT OOO포인트, RT OOO필름, MT OOO포인트 등 (설계도서 기준)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 용 역 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 용 역 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (검사 완료 시까지)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 용 역 대 금</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 용 역 대 금</th>
       <td class="border border-gray-400 p-2">총액 금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO / 부가세 별도)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">성적서 접수 후 30일 이내 지정 계좌 지급 / 품목: "비파괴검사(NDT) 기술용역비"</td>
     </tr>
   </tbody>
@@ -91,12 +91,12 @@ def section_c():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-purple-100">
+    <tr class="bg-purple-100 text-gray-900">
       <th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-purple-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
       <td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-purple-200 p-1.5 font-bold">품질검사 용역 위탁 &rarr; 경비 &gt; 시험검사비</td>
@@ -138,23 +138,23 @@ def section_c():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 운 영 현 장 명</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 운 영 현 장 명</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축현장 급식시설 (함바) ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 예상 급식 인원</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 예상 급식 인원</th>
       <td class="border border-gray-400 p-2">1일 평균 약 O O O 명 (공정에 따라 변동)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 위 탁 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 위 탁 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 준공 등 종료일 시까지</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 식 대 단 가</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 식 대 단 가</th>
       <td class="border border-gray-400 p-2">1식당 금 <strong>O O O O</strong>원 (공급가액: ₩O,OOO / 부가세 별도)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">월말 식대 정산, 익월 5일 세금계산서 발행(품목:"급식 위탁 운영비")</td>
     </tr>
   </tbody>
@@ -196,12 +196,12 @@ def section_c():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-purple-100">
+    <tr class="bg-purple-100 text-gray-900">
       <th class="border border-purple-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-purple-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-purple-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-purple-200 p-1.5 font-bold">기타(경비)</td>
       <td class="border border-purple-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-purple-200 p-1.5 font-bold">근로자 급식 위탁 &rarr; 경비 &gt; 복리후생비(급식비)</td>

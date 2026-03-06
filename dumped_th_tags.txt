@@ -1,0 +1,17 @@
+pt1 54                     <thead>
+pt1 56                             <th class="p-4 font-bold w-1/4">용어</th>
+pt1 57                             <th class="p-4 font-bold">건산법상 정의 및 실무적 해석</th>
+pt1 187                     <thead class="bg-emerald-50 text-emerald-900">
+pt1 188                         <tr><th class="p-4 border-b w-1/2">도급 금액 (건별)</th><th class="p-4 border-b">직접시공 의무비율</th></tr>
+pt2 144                     <thead>
+pt2 146                             <th class="py-4 px-6 w-1/3 border-r border-indigo-800">핵심 계약 조항 (체크포인트)</th>
+pt2 147                             <th class="py-4 px-6">건설사 및 공무팀 실무 방어 전략 및 해석</th>
+pt2 313                     <thead>
+pt2 315                             <th class="p-4 w-1/5 border-r border-indigo-800 font-bold text-center">비교 항목 분류</th>
+pt2 316                             <th class="p-4 w-2/5 border-r border-indigo-800 font-bold"><span class="text-blue-200">산안법</span> (산업안전보건법)</th>
+pt2 317                             <th class="p-4 w-2/5 font-bold"><span class="text-red-300">중처법</span> (중대재해처벌법)</th>
+pt4 65 <th class="border p-2 text-left">유형</th>
+pt4 67 <th class="border p-2 text-left">근거법</th>
+pt4 69 <th class="border p-2 text-left">양식번호</th>
+pt4 71 <th class="border p-2 text-left">계약서명</th>
+pt4 73 <th class="border p-2 text-center" style="width: 110px;">다운로드</th>

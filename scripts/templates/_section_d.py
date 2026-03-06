@@ -7,13 +7,13 @@ def section_d():
 
 <h3 class="text-xl font-bold text-teal-800 mb-1">D. 고용&middot;위촉 계약 &mdash; 민법 제655조 / 근로기준법</h3>
 
-<p class="text-sm text-gray-500 mb-6">노무를 제공하고 보수를 받는 계약. 직영 시공의 핵심 근거이며, 불법 재하도급 방어의 최종 퍼즐.</p>
+<p class="text-sm text-gray-9000 mb-6">노무를 제공하고 보수를 받는 계약. 직영 시공의 핵심 근거이며, 불법 재하도급 방어의 최종 퍼즐.</p>
 
 <!-- D-1: 기술자문 위촉 -->
 
 <div id="contract-D1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
-<div class="absolute top-0 left-0 w-1 h-full bg-teal-500">&nbsp;</div>
+<div class="absolute top-0 left-0 w-1 h-full bg-teal-50">&nbsp;</div>
 
 <div class="p-6">
 
@@ -30,19 +30,19 @@ def section_d():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 위 촉 현 장 명</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 위 촉 현 장 명</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 자 문 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 자 문 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 본 철골 공정 완료 시</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 보수(자문료)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 보수(자문료)</th>
       <td class="border border-gray-400 p-2">월 금 <strong>O O O O O</strong>원정 (세전액) / 또는 일당 금 OOO원</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 지급방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 지급방법</th>
       <td class="border border-gray-400 p-2">본인 명의 계좌 지급 (사업소득세 원천징수 3.3% 적용)</td>
     </tr>
   </tbody>
@@ -105,7 +105,7 @@ def section_d():
 
 <table class="w-full text-xs border-collapse mb-3">
   <tbody>
-    <tr class="bg-red-100">
+    <tr class="bg-red-100 text-gray-900">
       <th class="border border-red-200 p-2 text-left">구분</th>
       <th class="border border-red-200 p-2 text-left">개인 자문역 (합법)</th>
       <th class="border border-red-200 p-2 text-left">법인/사업자 (위험)</th>
@@ -141,12 +141,12 @@ def section_d():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-teal-100">
+    <tr class="bg-teal-100 text-gray-900">
       <th class="border border-teal-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-teal-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-teal-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-teal-200 p-1.5 font-bold">노무비</td>
       <td class="border border-teal-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-teal-200 p-1.5 font-bold">개인 기술자문역 위촉(원천징수 3.3%) &rarr; 노무비</td>
@@ -188,23 +188,23 @@ def section_d():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 근 로 현 장</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 근 로 현 장</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 직종 및 업무</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 직종 및 업무</th>
       <td class="border border-gray-400 p-2">□ 철골 조립공 □ 용접공 □ 보조공 □ 신호수 □ 기타</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 근 로 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 근 로 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 공정 완료 시점</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 임 금 (일급)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 임 금 (일급)</th>
       <td class="border border-gray-400 p-2">일급 금 <strong>O O O O O</strong>원정 (제세공과금 포함, 세전액)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 지급방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 지급방법</th>
       <td class="border border-gray-400 p-2">근로자 "乙 본인" 명의 계좌 일괄 이체 절대 준수</td>
     </tr>
   </tbody>
@@ -248,12 +248,12 @@ def section_d():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-teal-100">
+    <tr class="bg-teal-100 text-gray-900">
       <th class="border border-teal-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-teal-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-teal-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-teal-200 p-1.5 font-bold">노무비</td>
       <td class="border border-teal-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-teal-200 p-1.5 font-bold">직접 고용 일용직 근로자 임금 &rarr; 노무비</td>

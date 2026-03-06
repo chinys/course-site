@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금 직불 보장 | 건설법규</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                공지사항
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<span class="block px-4 py-2 text-sm text-gray-400 italic">등록된 코스 없음</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/5.html">건설법규</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/67.html">
+                        1. [건산법 총칙] 건설산업기본법의 목적과 적용 범위
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/68.html">
+                        2. [건산법 등록] 건설업의 등록체계와 결격사유
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/69.html">
+                        3. [건산법 도급/하도급-1] 도급의 원칙과 다단계 하도급 금지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/5/lessons/70.html">
+                        4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금 직불 보장
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/71.html">
+                        5. [건산법 현장관리] 현장대리인 지정, 전자카드제 및 표지 실명제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/72.html">
+                        6. [하도급법-1] 하도급거래 공정화 법률의 적용과 서면발급
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/73.html">
+                        7. [하도급법-2] 하도급대금의 결정 및 지급 통제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/74.html">
+                        8. [도급계약서 양식] 민간건설공사 표준도급계약서 조항 분석
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/75.html">
+                        9. [하도급계약서 양식] 건설공사 하도급 표준 계약 양식 요건 및 협상
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/76.html">
+                        10. [안전 법령] 산업안전보건법 및 중대재해처벌법 (경영책임자 책임)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/77.html">
+                        11. [실무 심화] 불법 하도급 및 위장 도급의 법적 판단 기준
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/78.html">
+                        12. [실무 심화] 물품 납품 계약과 건설 도급 공사의 명확한 구별
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/79.html">
+                        13. [실무 심화] 건설기계 대여와 도급의 판별 및 통제 권한 증빙 매뉴얼
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/80.html">
+                        14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 모음
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금 직불 보장</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<div id="markdown-source" style="display:none;">&lt;h2 class="text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3"&gt;공정거래 질서 확립과 하도급 대금 지급 보증체계&lt;/h2&gt;
+            &lt;p class="text-lg text-gray-900 mb-8 leading-relaxed"&gt;수급사업자의 적정 이윤 보호와 &lt;strong&gt;노무비(임금) 채권의 절대적 보장&lt;/strong&gt;, 도산에 따른 파생 피해 방지를 위한 제도적 안전망입니다.&lt;/p&gt;
+            
+            &lt;h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300"&gt;1. 부당한 하도급대금 산정 금지 (제38조)&lt;/h3&gt;
+            &lt;div class="border-x border-b border-gray-300 p-5 rounded-b-lg mb-8 bg-white shadow-sm"&gt;
+                &lt;p class="text-gray-900 mb-4 leading-relaxed text-sm"&gt;도급인은 우월적 지위를 남용하여 수급인에게 통상적인 도급 단가에 현저히 미달하는 하도급 대금을 강요할 수 없습니다.&lt;/p&gt;
+                &lt;div class="bg-gray-50 p-4 border border-gray-200 rounded text-sm text-gray-900"&gt;
+                    &lt;strong class="text-gray-900 flex items-center gap-1 mb-2"&gt;&lt;span&gt;🔍&lt;/span&gt; 발주자의 하도급 적정성 심사 의무 (제82조):&lt;/strong&gt;
+                    하도급 계약 금액이 도급액 내역 대비 &lt;strong&gt;82%&lt;/strong&gt;에 미달하거나, 발주자 기준 예정가격의 &lt;strong&gt;60%&lt;/strong&gt;에 미달하는 경우, 발주자는 해당 하도급 계약의 적정성 및 시공 능력을 평가위원을 통해 의무적으로 심사하여야 하며 하수급인의 변경을 수급인에게 요구할 권한을 가집니다.
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300 mt-6 flex justify-between items-center"&gt;
+                &lt;span&gt;2. 하도급대금 직접 지급 사유 (제35조)&lt;/span&gt;
+                &lt;span class="text-xs bg-gray-200 text-gray-900 px-2 py-1 rounded font-bold"&gt;대금 직불 제도&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;div class="border-x border-b border-gray-300 p-6 rounded-b-lg mb-8 bg-white shadow-sm"&gt;
+                &lt;p class="text-gray-900 mb-5 leading-relaxed text-sm"&gt;일반적인 공사 대금은 발주자에서 우선 수급인으로 이전되나, 수급인의 지불 불능 사태에 대비하여 법령에 규정된 요건 성립 시 &lt;strong&gt;발주자가 하수급인에게 대금을 '직접 지불'하도록&lt;/strong&gt; 강력한 보장 제도를 도입하고 있습니다.&lt;/p&gt;
+                
+                &lt;div class="grid grid-cols-1 md:grid-cols-2 gap-5"&gt;
+                    &lt;div class="bg-gray-50 border border-gray-200 p-5 rounded-xl"&gt;
+                        &lt;h4 class="font-bold text-base text-gray-900 mb-3 border-b border-gray-200 pb-2"&gt;발주자 직접 지급 인용 필수 요건&lt;/h4&gt;
+                        &lt;ul class="list-disc pl-5 space-y-2 text-sm text-gray-900 font-medium"&gt;
+                            &lt;li&gt;발주자, 수급인, 하수급인 3자 간 하도급대금 직접 지급에 관한 '사전 합의서'를 작성한 경우.&lt;/li&gt;
+                            &lt;li&gt;수급인이 &lt;strong&gt;2회 이상의 하도급대금 지급 지체 사실&lt;/strong&gt;이 발생한 경우.&lt;/li&gt;
+                            &lt;li&gt;수급인의 파산, 부도, 등록취소 등으로 인하여 &lt;strong&gt;계약상 대금 지급 능력이 현저히 상실&lt;/strong&gt;된 경우.&lt;/li&gt;
+                            &lt;li&gt;수급인이 하도급대금 지급보증서의 교부 의무를 불이행한 경우.&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class="bg-gray-50 border border-gray-200 p-5 rounded-xl"&gt;
+                        &lt;h4 class="font-bold text-base text-gray-900 mb-3 border-b border-gray-200 pb-2"&gt;건설기계 대여대금 지급보증 의무 (제68조의3)&lt;/h4&gt;
+                        &lt;p class="text-sm text-gray-900 mb-3 leading-relaxed"&gt;건설 현장에서 사용되는 장비나 기계 대여업자의 대금 보호를 위해, 체결 시마다 수급인은 &lt;strong&gt;장비대여금 지급보증서&lt;/strong&gt; 발급 비용을 전액 부담하여 필수적으로 교부하여야 합니다.&lt;/p&gt;
+                        &lt;p class="text-xs p-2 bg-gray-200 text-gray-900 rounded font-semibold"&gt;보증서 미교부 또는 체불 사실이 접수될 경우 행정처분 사유에 해당합니다.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300 mt-6 flex justify-between items-center"&gt;
+                &lt;span&gt;3. 노무비(임금)에 대한 압류의 절대적 금지 (제88조)&lt;/span&gt;
+                &lt;span class="text-xs bg-gray-200 text-gray-900 px-2 py-1 rounded font-bold"&gt;노임 권익 보호&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;div class="border-x border-b border-gray-300 p-6 rounded-b-lg mb-8 bg-white shadow-sm"&gt;
+                &lt;p class="text-gray-900 mb-4 leading-relaxed"&gt;건설사업자의 재정 악화로 제3의 채권자가 채권을 가압류하려는 절차를 개시하더라도, 도급금액 구성 성분 중 &lt;strong&gt;"근로자의 임금에 명백히 해당하는 노임 상당액"&lt;/strong&gt;에 대해서는 제3자가 강제집행이나 압류를 진위할 수 없습니다.&lt;/p&gt;
+                &lt;div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-200"&gt;
+                    &lt;span class="text-xl mt-1"&gt;📝&lt;/span&gt;
+                    &lt;p class="text-sm text-gray-900 leading-relaxed"&gt;&lt;strong&gt;실무 적용 방안:&lt;/strong&gt; 향후 근로자의 권익을 두텁게 보호하기 위해서는 공사 도급계약서 및 산출내역서 상에 &lt;strong&gt;'직접 노무비'와 다른 구성 요소(재료비 및 기타 경비)의 산출 근거를 엄격히 분리하여 기재&lt;/strong&gt;하여야 하며, 법원 및 관청 통보 시 이를 근거문서로 소명하여야 합니다.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;</div>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2 class="text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3">공정거래 질서 확립과 하도급 대금 지급 보증체계</h2>
+<p class="text-lg text-gray-900 mb-8 leading-relaxed">수급사업자의 적정 이윤 보호와 <strong>노무비(임금) 채권의 절대적 보장</strong>, 도산에 따른 파생 피해 방지를 위한 제도적 안전망입니다.</p>
+<h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300">1. 부당한 하도급대금 산정 금지 (제38조)</h3>
+<div class="border-x border-b border-gray-300 p-5 rounded-b-lg mb-8 bg-white shadow-sm">
+<p class="text-gray-900 mb-4 leading-relaxed text-sm">도급인은 우월적 지위를 남용하여 수급인에게 통상적인 도급 단가에 현저히 미달하는 하도급 대금을 강요할 수 없습니다.</p>
+<div class="bg-gray-50 p-4 border border-gray-200 rounded text-sm text-gray-900">
+<strong class="text-gray-900 flex items-center gap-1 mb-2"><span>🔍</span> 발주자의 하도급 적정성 심사 의무 (제82조):</strong>
+                    하도급 계약 금액이 도급액 내역 대비 <strong>82%</strong>에 미달하거나, 발주자 기준 예정가격의 <strong>60%</strong>에 미달하는 경우, 발주자는 해당 하도급 계약의 적정성 및 시공 능력을 평가위원을 통해 의무적으로 심사하여야 하며 하수급인의 변경을 수급인에게 요구할 권한을 가집니다.
+                </div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300 mt-6 flex justify-between items-center">
+<span>2. 하도급대금 직접 지급 사유 (제35조)</span>
+<span class="text-xs bg-gray-200 text-gray-900 px-2 py-1 rounded font-bold">대금 직불 제도</span>
+</h3>
+<div class="border-x border-b border-gray-300 p-6 rounded-b-lg mb-8 bg-white shadow-sm">
+<p class="text-gray-900 mb-5 leading-relaxed text-sm">일반적인 공사 대금은 발주자에서 우선 수급인으로 이전되나, 수급인의 지불 불능 사태에 대비하여 법령에 규정된 요건 성립 시 <strong>발주자가 하수급인에게 대금을 '직접 지불'하도록</strong> 강력한 보장 제도를 도입하고 있습니다.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+<h4 class="font-bold text-base text-gray-900 mb-3 border-b border-gray-200 pb-2">발주자 직접 지급 인용 필수 요건</h4>
+<ul class="list-disc pl-5 space-y-2 text-sm text-gray-900 font-medium">
+<li>발주자, 수급인, 하수급인 3자 간 하도급대금 직접 지급에 관한 '사전 합의서'를 작성한 경우.</li>
+<li>수급인이 <strong>2회 이상의 하도급대금 지급 지체 사실</strong>이 발생한 경우.</li>
+<li>수급인의 파산, 부도, 등록취소 등으로 인하여 <strong>계약상 대금 지급 능력이 현저히 상실</strong>된 경우.</li>
+<li>수급인이 하도급대금 지급보증서의 교부 의무를 불이행한 경우.</li>
+</ul>
+</div>
+<div class="bg-gray-50 border border-gray-200 p-5 rounded-xl">
+<h4 class="font-bold text-base text-gray-900 mb-3 border-b border-gray-200 pb-2">건설기계 대여대금 지급보증 의무 (제68조의3)</h4>
+<p class="text-sm text-gray-900 mb-3 leading-relaxed">건설 현장에서 사용되는 장비나 기계 대여업자의 대금 보호를 위해, 체결 시마다 수급인은 <strong>장비대여금 지급보증서</strong> 발급 비용을 전액 부담하여 필수적으로 교부하여야 합니다.</p>
+<p class="text-xs p-2 bg-gray-200 text-gray-900 rounded font-semibold">보증서 미교부 또는 체불 사실이 접수될 경우 행정처분 사유에 해당합니다.</p>
+</div>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 bg-gray-100 py-2 px-4 rounded-t-lg border-x border-t border-gray-300 mt-6 flex justify-between items-center">
+<span>3. 노무비(임금)에 대한 압류의 절대적 금지 (제88조)</span>
+<span class="text-xs bg-gray-200 text-gray-900 px-2 py-1 rounded font-bold">노임 권익 보호</span>
+</h3>
+<div class="border-x border-b border-gray-300 p-6 rounded-b-lg mb-8 bg-white shadow-sm">
+<p class="text-gray-900 mb-4 leading-relaxed">건설사업자의 재정 악화로 제3의 채권자가 채권을 가압류하려는 절차를 개시하더라도, 도급금액 구성 성분 중 <strong>"근로자의 임금에 명백히 해당하는 노임 상당액"</strong>에 대해서는 제3자가 강제집행이나 압류를 진위할 수 없습니다.</p>
+<div class="flex items-start gap-3 bg-gray-50 p-4 rounded-lg border border-gray-200">
+<span class="text-xl mt-1">📝</span>
+<p class="text-sm text-gray-900 leading-relaxed"><strong>실무 적용 방안:</strong> 향후 근로자의 권익을 두텁게 보호하기 위해서는 공사 도급계약서 및 산출내역서 상에 <strong>'직접 노무비'와 다른 구성 요소(재료비 및 기타 경비)의 산출 근거를 엄격히 분리하여 기재</strong>하여야 하며, 법원 및 관청 통보 시 이를 근거문서로 소명하여야 합니다.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/69.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/71.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

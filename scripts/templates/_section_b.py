@@ -7,13 +7,13 @@ def section_b():
 
 <h3 class="text-xl font-bold text-orange-800 mb-1">B. 임대차 계약 &mdash; 민법 제618조</h3>
 
-<p class="text-sm text-gray-500 mb-6">물건의 사용&middot;수익을 허락하고 차임을 지급하는 계약. 시공 행위가 포함되면 도급으로 전환됨에 주의.</p>
+<p class="text-sm text-gray-9000 mb-6">물건의 사용&middot;수익을 허락하고 차임을 지급하는 계약. 시공 행위가 포함되면 도급으로 전환됨에 주의.</p>
 
 <!-- B-1 -->
 
 <div id="contract-B1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
-<div class="absolute top-0 left-0 w-1 h-full bg-orange-500">&nbsp;</div>
+<div class="absolute top-0 left-0 w-1 h-full bg-orange-50">&nbsp;</div>
 
 <div class="p-6">
 
@@ -30,23 +30,23 @@ def section_b():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 사 용 현 장 명</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 사 용 현 장 명</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 대 여 장 비</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 대 여 장 비</th>
       <td class="border border-gray-400 p-2">50톤 하이드로 크레인 (또는 200톤 크롤러 등) 1대 (기사 포함)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 임 대 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 임 대 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (공정 협의 연장 가능)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 임대료(단가/총액)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 임대료(단가/총액)</th>
       <td class="border border-gray-400 p-2"><strong>[일대 / 월대]</strong> 금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO / 부가세 별도)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (월 O회 기성, 익월 OO일 지급) / 품목: "건설기계 임대료"</td>
     </tr>
   </tbody>
@@ -97,12 +97,12 @@ def section_b():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-orange-100">
+    <tr class="bg-orange-100 text-gray-900">
       <th class="border border-orange-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-orange-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-orange-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-orange-200 p-1.5 font-bold">장비비</td>
       <td class="border border-orange-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-orange-200 p-1.5 font-bold">건설기계 임대(일대/월대) &rarr; 장비비(기계경비)</td>
@@ -144,23 +144,23 @@ def section_b():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 납 품 현 장 명</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 납 품 현 장 명</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[ OO신축공사 현장 ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 임대품목 및 수량</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 임대품목 및 수량</th>
       <td class="border border-gray-400 p-2">시스템 비계, 서포트 등 (상세 내역 별첨 참고)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 임 대 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 임 대 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (종료 전 사전 협의)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">4. 임대료(월)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">4. 임대료(월)</th>
       <td class="border border-gray-400 p-2">월 금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO / 단가 적용)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (월말 마감 익월 OO일 지급) / 품목: "가설재 임대료"</td>
     </tr>
   </tbody>
@@ -201,12 +201,12 @@ def section_b():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
   <tbody>
-    <tr class="bg-orange-100">
+    <tr class="bg-orange-100 text-gray-900">
       <th class="border border-orange-200 p-1.5 text-left">원가 항목</th>
       <th class="border border-orange-200 p-1.5 text-left w-12">해당</th>
       <th class="border border-orange-200 p-1.5 text-left">사유</th>
     </tr>
-    <tr class="bg-green-50">
+    <tr class="bg-green-50 text-gray-900">
       <td class="border border-orange-200 p-1.5 font-bold">장비비</td>
       <td class="border border-orange-200 p-1.5 text-green-700 font-bold">✅</td>
       <td class="border border-orange-200 p-1.5 font-bold">가설재(비계&middot;서포트) 임대 &rarr; 장비비(가설비)</td>

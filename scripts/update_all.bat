@@ -8,7 +8,10 @@ echo ==========================================
 :: Change working directory to project root (parent directory of scripts folder)
 cd /d "%~dp0.."
 
-echo [1/4] Running DB seed script (Law Course Part 4)...
+echo [1/4] Running DB seed scripts (Law Course All Parts)...
+uv run python scripts\seeders\seed_law_ultimate_pt1.py
+uv run python scripts\seeders\seed_law_ultimate_pt2.py
+uv run python scripts\seeders\seed_law_ultimate_pt3.py
 uv run python scripts\seeders\seed_law_ultimate_pt4.py
 
 echo [2/4] Extracting DB Content for validation...

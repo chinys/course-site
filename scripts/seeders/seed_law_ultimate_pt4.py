@@ -9,7 +9,8 @@ def seed_law_course_ultimate_pt4():
     db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'database.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT id FROM course WHERE title LIKE '%건설법규%'")
+    course_title = '건설법규'
+    cursor.execute('SELECT id FROM course WHERE title = ?', (course_title,))
     row = cursor.fetchone()
     if not row:
         print("Error: [건설법규] course not found.")
@@ -59,7 +60,7 @@ def _intro():
 
 <tbody>
 
-<tr class="bg-gray-100">
+<tr class="bg-gray-100 text-gray-900">
 
 <th class="border p-2 text-left">유형</th>
 
@@ -81,9 +82,9 @@ def _intro():
 
 <td class="border p-2">A-1</td>
 
-<td class="border p-2">물품공급(제조납품) 계약서 <a href="#contract-A1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">물품공급(제조납품) 계약서 <a href="#contract-A1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A1.docx" target="_blank" rel="noopener" download="contract_A1.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-50 text-gray-900 px-2 py-1 rounded hover:bg-blue-50 no-underline" href="/static/downloads/contract_A1.docx" target="_blank" rel="noopener" download="contract_A1.docx">📄 docx</a></td>
 
 </tr>
 
@@ -91,9 +92,9 @@ def _intro():
 
 <td class="border p-2">A-2</td>
 
-<td class="border p-2">외주가공(제조위탁) 계약서 <a href="#contract-A2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">외주가공(제조위탁) 계약서 <a href="#contract-A2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A2.docx" target="_blank" rel="noopener" download="contract_A2.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-50 text-gray-900 px-2 py-1 rounded hover:bg-blue-50 no-underline" href="/static/downloads/contract_A2.docx" target="_blank" rel="noopener" download="contract_A2.docx">📄 docx</a></td>
 
 </tr>
 
@@ -101,9 +102,9 @@ def _intro():
 
 <td class="border p-2">A-3</td>
 
-<td class="border p-2">사내가공(제조위탁) 계약서 <a href="#contract-A3" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">사내가공(제조위탁) 계약서 <a href="#contract-A3" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A3.docx" target="_blank" rel="noopener" download="contract_A3.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-50 text-gray-900 px-2 py-1 rounded hover:bg-blue-50 no-underline" href="/static/downloads/contract_A3.docx" target="_blank" rel="noopener" download="contract_A3.docx">📄 docx</a></td>
 
 </tr>
 
@@ -111,9 +112,9 @@ def _intro():
 
 <td class="border p-2">A-4</td>
 
-<td class="border p-2">물품공급(건설현장) 계약서 <a href="#contract-A4" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">물품공급(건설현장) 계약서 <a href="#contract-A4" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 no-underline" href="/static/downloads/contract_A4.docx" target="_blank" rel="noopener" download="contract_A4.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-blue-50 text-gray-900 px-2 py-1 rounded hover:bg-blue-50 no-underline" href="/static/downloads/contract_A4.docx" target="_blank" rel="noopener" download="contract_A4.docx">📄 docx</a></td>
 
 </tr>
 
@@ -125,9 +126,9 @@ def _intro():
 
 <td class="border p-2">B-1</td>
 
-<td class="border p-2">건설기계 장비 임대차계약서 <a href="#contract-B1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">건설기계 장비 임대차계약서 <a href="#contract-B1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-orange-600 text-white px-2 py-1 rounded hover:bg-orange-700 no-underline" href="/static/downloads/contract_B1.docx" target="_blank" rel="noopener" download="contract_B1.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-orange-50 text-gray-900 px-2 py-1 rounded hover:bg-orange-50 no-underline" href="/static/downloads/contract_B1.docx" target="_blank" rel="noopener" download="contract_B1.docx">📄 docx</a></td>
 
 </tr>
 
@@ -135,9 +136,9 @@ def _intro():
 
 <td class="border p-2">B-2</td>
 
-<td class="border p-2">가설재(비계&middot;서포트) 임대차계약서 <a href="#contract-B2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">가설재(비계&middot;서포트) 임대차계약서 <a href="#contract-B2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-orange-600 text-white px-2 py-1 rounded hover:bg-orange-700 no-underline" href="/static/downloads/contract_B2.docx" target="_blank" rel="noopener" download="contract_B2.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-orange-50 text-gray-900 px-2 py-1 rounded hover:bg-orange-50 no-underline" href="/static/downloads/contract_B2.docx" target="_blank" rel="noopener" download="contract_B2.docx">📄 docx</a></td>
 
 </tr>
 
@@ -149,9 +150,9 @@ def _intro():
 
 <td class="border p-2">C-1</td>
 
-<td class="border p-2">기술&middot;품질용역 위탁계약서(NDT) <a href="#contract-C1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">기술&middot;품질용역 위탁계약서(NDT) <a href="#contract-C1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-700 no-underline" href="/static/downloads/contract_C1.docx" target="_blank" rel="noopener" download="contract_C1.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-purple-50 text-gray-900 px-2 py-1 rounded hover:bg-purple-50 no-underline" href="/static/downloads/contract_C1.docx" target="_blank" rel="noopener" download="contract_C1.docx">📄 docx</a></td>
 
 </tr>
 
@@ -159,9 +160,9 @@ def _intro():
 
 <td class="border p-2">C-2</td>
 
-<td class="border p-2">건설현장 급식(함바식당) 운영 위탁계약서 <a href="#contract-C2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">건설현장 급식(함바식당) 운영 위탁계약서 <a href="#contract-C2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-700 no-underline" href="/static/downloads/contract_C2.docx" target="_blank" rel="noopener" download="contract_C2.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-purple-50 text-gray-900 px-2 py-1 rounded hover:bg-purple-50 no-underline" href="/static/downloads/contract_C2.docx" target="_blank" rel="noopener" download="contract_C2.docx">📄 docx</a></td>
 
 </tr>
 
@@ -173,9 +174,9 @@ def _intro():
 
 <td class="border p-2">D-1</td>
 
-<td class="border p-2">전문 기술자문 및 현장관리 위촉계약서 <a href="#contract-D1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">전문 기술자문 및 현장관리 위촉계약서 <a href="#contract-D1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-teal-600 text-white px-2 py-1 rounded hover:bg-teal-700 no-underline" href="/static/downloads/contract_D1.docx" target="_blank" rel="noopener" download="contract_D1.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-teal-50 text-gray-900 px-2 py-1 rounded hover:bg-teal-50 no-underline" href="/static/downloads/contract_D1.docx" target="_blank" rel="noopener" download="contract_D1.docx">📄 docx</a></td>
 
 </tr>
 
@@ -183,9 +184,9 @@ def _intro():
 
 <td class="border p-2">D-2</td>
 
-<td class="border p-2">일용직 근로계약서 <a href="#contract-D2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">일용직 근로계약서 <a href="#contract-D2" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-teal-600 text-white px-2 py-1 rounded hover:bg-teal-700 no-underline" href="/static/downloads/contract_D2.docx" target="_blank" rel="noopener" download="contract_D2.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-teal-50 text-gray-900 px-2 py-1 rounded hover:bg-teal-50 no-underline" href="/static/downloads/contract_D2.docx" target="_blank" rel="noopener" download="contract_D2.docx">📄 docx</a></td>
 
 </tr>
 
@@ -197,9 +198,9 @@ def _intro():
 
 <td class="border p-2">E-1</td>
 
-<td class="border p-2">화물(강재) 운반 용역계약서 <a href="#contract-E1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-200 no-underline whitespace-nowrap">[바로가기]</a></td>
+<td class="border p-2">화물(강재) 운반 용역계약서 <a href="#contract-E1" class="ml-2 inline-block text-[11px] bg-gray-100 border border-gray-300 text-gray-700 px-1.5 py-0.5 rounded hover:bg-gray-50 no-underline whitespace-nowrap">[바로가기]</a></td>
 
-<td class="border p-2 text-center"><a class="inline-block text-xs bg-rose-600 text-white px-2 py-1 rounded hover:bg-rose-700 no-underline" href="/static/downloads/contract_E1.docx" target="_blank" rel="noopener" download="contract_E1.docx">📄 docx</a></td>
+<td class="border p-2 text-center"><a class="inline-block text-xs bg-rose-50 text-gray-900 px-2 py-1 rounded hover:bg-rose-50 no-underline" href="/static/downloads/contract_E1.docx" target="_blank" rel="noopener" download="contract_E1.docx">📄 docx</a></td>
 
 </tr>
 

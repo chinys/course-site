@@ -7,13 +7,13 @@ def section_a():
 
 <h3 class="text-xl font-bold text-blue-800 mb-1">A. 매매(물품공급) &middot; 도급(가공) 계약 &mdash; 민법 제563조 / 제664조</h3>
 
-<p class="text-sm text-gray-500 mb-6">물건의 소유권을 이전하고 대금을 지급하는 매매계약 또는 일의 완성을 약정하는 도급계약. 건설공사가 아닌 순수 제조&middot;납품 또는 가공 역무 행위.</p>
+<p class="text-sm text-gray-9000 mb-6">물건의 소유권을 이전하고 대금을 지급하는 매매계약 또는 일의 완성을 약정하는 도급계약. 건설공사가 아닌 순수 제조&middot;납품 또는 가공 역무 행위.</p>
 
 <!-- A-1: 외주 가공제작 물품공급 (일반 — 매도인 자재 조달) -->
 
 <div id="contract-A1" class="bg-white rounded-lg border border-gray-200 shadow-sm relative overflow-hidden mb-6">
 
-<div class="absolute top-0 left-0 w-1 h-full bg-blue-500">&nbsp;</div>
+<div class="absolute top-0 left-0 w-1 h-full bg-blue-50">&nbsp;</div>
 
 <div class="p-6">
 
@@ -30,19 +30,19 @@ def section_a():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 발 주 번 호</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 발 주 번 호</th>
       <td class="border border-gray-400 p-2">[ OOOOO-OO ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 계 약 일 자</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 계 약 일 자</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 납 품 현 장</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 납 품 현 장</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[목적지 현장명 기재]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200" rowspan="3">4. 계 약 금 액</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900" rowspan="3">4. 계 약 금 액</th>
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
@@ -52,17 +52,17 @@ def section_a():
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (합계: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (월 O회 납품 기성(월말기준 작성), 익월 OO일 기성지급)<br>
         <span class="text-red-600 font-bold text-xs mt-1 block">※ 세금계산서 청구 품목명: "강구조물 자재비 및 제조납품비" 한정 (시공/설치 단어 사용 절대 불가)</span>
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">6. 계 약 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">6. 계 약 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (분할 납품 일정은 Shop DWG 승인 후 별도 협의)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">7. 세 부 내 역<br>(특약 사항)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">7. 세 부 내 역<br>(특약 사항)</th>
       <td class="border border-gray-400 p-2">
         1) 계약 물량 및 단가: [품목별 단가표 참조]<br>
         2) 본 납품 총액에는 <strong>원자재대금, 공장가공 조립비, 도장비, 검사비, 목적 현장까지의 운반비 일체가 포함</strong>됨.<br>
@@ -72,7 +72,7 @@ def section_a():
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">8. 첨 부 서 류</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">8. 첨 부 서 류</th>
       <td class="border border-gray-400 p-2">
         1) 품목별 단가표 1매<br>
         2) (필요시) 도면 및 규격서 1부<br>
@@ -160,7 +160,7 @@ def section_a():
 
 <tbody>
 
-<tr class="bg-blue-100">
+<tr class="bg-blue-100 text-gray-900">
 
 <th class="border border-blue-200 p-1.5 text-left">원가 항목</th>
 
@@ -170,7 +170,7 @@ def section_a():
 
 </tr>
 
-<tr class="bg-green-50">
+<tr class="bg-green-50 text-gray-900">
 
 <td class="border border-blue-200 p-1.5 font-bold">자재비</td>
 
@@ -229,19 +229,19 @@ def section_a():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 발 주 번 호</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 발 주 번 호</th>
       <td class="border border-gray-400 p-2">[ OOOOO-OO ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 계 약 일 자</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 계 약 일 자</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 납 품 현 장</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 납 품 현 장</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[건설현장이 아닌 공사명 기재]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200" rowspan="3">4. 계 약 금 액</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900" rowspan="3">4. 계 약 금 액</th>
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
@@ -251,17 +251,17 @@ def section_a():
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (합계: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (월 O회 기성(월말기준 작성), 익월 OO일 기성지급)<br>
         <span class="text-red-600 font-bold text-xs mt-1 block">※ 세금계산서 청구 품목명: "강구조물 외주가공비" 한정 (시공/설치 단어 사용 절대 불가)</span>
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">6. 계 약 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">6. 계 약 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">7. 세 부 내 역<br>(특약 사항)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">7. 세 부 내 역<br>(특약 사항)</th>
       <td class="border border-gray-400 p-2">
         1) 기준 물량: [물량표 참조] (계약단가 첨부)<br>
         2) 물량 증가 및 감소 시 단가 대비 감액 및 증액한다.<br>
@@ -273,7 +273,7 @@ def section_a():
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">8. 첨 부 서 류</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">8. 첨 부 서 류</th>
       <td class="border border-gray-400 p-2">
         1) 세부 가공 단가표 1매<br>
         2) 외주가공(제조위탁) 일반조건 1부 (본 표지 이면 첨부)
@@ -373,7 +373,7 @@ def section_a():
 
 <tbody>
 
-<tr class="bg-blue-100">
+<tr class="bg-blue-100 text-gray-900">
 
 <th class="border border-blue-200 p-1.5 text-left">원가 항목</th>
 
@@ -413,7 +413,7 @@ def section_a():
 
 </tr>
 
-<tr class="bg-green-50">
+<tr class="bg-green-50 text-gray-900">
 
 <td class="border border-blue-200 p-1.5 font-bold">기타(경비)</td>
 
@@ -462,19 +462,19 @@ def section_a():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 발 주 번 호</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 발 주 번 호</th>
       <td class="border border-gray-400 p-2">[ OOOOO-OO ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 계 약 일 자</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 계 약 일 자</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 납 품 현 장</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 납 품 현 장</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[건설현장이 아닌 공사명 기재]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200" rowspan="3">4. 계 약 금 액</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900" rowspan="3">4. 계 약 금 액</th>
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
@@ -484,17 +484,17 @@ def section_a():
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (합계: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (월 O회 기성(월말기준 작성), 익월 OO일 기성지급)<br>
         <span class="text-red-600 font-bold text-xs mt-1 block">※ 세금계산서 청구 품목명: "사내 가공비(또는 사내 도장비)" 한정 (시공/설치 단어 절대 불가)</span>
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">6. 계 약 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">6. 계 약 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (물량 소진 시까지 연장 가능)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">7. 세 부 내 역<br>(특약 사항)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">7. 세 부 내 역<br>(특약 사항)</th>
       <td class="border border-gray-400 p-2">
         1) 기준 물량: [물량표 참조] (계약단가 첨부)<br>
         2) 물량 증가 및 감소 시 단가 대비 감액 및 증액한다.<br>
@@ -505,7 +505,7 @@ def section_a():
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">8. 첨 부 서 류</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">8. 첨 부 서 류</th>
       <td class="border border-gray-400 p-2">
         1) 세부 가공 단가표 1매<br>
         2) 사내가공(제조위탁) 일반조건 1부 (본 표지 이면 첨부)
@@ -602,7 +602,7 @@ def section_a():
 
 <tbody>
 
-<tr class="bg-blue-100">
+<tr class="bg-blue-100 text-gray-900">
 
 <th class="border border-blue-200 p-1.5 text-left">구분</th>
 
@@ -674,7 +674,7 @@ def section_a():
 
 <tbody>
 
-<tr class="bg-blue-100">
+<tr class="bg-blue-100 text-gray-900">
 
 <th class="border border-blue-200 p-1.5 text-left">원가 항목</th>
 
@@ -714,7 +714,7 @@ def section_a():
 
 </tr>
 
-<tr class="bg-green-50">
+<tr class="bg-green-50 text-gray-900">
 
 <td class="border border-blue-200 p-1.5 font-bold">기타(경비)</td>
 
@@ -763,19 +763,19 @@ def section_a():
 <table class="w-full text-left border-collapse border border-gray-400 mb-8">
   <tbody>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4">1. 발 주 번 호</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 w-1/4 text-gray-900">1. 발 주 번 호</th>
       <td class="border border-gray-400 p-2">[ OOOOO-OO ]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">2. 계 약 일 자</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">2. 계 약 일 자</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">3. 납 품 현 장</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">3. 납 품 현 장</th>
       <td class="border border-gray-400 p-2 text-blue-700 font-bold">[목적지 건설현장명 기재]</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200" rowspan="3">4. 계 약 금 액</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900" rowspan="3">4. 계 약 금 액</th>
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (공급가액: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
@@ -785,17 +785,17 @@ def section_a():
       <td class="border border-gray-400 p-2">일금 <strong>O O O O O</strong>원정 (합계: ₩O,OOO,OOO)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">5. 대금지불방법</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">5. 대금지불방법</th>
       <td class="border border-gray-400 p-2">현금 (납품 건별 익월 OO일 기성지급 또는 인도 시 전액 현금 지급)<br>
         <span class="text-red-600 font-bold text-xs mt-1 block">※ 세금계산서 청구 품목명: "건설현장 자재납품비" 한정 (시공/설치 단어 절대 불가)</span>
       </td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200">6. 납 품 기 간</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 text-gray-900">6. 납 품 기 간</th>
       <td class="border border-gray-400 p-2">202X년 X월 X일 ~ 202X년 X월 X일 (발주서 분할 납품 가능)</td>
     </tr>
     <tr>
-      <th class="border border-gray-400 p-2 bg-gray-200 align-top">7. 세 부 내 역<br>(특약 사항)</th>
+      <th class="border border-gray-400 p-2 bg-gray-200 align-top text-gray-900">7. 세 부 내 역<br>(특약 사항)</th>
       <td class="border border-gray-400 p-2">
         1) 납품 내역: [데크플레이트, 보호망, 도료, 소모 공구 등 단가표 참조]<br>
         2) 본 단가 및 청구 금원에는 제품 <strong>운반비 하역비 일체가 포함</strong>됨.<br>
@@ -864,12 +864,12 @@ def section_a():
 
 <table class="w-full text-xs border-collapse mt-1 mb-2">
 <tbody>
-<tr class="bg-blue-100">
+<tr class="bg-blue-100 text-gray-900">
 <th class="border border-blue-200 p-1.5 text-left">원가 항목</th>
 <th class="border border-blue-200 p-1.5 text-left w-12">해당</th>
 <th class="border border-blue-200 p-1.5 text-left">사유</th>
 </tr>
-<tr class="bg-green-50">
+<tr class="bg-green-50 text-gray-900">
 <td class="border border-blue-200 p-1.5 font-bold">자재비</td>
 <td class="border border-blue-200 p-1.5 text-green-700 font-bold">✅</td>
 <td class="border border-blue-200 p-1.5 font-bold">순수 목적 현장 물품(자재/데크/도료/소모품) 매매 대금</td>
