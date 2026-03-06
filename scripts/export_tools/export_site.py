@@ -16,14 +16,14 @@ from fastapi.testclient import TestClient
 from main import app
 from core.database import engine
 from sqlmodel import Session, select
-from models import Course, Lesson
+from models import Course, Lesson, Notice
 
 BUILD_DIR = os.path.join(project_root, "build")
 PREFIX = "/course-site/build"
 
 def rewrite_html(html_bytes):
     soup = BeautifulSoup(html_bytes, "html.parser")
-    
+
     # Rewrite hrefs
     for a in soup.find_all("a", href=True):
         href = a['href']
@@ -39,19 +39,29 @@ def rewrite_html(html_bytes):
                 a['href'] = f"{PREFIX}/courses/{parts[2]}/lessons/{parts[4]}.html"
             else:
                 a['href'] = f"{PREFIX}{href}"
-                
+        elif href.startswith("/notices"):
+            if href == "/notices":
+                a['href'] = f"{PREFIX}/notices/index.html"
+            else:
+                # /notices/1 -> /course-site/build/notices/1.html
+                parts = href.split("/")
+                if len(parts) == 3:
+                    a['href'] = f"{PREFIX}/notices/{parts[2]}.html"
+                else:
+                    a['href'] = f"{PREFIX}{href}"
+
     # Rewrite srcs
     for tag in soup.find_all(["img", "script"], src=True):
         src = tag['src']
         if src.startswith("/static/"):
             tag['src'] = f"{PREFIX}{src}"
-            
+
     # Rewrite link hrefs (stylesheets, etc.)
     for tag in soup.find_all("link", href=True):
         href = tag['href']
         if href.startswith("/static/"):
             tag['href'] = f"{PREFIX}{href}"
-            
+
     return str(soup)
 
 def export_site():
@@ -88,26 +98,49 @@ def export_site():
         for course in courses:
             courses_dir = os.path.join(BUILD_DIR, "courses")
             os.makedirs(courses_dir, exist_ok=True)
-            
+
             # Fetch course page
             r = client.get(f"/courses/{course.id}")
             if r.status_code == 200:
                 html = rewrite_html(r.content)
                 with open(os.path.join(courses_dir, f"{course.id}.html"), "w", encoding="utf-8") as f:
                     f.write(html)
-                    
+
             # Fetch lessons
             lessons = session.exec(select(Lesson).where(Lesson.course_id == course.id)).all()
             for lesson in lessons:
                 lessons_dir = os.path.join(courses_dir, str(course.id), "lessons")
                 os.makedirs(lessons_dir, exist_ok=True)
-                
+
                 r = client.get(f"/courses/{course.id}/lessons/{lesson.id}")
                 if r.status_code == 200:
                     html = rewrite_html(r.content)
                     with open(os.path.join(lessons_dir, f"{lesson.id}.html"), "w", encoding="utf-8") as f:
                         f.write(html)
-                        
+
+    print("Exporting notices...")
+    # 4. Export notices
+    notices_dir = os.path.join(BUILD_DIR, "notices")
+    os.makedirs(notices_dir, exist_ok=True)
+    
+    # Export notices list
+    r = client.get("/notices")
+    if r.status_code == 200:
+        html = rewrite_html(r.content)
+        with open(os.path.join(notices_dir, "index.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+        print("  - notices/index.html exported")
+    
+    # Export individual notices
+    notices = session.exec(select(Notice).where(Notice.is_active == True)).all()
+    for notice in notices:
+        r = client.get(f"/notices/{notice.id}")
+        if r.status_code == 200:
+            html = rewrite_html(r.content)
+            with open(os.path.join(notices_dir, f"{notice.id}.html"), "w", encoding="utf-8") as f:
+                f.write(html)
+            print(f"  - notices/{notice.id}.html exported")
+
     print("Static site exported successfully. Ready for GitHub Pages!")
 
 if __name__ == "__main__":
