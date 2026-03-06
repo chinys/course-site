@@ -106,9 +106,9 @@ def seed_law_course_ultimate_pt3():
             <div class="mt-6 p-5 bg-gray-50 border border-gray-300 rounded-xl shadow-sm">
                 <h4 class="font-bold text-gray-900 mb-3 border-b border-gray-300 pb-2 flex items-center gap-2"><span>📚</span> 참조 출처 및 관련 판례/행정해석</h4>
                 <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                    <li><strong class="text-gray-900">도급과 근로자파견의 구별 기준:</strong> 대법원 2015. 2. 26. 선고 <a href="https://casenote.kr/%EB%8C%80%EB%B2%95%EC%9B%90/2010%EB%8B%A4106436" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2010다106436 판결</a> (독립적 사업 경영 주체성과 노무 종속성 판단 기준 제시)</li>
-                    <li><strong class="text-gray-900">실질적인 하도급(위장도급) 판단:</strong> 대법원 2015. 8. 27. 선고 <a href="https://casenote.kr/%EB%8C%80%EB%B2%95%EC%9B%90/2013%EB%8F%846939" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2013도6939 판결</a> (노무 공급 및 관리 실태에 따른 무등록 하도급 인정 사례)</li>
-                    <li><strong class="text-gray-900">법무부 및 고용노동부 지침:</strong> <a href="https://law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000185936" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">파견근로자보호 등에 관한 법률 지침 및 기준</a> (위장도급 점검 매뉴얼)</li>
+                    <li><strong class="text-gray-900">도급과 근로자파견의 구별 기준:</strong> 대법원 2015. 2. 26. 선고 <a href="https://www.law.go.kr/precSc.do?menuId=7&subMenuId=47&tabMenuId=213&query=2010%EB%8B%A4106436" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2010다106436 판결</a> (국가법령정보센터 | 독립적 사업 경영 주체성과 노무 종속성 판단 기준 제시)</li>
+                    <li><strong class="text-gray-900">실질적인 하도급(위장도급) 판단:</strong> 대법원 2015. 8. 27. 선고 <a href="https://www.law.go.kr/precSc.do?menuId=7&subMenuId=47&tabMenuId=213&query=2013%EB%8F%846939" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2013도6939 판결</a> (국가법령정보센터 | 노무 공급 및 관리 실태에 따른 무등록 하도급 인정 사례)</li>
+                    <li><strong class="text-gray-900">파견근로자 보호 지침:</strong> <a href="https://www.law.go.kr/admRulSc.do?menuId=5&subMenuId=41&tabMenuId=183&query=%ED%8C%8C%EA%B2%AC%EA%B7%BC%EB%A1%9C%EC%9E%90" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">파견근로자보호 등에 관한 법률 행정규칙</a> (국가법령정보센터 | 위장도급 점검 매뉴얼)</li>
                 </ul>
             </div>''',
             11
@@ -173,9 +173,9 @@ def seed_law_course_ultimate_pt3():
             <div class="mt-6 p-5 bg-gray-50 border border-gray-300 rounded-xl shadow-sm">
                 <h4 class="font-bold text-gray-900 mb-3 border-b border-gray-300 pb-2 flex items-center gap-2"><span>📚</span> 참조 출처 및 관련 판례/행정해석</h4>
                 <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
-                    <li><strong class="text-gray-900">제작물공급계약의 건설산업기본법 적용 여부:</strong> 대법원 2018. 10. 12. 선고 <a href="https://casenote.kr/%EB%8C%80%EB%B2%95%EC%9B%90/2018%EB%8F%848777" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2018도8777 판결</a> (단순 제작·납품과 시공 분리의 적법성 기준 제시)</li>
-                    <li><strong class="text-gray-900">물품납품·설치계약의 실질:</strong> 대법원 2011. 12. 8. 선고 <a href="https://casenote.kr/%EB%8C%80%EB%B2%95%EC%9B%90/2010%EB%8F%8410065" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2010도10065 판결</a> (설치 행위가 수반된 납품의 불법 건설 하도급 인정 사례)</li>
-                    <li><strong class="text-gray-900">행정해석:</strong> <a href="https://www.eais.go.kr/" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">국토교통부 건설정책과 민원질의 회신</a> (자재보급과 도급의 한계)</li>
+                    <li><strong class="text-gray-900">제작물공급계약의 건설산업기본법 적용 여부:</strong> 대법원 2018. 10. 12. 선고 <a href="https://www.law.go.kr/precSc.do?menuId=7&subMenuId=47&tabMenuId=213&query=2018%EB%8F%848777" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2018도8777 판결</a> (국가법령정보센터 | 단순 제작·납품과 시공 분리의 적법성 기준 제시)</li>
+                    <li><strong class="text-gray-900">물품납품·설치계약의 실질:</strong> 대법원 2011. 12. 8. 선고 <a href="https://www.law.go.kr/precSc.do?menuId=7&subMenuId=47&tabMenuId=213&query=2010%EB%8F%8410065" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">2010도10065 판결</a> (국가법령정보센터 | 설치 행위가 수반된 납품의 불법 건설 하도급 인정 사례)</li>
+                    <li><strong class="text-gray-900">건설산업기본법 원문/해석례:</strong> <a href="https://www.law.go.kr/lsSc.do?menuId=1&subMenuId=15&tabMenuId=81&query=%EA%B1%B4%EC%84%A4%EC%82%B0%EC%97%85%EA%B8%B0%EB%B3%B8%EB%B2%95" class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">건설산업기본법 (국가법령정보센터)</a></li>
                 </ul>
             </div>''',
             12
