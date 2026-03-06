@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>8. JWT 인증과 보안 (로그인부터 토큰 갱신까지) | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/notices">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/81.html">
+                        1. FastAPI 입문: 설치부터 Hello World 까지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/82.html">
+                        2. Path 와 Query 매개변수 (URL 로 데이터 받기)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/83.html">
+                        3. Pydantic 으로 Request Body 다루기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/84.html">
+                        4. Response Model 과 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/85.html">
+                        5. 예외 처리 (HTTPException 완벽 가이드)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/86.html">
+                        6. 의존성 주입 (Dependency Injection) 정복
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/87.html">
+                        7. SQLAlchemy 비동기 데이터베이스
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/88.html">
+                        8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/89.html">
+                        9. 실시간 통신 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/90.html">
+                        10. 테스트 작성법 (Pytest 완전 가이드)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 8 강. JWT 인증과 보안
+
+## 🎯 학습 목표
+- JWT 토큰 구조 이해
+- Access/Refresh Token 구현
+- 비밀번호 해싱
+- 토큰 블랙리스트
+
+---
+
+## 1. JWT 란?
+
+### JWT 구조
+
+```
+JWT = 헤더 + 페이로드 + 서명
+
+헤더: {&#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34;}
+페이로드: {&#34;sub&#34;: &#34;123&#34;, &#34;exp&#34;: 1234567890}
+서명: HMACSHA256(헤더.페이로드, SECRET_KEY)
+```
+
+### 인증 흐름
+
+```
+1. 로그인 (ID/PW) → 2. JWT 생성 → 3. 클라이언트 저장
+                                            ↓
+6. 리소스 반환 ← 5. JWT 검증 ← 4. 요청 시 JWT 포함
+```
+
+---
+
+## 2. 기본 구현
+
+### 설치
+
+```bash
+pip install python-jose[cryptography]
+pip install passlib[bcrypt]
+```
+
+### 설정
+
+```python
+from datetime import timedelta
+
+SECRET_KEY = &#34;your-secret-key&#34;
+ALGORITHM = &#34;HS256&#34;
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+```
+
+### 비밀번호 해싱
+
+```python
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=[&#34;bcrypt&#34;])
+
+def hash_password(password: str) -&gt; str:
+    return pwd_context.hash(password)
+
+def verify_password(plain: str, hashed: str) -&gt; bool:
+    return pwd_context.verify(plain, hashed)
+```
+
+### 토큰 생성
+
+```python
+from jose import jwt
+from datetime import datetime, timedelta
+
+def create_access_token(data: dict, expires_delta: timedelta = None) -&gt; str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    to_encode.update({&#34;exp&#34;: expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+```
+
+---
+
+## 3. 인증 의존성
+
+```python
+from fastapi.security import OAuth2PasswordBearer
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=&#34;auth/login&#34;)
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id = payload.get(&#34;sub&#34;)
+        if not user_id:
+            raise HTTPException(401, &#34;Invalid token&#34;)
+    except JWTError:
+        raise HTTPException(401, &#34;Invalid token&#34;)
+    
+    user = await db.get(User, int(user_id))
+    if not user:
+        raise HTTPException(401, &#34;User not found&#34;)
+    return user
+```
+
+---
+
+## 4. 로그인 엔드포인트
+
+```python
+from fastapi.security import OAuth2PasswordRequestForm
+
+@app.post(&#34;/auth/login&#34;)
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    # 사용자 조회
+    user = await db.execute(select(User).where(User.email == form_data.username))
+    user = user.scalar_one_or_none()
+    
+    # 비밀번호 검증
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(401, &#34;Incorrect credentials&#34;)
+    
+    # 토큰 생성
+    access_token = create_access_token(
+        data={&#34;sub&#34;: str(user.id)},
+        expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    )
+    
+    return {&#34;access_token&#34;: access_token, &#34;token_type&#34;: &#34;bearer&#34;}
+```
+
+---
+
+## 5. 권한 기반 접근 (RBAC)
+
+```python
+class RoleChecker:
+    def __init__(self, allowed_roles: list[str]):
+        self.allowed_roles = allowed_roles
+    
+    def __call__(self, user: User = Depends(get_current_user)) -&gt; User:
+        if user.role not in self.allowed_roles:
+            raise HTTPException(403, &#34;Not enough permissions&#34;)
+        return user
+
+# 사용
+require_admin = RoleChecker([&#34;admin&#34;])
+
+@app.get(&#34;/admin/dashboard&#34;)
+def admin_dashboard(admin: User = Depends(require_admin)):
+    return {&#34;message&#34;: f&#34;Welcome, {admin.name}!&#34;}
+```
+
+---
+
+## 📝 연습 문제
+
+1. 회원가입 엔드포인트 (비밀번호 해싱)
+2. 로그인 엔드포인트 (JWT 반환)
+3. `require_admin` 의존성 만들기
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 토큰 만료 에러**
+```python
+# Access Token 만료 시간 늘리기
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
+
+# 또는 Refresh Token 으로 갱신
+POST /auth/refresh {&#34;refresh_token&#34;: &#34;...&#34;}
+```
+
+**Q2. 쿠키에 토큰 저장**
+```python
+response.set_cookie(
+    key=&#34;refresh_token&#34;,
+    value=refresh_token,
+    httponly=True,  # JS 접근 불가
+    secure=True,    # HTTPS 만
+    samesite=&#34;lax&#34;
+)
+```
+</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 8 강. JWT 인증과 보안
+
+## 🎯 학습 목표
+- JWT 토큰 구조 이해
+- Access/Refresh Token 구현
+- 비밀번호 해싱
+- 토큰 블랙리스트
+
+---
+
+## 1. JWT 란?
+
+### JWT 구조
+
+```
+JWT = 헤더 + 페이로드 + 서명
+
+헤더: {"alg": "HS256", "typ": "JWT"}
+페이로드: {"sub": "123", "exp": 1234567890}
+서명: HMACSHA256(헤더.페이로드, SECRET_KEY)
+```
+
+### 인증 흐름
+
+```
+1. 로그인 (ID/PW) → 2. JWT 생성 → 3. 클라이언트 저장
+                                            ↓
+6. 리소스 반환 ← 5. JWT 검증 ← 4. 요청 시 JWT 포함
+```
+
+---
+
+## 2. 기본 구현
+
+### 설치
+
+```bash
+pip install python-jose[cryptography]
+pip install passlib[bcrypt]
+```
+
+### 설정
+
+```python
+from datetime import timedelta
+
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+```
+
+### 비밀번호 해싱
+
+```python
+from passlib.context import CryptContext
+
+pwd_context = CryptContext(schemes=["bcrypt"])
+
+def hash_password(password: str) -&gt; str:
+    return pwd_context.hash(password)
+
+def verify_password(plain: str, hashed: str) -&gt; bool:
+    return pwd_context.verify(plain, hashed)
+```
+
+### 토큰 생성
+
+```python
+from jose import jwt
+from datetime import datetime, timedelta
+
+def create_access_token(data: dict, expires_delta: timedelta = None) -&gt; str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+```
+
+---
+
+## 3. 인증 의존성
+
+```python
+from fastapi.security import OAuth2PasswordBearer
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        user_id = payload.get("sub")
+        if not user_id:
+            raise HTTPException(401, "Invalid token")
+    except JWTError:
+        raise HTTPException(401, "Invalid token")
+    
+    user = await db.get(User, int(user_id))
+    if not user:
+        raise HTTPException(401, "User not found")
+    return user
+```
+
+---
+
+## 4. 로그인 엔드포인트
+
+```python
+from fastapi.security import OAuth2PasswordRequestForm
+
+@app.post("/auth/login")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    # 사용자 조회
+    user = await db.execute(select(User).where(User.email == form_data.username))
+    user = user.scalar_one_or_none()
+    
+    # 비밀번호 검증
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(401, "Incorrect credentials")
+    
+    # 토큰 생성
+    access_token = create_access_token(
+        data={"sub": str(user.id)},
+        expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    )
+    
+    return {"access_token": access_token, "token_type": "bearer"}
+```
+
+---
+
+## 5. 권한 기반 접근 (RBAC)
+
+```python
+class RoleChecker:
+    def __init__(self, allowed_roles: list[str]):
+        self.allowed_roles = allowed_roles
+    
+    def __call__(self, user: User = Depends(get_current_user)) -&gt; User:
+        if user.role not in self.allowed_roles:
+            raise HTTPException(403, "Not enough permissions")
+        return user
+
+# 사용
+require_admin = RoleChecker(["admin"])
+
+@app.get("/admin/dashboard")
+def admin_dashboard(admin: User = Depends(require_admin)):
+    return {"message": f"Welcome, {admin.name}!"}
+```
+
+---
+
+## 📝 연습 문제
+
+1. 회원가입 엔드포인트 (비밀번호 해싱)
+2. 로그인 엔드포인트 (JWT 반환)
+3. `require_admin` 의존성 만들기
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 토큰 만료 에러**
+```python
+# Access Token 만료 시간 늘리기
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
+
+# 또는 Refresh Token 으로 갱신
+POST /auth/refresh {"refresh_token": "..."}
+```
+
+**Q2. 쿠키에 토큰 저장**
+```python
+response.set_cookie(
+    key="refresh_token",
+    value=refresh_token,
+    httponly=True,  # JS 접근 불가
+    secure=True,    # HTTPS 만
+    samesite="lax"
+)
+```
+
+                </div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/87.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/89.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

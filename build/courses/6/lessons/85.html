@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>5. 예외 처리 (HTTPException 완벽 가이드) | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/notices">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/81.html">
+                        1. FastAPI 입문: 설치부터 Hello World 까지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/82.html">
+                        2. Path 와 Query 매개변수 (URL 로 데이터 받기)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/83.html">
+                        3. Pydantic 으로 Request Body 다루기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/84.html">
+                        4. Response Model 과 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/85.html">
+                        5. 예외 처리 (HTTPException 완벽 가이드)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/86.html">
+                        6. 의존성 주입 (Dependency Injection) 정복
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/87.html">
+                        7. SQLAlchemy 비동기 데이터베이스
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/88.html">
+                        8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/89.html">
+                        9. 실시간 통신 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/90.html">
+                        10. 테스트 작성법 (Pytest 완전 가이드)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">5. 예외 처리 (HTTPException 완벽 가이드)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 5 강. 예외 처리 (HTTPException)
+
+## 🎯 학습 목표
+- HTTPException 기본 사용법
+- 커스텀 예외 클래스
+- 전역 예외 처리기
+
+---
+
+## 1. HTTPException 기본
+
+### 왜 HTTPException 인가요?
+
+```python
+# ❌ 일반 Exception: 500 에러
+@app.get(&#34;/users/{id}&#34;)
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise Exception(&#34;Not found&#34;)  # ❌ 500 에러!
+
+# ✅ HTTPException: 올바른 상태 코드
+from fastapi import HTTPException
+
+@app.get(&#34;/users/{id}&#34;)
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise HTTPException(404, &#34;User not found&#34;)  # ✅ 404!
+```
+
+### 기본 사용법
+
+```python
+from fastapi import HTTPException
+
+items_db = {1: &#34;Laptop&#34;, 2: &#34;Mouse&#34;}
+
+@app.get(&#34;/items/{id}&#34;)
+def get_item(id: int):
+    if id not in items_db:
+        raise HTTPException(
+            status_code=404,
+            detail=f&#34;Item {id} not found&#34;
+        )
+    return {&#34;item&#34;: items_db[id]}
+```
+
+---
+
+## 2. 커스텀 예외 클래스
+
+```python
+from fastapi import HTTPException
+
+class NotFoundException(HTTPException):
+    def __init__(self, resource: str, id: int):
+        super().__init__(
+            status_code=404,
+            detail=f&#34;{resource} {id} not found&#34;
+        )
+
+class UnauthorizedException(HTTPException):
+    def __init__(self, message: str = &#34;Not authenticated&#34;):
+        super().__init__(
+            status_code=401,
+            detail=message,
+            headers={&#34;WWW-Authenticate&#34;: &#34;Bearer&#34;}
+        )
+
+# 사용 예시
+@app.get(&#34;/users/{id}&#34;)
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise NotFoundException(&#34;User&#34;, id)
+    return user
+```
+
+---
+
+## 3. 전역 예외 처리기
+
+```python
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from datetime import datetime
+
+app = FastAPI()
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            &#34;timestamp&#34;: datetime.now().isoformat(),
+            &#34;status&#34;: exc.status_code,
+            &#34;error&#34;: exc.detail,
+            &#34;path&#34;: str(request.url.path)
+        }
+    )
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    # 로깅
+    print(f&#34;Error: {exc}&#34;)
+    
+    # 안전한 응답
+    return JSONResponse(
+        status_code=500,
+        content={
+            &#34;error&#34;: &#34;Internal Server Error&#34;,
+            &#34;message&#34;: &#34;An error occurred&#34;
+        }
+    )
+```
+
+---
+
+## 4. 실전 예제
+
+```python
+class AppException(HTTPException):
+    def __init__(self, status_code: int, error_code: str, message: str):
+        super().__init__(
+            status_code=status_code,
+            detail={&#34;error_code&#34;: error_code, &#34;message&#34;: message}
+        )
+
+class UserNotFoundException(AppException):
+    def __init__(self, user_id: int):
+        super().__init__(
+            status_code=404,
+            error_code=&#34;USER_NOT_FOUND&#34;,
+            message=f&#34;User {user_id} not found&#34;
+        )
+
+@app.get(&#34;/users/{id}&#34;)
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise UserNotFoundException(id)
+    return user
+```
+
+**응답 예시:**
+```json
+{
+    &#34;detail&#34;: {
+        &#34;error_code&#34;: &#34;USER_NOT_FOUND&#34;,
+        &#34;message&#34;: &#34;User 123 not found&#34;
+    }
+}
+```
+
+---
+
+## 📝 연습 문제
+
+1. `ProductNotFoundException` 예외 클래스 만들기
+2. 전역 예외 처리기에 타임스탬프 추가
+3. 로그인 실패 시 401 에러 반환
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 예외 raise 했는데 응답이 안 나가요.**
+```python
+# ✅ 올바른 방법
+@app.get(&#34;/items/{id}&#34;)
+def get_item(id: int):
+    if id not in items:
+        raise HTTPException(404, &#34;Not found&#34;)
+    return items[id]  # ✅ 여기 도달
+```
+
+**Q2. 에러 상세 정보를 숨기고 싶어요.**
+```python
+# 프로덕션에서는 안전한 메시지
+@app.exception_handler(Exception)
+async def handler(request, exc):
+    # ❌ 위험
+    return {&#34;error&#34;: str(exc)}
+    
+    # ✅ 안전
+    return {&#34;error&#34;: &#34;Internal error&#34;}
+```
+</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 5 강. 예외 처리 (HTTPException)
+
+## 🎯 학습 목표
+- HTTPException 기본 사용법
+- 커스텀 예외 클래스
+- 전역 예외 처리기
+
+---
+
+## 1. HTTPException 기본
+
+### 왜 HTTPException 인가요?
+
+```python
+# ❌ 일반 Exception: 500 에러
+@app.get("/users/{id}")
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise Exception("Not found")  # ❌ 500 에러!
+
+# ✅ HTTPException: 올바른 상태 코드
+from fastapi import HTTPException
+
+@app.get("/users/{id}")
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise HTTPException(404, "User not found")  # ✅ 404!
+```
+
+### 기본 사용법
+
+```python
+from fastapi import HTTPException
+
+items_db = {1: "Laptop", 2: "Mouse"}
+
+@app.get("/items/{id}")
+def get_item(id: int):
+    if id not in items_db:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Item {id} not found"
+        )
+    return {"item": items_db[id]}
+```
+
+---
+
+## 2. 커스텀 예외 클래스
+
+```python
+from fastapi import HTTPException
+
+class NotFoundException(HTTPException):
+    def __init__(self, resource: str, id: int):
+        super().__init__(
+            status_code=404,
+            detail=f"{resource} {id} not found"
+        )
+
+class UnauthorizedException(HTTPException):
+    def __init__(self, message: str = "Not authenticated"):
+        super().__init__(
+            status_code=401,
+            detail=message,
+            headers={"WWW-Authenticate": "Bearer"}
+        )
+
+# 사용 예시
+@app.get("/users/{id}")
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise NotFoundException("User", id)
+    return user
+```
+
+---
+
+## 3. 전역 예외 처리기
+
+```python
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from datetime import datetime
+
+app = FastAPI()
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "timestamp": datetime.now().isoformat(),
+            "status": exc.status_code,
+            "error": exc.detail,
+            "path": str(request.url.path)
+        }
+    )
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    # 로깅
+    print(f"Error: {exc}")
+    
+    # 안전한 응답
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "Internal Server Error",
+            "message": "An error occurred"
+        }
+    )
+```
+
+---
+
+## 4. 실전 예제
+
+```python
+class AppException(HTTPException):
+    def __init__(self, status_code: int, error_code: str, message: str):
+        super().__init__(
+            status_code=status_code,
+            detail={"error_code": error_code, "message": message}
+        )
+
+class UserNotFoundException(AppException):
+    def __init__(self, user_id: int):
+        super().__init__(
+            status_code=404,
+            error_code="USER_NOT_FOUND",
+            message=f"User {user_id} not found"
+        )
+
+@app.get("/users/{id}")
+def get_user(id: int):
+    user = db.get(id)
+    if not user:
+        raise UserNotFoundException(id)
+    return user
+```
+
+**응답 예시:**
+```json
+{
+    "detail": {
+        "error_code": "USER_NOT_FOUND",
+        "message": "User 123 not found"
+    }
+}
+```
+
+---
+
+## 📝 연습 문제
+
+1. `ProductNotFoundException` 예외 클래스 만들기
+2. 전역 예외 처리기에 타임스탬프 추가
+3. 로그인 실패 시 401 에러 반환
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 예외 raise 했는데 응답이 안 나가요.**
+```python
+# ✅ 올바른 방법
+@app.get("/items/{id}")
+def get_item(id: int):
+    if id not in items:
+        raise HTTPException(404, "Not found")
+    return items[id]  # ✅ 여기 도달
+```
+
+**Q2. 에러 상세 정보를 숨기고 싶어요.**
+```python
+# 프로덕션에서는 안전한 메시지
+@app.exception_handler(Exception)
+async def handler(request, exc):
+    # ❌ 위험
+    return {"error": str(exc)}
+    
+    # ✅ 안전
+    return {"error": "Internal error"}
+```
+
+                </div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/84.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/86.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>10. 테스트 작성법 (Pytest 완전 가이드) | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/notices">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/81.html">
+                        1. FastAPI 입문: 설치부터 Hello World 까지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/82.html">
+                        2. Path 와 Query 매개변수 (URL 로 데이터 받기)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/83.html">
+                        3. Pydantic 으로 Request Body 다루기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/84.html">
+                        4. Response Model 과 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/85.html">
+                        5. 예외 처리 (HTTPException 완벽 가이드)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/86.html">
+                        6. 의존성 주입 (Dependency Injection) 정복
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/87.html">
+                        7. SQLAlchemy 비동기 데이터베이스
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/88.html">
+                        8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/89.html">
+                        9. 실시간 통신 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/90.html">
+                        10. 테스트 작성법 (Pytest 완전 가이드)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">10. 테스트 작성법 (Pytest 완전 가이드)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 10 강. 테스트 작성법 (Pytest)
+
+## 🎯 학습 목표
+- Pytest 기본 사용법
+- FastAPI TestClient
+- 의존성 오버라이드
+- 데이터베이스 테스트
+
+---
+
+## 1. 테스트 설정
+
+### 설치
+
+```bash
+pip install pytest pytest-asyncio httpx
+```
+
+### pytest.ini
+
+```ini
+[pytest]
+testpaths = tests
+python_files = test_*.py
+asyncio_mode = auto
+```
+
+---
+
+## 2. 첫 테스트
+
+```python
+# tests/test_basic.py
+def test_addition():
+    assert 1 + 1 == 2
+
+def test_string():
+    assert &#34;hello&#34;.upper() == &#34;HELLO&#34;
+```
+
+### 실행
+
+```bash
+# 모든 테스트
+pytest
+
+# 상세 출력
+pytest -v
+
+# 특정 파일
+pytest tests/test_users.py
+```
+
+---
+
+## 3. FastAPI 테스트
+
+```python
+from fastapi.testclient import TestClient
+from main import app
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get(&#34;/&#34;)
+    assert response.status_code == 200
+    assert response.json() == {&#34;message&#34;: &#34;Hello&#34;}
+
+def test_create_item():
+    response = client.post(
+        &#34;/items&#34;,
+        json={&#34;name&#34;: &#34;Item&#34;, &#34;price&#34;: 100}
+    )
+    assert response.status_code == 201
+```
+
+---
+
+## 4. 의존성 오버라이드
+
+```python
+# tests/conftest.py
+import pytest
+from main import app, get_current_user
+
+@pytest.fixture
+def client():
+    # 가짜 사용자
+    fake_user = {&#34;id&#34;: 1, &#34;email&#34;: &#34;test@example.com&#34;}
+    
+    # 인증 오버라이드
+    async def override():
+        return fake_user
+    
+    app.dependency_overrides[get_current_user] = override
+    
+    with TestClient(app) as c:
+        yield c
+    
+    app.dependency_overrides.clear()
+
+# tests/test_users.py
+def test_read_me(client):
+    response = client.get(&#34;/users/me&#34;)
+    assert response.status_code == 200
+    assert response.json()[&#34;email&#34;] == &#34;test@example.com&#34;
+```
+
+---
+
+## 5. 데이터베이스 테스트
+
+```python
+# tests/conftest.py
+@pytest.fixture
+async def db_session():
+    engine = create_async_engine(&#34;sqlite+aiosqlite:///:memory:&#34;)
+    async with engine.begin() as conn:
+        await conn.run_sync(SQLModel.metadata.create_all)
+    
+    session = AsyncSession(engine)
+    yield session
+    await session.close()
+
+# tests/test_users.py
+@pytest.mark.asyncio
+async def test_create_user(client, db_session):
+    response = client.post(&#34;/users&#34;, json={
+        &#34;email&#34;: &#34;test@example.com&#34;,
+        &#34;password&#34;: &#34;pass123&#34;
+    })
+    assert response.status_code == 201
+```
+
+---
+
+## 6. 통합 테스트
+
+```python
+def test_full_flow(client):
+    # 1. 회원가입
+    r = client.post(&#34;/auth/register&#34;, json={...})
+    assert r.status_code == 201
+    
+    # 2. 로그인
+    r = client.post(&#34;/auth/login&#34;, data={...})
+    assert r.status_code == 200
+    token = r.json()[&#34;access_token&#34;]
+    
+    # 3. 인증된 요청
+    r = client.get(
+        &#34;/users/me&#34;,
+        headers={&#34;Authorization&#34;: f&#34;Bearer {token}&#34;}
+    )
+    assert r.status_code == 200
+```
+
+---
+
+## 📝 연습 문제
+
+1. CRUD 엔드포인트 테스트 작성
+2. 인증 엔드포인트 테스트
+3. 의존성 오버라이드로 모킹
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 비동기 테스트가 안 돼요.**
+```python
+# pytest.ini 에 설정
+[pytest]
+asyncio_mode = auto
+```
+
+**Q2. 의존성 오버라이드가 적용 안 돼요.**
+```python
+# 테스트 후 반드시 clear!
+app.dependency_overrides[get_db] = override
+
+try:
+    # 테스트
+finally:
+    app.dependency_overrides.clear()  # ✅ 필수!
+```
+</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 10 강. 테스트 작성법 (Pytest)
+
+## 🎯 학습 목표
+- Pytest 기본 사용법
+- FastAPI TestClient
+- 의존성 오버라이드
+- 데이터베이스 테스트
+
+---
+
+## 1. 테스트 설정
+
+### 설치
+
+```bash
+pip install pytest pytest-asyncio httpx
+```
+
+### pytest.ini
+
+```ini
+[pytest]
+testpaths = tests
+python_files = test_*.py
+asyncio_mode = auto
+```
+
+---
+
+## 2. 첫 테스트
+
+```python
+# tests/test_basic.py
+def test_addition():
+    assert 1 + 1 == 2
+
+def test_string():
+    assert "hello".upper() == "HELLO"
+```
+
+### 실행
+
+```bash
+# 모든 테스트
+pytest
+
+# 상세 출력
+pytest -v
+
+# 특정 파일
+pytest tests/test_users.py
+```
+
+---
+
+## 3. FastAPI 테스트
+
+```python
+from fastapi.testclient import TestClient
+from main import app
+
+client = TestClient(app)
+
+def test_read_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello"}
+
+def test_create_item():
+    response = client.post(
+        "/items",
+        json={"name": "Item", "price": 100}
+    )
+    assert response.status_code == 201
+```
+
+---
+
+## 4. 의존성 오버라이드
+
+```python
+# tests/conftest.py
+import pytest
+from main import app, get_current_user
+
+@pytest.fixture
+def client():
+    # 가짜 사용자
+    fake_user = {"id": 1, "email": "test@example.com"}
+    
+    # 인증 오버라이드
+    async def override():
+        return fake_user
+    
+    app.dependency_overrides[get_current_user] = override
+    
+    with TestClient(app) as c:
+        yield c
+    
+    app.dependency_overrides.clear()
+
+# tests/test_users.py
+def test_read_me(client):
+    response = client.get("/users/me")
+    assert response.status_code == 200
+    assert response.json()["email"] == "test@example.com"
+```
+
+---
+
+## 5. 데이터베이스 테스트
+
+```python
+# tests/conftest.py
+@pytest.fixture
+async def db_session():
+    engine = create_async_engine("sqlite+aiosqlite:///:memory:")
+    async with engine.begin() as conn:
+        await conn.run_sync(SQLModel.metadata.create_all)
+    
+    session = AsyncSession(engine)
+    yield session
+    await session.close()
+
+# tests/test_users.py
+@pytest.mark.asyncio
+async def test_create_user(client, db_session):
+    response = client.post("/users", json={
+        "email": "test@example.com",
+        "password": "pass123"
+    })
+    assert response.status_code == 201
+```
+
+---
+
+## 6. 통합 테스트
+
+```python
+def test_full_flow(client):
+    # 1. 회원가입
+    r = client.post("/auth/register", json={...})
+    assert r.status_code == 201
+    
+    # 2. 로그인
+    r = client.post("/auth/login", data={...})
+    assert r.status_code == 200
+    token = r.json()["access_token"]
+    
+    # 3. 인증된 요청
+    r = client.get(
+        "/users/me",
+        headers={"Authorization": f"Bearer {token}"}
+    )
+    assert r.status_code == 200
+```
+
+---
+
+## 📝 연습 문제
+
+1. CRUD 엔드포인트 테스트 작성
+2. 인증 엔드포인트 테스트
+3. 의존성 오버라이드로 모킹
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 비동기 테스트가 안 돼요.**
+```python
+# pytest.ini 에 설정
+[pytest]
+asyncio_mode = auto
+```
+
+**Q2. 의존성 오버라이드가 적용 안 돼요.**
+```python
+# 테스트 후 반드시 clear!
+app.dependency_overrides[get_db] = override
+
+try:
+    # 테스트
+finally:
+    app.dependency_overrides.clear()  # ✅ 필수!
+```
+
+                </div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/89.html">
+                    ← Previous
+                </a>
+<!-- End of course -->
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" href="/course-site/build/courses/6.html">
+                    Finish
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

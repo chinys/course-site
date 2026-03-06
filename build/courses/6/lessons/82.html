@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2. Path 와 Query 매개변수 (URL 로 데이터 받기) | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/notices">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/81.html">
+                        1. FastAPI 입문: 설치부터 Hello World 까지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/82.html">
+                        2. Path 와 Query 매개변수 (URL 로 데이터 받기)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/83.html">
+                        3. Pydantic 으로 Request Body 다루기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/84.html">
+                        4. Response Model 과 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/85.html">
+                        5. 예외 처리 (HTTPException 완벽 가이드)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/86.html">
+                        6. 의존성 주입 (Dependency Injection) 정복
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/87.html">
+                        7. SQLAlchemy 비동기 데이터베이스
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/88.html">
+                        8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/89.html">
+                        9. 실시간 통신 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/90.html">
+                        10. 테스트 작성법 (Pytest 완전 가이드)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">2. Path 와 Query 매개변수 (URL 로 데이터 받기)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 2 강. Path 와 Query 매개변수
+
+## 🎯 학습 목표
+- 경로 매개변수 (Path Parameter) 사용법
+- 쿼리 스트링 (Query String) 활용법
+- 타입 검증과 유효성 검사
+
+---
+
+## 1. 경로 매개변수 (Path Parameter)
+
+### 기본 사용법
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# /users/123 → user_id = 123
+@app.get(&#34;/users/{user_id}&#34;)
+def get_user(user_id: int):
+    return {&#34;user_id&#34;: user_id}
+
+# /posts/456/comments/789
+@app.get(&#34;/posts/{post_id}/comments/{comment_id}&#34;)
+def get_comment(post_id: int, comment_id: int):
+    return {&#34;post_id&#34;: post_id, &#34;comment_id&#34;: comment_id}
+```
+
+### 타입 변환의 마법
+
+FastAPI 는 **타입 힌트를 보고 자동으로 변환**합니다!
+
+```python
+@app.get(&#34;/items/{item_id}&#34;)
+def get_item(item_id: int):
+    return {&#34;item_id&#34;: item_id, &#34;type&#34;: type(item_id)}
+```
+
+**실제 동작:**
+```
+GET /items/42
+→ {&#34;item_id&#34;: 42, &#34;type&#34;: &#34;&lt;class &#39;int&#39;&gt;&#34;}
+
+GET /items/hello
+→ HTTP 422 Error: &#34;value is not a valid integer&#34;
+```
+
+---
+
+## 2. 쿼리 매개변수 (Query Parameter)
+
+### 기본 사용법
+
+```python
+@app.get(&#34;/items&#34;)
+def read_items(skip: int = 0, limit: int = 10):
+    &#34;&#34;&#34;
+    skip: 몇 개부터 시작할지 (기본값: 0)
+    limit: 몇 개까지 가져올지 (기본값: 10)
+    &#34;&#34;&#34;
+    return {&#34;skip&#34;: skip, &#34;limit&#34;: limit}
+```
+
+**URL 예시:**
+- `/items` → skip=0, limit=10
+- `/items?skip=20` → skip=20, limit=10
+- `/items?skip=20&amp;limit=5` → skip=20, limit=5
+
+### 선택적 매개변수
+
+```python
+from typing import Optional
+
+@app.get(&#34;/search&#34;)
+def search(q: Optional[str] = None):
+    if q:
+        return {&#34;message&#34;: f&#34;&#39;{q}&#39; 검색 결과&#34;}
+    return {&#34;message&#34;: &#34;검색어를 입력하세요&#34;}
+```
+
+---
+
+## 3. Path() 와 Query() 고급 옵션
+
+### Path() 옵션
+
+```python
+from fastapi import FastAPI, Path
+from typing import Annotated
+
+app = FastAPI()
+
+@app.get(&#34;/articles/{article_id}&#34;)
+def read_article(
+    article_id: Annotated[
+        int,
+        Path(
+            title=&#34;기사 ID&#34;,
+            ge=1,      # 1 이상
+            le=10000,  # 10000 이하
+            example=42
+        )
+    ]
+):
+    return {&#34;article_id&#34;: article_id}
+```
+
+**주요 옵션:**
+| 옵션 | 설명 | 예시 |
+|------|------|------|
+| `gt` | 초과 | `gt=0` → 1 이상 |
+| `ge` | 이상 | `ge=1` → 1 이상 |
+| `lt` | 미만 | `lt=100` → 99 이하 |
+| `le` | 이하 | `le=100` → 100 이하 |
+| `min_length` | 최소 길이 | `min_length=3` |
+| `max_length` | 최대 길이 | `max_length=50` |
+
+### Query() 옵션
+
+```python
+from fastapi import FastAPI, Query
+from typing import Annotated, Optional
+
+app = FastAPI()
+
+@app.get(&#34;/products&#34;)
+def read_products(
+    category: Annotated[
+        str,
+        Query(
+            min_length=2,
+            max_length=20,
+            pattern=&#34;^[a-zA-Z0-9_-]+$&#34;
+        )
+    ],
+    sort: Annotated[Optional[str], Query(alias=&#34;order-by&#34;)] = None,
+    limit: Annotated[int, Query(ge=1, le=100)] = 10
+):
+    return {&#34;category&#34;: category, &#34;sort&#34;: sort, &#34;limit&#34;: limit}
+```
+
+---
+
+## 4. 실전 예제: 블로그 API
+
+```python
+from enum import Enum
+
+class SortOption(str, Enum):
+    NEWEST = &#34;newest&#34;
+    OLDEST = &#34;oldest&#34;
+    POPULAR = &#34;popular&#34;
+
+@app.get(&#34;/posts&#34;)
+def list_posts(
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=50)] = 10,
+    category: Optional[str] = None,
+    sort: Optional[SortOption] = SortOption.NEWEST
+):
+    return {
+        &#34;page&#34;: page,
+        &#34;limit&#34;: limit,
+        &#34;category&#34;: category,
+        &#34;sort&#34;: sort
+    }
+```
+
+---
+
+## 📝 연습 문제
+
+1. `/users/{user_id}/posts/{post_id}` 엔드포인트 만들기
+2. `/products` 에서 `min_price`, `max_price` 쿼리 매개변수 받기
+3. `/files/{file_path:path}` 로 전체 파일 경로 받기
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 경로 매개변수와 함수 매개변수 이름이 달라도 되나요?**
+```python
+# ❌ 에러! 이름이 같아야 함
+@app.get(&#34;/users/{user_id}&#34;)
+def get_user(uid: int):  # user_id ≠ uid
+
+# ✅ 올바름
+@app.get(&#34;/users/{user_id}&#34;)
+def get_user(user_id: int):  # 이름 일치!
+```
+
+**Q2. 쿼리 매개변수를 필수로 만들고 싶어요.**
+```python
+# 기본값을 주지 않으면 필수
+@app.get(&#34;/search&#34;)
+def search(q: str):  # ✅ 필수 입력
+    return {&#34;query&#34;: q}
+```
+</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 2 강. Path 와 Query 매개변수
+
+## 🎯 학습 목표
+- 경로 매개변수 (Path Parameter) 사용법
+- 쿼리 스트링 (Query String) 활용법
+- 타입 검증과 유효성 검사
+
+---
+
+## 1. 경로 매개변수 (Path Parameter)
+
+### 기본 사용법
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# /users/123 → user_id = 123
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    return {"user_id": user_id}
+
+# /posts/456/comments/789
+@app.get("/posts/{post_id}/comments/{comment_id}")
+def get_comment(post_id: int, comment_id: int):
+    return {"post_id": post_id, "comment_id": comment_id}
+```
+
+### 타입 변환의 마법
+
+FastAPI 는 **타입 힌트를 보고 자동으로 변환**합니다!
+
+```python
+@app.get("/items/{item_id}")
+def get_item(item_id: int):
+    return {"item_id": item_id, "type": type(item_id)}
+```
+
+**실제 동작:**
+```
+GET /items/42
+→ {"item_id": 42, "type": "<class 'int'="">"}
+
+GET /items/hello
+→ HTTP 422 Error: "value is not a valid integer"
+```
+
+---
+
+## 2. 쿼리 매개변수 (Query Parameter)
+
+### 기본 사용법
+
+```python
+@app.get("/items")
+def read_items(skip: int = 0, limit: int = 10):
+    """
+    skip: 몇 개부터 시작할지 (기본값: 0)
+    limit: 몇 개까지 가져올지 (기본값: 10)
+    """
+    return {"skip": skip, "limit": limit}
+```
+
+**URL 예시:**
+- `/items` → skip=0, limit=10
+- `/items?skip=20` → skip=20, limit=10
+- `/items?skip=20&amp;limit=5` → skip=20, limit=5
+
+### 선택적 매개변수
+
+```python
+from typing import Optional
+
+@app.get("/search")
+def search(q: Optional[str] = None):
+    if q:
+        return {"message": f"'{q}' 검색 결과"}
+    return {"message": "검색어를 입력하세요"}
+```
+
+---
+
+## 3. Path() 와 Query() 고급 옵션
+
+### Path() 옵션
+
+```python
+from fastapi import FastAPI, Path
+from typing import Annotated
+
+app = FastAPI()
+
+@app.get("/articles/{article_id}")
+def read_article(
+    article_id: Annotated[
+        int,
+        Path(
+            title="기사 ID",
+            ge=1,      # 1 이상
+            le=10000,  # 10000 이하
+            example=42
+        )
+    ]
+):
+    return {"article_id": article_id}
+```
+
+**주요 옵션:**
+| 옵션 | 설명 | 예시 |
+|------|------|------|
+| `gt` | 초과 | `gt=0` → 1 이상 |
+| `ge` | 이상 | `ge=1` → 1 이상 |
+| `lt` | 미만 | `lt=100` → 99 이하 |
+| `le` | 이하 | `le=100` → 100 이하 |
+| `min_length` | 최소 길이 | `min_length=3` |
+| `max_length` | 최대 길이 | `max_length=50` |
+
+### Query() 옵션
+
+```python
+from fastapi import FastAPI, Query
+from typing import Annotated, Optional
+
+app = FastAPI()
+
+@app.get("/products")
+def read_products(
+    category: Annotated[
+        str,
+        Query(
+            min_length=2,
+            max_length=20,
+            pattern="^[a-zA-Z0-9_-]+$"
+        )
+    ],
+    sort: Annotated[Optional[str], Query(alias="order-by")] = None,
+    limit: Annotated[int, Query(ge=1, le=100)] = 10
+):
+    return {"category": category, "sort": sort, "limit": limit}
+```
+
+---
+
+## 4. 실전 예제: 블로그 API
+
+```python
+from enum import Enum
+
+class SortOption(str, Enum):
+    NEWEST = "newest"
+    OLDEST = "oldest"
+    POPULAR = "popular"
+
+@app.get("/posts")
+def list_posts(
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=50)] = 10,
+    category: Optional[str] = None,
+    sort: Optional[SortOption] = SortOption.NEWEST
+):
+    return {
+        "page": page,
+        "limit": limit,
+        "category": category,
+        "sort": sort
+    }
+```
+
+---
+
+## 📝 연습 문제
+
+1. `/users/{user_id}/posts/{post_id}` 엔드포인트 만들기
+2. `/products` 에서 `min_price`, `max_price` 쿼리 매개변수 받기
+3. `/files/{file_path:path}` 로 전체 파일 경로 받기
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. 경로 매개변수와 함수 매개변수 이름이 달라도 되나요?**
+```python
+# ❌ 에러! 이름이 같아야 함
+@app.get("/users/{user_id}")
+def get_user(uid: int):  # user_id ≠ uid
+
+# ✅ 올바름
+@app.get("/users/{user_id}")
+def get_user(user_id: int):  # 이름 일치!
+```
+
+**Q2. 쿼리 매개변수를 필수로 만들고 싶어요.**
+```python
+# 기본값을 주지 않으면 필수
+@app.get("/search")
+def search(q: str):  # ✅ 필수 입력
+    return {"query": q}
+```
+
+                </class></div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/81.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/83.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

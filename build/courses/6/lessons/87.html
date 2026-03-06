@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>7. SQLAlchemy 비동기 데이터베이스 | FastAPI 실무 마스터</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/notices">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/6.html">FastAPI 실무 마스터</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/81.html">
+                        1. FastAPI 입문: 설치부터 Hello World 까지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/82.html">
+                        2. Path 와 Query 매개변수 (URL 로 데이터 받기)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/83.html">
+                        3. Pydantic 으로 Request Body 다루기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/84.html">
+                        4. Response Model 과 HTTP 상태 코드
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/85.html">
+                        5. 예외 처리 (HTTPException 완벽 가이드)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/86.html">
+                        6. 의존성 주입 (Dependency Injection) 정복
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/6/lessons/87.html">
+                        7. SQLAlchemy 비동기 데이터베이스
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/88.html">
+                        8. JWT 인증과 보안 (로그인부터 토큰 갱신까지)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/89.html">
+                        9. 실시간 통신 (WebSockets &amp; SSE)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/6/lessons/90.html">
+                        10. 테스트 작성법 (Pytest 완전 가이드)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">7. SQLAlchemy 비동기 데이터베이스</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 7 강. SQLAlchemy 비동기 데이터베이스
+
+## 🎯 학습 목표
+- AsyncEngine 과 AsyncSession 설정
+- 비동기 CRUD 연산
+- N+1 문제 해결
+
+---
+
+## 1. 왜 비동기 데이터베이스?
+
+### 동기 vs 비동기
+
+```python
+# ❌ 동기: 블로킹 발생
+@app.get(&#34;/users&#34;)
+def get_users():
+    users = db.query(User).all()  # ← 여기서 블로킹!
+    return users
+
+# ✅ 비동기: 블로킹 없음
+@app.get(&#34;/users&#34;)
+async def get_users():
+    users = await db.execute(select(User))
+    return users
+```
+
+---
+
+## 2. AsyncEngine 설정
+
+### 설치
+
+```bash
+pip install asyncpg  # PostgreSQL
+pip install aiomysql  # MySQL
+pip install sqlalchemy&gt;=2.0
+```
+
+### 설정
+
+```python
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = &#34;postgresql+asyncpg://user:pass@localhost/dbname&#34;
+
+engine = create_async_engine(
+    DATABASE_URL,
+    pool_size=20,
+    pool_pre_ping=True,  # 연결 유효성 검사
+)
+
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,  # 중요!
+)
+```
+
+### 의존성 함수
+
+```python
+from typing import AsyncGenerator
+
+async def get_db() -&gt; AsyncGenerator[AsyncSession, None]:
+    async with AsyncSessionLocal() as session:
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()
+```
+
+---
+
+## 3. 비동기 CRUD
+
+### Create
+
+```python
+@app.post(&#34;/users&#34;, response_model=User)
+async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
+    db_user = User(**user.model_dump())
+    db.add(db_user)
+    await db.commit()
+    await db.refresh(db_user)
+    return db_user
+```
+
+### Read
+
+```python
+@app.get(&#34;/users/{id}&#34;, response_model=User)
+async def get_user(id: int, db: AsyncSession = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, &#34;Not found&#34;)
+    return user
+
+@app.get(&#34;/users&#34;, response_model=list[User])
+async def get_users(skip: int = 0, limit: int = 100, db = Depends(get_db)):
+    result = await db.execute(select(User).offset(skip).limit(limit))
+    return result.scalars().all()
+```
+
+### Update
+
+```python
+@app.patch(&#34;/users/{id}&#34;)
+async def update_user(id: int, update_data: UserUpdate, db = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, &#34;Not found&#34;)
+    
+    for key, value in update_data.model_dump(exclude_unset=True).items():
+        setattr(user, key, value)
+    
+    db.add(user)
+    await db.commit()
+    await db.refresh(user)
+    return user
+```
+
+### Delete
+
+```python
+@app.delete(&#34;/users/{id}&#34;, status_code=204)
+async def delete_user(id: int, db = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, &#34;Not found&#34;)
+    
+    await db.delete(user)
+    await db.commit()
+```
+
+---
+
+## 4. N+1 문제 해결
+
+### 문제
+
+```python
+# ❌ N+1: 1 + N 번 쿼리
+posts = await db.execute(select(Post))
+posts = posts.scalars().all()
+
+for post in posts:
+    author = await db.get(User, post.author_id)  # 매번 쿼리!
+```
+
+### 해결: joinedload (1:1)
+
+```python
+from sqlalchemy.orm import joinedload
+
+# ✅ 1 번 쿼리 (JOIN)
+result = await db.execute(
+    select(Post).options(joinedload(Post.author))
+)
+posts = result.scalars().unique().all()
+```
+
+### 해결: selectinload (1:N)
+
+```python
+from sqlalchemy.orm import selectinload
+
+# ✅ 2 번 쿼리
+result = await db.execute(
+    select(User).options(selectinload(User.posts))
+)
+users = result.scalars().unique().all()
+```
+
+---
+
+## 📝 연습 문제
+
+1. `Product` 모델 비동기 CRUD 만들기
+2. `Order` 와 `OrderItem` 관계 selectinload 로 조회
+3. Alembic 마이그레이션 설정
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. MissingGreenletException 에러**
+```python
+# ❌ 동기 방식
+user = db.query(User).first()  # ❌ 에러!
+
+# ✅ 비동기 방식
+result = await db.execute(select(User))
+user = result.scalar_one()  # ✅
+```
+
+**Q2. commit 후 속성 접근 에러**
+```python
+# ✅ expire_on_commit=False 필수
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,  # ✅
+)
+```
+</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+                    # 7 강. SQLAlchemy 비동기 데이터베이스
+
+## 🎯 학습 목표
+- AsyncEngine 과 AsyncSession 설정
+- 비동기 CRUD 연산
+- N+1 문제 해결
+
+---
+
+## 1. 왜 비동기 데이터베이스?
+
+### 동기 vs 비동기
+
+```python
+# ❌ 동기: 블로킹 발생
+@app.get("/users")
+def get_users():
+    users = db.query(User).all()  # ← 여기서 블로킹!
+    return users
+
+# ✅ 비동기: 블로킹 없음
+@app.get("/users")
+async def get_users():
+    users = await db.execute(select(User))
+    return users
+```
+
+---
+
+## 2. AsyncEngine 설정
+
+### 설치
+
+```bash
+pip install asyncpg  # PostgreSQL
+pip install aiomysql  # MySQL
+pip install sqlalchemy&gt;=2.0
+```
+
+### 설정
+
+```python
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "postgresql+asyncpg://user:pass@localhost/dbname"
+
+engine = create_async_engine(
+    DATABASE_URL,
+    pool_size=20,
+    pool_pre_ping=True,  # 연결 유효성 검사
+)
+
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,  # 중요!
+)
+```
+
+### 의존성 함수
+
+```python
+from typing import AsyncGenerator
+
+async def get_db() -&gt; AsyncGenerator[AsyncSession, None]:
+    async with AsyncSessionLocal() as session:
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()
+```
+
+---
+
+## 3. 비동기 CRUD
+
+### Create
+
+```python
+@app.post("/users", response_model=User)
+async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
+    db_user = User(**user.model_dump())
+    db.add(db_user)
+    await db.commit()
+    await db.refresh(db_user)
+    return db_user
+```
+
+### Read
+
+```python
+@app.get("/users/{id}", response_model=User)
+async def get_user(id: int, db: AsyncSession = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, "Not found")
+    return user
+
+@app.get("/users", response_model=list[User])
+async def get_users(skip: int = 0, limit: int = 100, db = Depends(get_db)):
+    result = await db.execute(select(User).offset(skip).limit(limit))
+    return result.scalars().all()
+```
+
+### Update
+
+```python
+@app.patch("/users/{id}")
+async def update_user(id: int, update_data: UserUpdate, db = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, "Not found")
+    
+    for key, value in update_data.model_dump(exclude_unset=True).items():
+        setattr(user, key, value)
+    
+    db.add(user)
+    await db.commit()
+    await db.refresh(user)
+    return user
+```
+
+### Delete
+
+```python
+@app.delete("/users/{id}", status_code=204)
+async def delete_user(id: int, db = Depends(get_db)):
+    user = await db.get(User, id)
+    if not user:
+        raise HTTPException(404, "Not found")
+    
+    await db.delete(user)
+    await db.commit()
+```
+
+---
+
+## 4. N+1 문제 해결
+
+### 문제
+
+```python
+# ❌ N+1: 1 + N 번 쿼리
+posts = await db.execute(select(Post))
+posts = posts.scalars().all()
+
+for post in posts:
+    author = await db.get(User, post.author_id)  # 매번 쿼리!
+```
+
+### 해결: joinedload (1:1)
+
+```python
+from sqlalchemy.orm import joinedload
+
+# ✅ 1 번 쿼리 (JOIN)
+result = await db.execute(
+    select(Post).options(joinedload(Post.author))
+)
+posts = result.scalars().unique().all()
+```
+
+### 해결: selectinload (1:N)
+
+```python
+from sqlalchemy.orm import selectinload
+
+# ✅ 2 번 쿼리
+result = await db.execute(
+    select(User).options(selectinload(User.posts))
+)
+users = result.scalars().unique().all()
+```
+
+---
+
+## 📝 연습 문제
+
+1. `Product` 모델 비동기 CRUD 만들기
+2. `Order` 와 `OrderItem` 관계 selectinload 로 조회
+3. Alembic 마이그레이션 설정
+
+---
+
+## 🔍 Troubleshooting
+
+**Q1. MissingGreenletException 에러**
+```python
+# ❌ 동기 방식
+user = db.query(User).first()  # ❌ 에러!
+
+# ✅ 비동기 방식
+result = await db.execute(select(User))
+user = result.scalar_one()  # ✅
+```
+
+**Q2. commit 후 속성 접근 에러**
+```python
+# ✅ expire_on_commit=False 필수
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False,  # ✅
+)
+```
+
+                </div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/86.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/88.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
