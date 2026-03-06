@@ -39,9 +39,9 @@
 
         <div class="mb-6 grid grid-cols-2 gap-4">
             <div class="flex items-center">
-                <input type="checkbox" 
-                       id="is_pinned" 
-                       name="is_pinned" 
+                <input type="checkbox"
+                       id="is_pinned"
+                       name="is_pinned"
                        value="true"
                        {{ "checked" if notice and notice.is_pinned else "" }}
                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
@@ -51,11 +51,11 @@
             </div>
 
             <div class="flex items-center">
-                <input type="checkbox" 
-                       id="is_active" 
-                       name="is_active" 
+                <input type="checkbox"
+                       id="is_active"
+                       name="is_active"
                        value="true"
-                       {{ "checked" if notice is none or notice.is_active else "" }}
+                       {{ "checked" if notice and notice.is_active else "" }}
                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                 <label for="is_active" class="ml-2 block text-sm text-gray-700">
                     활성화

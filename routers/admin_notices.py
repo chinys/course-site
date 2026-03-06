@@ -50,8 +50,8 @@ def admin_notice_create(
     request: Request,
     title: str = Form(...),
     content: str = Form(...),
-    is_pinned: bool = Form(False),
-    is_active: bool = Form(True),
+    is_pinned: str = Form("false"),
+    is_active: str = Form("false"),
     user: User = Depends(get_current_admin_user),
     session: Session = Depends(get_session)
 ):
@@ -59,8 +59,8 @@ def admin_notice_create(
     notice = Notice(
         title=title,
         content=content,
-        is_pinned=is_pinned,
-        is_active=is_active
+        is_pinned=is_pinned == "true",
+        is_active=is_active == "true"
     )
     session.add(notice)
     session.commit()
@@ -109,8 +109,8 @@ def admin_notice_update(
     notice_id: int,
     title: str = Form(...),
     content: str = Form(...),
-    is_pinned: bool = Form(False),
-    is_active: bool = Form(True),
+    is_pinned: str = Form("false"),
+    is_active: str = Form("false"),
     user: User = Depends(get_current_admin_user),
     session: Session = Depends(get_session)
 ):
@@ -118,13 +118,13 @@ def admin_notice_update(
     notice = session.get(Notice, notice_id)
     if not notice:
         raise HTTPException(status_code=404, detail="Notice not found")
-    
+
     notice.title = title
     notice.content = content
-    notice.is_pinned = is_pinned
-    notice.is_active = is_active
+    notice.is_pinned = is_pinned == "true"
+    notice.is_active = is_active == "true"
     notice.updated_at = datetime.utcnow()
-    
+
     session.add(notice)
     session.commit()
     return RedirectResponse(url="/admin/notices", status_code=303)

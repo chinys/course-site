@@ -68,30 +68,28 @@ def export_site():
     if os.path.exists(BUILD_DIR):
         shutil.rmtree(BUILD_DIR)
     os.makedirs(BUILD_DIR)
-    
+
     # Create .nojekyll for Github Pages
     with open(os.path.join(BUILD_DIR, ".nojekyll"), "w") as f:
         f.write("")
-        
+
     client = TestClient(app)
-    
+
     print("Exporting index.html...")
-    # 1. Export index
     r = client.get("/")
     if r.status_code == 200:
         html = rewrite_html(r.content)
         with open(os.path.join(BUILD_DIR, "index.html"), "w", encoding="utf-8") as f:
             f.write(html)
-            
+
     print("Exporting static files...")
-    # 2. Export static files
     static_src = os.path.join(project_root, "static")
     static_dst = os.path.join(BUILD_DIR, "static")
     if os.path.exists(static_src):
         if os.path.exists(static_dst):
             shutil.rmtree(static_dst)
         shutil.copytree(static_src, static_dst)
-        
+
     print("Exporting courses and lessons...")
     with Session(engine) as session:
         courses = session.exec(select(Course)).all()
@@ -99,14 +97,12 @@ def export_site():
             courses_dir = os.path.join(BUILD_DIR, "courses")
             os.makedirs(courses_dir, exist_ok=True)
 
-            # Fetch course page
             r = client.get(f"/courses/{course.id}")
             if r.status_code == 200:
                 html = rewrite_html(r.content)
                 with open(os.path.join(courses_dir, f"{course.id}.html"), "w", encoding="utf-8") as f:
                     f.write(html)
 
-            # Fetch lessons
             lessons = session.exec(select(Lesson).where(Lesson.course_id == course.id)).all()
             for lesson in lessons:
                 lessons_dir = os.path.join(courses_dir, str(course.id), "lessons")
@@ -119,29 +115,29 @@ def export_site():
                         f.write(html)
 
     print("Exporting notices...")
-    # 4. Export notices
     notices_dir = os.path.join(BUILD_DIR, "notices")
     os.makedirs(notices_dir, exist_ok=True)
     
-    # Export notices list
     r = client.get("/notices")
     if r.status_code == 200:
         html = rewrite_html(r.content)
         with open(os.path.join(notices_dir, "index.html"), "w", encoding="utf-8") as f:
             f.write(html)
-        print("  - notices/index.html exported")
+        print("  - notices/index.html")
     
-    # Export individual notices
-    notices = session.exec(select(Notice).where(Notice.is_active == True)).all()
-    for notice in notices:
-        r = client.get(f"/notices/{notice.id}")
-        if r.status_code == 200:
-            html = rewrite_html(r.content)
-            with open(os.path.join(notices_dir, f"{notice.id}.html"), "w", encoding="utf-8") as f:
-                f.write(html)
-            print(f"  - notices/{notice.id}.html exported")
+    with Session(engine) as session:
+        notices = session.exec(select(Notice).where(Notice.is_active == True)).all()
+        for notice in notices:
+            r = client.get(f"/notices/{notice.id}")
+            if r.status_code == 200:
+                html = rewrite_html(r.content)
+                with open(os.path.join(notices_dir, f"{notice.id}.html"), "w", encoding="utf-8") as f:
+                    f.write(html)
+                print(f"  - notices/{notice.id}.html")
 
-    print("Static site exported successfully. Ready for GitHub Pages!")
+    print("\n✅ Static site exported successfully!")
+    print(f"   Location: {BUILD_DIR}")
+    print(f"   Files: index.html, courses/, notices/")
 
 if __name__ == "__main__":
     export_site()
