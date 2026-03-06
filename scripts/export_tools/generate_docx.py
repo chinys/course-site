@@ -58,40 +58,126 @@ def _strip(text):
 
 
 def _parse_table_rows(table_html):
-    """HTML 테이블에서 행/셀 추출 → list of list of (text, is_header)"""
+    """HTML 테이블에서 행/셀 추출 → list of list of (text, is_header, colspan, rowspan)"""
     rows = []
     for tr_match in re.finditer(r'<tr[^>]*>(.*?)</tr>', table_html, re.DOTALL):
         tr = tr_match.group(1)
         cells = []
-        for cell_match in re.finditer(r'<(th|td)[^>]*>(.*?)</\1>', tr, re.DOTALL):
+        for cell_match in re.finditer(r'<(th|td)([^>]*)>(.*?)</\1>', tr, re.DOTALL):
             tag = cell_match.group(1)
-            content = _strip(cell_match.group(2))
-            cells.append((content, tag == 'th'))
+            attrs = cell_match.group(2)
+            content = _strip(cell_match.group(3))
+            
+            # colspan, rowspan 추출
+            colspan = 1
+            rowspan = 1
+            colspan_match = re.search(r'colspan=["\']?(\d+)["\']?', attrs)
+            rowspan_match = re.search(r'rowspan=["\']?(\d+)["\']?', attrs)
+            if colspan_match:
+                colspan = int(colspan_match.group(1))
+            if rowspan_match:
+                rowspan = int(rowspan_match.group(1))
+            
+            cells.append({
+                'text': content,
+                'is_header': tag == 'th',
+                'colspan': colspan,
+                'rowspan': rowspan
+            })
         if cells:
             rows.append(cells)
     return rows
 
 
 def _add_word_table(doc, rows):
-    """파싱된 테이블 데이터를 Word 테이블로 추가"""
+    """파싱된 테이블 데이터를 Word 테이블로 추가 (rowspan/colspan 지원)"""
     if not rows:
         return
-    max_cols = max(len(r) for r in rows)
-    table = doc.add_table(rows=len(rows), cols=max_cols)
-    table.style = 'Table Grid'
+    
+    # 최대 열 수 계산 (colspan 고려)
+    max_cols = 0
+    for row_data in rows:
+        col_count = 0
+        for cell_data in row_data:
+            colspan = cell_data.get('colspan', 1)
+            col_count += colspan
+        max_cols = max(max_cols, col_count)
+    
+    # rowspan 을 고려한 실제 행 수 계산
+    actual_rows = len(rows)
     for i, row_data in enumerate(rows):
-        row = table.rows[i]
-        for j, (text, is_header) in enumerate(row_data):
-            if j >= max_cols:
+        for cell_data in row_data:
+            rowspan = cell_data.get('rowspan', 1)
+            if rowspan > 1:
+                actual_rows += rowspan - 1
+    
+    table = doc.add_table(rows=actual_rows, cols=max_cols)
+    table.style = 'Table Grid'
+    
+    # 셀 병합 추적을 위한 그리드
+    cell_grid = [[False for _ in range(max_cols)] for _ in range(actual_rows)]
+    
+    current_row = 0
+    for i, row_data in enumerate(rows):
+        col_idx = 0
+        for cell_data in row_data:
+            # 빈 셀 찾기
+            while col_idx < max_cols and cell_grid[current_row][col_idx]:
+                col_idx += 1
+            
+            if col_idx >= max_cols:
                 break
-            cell = row.cells[j]
-            cell.text = ''
-            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
-            p = cell.paragraphs[0]
-            if is_header:
-                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            run = p.add_run(text)
-            _set_kr(run, size=Pt(9), bold=is_header)
+            
+            text = cell_data['text']
+            is_header = cell_data['is_header']
+            colspan = cell_data.get('colspan', 1)
+            rowspan = cell_data.get('rowspan', 1)
+            
+            # Word 테이블에서 셀 병합
+            try:
+                # 병합할 셀 범위 계산
+                end_row = min(current_row + rowspan, actual_rows)
+                end_col = min(col_idx + colspan, max_cols)
+                
+                # 첫 번째 셀 가져오기
+                start_cell = table.cell(current_row, col_idx)
+                
+                # rowspan > 1 또는 colspan > 1 이면 셀 병합
+                if rowspan > 1 or colspan > 1:
+                    end_cell = table.cell(end_row - 1, end_col - 1)
+                    start_cell.merge(end_cell)
+                
+                # 셀 내용 설정
+                cell = table.cell(current_row, col_idx)
+                cell.text = ''
+                cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+                p = cell.paragraphs[0]
+                if is_header:
+                    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                run = p.add_run(text)
+                _set_kr(run, size=Pt(9), bold=is_header)
+                
+                # 병합된 셀을 그리드에 표시
+                for r in range(current_row, end_row):
+                    for c in range(col_idx, end_col):
+                        cell_grid[r][c] = True
+            
+            except Exception as e:
+                # 병합 실패 시 일반 셀로 추가
+                if col_idx < max_cols:
+                    cell = table.cell(current_row, col_idx)
+                    cell.text = text
+                    cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+                    p = cell.paragraphs[0]
+                    if is_header:
+                        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    run = p.add_run(text)
+                    _set_kr(run, size=Pt(9), bold=is_header)
+            
+            col_idx += colspan
+        
+        current_row += 1
+    
     doc.add_paragraph()  # 테이블 후 빈 줄
 
 
