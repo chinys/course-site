@@ -165,79 +165,28 @@
 
 ---
 
-## 1. 왜 비동기 데이터베이스?
-
-### 동기 vs 비동기
-
-```python
-# ❌ 동기: 블로킹 발생
-@app.get(&#34;/users&#34;)
-def get_users():
-    users = db.query(User).all()  # ← 여기서 블로킹!
-    return users
-
-# ✅ 비동기: 블로킹 없음
-@app.get(&#34;/users&#34;)
-async def get_users():
-    users = await db.execute(select(User))
-    return users
-```
-
----
-
-## 2. AsyncEngine 설정
-
-### 설치
-
-```bash
-pip install asyncpg  # PostgreSQL
-pip install aiomysql  # MySQL
-pip install sqlalchemy&gt;=2.0
-```
-
-### 설정
+## 1. AsyncEngine 설정
 
 ```python
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = &#34;postgresql+asyncpg://user:pass@localhost/dbname&#34;
 
 engine = create_async_engine(
     DATABASE_URL,
-    pool_size=20,
-    pool_pre_ping=True,  # 연결 유효성 검사
+    pool_pre_ping=True,
 )
 
 AsyncSessionLocal = sessionmaker(
     bind=engine,
     class_=AsyncSession,
-    expire_on_commit=False,  # 중요!
+    expire_on_commit=False,
 )
-```
-
-### 의존성 함수
-
-```python
-from typing import AsyncGenerator
-
-async def get_db() -&gt; AsyncGenerator[AsyncSession, None]:
-    async with AsyncSessionLocal() as session:
-        try:
-            yield session
-            await session.commit()
-        except Exception:
-            await session.rollback()
-            raise
-        finally:
-            await session.close()
 ```
 
 ---
 
-## 3. 비동기 CRUD
-
-### Create
+## 2. 비동기 CRUD
 
 ```python
 @app.post(&#34;/users&#34;, response_model=User)
@@ -249,122 +198,18 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return db_user
 ```
 
-### Read
-
-```python
-@app.get(&#34;/users/{id}&#34;, response_model=User)
-async def get_user(id: int, db: AsyncSession = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, &#34;Not found&#34;)
-    return user
-
-@app.get(&#34;/users&#34;, response_model=list[User])
-async def get_users(skip: int = 0, limit: int = 100, db = Depends(get_db)):
-    result = await db.execute(select(User).offset(skip).limit(limit))
-    return result.scalars().all()
-```
-
-### Update
-
-```python
-@app.patch(&#34;/users/{id}&#34;)
-async def update_user(id: int, update_data: UserUpdate, db = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, &#34;Not found&#34;)
-    
-    for key, value in update_data.model_dump(exclude_unset=True).items():
-        setattr(user, key, value)
-    
-    db.add(user)
-    await db.commit()
-    await db.refresh(user)
-    return user
-```
-
-### Delete
-
-```python
-@app.delete(&#34;/users/{id}&#34;, status_code=204)
-async def delete_user(id: int, db = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, &#34;Not found&#34;)
-    
-    await db.delete(user)
-    await db.commit()
-```
-
 ---
 
-## 4. N+1 문제 해결
-
-### 문제
-
-```python
-# ❌ N+1: 1 + N 번 쿼리
-posts = await db.execute(select(Post))
-posts = posts.scalars().all()
-
-for post in posts:
-    author = await db.get(User, post.author_id)  # 매번 쿼리!
-```
-
-### 해결: joinedload (1:1)
-
-```python
-from sqlalchemy.orm import joinedload
-
-# ✅ 1 번 쿼리 (JOIN)
-result = await db.execute(
-    select(Post).options(joinedload(Post.author))
-)
-posts = result.scalars().unique().all()
-```
-
-### 해결: selectinload (1:N)
+## 3. N+1 문제 해결
 
 ```python
 from sqlalchemy.orm import selectinload
 
-# ✅ 2 번 쿼리
+# ✅ selectinload 로 2 번 쿼리
 result = await db.execute(
     select(User).options(selectinload(User.posts))
 )
 users = result.scalars().unique().all()
-```
-
----
-
-## 📝 연습 문제
-
-1. `Product` 모델 비동기 CRUD 만들기
-2. `Order` 와 `OrderItem` 관계 selectinload 로 조회
-3. Alembic 마이그레이션 설정
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. MissingGreenletException 에러**
-```python
-# ❌ 동기 방식
-user = db.query(User).first()  # ❌ 에러!
-
-# ✅ 비동기 방식
-result = await db.execute(select(User))
-user = result.scalar_one()  # ✅
-```
-
-**Q2. commit 후 속성 접근 에러**
-```python
-# ✅ expire_on_commit=False 필수
-AsyncSessionLocal = sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False,  # ✅
-)
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -377,79 +222,28 @@ AsyncSessionLocal = sessionmaker(
 
 ---
 
-## 1. 왜 비동기 데이터베이스?
-
-### 동기 vs 비동기
-
-```python
-# ❌ 동기: 블로킹 발생
-@app.get("/users")
-def get_users():
-    users = db.query(User).all()  # ← 여기서 블로킹!
-    return users
-
-# ✅ 비동기: 블로킹 없음
-@app.get("/users")
-async def get_users():
-    users = await db.execute(select(User))
-    return users
-```
-
----
-
-## 2. AsyncEngine 설정
-
-### 설치
-
-```bash
-pip install asyncpg  # PostgreSQL
-pip install aiomysql  # MySQL
-pip install sqlalchemy&gt;=2.0
-```
-
-### 설정
+## 1. AsyncEngine 설정
 
 ```python
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = "postgresql+asyncpg://user:pass@localhost/dbname"
 
 engine = create_async_engine(
     DATABASE_URL,
-    pool_size=20,
-    pool_pre_ping=True,  # 연결 유효성 검사
+    pool_pre_ping=True,
 )
 
 AsyncSessionLocal = sessionmaker(
     bind=engine,
     class_=AsyncSession,
-    expire_on_commit=False,  # 중요!
+    expire_on_commit=False,
 )
-```
-
-### 의존성 함수
-
-```python
-from typing import AsyncGenerator
-
-async def get_db() -&gt; AsyncGenerator[AsyncSession, None]:
-    async with AsyncSessionLocal() as session:
-        try:
-            yield session
-            await session.commit()
-        except Exception:
-            await session.rollback()
-            raise
-        finally:
-            await session.close()
 ```
 
 ---
 
-## 3. 비동기 CRUD
-
-### Create
+## 2. 비동기 CRUD
 
 ```python
 @app.post("/users", response_model=User)
@@ -461,122 +255,18 @@ async def create_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return db_user
 ```
 
-### Read
-
-```python
-@app.get("/users/{id}", response_model=User)
-async def get_user(id: int, db: AsyncSession = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, "Not found")
-    return user
-
-@app.get("/users", response_model=list[User])
-async def get_users(skip: int = 0, limit: int = 100, db = Depends(get_db)):
-    result = await db.execute(select(User).offset(skip).limit(limit))
-    return result.scalars().all()
-```
-
-### Update
-
-```python
-@app.patch("/users/{id}")
-async def update_user(id: int, update_data: UserUpdate, db = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, "Not found")
-    
-    for key, value in update_data.model_dump(exclude_unset=True).items():
-        setattr(user, key, value)
-    
-    db.add(user)
-    await db.commit()
-    await db.refresh(user)
-    return user
-```
-
-### Delete
-
-```python
-@app.delete("/users/{id}", status_code=204)
-async def delete_user(id: int, db = Depends(get_db)):
-    user = await db.get(User, id)
-    if not user:
-        raise HTTPException(404, "Not found")
-    
-    await db.delete(user)
-    await db.commit()
-```
-
 ---
 
-## 4. N+1 문제 해결
-
-### 문제
-
-```python
-# ❌ N+1: 1 + N 번 쿼리
-posts = await db.execute(select(Post))
-posts = posts.scalars().all()
-
-for post in posts:
-    author = await db.get(User, post.author_id)  # 매번 쿼리!
-```
-
-### 해결: joinedload (1:1)
-
-```python
-from sqlalchemy.orm import joinedload
-
-# ✅ 1 번 쿼리 (JOIN)
-result = await db.execute(
-    select(Post).options(joinedload(Post.author))
-)
-posts = result.scalars().unique().all()
-```
-
-### 해결: selectinload (1:N)
+## 3. N+1 문제 해결
 
 ```python
 from sqlalchemy.orm import selectinload
 
-# ✅ 2 번 쿼리
+# ✅ selectinload 로 2 번 쿼리
 result = await db.execute(
     select(User).options(selectinload(User.posts))
 )
 users = result.scalars().unique().all()
-```
-
----
-
-## 📝 연습 문제
-
-1. `Product` 모델 비동기 CRUD 만들기
-2. `Order` 와 `OrderItem` 관계 selectinload 로 조회
-3. Alembic 마이그레이션 설정
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. MissingGreenletException 에러**
-```python
-# ❌ 동기 방식
-user = db.query(User).first()  # ❌ 에러!
-
-# ✅ 비동기 방식
-result = await db.execute(select(User))
-user = result.scalar_one()  # ✅
-```
-
-**Q2. commit 후 속성 접근 에러**
-```python
-# ✅ expire_on_commit=False 필수
-AsyncSessionLocal = sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False,  # ✅
-)
 ```
 
                 </div>

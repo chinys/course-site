@@ -167,40 +167,13 @@
 
 ## 1. HTTPException 기본
 
-### 왜 HTTPException 인가요?
-
-```python
-# ❌ 일반 Exception: 500 에러
-@app.get(&#34;/users/{id}&#34;)
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise Exception(&#34;Not found&#34;)  # ❌ 500 에러!
-
-# ✅ HTTPException: 올바른 상태 코드
-from fastapi import HTTPException
-
-@app.get(&#34;/users/{id}&#34;)
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise HTTPException(404, &#34;User not found&#34;)  # ✅ 404!
-```
-
-### 기본 사용법
-
 ```python
 from fastapi import HTTPException
-
-items_db = {1: &#34;Laptop&#34;, 2: &#34;Mouse&#34;}
 
 @app.get(&#34;/items/{id}&#34;)
 def get_item(id: int):
     if id not in items_db:
-        raise HTTPException(
-            status_code=404,
-            detail=f&#34;Item {id} not found&#34;
-        )
+        raise HTTPException(status_code=404, detail=&#34;Item not found&#34;)
     return {&#34;item&#34;: items_db[id]}
 ```
 
@@ -209,8 +182,6 @@ def get_item(id: int):
 ## 2. 커스텀 예외 클래스
 
 ```python
-from fastapi import HTTPException
-
 class NotFoundException(HTTPException):
     def __init__(self, resource: str, id: int):
         super().__init__(
@@ -218,131 +189,12 @@ class NotFoundException(HTTPException):
             detail=f&#34;{resource} {id} not found&#34;
         )
 
-class UnauthorizedException(HTTPException):
-    def __init__(self, message: str = &#34;Not authenticated&#34;):
-        super().__init__(
-            status_code=401,
-            detail=message,
-            headers={&#34;WWW-Authenticate&#34;: &#34;Bearer&#34;}
-        )
-
-# 사용 예시
 @app.get(&#34;/users/{id}&#34;)
 def get_user(id: int):
     user = db.get(id)
     if not user:
         raise NotFoundException(&#34;User&#34;, id)
     return user
-```
-
----
-
-## 3. 전역 예외 처리기
-
-```python
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from datetime import datetime
-
-app = FastAPI()
-
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            &#34;timestamp&#34;: datetime.now().isoformat(),
-            &#34;status&#34;: exc.status_code,
-            &#34;error&#34;: exc.detail,
-            &#34;path&#34;: str(request.url.path)
-        }
-    )
-
-@app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
-    # 로깅
-    print(f&#34;Error: {exc}&#34;)
-    
-    # 안전한 응답
-    return JSONResponse(
-        status_code=500,
-        content={
-            &#34;error&#34;: &#34;Internal Server Error&#34;,
-            &#34;message&#34;: &#34;An error occurred&#34;
-        }
-    )
-```
-
----
-
-## 4. 실전 예제
-
-```python
-class AppException(HTTPException):
-    def __init__(self, status_code: int, error_code: str, message: str):
-        super().__init__(
-            status_code=status_code,
-            detail={&#34;error_code&#34;: error_code, &#34;message&#34;: message}
-        )
-
-class UserNotFoundException(AppException):
-    def __init__(self, user_id: int):
-        super().__init__(
-            status_code=404,
-            error_code=&#34;USER_NOT_FOUND&#34;,
-            message=f&#34;User {user_id} not found&#34;
-        )
-
-@app.get(&#34;/users/{id}&#34;)
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise UserNotFoundException(id)
-    return user
-```
-
-**응답 예시:**
-```json
-{
-    &#34;detail&#34;: {
-        &#34;error_code&#34;: &#34;USER_NOT_FOUND&#34;,
-        &#34;message&#34;: &#34;User 123 not found&#34;
-    }
-}
-```
-
----
-
-## 📝 연습 문제
-
-1. `ProductNotFoundException` 예외 클래스 만들기
-2. 전역 예외 처리기에 타임스탬프 추가
-3. 로그인 실패 시 401 에러 반환
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 예외 raise 했는데 응답이 안 나가요.**
-```python
-# ✅ 올바른 방법
-@app.get(&#34;/items/{id}&#34;)
-def get_item(id: int):
-    if id not in items:
-        raise HTTPException(404, &#34;Not found&#34;)
-    return items[id]  # ✅ 여기 도달
-```
-
-**Q2. 에러 상세 정보를 숨기고 싶어요.**
-```python
-# 프로덕션에서는 안전한 메시지
-@app.exception_handler(Exception)
-async def handler(request, exc):
-    # ❌ 위험
-    return {&#34;error&#34;: str(exc)}
-    
-    # ✅ 안전
-    return {&#34;error&#34;: &#34;Internal error&#34;}
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -357,40 +209,13 @@ async def handler(request, exc):
 
 ## 1. HTTPException 기본
 
-### 왜 HTTPException 인가요?
-
-```python
-# ❌ 일반 Exception: 500 에러
-@app.get("/users/{id}")
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise Exception("Not found")  # ❌ 500 에러!
-
-# ✅ HTTPException: 올바른 상태 코드
-from fastapi import HTTPException
-
-@app.get("/users/{id}")
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise HTTPException(404, "User not found")  # ✅ 404!
-```
-
-### 기본 사용법
-
 ```python
 from fastapi import HTTPException
-
-items_db = {1: "Laptop", 2: "Mouse"}
 
 @app.get("/items/{id}")
 def get_item(id: int):
     if id not in items_db:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Item {id} not found"
-        )
+        raise HTTPException(status_code=404, detail="Item not found")
     return {"item": items_db[id]}
 ```
 
@@ -399,8 +224,6 @@ def get_item(id: int):
 ## 2. 커스텀 예외 클래스
 
 ```python
-from fastapi import HTTPException
-
 class NotFoundException(HTTPException):
     def __init__(self, resource: str, id: int):
         super().__init__(
@@ -408,131 +231,12 @@ class NotFoundException(HTTPException):
             detail=f"{resource} {id} not found"
         )
 
-class UnauthorizedException(HTTPException):
-    def __init__(self, message: str = "Not authenticated"):
-        super().__init__(
-            status_code=401,
-            detail=message,
-            headers={"WWW-Authenticate": "Bearer"}
-        )
-
-# 사용 예시
 @app.get("/users/{id}")
 def get_user(id: int):
     user = db.get(id)
     if not user:
         raise NotFoundException("User", id)
     return user
-```
-
----
-
-## 3. 전역 예외 처리기
-
-```python
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from datetime import datetime
-
-app = FastAPI()
-
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "timestamp": datetime.now().isoformat(),
-            "status": exc.status_code,
-            "error": exc.detail,
-            "path": str(request.url.path)
-        }
-    )
-
-@app.exception_handler(Exception)
-async def global_exception_handler(request, exc):
-    # 로깅
-    print(f"Error: {exc}")
-    
-    # 안전한 응답
-    return JSONResponse(
-        status_code=500,
-        content={
-            "error": "Internal Server Error",
-            "message": "An error occurred"
-        }
-    )
-```
-
----
-
-## 4. 실전 예제
-
-```python
-class AppException(HTTPException):
-    def __init__(self, status_code: int, error_code: str, message: str):
-        super().__init__(
-            status_code=status_code,
-            detail={"error_code": error_code, "message": message}
-        )
-
-class UserNotFoundException(AppException):
-    def __init__(self, user_id: int):
-        super().__init__(
-            status_code=404,
-            error_code="USER_NOT_FOUND",
-            message=f"User {user_id} not found"
-        )
-
-@app.get("/users/{id}")
-def get_user(id: int):
-    user = db.get(id)
-    if not user:
-        raise UserNotFoundException(id)
-    return user
-```
-
-**응답 예시:**
-```json
-{
-    "detail": {
-        "error_code": "USER_NOT_FOUND",
-        "message": "User 123 not found"
-    }
-}
-```
-
----
-
-## 📝 연습 문제
-
-1. `ProductNotFoundException` 예외 클래스 만들기
-2. 전역 예외 처리기에 타임스탬프 추가
-3. 로그인 실패 시 401 에러 반환
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 예외 raise 했는데 응답이 안 나가요.**
-```python
-# ✅ 올바른 방법
-@app.get("/items/{id}")
-def get_item(id: int):
-    if id not in items:
-        raise HTTPException(404, "Not found")
-    return items[id]  # ✅ 여기 도달
-```
-
-**Q2. 에러 상세 정보를 숨기고 싶어요.**
-```python
-# 프로덕션에서는 안전한 메시지
-@app.exception_handler(Exception)
-async def handler(request, exc):
-    # ❌ 위험
-    return {"error": str(exc)}
-    
-    # ✅ 안전
-    return {"error": "Internal error"}
 ```
 
                 </div>

@@ -178,13 +178,6 @@
 | ✅ **타입 검증** | Python 타입 힌트 기반 자동 검증 |
 | 🛠️ **IDE 지원** | VSCode, PyCharm 에서 자동완성 |
 
-### 다른 프레임워크와 비교
-
-```
-Flask/Django: 동기식, 수동 검증, 별도 문서화 필요
-FastAPI:    비동기식, 자동 검증, 자동 문서화 ✅
-```
-
 ---
 
 ## 2. 설치하기
@@ -192,33 +185,20 @@ FastAPI:    비동기식, 자동 검증, 자동 문서화 ✅
 ```bash
 # FastAPI 와 서버 (uvicorn) 설치
 pip install fastapi &#34;uvicorn[standard]&#34;
-
-# 또는 uv 사용 (더 빠름)
-uv add fastapi uvicorn
 ```
 
 ---
 
 ## 3. 첫 FastAPI 애플리케이션
 
-`main.py` 파일 생성:
-
 ```python
 from fastapi import FastAPI
 
-app = FastAPI(
-    title=&#34;내 첫 API&#34;,
-    description=&#34;Hello World 예제&#34;,
-    version=&#34;1.0.0&#34;
-)
+app = FastAPI()
 
 @app.get(&#34;/&#34;)
 def read_root():
     return {&#34;message&#34;: &#34;Hello, FastAPI World!&#34;}
-
-@app.get(&#34;/add/{a}/{b}&#34;)
-def add_numbers(a: int, b: int):
-    return {&#34;result&#34;: a + b}
 ```
 
 ---
@@ -226,97 +206,16 @@ def add_numbers(a: int, b: int):
 ## 4. 서버 실행
 
 ```bash
-# 개발 모드 (--reload: 코드 변경 시 자동 재시작)
 uvicorn main:app --reload --port 8000
 ```
-
-**명령어 해석:**
-- `main`: main.py 파일명
-- `app`: FastAPI() 인스턴스 변수명
-- `--reload`: 개발용 자동 재시작
-- `--port 8000`: 포트 번호
 
 ---
 
 ## 5. 자동 생성 API 문서
 
-서버 실행 후 다음 URL 로 접속:
-
-### Swagger UI (대화형 테스트)
-```
-http://127.0.0.1:8000/docs
-```
-
-**기능:**
-- API 테스트 (Try it out)
-- 요청/응답 스키마 자동 표시
-- 인증 처리 UI 지원
-
-### ReDoc (깔끔한 문서)
-```
-http://127.0.0.1:8000/redoc
-```
-
-### OpenAPI JSON (기계용)
-```
-http://127.0.0.1:8000/openapi.json
-```
-
----
-
-## 6. 실습: 나만의 API 만들기
-
-다음 엔드포인트들을 직접 만들어보세요:
-
-```python
-@app.get(&#34;/profile&#34;)
-def get_profile():
-    return {
-        &#34;name&#34;: &#34;홍길동&#34;,
-        &#34;age&#34;: 25,
-        &#34;job&#34;: &#34;개발자&#34;
-    }
-
-@app.get(&#34;/gugudan/{dan}&#34;)
-def get_gugudan(dan: int):
-    result = [f&#34;{dan} x {i} = {dan * i}&#34; for i in range(1, 10)]
-    return {&#34;dan&#34;: dan, &#34;result&#34;: result}
-
-@app.get(&#34;/lotto&#34;)
-def generate_lotto():
-    import random
-    numbers = random.sample(range(1, 46), 6)
-    numbers.sort()
-    return {&#34;numbers&#34;: numbers}
-```
-
----
-
-## 📝 연습 문제
-
-1. `/hello/{name}` 엔드포인트 만들기
-2. `/multiply/{a}/{b}` 엔드포인트 만들기
-3. Swagger UI 에서 테스트하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. uvicorn 명령어를 찾을 수 없어요.**
-```bash
-# 가상환경 활성화 확인
-# Windows
-.venv\Scripts\activate
-
-# macOS/Linux
-source .venv/bin/activate
-```
-
-**Q2. 포트가 이미 사용 중이에요.**
-```bash
-# 다른 포트 사용
-uvicorn main:app --reload --port 8001
-```
+- **Swagger UI**: http://127.0.0.1:8000/docs
+- **ReDoc**: http://127.0.0.1:8000/redoc
+- **OpenAPI JSON**: http://127.0.0.1:8000/openapi.json
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # 1 강. FastAPI 입문: 설치부터 Hello World 까지
@@ -341,13 +240,6 @@ uvicorn main:app --reload --port 8001
 | ✅ **타입 검증** | Python 타입 힌트 기반 자동 검증 |
 | 🛠️ **IDE 지원** | VSCode, PyCharm 에서 자동완성 |
 
-### 다른 프레임워크와 비교
-
-```
-Flask/Django: 동기식, 수동 검증, 별도 문서화 필요
-FastAPI:    비동기식, 자동 검증, 자동 문서화 ✅
-```
-
 ---
 
 ## 2. 설치하기
@@ -355,33 +247,20 @@ FastAPI:    비동기식, 자동 검증, 자동 문서화 ✅
 ```bash
 # FastAPI 와 서버 (uvicorn) 설치
 pip install fastapi "uvicorn[standard]"
-
-# 또는 uv 사용 (더 빠름)
-uv add fastapi uvicorn
 ```
 
 ---
 
 ## 3. 첫 FastAPI 애플리케이션
 
-`main.py` 파일 생성:
-
 ```python
 from fastapi import FastAPI
 
-app = FastAPI(
-    title="내 첫 API",
-    description="Hello World 예제",
-    version="1.0.0"
-)
+app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"message": "Hello, FastAPI World!"}
-
-@app.get("/add/{a}/{b}")
-def add_numbers(a: int, b: int):
-    return {"result": a + b}
 ```
 
 ---
@@ -389,97 +268,16 @@ def add_numbers(a: int, b: int):
 ## 4. 서버 실행
 
 ```bash
-# 개발 모드 (--reload: 코드 변경 시 자동 재시작)
 uvicorn main:app --reload --port 8000
 ```
-
-**명령어 해석:**
-- `main`: main.py 파일명
-- `app`: FastAPI() 인스턴스 변수명
-- `--reload`: 개발용 자동 재시작
-- `--port 8000`: 포트 번호
 
 ---
 
 ## 5. 자동 생성 API 문서
 
-서버 실행 후 다음 URL 로 접속:
-
-### Swagger UI (대화형 테스트)
-```
-http://127.0.0.1:8000/docs
-```
-
-**기능:**
-- API 테스트 (Try it out)
-- 요청/응답 스키마 자동 표시
-- 인증 처리 UI 지원
-
-### ReDoc (깔끔한 문서)
-```
-http://127.0.0.1:8000/redoc
-```
-
-### OpenAPI JSON (기계용)
-```
-http://127.0.0.1:8000/openapi.json
-```
-
----
-
-## 6. 실습: 나만의 API 만들기
-
-다음 엔드포인트들을 직접 만들어보세요:
-
-```python
-@app.get("/profile")
-def get_profile():
-    return {
-        "name": "홍길동",
-        "age": 25,
-        "job": "개발자"
-    }
-
-@app.get("/gugudan/{dan}")
-def get_gugudan(dan: int):
-    result = [f"{dan} x {i} = {dan * i}" for i in range(1, 10)]
-    return {"dan": dan, "result": result}
-
-@app.get("/lotto")
-def generate_lotto():
-    import random
-    numbers = random.sample(range(1, 46), 6)
-    numbers.sort()
-    return {"numbers": numbers}
-```
-
----
-
-## 📝 연습 문제
-
-1. `/hello/{name}` 엔드포인트 만들기
-2. `/multiply/{a}/{b}` 엔드포인트 만들기
-3. Swagger UI 에서 테스트하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. uvicorn 명령어를 찾을 수 없어요.**
-```bash
-# 가상환경 활성화 확인
-# Windows
-.venv\Scripts\activate
-
-# macOS/Linux
-source .venv/bin/activate
-```
-
-**Q2. 포트가 이미 사용 중이에요.**
-```bash
-# 다른 포트 사용
-uvicorn main:app --reload --port 8001
-```
+- **Swagger UI**: http://127.0.0.1:8000/docs
+- **ReDoc**: http://127.0.0.1:8000/redoc
+- **OpenAPI JSON**: http://127.0.0.1:8000/openapi.json
 
                 </div>
 </div>

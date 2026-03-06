@@ -167,22 +167,14 @@
 
 ## 1. 경로 매개변수 (Path Parameter)
 
-### 기본 사용법
-
 ```python
 from fastapi import FastAPI
 
 app = FastAPI()
 
-# /users/123 → user_id = 123
 @app.get(&#34;/users/{user_id}&#34;)
 def get_user(user_id: int):
     return {&#34;user_id&#34;: user_id}
-
-# /posts/456/comments/789
-@app.get(&#34;/posts/{post_id}/comments/{comment_id}&#34;)
-def get_comment(post_id: int, comment_id: int):
-    return {&#34;post_id&#34;: post_id, &#34;comment_id&#34;: comment_id}
 ```
 
 ### 타입 변환의 마법
@@ -192,168 +184,39 @@ FastAPI 는 **타입 힌트를 보고 자동으로 변환**합니다!
 ```python
 @app.get(&#34;/items/{item_id}&#34;)
 def get_item(item_id: int):
-    return {&#34;item_id&#34;: item_id, &#34;type&#34;: type(item_id)}
-```
-
-**실제 동작:**
-```
-GET /items/42
-→ {&#34;item_id&#34;: 42, &#34;type&#34;: &#34;&lt;class &#39;int&#39;&gt;&#34;}
-
-GET /items/hello
-→ HTTP 422 Error: &#34;value is not a valid integer&#34;
+    return {&#34;item_id&#34;: item_id}
 ```
 
 ---
 
 ## 2. 쿼리 매개변수 (Query Parameter)
 
-### 기본 사용법
-
 ```python
 @app.get(&#34;/items&#34;)
 def read_items(skip: int = 0, limit: int = 10):
-    &#34;&#34;&#34;
-    skip: 몇 개부터 시작할지 (기본값: 0)
-    limit: 몇 개까지 가져올지 (기본값: 10)
-    &#34;&#34;&#34;
     return {&#34;skip&#34;: skip, &#34;limit&#34;: limit}
 ```
 
 **URL 예시:**
 - `/items` → skip=0, limit=10
-- `/items?skip=20` → skip=20, limit=10
 - `/items?skip=20&amp;limit=5` → skip=20, limit=5
-
-### 선택적 매개변수
-
-```python
-from typing import Optional
-
-@app.get(&#34;/search&#34;)
-def search(q: Optional[str] = None):
-    if q:
-        return {&#34;message&#34;: f&#34;&#39;{q}&#39; 검색 결과&#34;}
-    return {&#34;message&#34;: &#34;검색어를 입력하세요&#34;}
-```
 
 ---
 
 ## 3. Path() 와 Query() 고급 옵션
 
-### Path() 옵션
-
 ```python
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query
 from typing import Annotated
 
 app = FastAPI()
 
 @app.get(&#34;/articles/{article_id}&#34;)
 def read_article(
-    article_id: Annotated[
-        int,
-        Path(
-            title=&#34;기사 ID&#34;,
-            ge=1,      # 1 이상
-            le=10000,  # 10000 이하
-            example=42
-        )
-    ]
+    article_id: Annotated[int, Path(ge=1, le=10000)],
+    q: Annotated[str | None, Query(max_length=50)] = None
 ):
-    return {&#34;article_id&#34;: article_id}
-```
-
-**주요 옵션:**
-| 옵션 | 설명 | 예시 |
-|------|------|------|
-| `gt` | 초과 | `gt=0` → 1 이상 |
-| `ge` | 이상 | `ge=1` → 1 이상 |
-| `lt` | 미만 | `lt=100` → 99 이하 |
-| `le` | 이하 | `le=100` → 100 이하 |
-| `min_length` | 최소 길이 | `min_length=3` |
-| `max_length` | 최대 길이 | `max_length=50` |
-
-### Query() 옵션
-
-```python
-from fastapi import FastAPI, Query
-from typing import Annotated, Optional
-
-app = FastAPI()
-
-@app.get(&#34;/products&#34;)
-def read_products(
-    category: Annotated[
-        str,
-        Query(
-            min_length=2,
-            max_length=20,
-            pattern=&#34;^[a-zA-Z0-9_-]+$&#34;
-        )
-    ],
-    sort: Annotated[Optional[str], Query(alias=&#34;order-by&#34;)] = None,
-    limit: Annotated[int, Query(ge=1, le=100)] = 10
-):
-    return {&#34;category&#34;: category, &#34;sort&#34;: sort, &#34;limit&#34;: limit}
-```
-
----
-
-## 4. 실전 예제: 블로그 API
-
-```python
-from enum import Enum
-
-class SortOption(str, Enum):
-    NEWEST = &#34;newest&#34;
-    OLDEST = &#34;oldest&#34;
-    POPULAR = &#34;popular&#34;
-
-@app.get(&#34;/posts&#34;)
-def list_posts(
-    page: Annotated[int, Query(ge=1)] = 1,
-    limit: Annotated[int, Query(ge=1, le=50)] = 10,
-    category: Optional[str] = None,
-    sort: Optional[SortOption] = SortOption.NEWEST
-):
-    return {
-        &#34;page&#34;: page,
-        &#34;limit&#34;: limit,
-        &#34;category&#34;: category,
-        &#34;sort&#34;: sort
-    }
-```
-
----
-
-## 📝 연습 문제
-
-1. `/users/{user_id}/posts/{post_id}` 엔드포인트 만들기
-2. `/products` 에서 `min_price`, `max_price` 쿼리 매개변수 받기
-3. `/files/{file_path:path}` 로 전체 파일 경로 받기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 경로 매개변수와 함수 매개변수 이름이 달라도 되나요?**
-```python
-# ❌ 에러! 이름이 같아야 함
-@app.get(&#34;/users/{user_id}&#34;)
-def get_user(uid: int):  # user_id ≠ uid
-
-# ✅ 올바름
-@app.get(&#34;/users/{user_id}&#34;)
-def get_user(user_id: int):  # 이름 일치!
-```
-
-**Q2. 쿼리 매개변수를 필수로 만들고 싶어요.**
-```python
-# 기본값을 주지 않으면 필수
-@app.get(&#34;/search&#34;)
-def search(q: str):  # ✅ 필수 입력
-    return {&#34;query&#34;: q}
+    return {&#34;id&#34;: article_id, &#34;query&#34;: q}
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -368,22 +231,14 @@ def search(q: str):  # ✅ 필수 입력
 
 ## 1. 경로 매개변수 (Path Parameter)
 
-### 기본 사용법
-
 ```python
 from fastapi import FastAPI
 
 app = FastAPI()
 
-# /users/123 → user_id = 123
 @app.get("/users/{user_id}")
 def get_user(user_id: int):
     return {"user_id": user_id}
-
-# /posts/456/comments/789
-@app.get("/posts/{post_id}/comments/{comment_id}")
-def get_comment(post_id: int, comment_id: int):
-    return {"post_id": post_id, "comment_id": comment_id}
 ```
 
 ### 타입 변환의 마법
@@ -393,171 +248,42 @@ FastAPI 는 **타입 힌트를 보고 자동으로 변환**합니다!
 ```python
 @app.get("/items/{item_id}")
 def get_item(item_id: int):
-    return {"item_id": item_id, "type": type(item_id)}
-```
-
-**실제 동작:**
-```
-GET /items/42
-→ {"item_id": 42, "type": "<class 'int'="">"}
-
-GET /items/hello
-→ HTTP 422 Error: "value is not a valid integer"
+    return {"item_id": item_id}
 ```
 
 ---
 
 ## 2. 쿼리 매개변수 (Query Parameter)
 
-### 기본 사용법
-
 ```python
 @app.get("/items")
 def read_items(skip: int = 0, limit: int = 10):
-    """
-    skip: 몇 개부터 시작할지 (기본값: 0)
-    limit: 몇 개까지 가져올지 (기본값: 10)
-    """
     return {"skip": skip, "limit": limit}
 ```
 
 **URL 예시:**
 - `/items` → skip=0, limit=10
-- `/items?skip=20` → skip=20, limit=10
 - `/items?skip=20&amp;limit=5` → skip=20, limit=5
-
-### 선택적 매개변수
-
-```python
-from typing import Optional
-
-@app.get("/search")
-def search(q: Optional[str] = None):
-    if q:
-        return {"message": f"'{q}' 검색 결과"}
-    return {"message": "검색어를 입력하세요"}
-```
 
 ---
 
 ## 3. Path() 와 Query() 고급 옵션
 
-### Path() 옵션
-
 ```python
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query
 from typing import Annotated
 
 app = FastAPI()
 
 @app.get("/articles/{article_id}")
 def read_article(
-    article_id: Annotated[
-        int,
-        Path(
-            title="기사 ID",
-            ge=1,      # 1 이상
-            le=10000,  # 10000 이하
-            example=42
-        )
-    ]
+    article_id: Annotated[int, Path(ge=1, le=10000)],
+    q: Annotated[str | None, Query(max_length=50)] = None
 ):
-    return {"article_id": article_id}
+    return {"id": article_id, "query": q}
 ```
 
-**주요 옵션:**
-| 옵션 | 설명 | 예시 |
-|------|------|------|
-| `gt` | 초과 | `gt=0` → 1 이상 |
-| `ge` | 이상 | `ge=1` → 1 이상 |
-| `lt` | 미만 | `lt=100` → 99 이하 |
-| `le` | 이하 | `le=100` → 100 이하 |
-| `min_length` | 최소 길이 | `min_length=3` |
-| `max_length` | 최대 길이 | `max_length=50` |
-
-### Query() 옵션
-
-```python
-from fastapi import FastAPI, Query
-from typing import Annotated, Optional
-
-app = FastAPI()
-
-@app.get("/products")
-def read_products(
-    category: Annotated[
-        str,
-        Query(
-            min_length=2,
-            max_length=20,
-            pattern="^[a-zA-Z0-9_-]+$"
-        )
-    ],
-    sort: Annotated[Optional[str], Query(alias="order-by")] = None,
-    limit: Annotated[int, Query(ge=1, le=100)] = 10
-):
-    return {"category": category, "sort": sort, "limit": limit}
-```
-
----
-
-## 4. 실전 예제: 블로그 API
-
-```python
-from enum import Enum
-
-class SortOption(str, Enum):
-    NEWEST = "newest"
-    OLDEST = "oldest"
-    POPULAR = "popular"
-
-@app.get("/posts")
-def list_posts(
-    page: Annotated[int, Query(ge=1)] = 1,
-    limit: Annotated[int, Query(ge=1, le=50)] = 10,
-    category: Optional[str] = None,
-    sort: Optional[SortOption] = SortOption.NEWEST
-):
-    return {
-        "page": page,
-        "limit": limit,
-        "category": category,
-        "sort": sort
-    }
-```
-
----
-
-## 📝 연습 문제
-
-1. `/users/{user_id}/posts/{post_id}` 엔드포인트 만들기
-2. `/products` 에서 `min_price`, `max_price` 쿼리 매개변수 받기
-3. `/files/{file_path:path}` 로 전체 파일 경로 받기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 경로 매개변수와 함수 매개변수 이름이 달라도 되나요?**
-```python
-# ❌ 에러! 이름이 같아야 함
-@app.get("/users/{user_id}")
-def get_user(uid: int):  # user_id ≠ uid
-
-# ✅ 올바름
-@app.get("/users/{user_id}")
-def get_user(user_id: int):  # 이름 일치!
-```
-
-**Q2. 쿼리 매개변수를 필수로 만들고 싶어요.**
-```python
-# 기본값을 주지 않으면 필수
-@app.get("/search")
-def search(q: str):  # ✅ 필수 입력
-    return {"query": q}
-```
-
-                </class></div>
+                </div>
 </div>
 <div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
 <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/6/lessons/81.html">

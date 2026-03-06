@@ -165,19 +165,7 @@
 
 ---
 
-## 1. WebSocket 이란?
-
-### HTTP vs WebSocket
-
-| 구분 | HTTP | WebSocket |
-|------|------|-----------|
-| 방향 | 단방향 | 양방향 |
-| 연결 | 일회성 | 지속적 |
-| 사용 | 일반 API | 채팅, 실시간 |
-
----
-
-## 2. WebSocket 기본
+## 1. WebSocket 기본
 
 ```python
 from fastapi import WebSocket
@@ -185,35 +173,16 @@ from fastapi import WebSocket
 @app.websocket(&#34;/ws&#34;)
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(f&#34;You said: {data}&#34;)
 ```
 
-### 클라이언트
-
-```html
-&lt;script&gt;
-  const ws = new WebSocket(&#34;ws://localhost:8000/ws&#34;);
-  
-  ws.onmessage = (event) =&gt; {
-    console.log(event.data);
-  };
-  
-  function send() {
-    ws.send(&#34;Hello&#34;);
-  }
-&lt;/script&gt;
-```
-
 ---
 
-## 3. Connection Manager
+## 2. Connection Manager
 
 ```python
-from typing import List
-
 class ConnectionManager:
     def __init__(self):
         self.connections: List[WebSocket] = []
@@ -222,101 +191,26 @@ class ConnectionManager:
         await websocket.accept()
         self.connections.append(websocket)
     
-    def disconnect(self, websocket: WebSocket):
-        self.connections.remove(websocket)
-    
     async def broadcast(self, message: str):
         for conn in self.connections:
             await conn.send_text(message)
-
-manager = ConnectionManager()
-
-@app.websocket(&#34;/chat/{client_id}&#34;)
-async def chat(websocket: WebSocket, client_id: int):
-    await manager.connect(websocket)
-    await manager.broadcast(f&#34;Client #{client_id} joined&#34;)
-    
-    try:
-        while True:
-            data = await websocket.receive_text()
-            await manager.broadcast(f&#34;Client #{client_id}: {data}&#34;)
-    except WebSocketDisconnect:
-        manager.disconnect(websocket)
-        await manager.broadcast(f&#34;Client #{client_id} left&#34;)
 ```
 
 ---
 
-## 4. Server-Sent Events (SSE)
-
-### SSE 구현
+## 3. SSE (Server-Sent Events)
 
 ```python
 from fastapi.responses import StreamingResponse
-import asyncio
 
 async def event_generator():
-    count = 0
     while True:
         yield f&#34;data: {count}\n\n&#34;
         await asyncio.sleep(1)
-        count += 1
 
 @app.get(&#34;/events&#34;)
 async def stream_events():
-    return StreamingResponse(
-        event_generator(),
-        media_type=&#34;text/event-stream&#34;
-    )
-```
-
-### 클라이언트
-
-```html
-&lt;script&gt;
-  const es = new EventSource(&#34;/events&#34;);
-  
-  es.onmessage = (e) =&gt; {
-    console.log(&#34;Count:&#34;, e.data);
-  };
-&lt;/script&gt;
-```
-
----
-
-## 5. WebSocket vs SSE
-
-```
-양방향 필요 (채팅, 게임) → WebSocket
-서버→클라이언트 단방향 (알림, 시세) → SSE
-```
-
----
-
-## 📝 연습 문제
-
-1. 채팅 WebSocket 엔드포인트 만들기
-2. SSE 로 실시간 알림 전송
-3. 방 (Room) 개념 추가하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. WebSocket 연결이 끊겨요.**
-```python
-# 하트비트 추가
-while True:
-    data = await websocket.receive_text()
-```
-
-**Q2. 브로드캐스트가 안 돼요.**
-```python
-# Connection Manager 사용
-class Manager:
-    async def broadcast(self, message):
-        for conn in self.connections:
-            await conn.send_text(message)
+    return StreamingResponse(event_generator(), media_type=&#34;text/event-stream&#34;)
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -329,19 +223,7 @@ class Manager:
 
 ---
 
-## 1. WebSocket 이란?
-
-### HTTP vs WebSocket
-
-| 구분 | HTTP | WebSocket |
-|------|------|-----------|
-| 방향 | 단방향 | 양방향 |
-| 연결 | 일회성 | 지속적 |
-| 사용 | 일반 API | 채팅, 실시간 |
-
----
-
-## 2. WebSocket 기본
+## 1. WebSocket 기본
 
 ```python
 from fastapi import WebSocket
@@ -349,35 +231,16 @@ from fastapi import WebSocket
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(f"You said: {data}")
 ```
 
-### 클라이언트
-
-```html
-<script>
-  const ws = new WebSocket("ws://localhost:8000/ws");
-  
-  ws.onmessage = (event) => {
-    console.log(event.data);
-  };
-  
-  function send() {
-    ws.send("Hello");
-  }
-</script>
-```
-
 ---
 
-## 3. Connection Manager
+## 2. Connection Manager
 
 ```python
-from typing import List
-
 class ConnectionManager:
     def __init__(self):
         self.connections: List[WebSocket] = []
@@ -386,101 +249,26 @@ class ConnectionManager:
         await websocket.accept()
         self.connections.append(websocket)
     
-    def disconnect(self, websocket: WebSocket):
-        self.connections.remove(websocket)
-    
     async def broadcast(self, message: str):
         for conn in self.connections:
             await conn.send_text(message)
-
-manager = ConnectionManager()
-
-@app.websocket("/chat/{client_id}")
-async def chat(websocket: WebSocket, client_id: int):
-    await manager.connect(websocket)
-    await manager.broadcast(f"Client #{client_id} joined")
-    
-    try:
-        while True:
-            data = await websocket.receive_text()
-            await manager.broadcast(f"Client #{client_id}: {data}")
-    except WebSocketDisconnect:
-        manager.disconnect(websocket)
-        await manager.broadcast(f"Client #{client_id} left")
 ```
 
 ---
 
-## 4. Server-Sent Events (SSE)
-
-### SSE 구현
+## 3. SSE (Server-Sent Events)
 
 ```python
 from fastapi.responses import StreamingResponse
-import asyncio
 
 async def event_generator():
-    count = 0
     while True:
         yield f"data: {count}\n\n"
         await asyncio.sleep(1)
-        count += 1
 
 @app.get("/events")
 async def stream_events():
-    return StreamingResponse(
-        event_generator(),
-        media_type="text/event-stream"
-    )
-```
-
-### 클라이언트
-
-```html
-<script>
-  const es = new EventSource("/events");
-  
-  es.onmessage = (e) => {
-    console.log("Count:", e.data);
-  };
-</script>
-```
-
----
-
-## 5. WebSocket vs SSE
-
-```
-양방향 필요 (채팅, 게임) → WebSocket
-서버→클라이언트 단방향 (알림, 시세) → SSE
-```
-
----
-
-## 📝 연습 문제
-
-1. 채팅 WebSocket 엔드포인트 만들기
-2. SSE 로 실시간 알림 전송
-3. 방 (Room) 개념 추가하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. WebSocket 연결이 끊겨요.**
-```python
-# 하트비트 추가
-while True:
-    data = await websocket.receive_text()
-```
-
-**Q2. 브로드캐스트가 안 돼요.**
-```python
-# Connection Manager 사용
-class Manager:
-    async def broadcast(self, message):
-        for conn in self.connections:
-            await conn.send_text(message)
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 ```
 
                 </div>

@@ -165,81 +165,30 @@
 
 ---
 
-## 1. 의존성 주입이 뭔가요?
-
-### 문제: 반복되는 인증 로직
+## 1. 의존성 주입이란?
 
 ```python
-# ❌ 매 엔드포인트마다 반복
+# ❌ 반복되는 인증 로직
 @app.get(&#34;/users/me&#34;)
 def read_user():
     token = get_token()
     user = verify_token(token)
     return user
 
-@app.get(&#34;/users/me/items&#34;)
-def read_items():
-    token = get_token()  # 또 반복!
-    user = verify_token(token)
-    return items
-```
-
-### 해결: 의존성 주입
-
-```python
-# ✅ 한 번 작성, 재사용
-from fastapi import Depends
-
+# ✅ 의존성 주입
 def get_current_user(token: str = Header(...)) -&gt; User:
     return verify_token(token)
 
 @app.get(&#34;/users/me&#34;)
 def read_user(user: User = Depends(get_current_user)):
-    return user  # ✅ 인증된 user 자동 주입!
-
-@app.get(&#34;/users/me/items&#34;)
-def read_items(user: User = Depends(get_current_user)):
-    return get_items(user.id)
+    return user
 ```
 
 ---
 
-## 2. Depends() 기본
-
-### 함수 의존성
+## 2. 의존성 체인
 
 ```python
-def common_params(q: str | None = None, skip: int = 0):
-    return {&#34;q&#34;: q, &#34;skip&#34;: skip}
-
-@app.get(&#34;/items&#34;)
-def read_items(params: dict = Depends(common_params)):
-    return {&#34;params&#34;: params}
-
-@app.get(&#34;/users&#34;)
-def read_users(params: dict = Depends(common_params)):
-    return {&#34;params&#34;: params}
-```
-
-### 클래스 의존성
-
-```python
-class Pagination:
-    def __init__(self, page: int = 1, size: int = 20):
-        self.page = page
-        self.size = size
-
-@app.get(&#34;/items&#34;)
-def read_items(pagination: Pagination = Depends()):
-    return {&#34;page&#34;: pagination.page}
-```
-
----
-
-## 3. 의존성 체인
-
-```python
-# 1 단계: DB 세션
 def get_db():
     db = SessionLocal()
     try:
@@ -247,111 +196,13 @@ def get_db():
     finally:
         db.close()
 
-# 2 단계: 사용자 조회
 def get_user_by_id(user_id: int, db = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(404, &#34;Not found&#34;)
-    return user
+    return db.query(User).filter(User.id == user_id).first()
 
-# 3 단계: 권한 확인
 def require_admin(user = Depends(get_user_by_id)):
     if user.role != &#34;admin&#34;:
         raise HTTPException(403, &#34;Not enough permissions&#34;)
     return user
-
-# 사용
-@app.delete(&#34;/users/{id}&#34;)
-def delete_user(admin = Depends(require_admin)):
-    # 이미 인증 + 권한 확인 완료
-    delete_user_from_db(admin.id)
-```
-
----
-
-## 4. 의존성 캐싱
-
-```python
-call_count = 0
-
-def expensive_operation() -&gt; int:
-    global call_count
-    call_count += 1
-    return call_count
-
-@app.get(&#34;/test&#34;)
-def test(
-    dep1: int = Depends(expensive_operation),
-    dep2: int = Depends(expensive_operation),
-    dep3: int = Depends(expensive_operation)
-):
-    return {&#34;dep1&#34;: dep1, &#34;dep2&#34;: dep2, &#34;dep3&#34;: dep3}
-
-# 결과: {&#34;dep1&#34;: 1, &#34;dep2&#34;: 1, &#34;dep3&#34;: 1}
-# expensive_operation() 은 단 1 번 실행!
-```
-
-### 캐싱 비활성화
-
-```python
-@app.get(&#34;/time&#34;)
-def get_time(
-    time1 = Depends(get_current_time),
-    time2 = Depends(get_current_time, use_cache=False)  # 새 값!
-):
-    return {&#34;time1&#34;: time1, &#34;time2&#34;: time2}
-```
-
----
-
-## 5. 실무 DI 패턴
-
-### DB 세션 관리
-
-```python
-SessionLocal = sessionmaker(bind=engine)
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-@app.post(&#34;/users&#34;)
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_user = User(**user.model_dump())
-    db.add(db_user)
-    db.commit()
-    return db_user
-```
-
----
-
-## 📝 연습 문제
-
-1. `get_current_user` 의존성 만들기
-2. `require_admin` 권한 검사기 만들기
-3. DB 세션 의존성 주입하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. yield 와 return 차이?**
-```python
-# return: 정리 안 함 (❌)
-def get_db_return():
-    db = SessionLocal()
-    return db  # ❌ 세션 안 닫힘!
-
-# yield: 정리 함 (✅)
-def get_db_yield():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()  # ✅ 반드시 닫기!
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -364,81 +215,30 @@ def get_db_yield():
 
 ---
 
-## 1. 의존성 주입이 뭔가요?
-
-### 문제: 반복되는 인증 로직
+## 1. 의존성 주입이란?
 
 ```python
-# ❌ 매 엔드포인트마다 반복
+# ❌ 반복되는 인증 로직
 @app.get("/users/me")
 def read_user():
     token = get_token()
     user = verify_token(token)
     return user
 
-@app.get("/users/me/items")
-def read_items():
-    token = get_token()  # 또 반복!
-    user = verify_token(token)
-    return items
-```
-
-### 해결: 의존성 주입
-
-```python
-# ✅ 한 번 작성, 재사용
-from fastapi import Depends
-
+# ✅ 의존성 주입
 def get_current_user(token: str = Header(...)) -&gt; User:
     return verify_token(token)
 
 @app.get("/users/me")
 def read_user(user: User = Depends(get_current_user)):
-    return user  # ✅ 인증된 user 자동 주입!
-
-@app.get("/users/me/items")
-def read_items(user: User = Depends(get_current_user)):
-    return get_items(user.id)
+    return user
 ```
 
 ---
 
-## 2. Depends() 기본
-
-### 함수 의존성
+## 2. 의존성 체인
 
 ```python
-def common_params(q: str | None = None, skip: int = 0):
-    return {"q": q, "skip": skip}
-
-@app.get("/items")
-def read_items(params: dict = Depends(common_params)):
-    return {"params": params}
-
-@app.get("/users")
-def read_users(params: dict = Depends(common_params)):
-    return {"params": params}
-```
-
-### 클래스 의존성
-
-```python
-class Pagination:
-    def __init__(self, page: int = 1, size: int = 20):
-        self.page = page
-        self.size = size
-
-@app.get("/items")
-def read_items(pagination: Pagination = Depends()):
-    return {"page": pagination.page}
-```
-
----
-
-## 3. 의존성 체인
-
-```python
-# 1 단계: DB 세션
 def get_db():
     db = SessionLocal()
     try:
@@ -446,111 +246,13 @@ def get_db():
     finally:
         db.close()
 
-# 2 단계: 사용자 조회
 def get_user_by_id(user_id: int, db = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(404, "Not found")
-    return user
+    return db.query(User).filter(User.id == user_id).first()
 
-# 3 단계: 권한 확인
 def require_admin(user = Depends(get_user_by_id)):
     if user.role != "admin":
         raise HTTPException(403, "Not enough permissions")
     return user
-
-# 사용
-@app.delete("/users/{id}")
-def delete_user(admin = Depends(require_admin)):
-    # 이미 인증 + 권한 확인 완료
-    delete_user_from_db(admin.id)
-```
-
----
-
-## 4. 의존성 캐싱
-
-```python
-call_count = 0
-
-def expensive_operation() -&gt; int:
-    global call_count
-    call_count += 1
-    return call_count
-
-@app.get("/test")
-def test(
-    dep1: int = Depends(expensive_operation),
-    dep2: int = Depends(expensive_operation),
-    dep3: int = Depends(expensive_operation)
-):
-    return {"dep1": dep1, "dep2": dep2, "dep3": dep3}
-
-# 결과: {"dep1": 1, "dep2": 1, "dep3": 1}
-# expensive_operation() 은 단 1 번 실행!
-```
-
-### 캐싱 비활성화
-
-```python
-@app.get("/time")
-def get_time(
-    time1 = Depends(get_current_time),
-    time2 = Depends(get_current_time, use_cache=False)  # 새 값!
-):
-    return {"time1": time1, "time2": time2}
-```
-
----
-
-## 5. 실무 DI 패턴
-
-### DB 세션 관리
-
-```python
-SessionLocal = sessionmaker(bind=engine)
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-@app.post("/users")
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_user = User(**user.model_dump())
-    db.add(db_user)
-    db.commit()
-    return db_user
-```
-
----
-
-## 📝 연습 문제
-
-1. `get_current_user` 의존성 만들기
-2. `require_admin` 권한 검사기 만들기
-3. DB 세션 의존성 주입하기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. yield 와 return 차이?**
-```python
-# return: 정리 안 함 (❌)
-def get_db_return():
-    db = SessionLocal()
-    return db  # ❌ 세션 안 닫힘!
-
-# yield: 정리 함 (✅)
-def get_db_yield():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()  # ✅ 반드시 닫기!
 ```
 
                 </div>

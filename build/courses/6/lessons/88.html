@@ -162,52 +162,10 @@
 - JWT 토큰 구조 이해
 - Access/Refresh Token 구현
 - 비밀번호 해싱
-- 토큰 블랙리스트
 
 ---
 
-## 1. JWT 란?
-
-### JWT 구조
-
-```
-JWT = 헤더 + 페이로드 + 서명
-
-헤더: {&#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34;}
-페이로드: {&#34;sub&#34;: &#34;123&#34;, &#34;exp&#34;: 1234567890}
-서명: HMACSHA256(헤더.페이로드, SECRET_KEY)
-```
-
-### 인증 흐름
-
-```
-1. 로그인 (ID/PW) → 2. JWT 생성 → 3. 클라이언트 저장
-                                            ↓
-6. 리소스 반환 ← 5. JWT 검증 ← 4. 요청 시 JWT 포함
-```
-
----
-
-## 2. 기본 구현
-
-### 설치
-
-```bash
-pip install python-jose[cryptography]
-pip install passlib[bcrypt]
-```
-
-### 설정
-
-```python
-from datetime import timedelta
-
-SECRET_KEY = &#34;your-secret-key&#34;
-ALGORITHM = &#34;HS256&#34;
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-```
-
-### 비밀번호 해싱
+## 1. 비밀번호 해싱
 
 ```python
 from passlib.context import CryptContext
@@ -221,11 +179,15 @@ def verify_password(plain: str, hashed: str) -&gt; bool:
     return pwd_context.verify(plain, hashed)
 ```
 
-### 토큰 생성
+---
+
+## 2. JWT 토큰 생성
 
 ```python
 from jose import jwt
-from datetime import datetime, timedelta
+
+SECRET_KEY = &#34;your-secret-key&#34;
+ALGORITHM = &#34;HS256&#34;
 
 def create_access_token(data: dict, expires_delta: timedelta = None) -&gt; str:
     to_encode = data.copy()
@@ -244,98 +206,9 @@ from fastapi.security import OAuth2PasswordBearer
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=&#34;auth/login&#34;)
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id = payload.get(&#34;sub&#34;)
-        if not user_id:
-            raise HTTPException(401, &#34;Invalid token&#34;)
-    except JWTError:
-        raise HTTPException(401, &#34;Invalid token&#34;)
-    
-    user = await db.get(User, int(user_id))
-    if not user:
-        raise HTTPException(401, &#34;User not found&#34;)
-    return user
-```
-
----
-
-## 4. 로그인 엔드포인트
-
-```python
-from fastapi.security import OAuth2PasswordRequestForm
-
-@app.post(&#34;/auth/login&#34;)
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    # 사용자 조회
-    user = await db.execute(select(User).where(User.email == form_data.username))
-    user = user.scalar_one_or_none()
-    
-    # 비밀번호 검증
-    if not user or not verify_password(form_data.password, user.hashed_password):
-        raise HTTPException(401, &#34;Incorrect credentials&#34;)
-    
-    # 토큰 생성
-    access_token = create_access_token(
-        data={&#34;sub&#34;: str(user.id)},
-        expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
-    
-    return {&#34;access_token&#34;: access_token, &#34;token_type&#34;: &#34;bearer&#34;}
-```
-
----
-
-## 5. 권한 기반 접근 (RBAC)
-
-```python
-class RoleChecker:
-    def __init__(self, allowed_roles: list[str]):
-        self.allowed_roles = allowed_roles
-    
-    def __call__(self, user: User = Depends(get_current_user)) -&gt; User:
-        if user.role not in self.allowed_roles:
-            raise HTTPException(403, &#34;Not enough permissions&#34;)
-        return user
-
-# 사용
-require_admin = RoleChecker([&#34;admin&#34;])
-
-@app.get(&#34;/admin/dashboard&#34;)
-def admin_dashboard(admin: User = Depends(require_admin)):
-    return {&#34;message&#34;: f&#34;Welcome, {admin.name}!&#34;}
-```
-
----
-
-## 📝 연습 문제
-
-1. 회원가입 엔드포인트 (비밀번호 해싱)
-2. 로그인 엔드포인트 (JWT 반환)
-3. `require_admin` 의존성 만들기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 토큰 만료 에러**
-```python
-# Access Token 만료 시간 늘리기
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
-
-# 또는 Refresh Token 으로 갱신
-POST /auth/refresh {&#34;refresh_token&#34;: &#34;...&#34;}
-```
-
-**Q2. 쿠키에 토큰 저장**
-```python
-response.set_cookie(
-    key=&#34;refresh_token&#34;,
-    value=refresh_token,
-    httponly=True,  # JS 접근 불가
-    secure=True,    # HTTPS 만
-    samesite=&#34;lax&#34;
-)
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    user_id = payload.get(&#34;sub&#34;)
+    return await db.get(User, int(user_id))
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -345,52 +218,10 @@ response.set_cookie(
 - JWT 토큰 구조 이해
 - Access/Refresh Token 구현
 - 비밀번호 해싱
-- 토큰 블랙리스트
 
 ---
 
-## 1. JWT 란?
-
-### JWT 구조
-
-```
-JWT = 헤더 + 페이로드 + 서명
-
-헤더: {"alg": "HS256", "typ": "JWT"}
-페이로드: {"sub": "123", "exp": 1234567890}
-서명: HMACSHA256(헤더.페이로드, SECRET_KEY)
-```
-
-### 인증 흐름
-
-```
-1. 로그인 (ID/PW) → 2. JWT 생성 → 3. 클라이언트 저장
-                                            ↓
-6. 리소스 반환 ← 5. JWT 검증 ← 4. 요청 시 JWT 포함
-```
-
----
-
-## 2. 기본 구현
-
-### 설치
-
-```bash
-pip install python-jose[cryptography]
-pip install passlib[bcrypt]
-```
-
-### 설정
-
-```python
-from datetime import timedelta
-
-SECRET_KEY = "your-secret-key"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-```
-
-### 비밀번호 해싱
+## 1. 비밀번호 해싱
 
 ```python
 from passlib.context import CryptContext
@@ -404,11 +235,15 @@ def verify_password(plain: str, hashed: str) -&gt; bool:
     return pwd_context.verify(plain, hashed)
 ```
 
-### 토큰 생성
+---
+
+## 2. JWT 토큰 생성
 
 ```python
 from jose import jwt
-from datetime import datetime, timedelta
+
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
 
 def create_access_token(data: dict, expires_delta: timedelta = None) -&gt; str:
     to_encode = data.copy()
@@ -427,98 +262,9 @@ from fastapi.security import OAuth2PasswordBearer
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        user_id = payload.get("sub")
-        if not user_id:
-            raise HTTPException(401, "Invalid token")
-    except JWTError:
-        raise HTTPException(401, "Invalid token")
-    
-    user = await db.get(User, int(user_id))
-    if not user:
-        raise HTTPException(401, "User not found")
-    return user
-```
-
----
-
-## 4. 로그인 엔드포인트
-
-```python
-from fastapi.security import OAuth2PasswordRequestForm
-
-@app.post("/auth/login")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    # 사용자 조회
-    user = await db.execute(select(User).where(User.email == form_data.username))
-    user = user.scalar_one_or_none()
-    
-    # 비밀번호 검증
-    if not user or not verify_password(form_data.password, user.hashed_password):
-        raise HTTPException(401, "Incorrect credentials")
-    
-    # 토큰 생성
-    access_token = create_access_token(
-        data={"sub": str(user.id)},
-        expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
-    
-    return {"access_token": access_token, "token_type": "bearer"}
-```
-
----
-
-## 5. 권한 기반 접근 (RBAC)
-
-```python
-class RoleChecker:
-    def __init__(self, allowed_roles: list[str]):
-        self.allowed_roles = allowed_roles
-    
-    def __call__(self, user: User = Depends(get_current_user)) -&gt; User:
-        if user.role not in self.allowed_roles:
-            raise HTTPException(403, "Not enough permissions")
-        return user
-
-# 사용
-require_admin = RoleChecker(["admin"])
-
-@app.get("/admin/dashboard")
-def admin_dashboard(admin: User = Depends(require_admin)):
-    return {"message": f"Welcome, {admin.name}!"}
-```
-
----
-
-## 📝 연습 문제
-
-1. 회원가입 엔드포인트 (비밀번호 해싱)
-2. 로그인 엔드포인트 (JWT 반환)
-3. `require_admin` 의존성 만들기
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. 토큰 만료 에러**
-```python
-# Access Token 만료 시간 늘리기
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
-
-# 또는 Refresh Token 으로 갱신
-POST /auth/refresh {"refresh_token": "..."}
-```
-
-**Q2. 쿠키에 토큰 저장**
-```python
-response.set_cookie(
-    key="refresh_token",
-    value=refresh_token,
-    httponly=True,  # JS 접근 불가
-    secure=True,    # HTTPS 만
-    samesite="lax"
-)
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    user_id = payload.get("sub")
+    return await db.get(User, int(user_id))
 ```
 
                 </div>

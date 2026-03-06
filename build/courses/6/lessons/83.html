@@ -162,49 +162,23 @@
 - Pydantic 모델 정의하기
 - JSON Request Body 수신하기
 - 자동 유효성 검사
-- 중첩 모델 처리
 
 ---
 
-## 1. Pydantic 이란?
-
-**Pydantic**은 Python 데이터 검증 라이브러리로, FastAPI 의 핵심 엔진입니다.
-
-### 기존 방식 vs Pydantic
-
-```python
-# ❌ 기존: 수동 검증 (지루하고 에러 발생 쉬움)
-def create_user(data: dict):
-    if &#34;name&#34; not in data:
-        raise ValueError(&#34;이름 필요&#34;)
-    if not isinstance(data[&#34;name&#34;], str):
-        raise ValueError(&#34;이름은 문자열&#34;)
-
-# ✅ Pydantic: 자동 검증 (깔끔하고 명확)
-from pydantic import BaseModel
-
-class User(BaseModel):
-    name: str  # 자동으로 str 검증!
-    age: int   # 자동으로 int 검증!
-```
-
----
-
-## 2. Pydantic 모델 정의
-
-### 기본 모델
+## 1. Pydantic 모델 정의
 
 ```python
 from pydantic import BaseModel
 
 class Item(BaseModel):
-    name: str                    # 필수 문자열
-    price: float                 # 필수 실수
-    description: str | None = None  # 선택 문자열
-    tax: float = 0.0             # 선택 실수 (기본값 0)
+    name: str
+    price: float
+    description: str | None = None
 ```
 
-### 사용법
+---
+
+## 2. 사용법
 
 ```python
 from fastapi import FastAPI
@@ -217,9 +191,6 @@ class Item(BaseModel):
 
 @app.post(&#34;/items/&#34;)
 def create_item(item: Item):
-    # item 은 Item 타입 인스턴스!
-    print(item.name)
-    print(item.model_dump())  # dict 로 변환
     return item
 ```
 
@@ -239,138 +210,10 @@ def create_item(item: Item):
 from pydantic import BaseModel, Field
 
 class UserCreate(BaseModel):
-    # 아이디: 3-20 자, 영문/숫자/언더바
-    username: str = Field(
-        ...,
-        min_length=3,
-        max_length=20,
-        pattern=&#34;^[a-zA-Z0-9_]+$&#34;,
-        example=&#34;john_doe&#34;
-    )
-    
-    # 이메일 형식 검증
-    email: str = Field(
-        ...,
-        pattern=&#34;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&#34;,
-        example=&#34;john@example.com&#34;
-    )
-    
-    # 비밀번호: 8 자 이상
-    password: str = Field(
-        ...,
-        min_length=8,
-        example=&#34;SecurePass123&#34;
-    )
-    
-    # 나이: 1-150 사이
-    age: int = Field(
-        ...,
-        ge=1,
-        le=150,
-        example=25
-    )
-```
-
----
-
-## 4. 중첩 모델
-
-### 기본 중첩
-
-```python
-class Address(BaseModel):
-    street: str
-    city: str
-    zipcode: str
-
-class User(BaseModel):
-    name: str
-    email: str
-    address: Address  # 중첩 모델!
-```
-
-**요청 예시:**
-```json
-{
-    &#34;name&#34;: &#34;홍길동&#34;,
-    &#34;email&#34;: &#34;hong@example.com&#34;,
-    &#34;address&#34;: {
-        &#34;street&#34;: &#34;강남대로 123&#34;,
-        &#34;city&#34;: &#34;서울&#34;,
-        &#34;zipcode&#34;: &#34;06000&#34;
-    }
-}
-```
-
-### 리스트 중첩
-
-```python
-class Product(BaseModel):
-    id: int
-    name: str
-    price: float
-
-class Order(BaseModel):
-    order_id: int
-    products: list[Product]  # Product 리스트
-```
-
----
-
-## 5. 실전 예제: 블로그 API
-
-```python
-from pydantic import EmailStr
-from typing import Optional, List
-from datetime import datetime
-
-class PostCreate(BaseModel):
-    title: str = Field(..., min_length=1, max_length=200)
-    content: str = Field(..., min_length=1, max_length=50000)
-    author_email: EmailStr  # 이메일 형식 자동 검증!
-    tags: Optional[List[str]] = None
-
-class PostResponse(PostCreate):
-    id: int
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-@app.post(&#34;/posts&#34;, response_model=PostResponse)
-def create_post(post: PostCreate):
-    return post
-```
-
----
-
-## 📝 연습 문제
-
-1. `UserCreate` 모델로 회원가입 받기
-2. `Product` 와 `Order` 중첩 모델 만들기
-3. 비밀번호 검증 규칙 추가 (8 자 이상, 대소문자/숫자 포함)
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. model_dump() 와 dict() 차이?**
-```python
-# Pydantic v2 (최신)
-item.model_dump()  # ✅ 권장
-
-# Pydantic v1 (구버전)
-item.dict()
-```
-
-**Q2. 선택 필드 만들기**
-```python
-from typing import Optional
-
-class User(BaseModel):
-    name: str              # ✅ 필수
-    email: Optional[str]   # ✅ 선택 (None 가능)
-    age: int = 0          # ✅ 선택 (기본값 0)
+    username: str = Field(..., min_length=3, max_length=20)
+    email: str = Field(..., pattern=&#34;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&#34;)
+    password: str = Field(..., min_length=8)
+    age: int = Field(..., ge=1, le=150)
 ```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
@@ -380,49 +223,23 @@ class User(BaseModel):
 - Pydantic 모델 정의하기
 - JSON Request Body 수신하기
 - 자동 유효성 검사
-- 중첩 모델 처리
 
 ---
 
-## 1. Pydantic 이란?
-
-**Pydantic**은 Python 데이터 검증 라이브러리로, FastAPI 의 핵심 엔진입니다.
-
-### 기존 방식 vs Pydantic
-
-```python
-# ❌ 기존: 수동 검증 (지루하고 에러 발생 쉬움)
-def create_user(data: dict):
-    if "name" not in data:
-        raise ValueError("이름 필요")
-    if not isinstance(data["name"], str):
-        raise ValueError("이름은 문자열")
-
-# ✅ Pydantic: 자동 검증 (깔끔하고 명확)
-from pydantic import BaseModel
-
-class User(BaseModel):
-    name: str  # 자동으로 str 검증!
-    age: int   # 자동으로 int 검증!
-```
-
----
-
-## 2. Pydantic 모델 정의
-
-### 기본 모델
+## 1. Pydantic 모델 정의
 
 ```python
 from pydantic import BaseModel
 
 class Item(BaseModel):
-    name: str                    # 필수 문자열
-    price: float                 # 필수 실수
-    description: str | None = None  # 선택 문자열
-    tax: float = 0.0             # 선택 실수 (기본값 0)
+    name: str
+    price: float
+    description: str | None = None
 ```
 
-### 사용법
+---
+
+## 2. 사용법
 
 ```python
 from fastapi import FastAPI
@@ -435,9 +252,6 @@ class Item(BaseModel):
 
 @app.post("/items/")
 def create_item(item: Item):
-    # item 은 Item 타입 인스턴스!
-    print(item.name)
-    print(item.model_dump())  # dict 로 변환
     return item
 ```
 
@@ -457,138 +271,10 @@ def create_item(item: Item):
 from pydantic import BaseModel, Field
 
 class UserCreate(BaseModel):
-    # 아이디: 3-20 자, 영문/숫자/언더바
-    username: str = Field(
-        ...,
-        min_length=3,
-        max_length=20,
-        pattern="^[a-zA-Z0-9_]+$",
-        example="john_doe"
-    )
-    
-    # 이메일 형식 검증
-    email: str = Field(
-        ...,
-        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
-        example="john@example.com"
-    )
-    
-    # 비밀번호: 8 자 이상
-    password: str = Field(
-        ...,
-        min_length=8,
-        example="SecurePass123"
-    )
-    
-    # 나이: 1-150 사이
-    age: int = Field(
-        ...,
-        ge=1,
-        le=150,
-        example=25
-    )
-```
-
----
-
-## 4. 중첩 모델
-
-### 기본 중첩
-
-```python
-class Address(BaseModel):
-    street: str
-    city: str
-    zipcode: str
-
-class User(BaseModel):
-    name: str
-    email: str
-    address: Address  # 중첩 모델!
-```
-
-**요청 예시:**
-```json
-{
-    "name": "홍길동",
-    "email": "hong@example.com",
-    "address": {
-        "street": "강남대로 123",
-        "city": "서울",
-        "zipcode": "06000"
-    }
-}
-```
-
-### 리스트 중첩
-
-```python
-class Product(BaseModel):
-    id: int
-    name: str
-    price: float
-
-class Order(BaseModel):
-    order_id: int
-    products: list[Product]  # Product 리스트
-```
-
----
-
-## 5. 실전 예제: 블로그 API
-
-```python
-from pydantic import EmailStr
-from typing import Optional, List
-from datetime import datetime
-
-class PostCreate(BaseModel):
-    title: str = Field(..., min_length=1, max_length=200)
-    content: str = Field(..., min_length=1, max_length=50000)
-    author_email: EmailStr  # 이메일 형식 자동 검증!
-    tags: Optional[List[str]] = None
-
-class PostResponse(PostCreate):
-    id: int
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-@app.post("/posts", response_model=PostResponse)
-def create_post(post: PostCreate):
-    return post
-```
-
----
-
-## 📝 연습 문제
-
-1. `UserCreate` 모델로 회원가입 받기
-2. `Product` 와 `Order` 중첩 모델 만들기
-3. 비밀번호 검증 규칙 추가 (8 자 이상, 대소문자/숫자 포함)
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. model_dump() 와 dict() 차이?**
-```python
-# Pydantic v2 (최신)
-item.model_dump()  # ✅ 권장
-
-# Pydantic v1 (구버전)
-item.dict()
-```
-
-**Q2. 선택 필드 만들기**
-```python
-from typing import Optional
-
-class User(BaseModel):
-    name: str              # ✅ 필수
-    email: Optional[str]   # ✅ 선택 (None 가능)
-    age: int = 0          # ✅ 선택 (기본값 0)
+    username: str = Field(..., min_length=3, max_length=20)
+    email: str = Field(..., pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+    password: str = Field(..., min_length=8)
+    age: int = Field(..., ge=1, le=150)
 ```
 
                 </div>

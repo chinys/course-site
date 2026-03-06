@@ -165,26 +165,9 @@
 
 ---
 
-## 1. Response Model 이 왜 필요한가요?
-
-### 보안 문제: 비밀번호 노출
+## 1. Response Model
 
 ```python
-# ❌ 문제: 비밀번호가 그대로 응답됨
-class User(BaseModel):
-    id: int
-    username: str
-    password: str  # ❌ 이걸 보내면 안 됨!
-
-@app.post(&#34;/users&#34;)
-def create_user(user: User):
-    return user  # ❌ password 유출!
-```
-
-### 해결: Response Model
-
-```python
-# ✅ 해결: 입력용과 출력용 분리
 class UserCreate(BaseModel):
     username: str
     password: str  # 입력용
@@ -201,50 +184,7 @@ def create_user(user: UserCreate):
 
 ---
 
-## 2. Response Model 사용법
-
-### 기본 사용
-
-```python
-class ItemCreate(BaseModel):
-    name: str
-    price: float
-    secret: str  # 내부용
-
-class ItemResponse(BaseModel):
-    id: int
-    name: str
-    price: float
-    # secret 제외! ✅
-
-@app.post(&#34;/items&#34;, response_model=ItemResponse)
-def create_item(item: ItemCreate):
-    return {
-        &#34;id&#34;: 1,
-        &#34;name&#34;: item.name,
-        &#34;price&#34;: item.price,
-        &#34;secret&#34;: &#34;SECRET&#34;  # ✅ 응답에서 자동 제거
-    }
-```
-
----
-
-## 3. HTTP 상태 코드
-
-### 주요 상태 코드
-
-| 코드 | 의미 | 사용 사례 |
-|------|------|----------|
-| 200 | OK | 일반적인 GET, PUT |
-| 201 | Created | POST 성공 |
-| 204 | No Content | DELETE 성공 |
-| 400 | Bad Request | 잘못된 요청 |
-| 401 | Unauthorized | 인증 필요 |
-| 403 | Forbidden | 권한 없음 |
-| 404 | Not Found | 리소스 없음 |
-| 422 | Unprocessable Entity | 검증 실패 |
-
-### 사용법
+## 2. HTTP 상태 코드
 
 ```python
 from fastapi import FastAPI, status
@@ -261,85 +201,6 @@ def create_item(name: str):
 def delete_item(id: int):
     return None
 ```
-
----
-
-## 4. 실전 예제: 사용자 관리 API
-
-```python
-from fastapi import HTTPException
-
-class UserCreate(BaseModel):
-    username: str
-    email: str
-    password: str
-
-class UserResponse(BaseModel):
-    id: int
-    username: str
-    email: str
-
-fake_users = []
-
-@app.post(&#34;/users&#34;, response_model=UserResponse, status_code=201)
-def create_user(user: UserCreate):
-    # 중복 확인
-    for u in fake_users:
-        if u[&#34;username&#34;] == user.username:
-            raise HTTPException(400, &#34;Username exists&#34;)
-    
-    new_user = {
-        &#34;id&#34;: len(fake_users) + 1,
-        **user.model_dump()
-    }
-    fake_users.append(new_user)
-    return new_user
-
-@app.get(&#34;/users/{id}&#34;, response_model=UserResponse)
-def get_user(id: int):
-    for user in fake_users:
-        if user[&#34;id&#34;] == id:
-            return user
-    raise HTTPException(404, &#34;User not found&#34;)
-
-@app.delete(&#34;/users/{id}&#34;, status_code=204)
-def delete_user(id: int):
-    for i, user in enumerate(fake_users):
-        if user[&#34;id&#34;] == id:
-            fake_users.pop(i)
-            return None
-    raise HTTPException(404, &#34;User not found&#34;)
-```
-
----
-
-## 📝 연습 문제
-
-1. `ProductCreate` 와 `ProductResponse` 모델 만들기
-2. POST 엔드포인트에서 201 상태 코드 반환
-3. DELETE 엔드포인트에서 204 상태 코드 반환
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. Response Model 이 필터링되지 않아요.**
-```python
-# ✅ 올바른 방법
-@app.post(&#34;/users&#34;, response_model=UserResponse)
-def create_user(user: UserCreate):
-    return db_user  # FastAPI 가 자동 필터링
-```
-
-**Q2. 중첩 모델에서 Response Model 적용**
-```python
-class AddressResponse(BaseModel):
-    city: str  # street 제외
-
-class UserResponse(BaseModel):
-    name: str
-    address: AddressResponse  # 중첩 모델도 자동 필터링!
-```
 </script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # 4 강. Response Model 과 HTTP 상태 코드
@@ -351,26 +212,9 @@ class UserResponse(BaseModel):
 
 ---
 
-## 1. Response Model 이 왜 필요한가요?
-
-### 보안 문제: 비밀번호 노출
+## 1. Response Model
 
 ```python
-# ❌ 문제: 비밀번호가 그대로 응답됨
-class User(BaseModel):
-    id: int
-    username: str
-    password: str  # ❌ 이걸 보내면 안 됨!
-
-@app.post("/users")
-def create_user(user: User):
-    return user  # ❌ password 유출!
-```
-
-### 해결: Response Model
-
-```python
-# ✅ 해결: 입력용과 출력용 분리
 class UserCreate(BaseModel):
     username: str
     password: str  # 입력용
@@ -387,50 +231,7 @@ def create_user(user: UserCreate):
 
 ---
 
-## 2. Response Model 사용법
-
-### 기본 사용
-
-```python
-class ItemCreate(BaseModel):
-    name: str
-    price: float
-    secret: str  # 내부용
-
-class ItemResponse(BaseModel):
-    id: int
-    name: str
-    price: float
-    # secret 제외! ✅
-
-@app.post("/items", response_model=ItemResponse)
-def create_item(item: ItemCreate):
-    return {
-        "id": 1,
-        "name": item.name,
-        "price": item.price,
-        "secret": "SECRET"  # ✅ 응답에서 자동 제거
-    }
-```
-
----
-
-## 3. HTTP 상태 코드
-
-### 주요 상태 코드
-
-| 코드 | 의미 | 사용 사례 |
-|------|------|----------|
-| 200 | OK | 일반적인 GET, PUT |
-| 201 | Created | POST 성공 |
-| 204 | No Content | DELETE 성공 |
-| 400 | Bad Request | 잘못된 요청 |
-| 401 | Unauthorized | 인증 필요 |
-| 403 | Forbidden | 권한 없음 |
-| 404 | Not Found | 리소스 없음 |
-| 422 | Unprocessable Entity | 검증 실패 |
-
-### 사용법
+## 2. HTTP 상태 코드
 
 ```python
 from fastapi import FastAPI, status
@@ -446,85 +247,6 @@ def create_item(name: str):
 @app.delete("/items/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_item(id: int):
     return None
-```
-
----
-
-## 4. 실전 예제: 사용자 관리 API
-
-```python
-from fastapi import HTTPException
-
-class UserCreate(BaseModel):
-    username: str
-    email: str
-    password: str
-
-class UserResponse(BaseModel):
-    id: int
-    username: str
-    email: str
-
-fake_users = []
-
-@app.post("/users", response_model=UserResponse, status_code=201)
-def create_user(user: UserCreate):
-    # 중복 확인
-    for u in fake_users:
-        if u["username"] == user.username:
-            raise HTTPException(400, "Username exists")
-    
-    new_user = {
-        "id": len(fake_users) + 1,
-        **user.model_dump()
-    }
-    fake_users.append(new_user)
-    return new_user
-
-@app.get("/users/{id}", response_model=UserResponse)
-def get_user(id: int):
-    for user in fake_users:
-        if user["id"] == id:
-            return user
-    raise HTTPException(404, "User not found")
-
-@app.delete("/users/{id}", status_code=204)
-def delete_user(id: int):
-    for i, user in enumerate(fake_users):
-        if user["id"] == id:
-            fake_users.pop(i)
-            return None
-    raise HTTPException(404, "User not found")
-```
-
----
-
-## 📝 연습 문제
-
-1. `ProductCreate` 와 `ProductResponse` 모델 만들기
-2. POST 엔드포인트에서 201 상태 코드 반환
-3. DELETE 엔드포인트에서 204 상태 코드 반환
-
----
-
-## 🔍 Troubleshooting
-
-**Q1. Response Model 이 필터링되지 않아요.**
-```python
-# ✅ 올바른 방법
-@app.post("/users", response_model=UserResponse)
-def create_user(user: UserCreate):
-    return db_user  # FastAPI 가 자동 필터링
-```
-
-**Q2. 중첩 모델에서 Response Model 적용**
-```python
-class AddressResponse(BaseModel):
-    city: str  # street 제외
-
-class UserResponse(BaseModel):
-    name: str
-    address: AddressResponse  # 중첩 모델도 자동 필터링!
 ```
 
                 </div>
