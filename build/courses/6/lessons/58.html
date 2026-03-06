@@ -173,7 +173,8 @@
 </div>
 <div class="px-4 py-8 sm:px-8">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-<div id="markdown-source" style="display:none;"># 심화 보안 아키텍처: JWT Access &amp; Refresh Token과 인가 제어(RBAC)
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 심화 보안 아키텍처: JWT Access &amp; Refresh Token과 인가 제어(RBAC)
 
 사용자의 권한과 정보를 안전하게 인증(Authentication)하고 특정 동작을 인가(Authorization)하는 것은 모든 서비스의 근간입니다.
 본 챕터에서는 FastAPI 프레임워크가 제공하는 강력한 보안 툴과 JWT(Jason Web Token)의 Lifecycle 관리법, 그리고 토큰 강제 만료(Revoke), 역할 기반 접근 통제(RBAC) 등 현업 보안 정책의 100%를 보여줍니다.
@@ -186,49 +187,49 @@
 토큰 하나로 로그인 시스템을 돌리게 되면 그 토큰의 만료 시간을 길게 설정할 수밖에 없습니다. (예: 2주) 문제는 만약 해커나 중간자(MITM) 공격으로 이 토큰이 탈취당한다면, 서버는 이를 감지할 수 없고 해커는 2주 내내 피해자의 계정을 마음대로 조작하게 됩니다.
 따라서, **Access Token의 생명주기를 극도로 짧게 (15분 ~ 1시간)** 하고, **Refresh Token(수주~수개월)을 통해서 짧은 주기의 Access Token을 다시 재발급받게 하는 아키텍처**를 구성합니다. 
 
-여기에 더해 Refresh Token은 자바스크립트 등에서 접근하지 못하도록 `httpOnly=True`, `secure=True`, `samesite="Strict"` 보안 쿠키 속성으로 내려주는 것이 대세입니다.
+여기에 더해 Refresh Token은 자바스크립트 등에서 접근하지 못하도록 `httpOnly=True`, `secure=True`, `samesite=&#34;Strict&#34;` 보안 쿠키 속성으로 내려주는 것이 대세입니다.
 
 ```python
 # 토큰 생성 로직 예시
 from datetime import datetime, timedelta
 from jose import jwt
 
-SECRET_KEY = "my_super_secret_high_entropy_key"
-ALGORITHM = "HS256"
+SECRET_KEY = &#34;my_super_secret_high_entropy_key&#34;
+ALGORITHM = &#34;HS256&#34;
 
 def create_access_token(data: dict, expires_delta: timedelta = timedelta(minutes=15)):
     to_encode = data.copy()
     expire = datetime.utcnow() + expires_delta
-    to_encode.update({"exp": expire, "type": "access"})
+    to_encode.update({&#34;exp&#34;: expire, &#34;type&#34;: &#34;access&#34;})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 def create_refresh_token(subject: str, expires_delta: timedelta = timedelta(days=14)):
     expire = datetime.utcnow() + expires_delta
-    to_encode = {"sub": subject, "exp": expire, "type": "refresh"}
+    to_encode = {&#34;sub&#34;: subject, &#34;exp&#34;: expire, &#34;type&#34;: &#34;refresh&#34;}
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 ```
 
 `Login` 엔드포인트에서는 이 두 가지 토큰을 생성해 클라이언트에게 각각 적절한 매체(액세스는 JSON Body로, 리프레시는 Set-Cookie 헤더로)로 전달해야 합니다.
 
 ```python
-@router.post("/login")
+@router.post(&#34;/login&#34;)
 async def login(response: Response, form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
     
-    access_token = create_access_token({"sub": str(user.id)})
+    access_token = create_access_token({&#34;sub&#34;: str(user.id)})
     refresh_token = create_refresh_token(str(user.id))
     
     # Refresh Token을 브라우저 보안 쿠키에 셋팅
     response.set_cookie(
-        key="refresh_token", 
+        key=&#34;refresh_token&#34;, 
         value=refresh_token, 
         httponly=True, 
         secure=True, 
-        samesite="lax",
+        samesite=&#34;lax&#34;,
         max_age=14 * 24 * 60 * 60 # 14일
     )
     
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {&#34;access_token&#34;: access_token, &#34;token_type&#34;: &#34;bearer&#34;}
 ```
 
 ---
@@ -236,22 +237,22 @@ async def login(response: Response, form_data: OAuth2PasswordRequestForm = Depen
 ## 2. Redis 기반의 Blacklist (Token Revocation) 
 
 기본적으로 JWT는 Stateless(상태 비저장형) 디자인이므로 서버는 한 번 발급된 토큰을 제어할 방법이 없습니다. 
-- "사용자가 비밀번호를 변경하는 순간 기기에서 강제 로그아웃 시켜야 한다."
-- "사용자가 자발적으로 로그아웃 버튼을 눌렀을 때 토큰을 무효로 만들어야 한다."
+- &#34;사용자가 비밀번호를 변경하는 순간 기기에서 강제 로그아웃 시켜야 한다.&#34;
+- &#34;사용자가 자발적으로 로그아웃 버튼을 눌렀을 때 토큰을 무효로 만들어야 한다.&#34;
 
 이를 구현하기 위해 **Redis (비동기 인메모리 DB)** 를 블랙리스트 저장소로 활용합니다. 로그아웃된(또는 만료되어야 할) 토큰의 ID(`jti` 혹은 `토큰 본문`)를 Redis에 저장하고, 모든 인증 미들웨어나 의존성에서 JWT 검증 시 먼저 Redis에 해당 토큰이 존재하는지 확인합니다.
 
 ```python
 import redis.asyncio as redis
 
-redis_client = redis.Redis(host='localhost', port=6379, db=0)
+redis_client = redis.Redis(host=&#39;localhost&#39;, port=6379, db=0)
 
 async def revoke_token(token: str, expiration_time_left: int):
     # 토큰의 남은 수명만큼만 Redis에 저장(EX 옵션) 후 시간이 지나면 자동 소멸
-    await redis_client.setex(name=f"blacklist:{token}", time=expiration_time_left, value="revoked")
+    await redis_client.setex(name=f&#34;blacklist:{token}&#34;, time=expiration_time_left, value=&#34;revoked&#34;)
 
 async def is_token_revoked(token: str) -&gt; bool:
-    is_revoked = await redis_client.exists(f"blacklist:{token}")
+    is_revoked = await redis_client.exists(f&#34;blacklist:{token}&#34;)
     return is_revoked == 1
 ```
 
@@ -259,7 +260,7 @@ async def is_token_revoked(token: str) -&gt; bool:
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     # 1. 블랙리스트 검사
     if await is_token_revoked(token):
-        raise HTTPException(status_code=401, detail="Token has been revoked. Please log in again.")
+        raise HTTPException(status_code=401, detail=&#34;Token has been revoked. Please log in again.&#34;)
         
     # 2. JWT Decode 검사
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
@@ -271,7 +272,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 ## 3. 강력한 역할 통제 체제 (Role-Based Access Control) 패턴
 
-사용자가 확인되었으면 다음은 *"이 사용자가 이 행동을 할 권한이 있는지?"* 검사할 차례입니다.
+사용자가 확인되었으면 다음은 *&#34;이 사용자가 이 행동을 할 권한이 있는지?&#34;* 검사할 차례입니다.
 FastAPI의 의존성 주입 계층도를 사용하면 놀라우리만치 깔끔하게 데코레이터식 권한 검사기를 생성할 수 있습니다.
 
 **Role 검사기 클래스 작성**:
@@ -283,11 +284,11 @@ class RoleChecker:
         self.allowed_roles = allowed_roles
 
     def __call__(self, user: User = Depends(get_current_active_user)):
-        # 유저 테이블의 role 속성("USER", "ADMIN", "SUPERADMIN" 등)
+        # 유저 테이블의 role 속성(&#34;USER&#34;, &#34;ADMIN&#34;, &#34;SUPERADMIN&#34; 등)
         if user.role not in self.allowed_roles:
             raise HTTPException(
                 status_code=403, 
-                detail=f"Operation not permitted. Required roles: {self.allowed_roles}"
+                detail=f&#34;Operation not permitted. Required roles: {self.allowed_roles}&#34;
             )
         return user
 ```
@@ -296,22 +297,22 @@ class RoleChecker:
 **적용 예시**:
 ```python
 # 인스턴스화
-allow_admin_only = RoleChecker(["ADMIN", "SUPERADMIN"])
-allow_staff = RoleChecker(["STAFF", "ADMIN", "SUPERADMIN"])
+allow_admin_only = RoleChecker([&#34;ADMIN&#34;, &#34;SUPERADMIN&#34;])
+allow_staff = RoleChecker([&#34;STAFF&#34;, &#34;ADMIN&#34;, &#34;SUPERADMIN&#34;])
 
 # 엔드포인트에 초간단하게 적용
-@router.post("/system/config")
+@router.post(&#34;/system/config&#34;)
 async def update_config(data: ConfigData, current_user = Depends(allow_admin_only)):
     # 이 로직은 오직 ADMIN 이상 롤을 부여받은 사람만이 도달할 수 있습니다.
-    return {"message": "Config updated successfully"}
+    return {&#34;message&#34;: &#34;Config updated successfully&#34;}
     
-@router.get("/reports/stats")
+@router.get(&#34;/reports/stats&#34;)
 async def read_reports(current_user = Depends(allow_staff)):
     # 이 로직은 STAFF 이상 도달 가능
     return get_daily_reports()
 ```
-비즈니스가 성장하여 복잡한 퍼미션(`"read:users"`, `"write:payments"` 등) 구조로 변모하더라도 저 `RoleChecker` 내부 로직만 변경하면 끝입니다.
-</div>
+비즈니스가 성장하여 복잡한 퍼미션(`&#34;read:users&#34;`, `&#34;write:payments&#34;` 등) 구조로 변모하더라도 저 `RoleChecker` 내부 로직만 변경하면 끝입니다.
+</script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # 심화 보안 아키텍처: JWT Access &amp; Refresh Token과 인가 제어(RBAC)
 

@@ -173,7 +173,8 @@
 </div>
 <div class="px-4 py-8 sm:px-8">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-<div id="markdown-source" style="display:none;"># FastAPI 실무: 한계 없는 의존성 주입 (Dependency Injection)
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># FastAPI 실무: 한계 없는 의존성 주입 (Dependency Injection)
 
 FastAPI가 다른 파이썬 웹 프레임워크와 차별화되는 가장 큰 무기는 강력한 **의존성 주입(Dependency Injection, DI) 시스템**입니다. 
 초급 강의에서는 데이터베이스 세션을 주입받거나 현재 로그인한 유저를 가져오는 등 단순한 패턴만 배우지만, 실무 환경에서는 그보다 훨씬 복잡한 상황들을 마주하게 됩니다.
@@ -213,11 +214,11 @@ class UserService:
     def find_active_user(self, user_id: int):
         user = self.repo.get_user_by_id(user_id)
         if not user or not user.is_active:
-            raise HTTPException(status_code=400, detail="Inactive user")
+            raise HTTPException(status_code=400, detail=&#34;Inactive user&#34;)
         return user
 
 # 4. 엔드포인트에 서비스를 주입
-@router.get("/users/{user_id}")
+@router.get(&#34;/users/{user_id}&#34;)
 def read_user(user_id: int, service: UserService = Depends(UserService)):
     return service.find_active_user(user_id)
 ```
@@ -239,19 +240,19 @@ logger = logging.getLogger(__name__)
 
 async def get_redis_client():
     client = RedisClient.create()
-    logger.info("Redis 연결 생성")
+    logger.info(&#34;Redis 연결 생성&#34;)
     
     try:
         # yield 전에는 요청 처리 전에 실행될 로직
         yield client
     except Exception as e:
         # FastAPI 과정에서 예외가 났을 때 처리할 곳
-        logger.error(f"Redis 에러 발생: {e}")
+        logger.error(f&#34;Redis 에러 발생: {e}&#34;)
         raise e
     finally:
         # 클라이언트에게 응답이 다 나간 직후 마지막으로 실행
         await client.close()
-        logger.info("Redis 연결 안전하게 해제됨")
+        logger.info(&#34;Redis 연결 안전하게 해제됨&#34;)
 ```
 
 **실무 주의사항**: `yield`가 있는 의존성 블록 내부에 `BackgroundTasks`가 있다면, `finally` 블록의 해제가 완료된 **후에** 백그라운드 태스크가 실행됨을 명심하십시오. 만약 백그라운드에서 DB 의존성을 써야 한다면 `yield`로 생성된 세션 대신 **별도의 세션 팩토리**나 컨텍스트 관리자를 백그라운드 함수 안에서 직접 호출해야 안전합니다.
@@ -266,22 +267,22 @@ async def get_redis_client():
 
 ```python
 def verify_token(token: str = Header(...)):
-    print("값비싼 토큰 검증 로직 수행 중...")  # 이 부분은 단 한 번만 찍힙니다.
+    print(&#34;값비싼 토큰 검증 로직 수행 중...&#34;)  # 이 부분은 단 한 번만 찍힙니다.
     return decode(token)
 
 def require_admin(user: dict = Depends(verify_token)):
-    if not user.get("is_admin"):
-        raise HTTPException(status_code=403, detail="Not an admin")
+    if not user.get(&#34;is_admin&#34;):
+        raise HTTPException(status_code=403, detail=&#34;Not an admin&#34;)
     return user
 
-@router.get("/admin/dashboard")
+@router.get(&#34;/admin/dashboard&#34;)
 def get_dashboard(
     token_data: dict = Depends(verify_token),  # 호출 1
     admin_data: dict = Depends(require_admin)  # 호출 2 (내부에서 다시 verify_token 호출)
 ):
     # 비록 verify_token이 의존성 트리에 2번 등장하지만
     # FastAPI는 캐싱되어 있는 첫 번째 결과값을 그대로 활용합니다.
-    return {"message": "dashboard data"}
+    return {&#34;message&#34;: &#34;dashboard data&#34;}
 ```
 단, 매 호출마다 새로 계산된 값을 받고 싶다면 `Depends(dependency_func, use_cache=False)` 와 같이 캐시 플래그를 꺼주어야 합니다.
 (예: 현재 시각 밀리초 단위 생성기, 난수 발생기 등).
@@ -297,9 +298,9 @@ from fastapi import Request
 
 def get_tenant_id(request: Request) -&gt; str:
     # 헤더나 서브도메인에서 테넌트 식별자를 추출
-    tenant_id = request.headers.get("X-Tenant-ID")
+    tenant_id = request.headers.get(&#34;X-Tenant-ID&#34;)
     if not tenant_id:
-        raise HTTPException(status_code=400, detail="Tenant ID is required")
+        raise HTTPException(status_code=400, detail=&#34;Tenant ID is required&#34;)
     return tenant_id
 
 # 요청을 보낸 테넌트의 DB 세션만을 생성하여 주입
@@ -311,14 +312,14 @@ def get_tenant_db(tenant_id: str = Depends(get_tenant_id)):
     finally:
         session.close()
 
-@router.get("/companies/users")
+@router.get(&#34;/companies/users&#34;)
 def get_company_users(db: Session = Depends(get_tenant_db)):
     # 이 라우터는 100개의 테넌트가 각기 다른 DB를 사용하지만 
     # 코드는 전혀 수정할 필요가 없는 구조가 됩니다.
     return db.query(User).all()
 ```
 
-이 패턴의 파괴적인 장점은 라우터 함수(`/companies/users`)가 "우리가 어떤 테넌트의 데이터베이스를 쓰고 있는가?" 에 대해 전혀 몰라도 상관이 없다는 점입니다. 완벽하게 비즈니스 로직과 컨텍스트 로직이 분리됩니다.
+이 패턴의 파괴적인 장점은 라우터 함수(`/companies/users`)가 &#34;우리가 어떤 테넌트의 데이터베이스를 쓰고 있는가?&#34; 에 대해 전혀 몰라도 상관이 없다는 점입니다. 완벽하게 비즈니스 로직과 컨텍스트 로직이 분리됩니다.
 
 ---
 
@@ -331,11 +332,11 @@ def get_company_users(db: Session = Depends(get_tenant_db)):
 ```python
 def fetch_weather_from_third_party():
     # 외부 유료 API 네트워크 호출
-    return httpx.get("https://api.weather.com/v1/...").json()
+    return httpx.get(&#34;https://api.weather.com/v1/...&#34;).json()
 
-@app.get("/weather/today")
+@app.get(&#34;/weather/today&#34;)
 def today_weather(data: dict = Depends(fetch_weather_from_third_party)):
-    return {"weather": data}
+    return {&#34;weather&#34;: data}
 ```
 
 **테스트 코드(test_main.py)**:
@@ -347,23 +348,23 @@ client = TestClient(app)
 
 # 1. 목업(Mock) 함수 생성
 def override_weather():
-    return {"status": "sunny", "temp": 25}
+    return {&#34;status&#34;: &#34;sunny&#34;, &#34;temp&#34;: 25}
 
 # 2. 의존성 바꿔치기 (Override)
 app.dependency_overrides[fetch_weather_from_third_party] = override_weather
 
 def test_today_weather():
     # 3. 네트워크 통신 없이 순식간에 테스트 통과!
-    response = client.get("/weather/today")
+    response = client.get(&#34;/weather/today&#34;)
     assert response.status_code == 200
-    assert response.json() == {"weather": {"status": "sunny", "temp": 25}}
+    assert response.json() == {&#34;weather&#34;: {&#34;status&#34;: &#34;sunny&#34;, &#34;temp&#34;: 25}}
     
 # 4. 테스트 종료 후 초기화
 app.dependency_overrides.clear()
 ```
 
 위 5가지 DI의 핵심 활용법을 마스터한다면 어떤 규모의 복잡한 서비스라도 깔끔하고 확장 가능한 FastAPI 아키텍처를 설계할 수 있을 것입니다.
-</div>
+</script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # FastAPI 실무: 한계 없는 의존성 주입 (Dependency Injection)
 

@@ -173,7 +173,8 @@
 </div>
 <div class="px-4 py-8 sm:px-8">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-<div id="markdown-source" style="display:none;"># 4강. 서버의 대답 모양 결정하기 (Response Model &amp; Status Codes)
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 4강. 서버의 대답 모양 결정하기 (Response Model &amp; Status Codes)
 
 지금까지는 클라이언트로부터 데이터를 **어떻게 안전하게 받을 것인가**(Request)에 집중했습니다.
 이번에는 서버가 클라이언트에게 **어떻게 안전하고 명확하게 데이터를 줄 것인가**(Response)에 대해 학습합니다.
@@ -207,12 +208,12 @@ class UserOut(BaseModel):
     full_name: str | None = None
 
 # 3. 라우터에 response_model 매개변수로 지정!
-@app.post("/users/", response_model=UserOut)
+@app.post(&#34;/users/&#34;, response_model=UserOut)
 def create_user(user: UserInDB):
     # (내부 로직) DB에 사용자 정보를 저장하는 과정...
     
     # 실수로 비밀번호가 포함된 객체를 그대로 리턴해도, 
-    # FastAPI가 UserOut 마스크를 씌워 password 필드를 '자동으로 걸러낸(Filter)' 뒤 전송합니다!
+    # FastAPI가 UserOut 마스크를 씌워 password 필드를 &#39;자동으로 걸러낸(Filter)&#39; 뒤 전송합니다!
     return user
 ```
 이 기능은 보안 누수를 강력하게 방지하며, 동시에 Swagger UI 문서에 서버가 어떤 모양으로 데이터를 응답할지(Schema) 100% 명확하게 박제해줍니다.
@@ -222,7 +223,7 @@ def create_user(user: UserInDB):
 ## 2. HTTP 상태 코드 제어 (Status Codes)
 
 웹 표준에서 HTTP 상태 코드는 매우 중요한 의사소통 수단입니다.
-기본적으로 FastAPI는 정상 응답으로 `200 OK`를 리턴하지만, 데이터를 "새로 생성(Create)" 했을 때는 `201 Created`를, 내용을 깔끔히 비웠을 때는 `204 No Content`를 내리면 훨씬 훌륭한 API가 됩니다.
+기본적으로 FastAPI는 정상 응답으로 `200 OK`를 리턴하지만, 데이터를 &#34;새로 생성(Create)&#34; 했을 때는 `201 Created`를, 내용을 깔끔히 비웠을 때는 `204 No Content`를 내리면 훨씬 훌륭한 API가 됩니다.
 
 가장 쉬운 방법은 데코레이터의 `status_code` 파라미터를 조작하는 것입니다.
 ```python
@@ -231,9 +232,9 @@ from fastapi import FastAPI, status
 app = FastAPI()
 
 # 201 상태코드 상수를 활용하여 명시적 의미 전달
-@app.post("/items/", status_code=status.HTTP_201_CREATED)
+@app.post(&#34;/items/&#34;, status_code=status.HTTP_201_CREATED)
 def create_item(name: str):
-    return {"name": name, "message": "새 아이템이 성공적으로 생성되었습니다!"}
+    return {&#34;name&#34;: name, &#34;message&#34;: &#34;새 아이템이 성공적으로 생성되었습니다!&#34;}
 ```
 파이썬에는 `fastapi.status` 모듈 안에 모든 HTTP 상태 코드들이 보기 좋은 상수(Constant)로 정의되어 있습니다. (`status.HTTP_404_NOT_FOUND` 등). 외울 필요 없이 자동완성을 활용하세요.
 
@@ -249,22 +250,22 @@ from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
-@app.get("/legacy-login")
+@app.get(&#34;/legacy-login&#34;)
 def legacy_login(response: Response):
     # 직접 헤더나 쿠키 조작
-    response.set_cookie(key="fakesession", value="fake-cookie-session-value")
-    response.headers["X-Custom-Header"] = "Go to new login API!"
+    response.set_cookie(key=&#34;fakesession&#34;, value=&#34;fake-cookie-session-value&#34;)
+    response.headers[&#34;X-Custom-Header&#34;] = &#34;Go to new login API!&#34;
     
     # 본문 데이터 출력
-    return {"message": "You are logged in."}
+    return {&#34;message&#34;: &#34;You are logged in.&#34;}
 
 # 처음부터 JSONResponse 클래스로 응답을 말아서 던지는 방법
-@app.get("/custom-response")
+@app.get(&#34;/custom-response&#34;)
 def custom_json_response():
-    data = {"system_status": "Healthy"}
-    return JSONResponse(content=data, status_code=status.HTTP_202_ACCEPTED, headers={"X-Error": "None"})
+    data = {&#34;system_status&#34;: &#34;Healthy&#34;}
+    return JSONResponse(content=data, status_code=status.HTTP_202_ACCEPTED, headers={&#34;X-Error&#34;: &#34;None&#34;})
 ```
-</div>
+</script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # 4강. 서버의 대답 모양 결정하기 (Response Model &amp; Status Codes)
 

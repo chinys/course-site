@@ -173,7 +173,8 @@
 </div>
 <div class="px-4 py-8 sm:px-8">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-<div id="markdown-source" style="display:none;"># 5강. 에러 다루기와 고급 입력 방식 (Error Handling &amp; Form Data)
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># 5강. 에러 다루기와 고급 입력 방식 (Error Handling &amp; Form Data)
 
 비즈니스 로직을 짜다 보면 무수한 에러(아이디 중복, 잔액 부족, 권한 차단)들이 발생합니다.
 또한 JSON이 아닌 구식 `multipart/form-data` 나 파일 업로드(File Upload)를 처리해야 하는 케이스도 실무에 빈번합니다. 이 두 가지를 완벽하게 통제해 보겠습니다.
@@ -189,17 +190,17 @@ from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
-items_db = {"1": "Laptop", "2": "Mouse"}
+items_db = {&#34;1&#34;: &#34;Laptop&#34;, &#34;2&#34;: &#34;Mouse&#34;}
 
-@app.get("/items/{item_id}")
+@app.get(&#34;/items/{item_id}&#34;)
 def read_item(item_id: str):
     if item_id not in items_db:
         # 이 코드를 마주친 즉시 로직이 중단되고 404 에러와 JSON 메시지가 클라이언트에 날아갑니다.
         raise HTTPException(
             status_code=404, 
-            detail="요청하신 아이템을 찾을 수 없습니다."
+            detail=&#34;요청하신 아이템을 찾을 수 없습니다.&#34;
         )
-    return {"item": items_db[item_id]}
+    return {&#34;item&#34;: items_db[item_id]}
 ```
 
 여기에 사용자 정의 헤더를 추가해서 에러와 함께 보낼 수도 있습니다. (예: 인증 실패 시 인증 스킴(`Bearer`)을 같이 보내야 하는 규약이 있을 때).
@@ -208,7 +209,7 @@ def read_item(item_id: str):
 
 ## 2. 전역 예외 처리기 (Custom Exception Handlers)
 
-어느 라우터에서 `UserNotFound` 라는 커스텀 에러 클래스가 터졌든 간에, 중앙에서 하나의 일관된 포맷(예: 사내 표준 에러 포맷 `{"code": "ERR_001", "msg": "..."}`)으로 포장(Wrapping)해서 내보내고 싶다면 как할까요?
+어느 라우터에서 `UserNotFound` 라는 커스텀 에러 클래스가 터졌든 간에, 중앙에서 하나의 일관된 포맷(예: 사내 표준 에러 포맷 `{&#34;code&#34;: &#34;ERR_001&#34;, &#34;msg&#34;: &#34;...&#34;}`)으로 포장(Wrapping)해서 내보내고 싶다면 как할까요?
 
 **전역 예외 처리기에 함수를 등록**해 두면 됩니다.
 
@@ -226,16 +227,16 @@ class UnicornException(Exception):
 @app.exception_handler(UnicornException)
 async def unicorn_exception_handler(request: Request, exc: UnicornException):
     return JSONResponse(
-        status_code=418,  # I'm a teapot
-        content={"message": f"이런! {exc.name} 유니콘이 말썽을 부리고 있군요."}
+        status_code=418,  # I&#39;m a teapot
+        content={&#34;message&#34;: f&#34;이런! {exc.name} 유니콘이 말썽을 부리고 있군요.&#34;}
     )
 
-@app.get("/unicorns/{name}")
+@app.get(&#34;/unicorns/{name}&#34;)
 async def read_unicorn(name: str):
-    if name == "yolo":
+    if name == &#34;yolo&#34;:
         # 그냥 파이썬 에러를 발생시킴
         raise UnicornException(name=name)
-    return {"unicorn_name": name}
+    return {&#34;unicorn_name&#34;: name}
 ```
 
 ---
@@ -252,10 +253,10 @@ from fastapi import FastAPI, Form
 
 app = FastAPI()
 
-@app.post("/login/")
+@app.post(&#34;/login/&#34;)
 async def login(username: str = Form(...), password: str = Form(...)):
     # Swagger에서 실행해 보면 JSON 입력칸이 아니라 폼(인풋 박스) 입력칸으로 바뀐 것을 볼 수 있습니다.
-    return {"username": username, "status": "Form Data Received"}
+    return {&#34;username&#34;: username, &#34;status&#34;: &#34;Form Data Received&#34;}
 ```
 
 ---
@@ -271,28 +272,28 @@ import shutil
 
 app = FastAPI()
 
-@app.post("/uploadprofile/")
+@app.post(&#34;/uploadprofile/&#34;)
 async def upload_profile_image(file: UploadFile = File(...)):
     # 1. 업로드된 파일의 메타데이터 확인
     file_name = file.filename
     content_type = file.content_type
     
     # 2. 이미지 파일만 허용하기 (간단한 예시)
-    if not content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="Only images are allowed!")
+    if not content_type.startswith(&#34;image/&#34;):
+        raise HTTPException(status_code=400, detail=&#34;Only images are allowed!&#34;)
         
     # 3. 서버 하드 디스크에 파일 비동기 혹은 스플릿 안전 저장하기
-    with open(f"uploaded_{file_name}", "wb") as buffer:
+    with open(f&#34;uploaded_{file_name}&#34;, &#34;wb&#34;) as buffer:
         shutil.copyfileobj(file.file, buffer)
         
     return {
-        "info": f"파일 {file_name} 이 안전하게 서버에 저장되었습니다."
+        &#34;info&#34;: f&#34;파일 {file_name} 이 안전하게 서버에 저장되었습니다.&#34;
     }
 ```
 여기까지 기초 코스를 수료하신 것을 축하합니다! 
 FastAPI의 라우터, 입력(Request), 출력(Response), 예외처리, 파일 업로드를 마스터했으니, 
-이제 6강부터 시작되는 진짜 실무, "엔터프라이즈 레벨의 아키텍처"를 구축하는 험난한 여행을 떠날 준비가 되셨을 겁니다. 화이팅!
-</div>
+이제 6강부터 시작되는 진짜 실무, &#34;엔터프라이즈 레벨의 아키텍처&#34;를 구축하는 험난한 여행을 떠날 준비가 되셨을 겁니다. 화이팅!
+</script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # 5강. 에러 다루기와 고급 입력 방식 (Error Handling &amp; Form Data)
 

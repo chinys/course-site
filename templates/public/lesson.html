@@ -35,7 +35,8 @@
 
             <div class="px-4 py-8 sm:px-8">
                 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-                <div id="markdown-source" style="display:none;">{{ lesson.content }}</div>
+                <!-- Raw content for Markdown parser (hidden) -->
+                <script id="markdown-source" type="text/template">{{ lesson.content }}</script>
                 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     {{ lesson.content | safe }}
                 </div>

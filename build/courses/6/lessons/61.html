@@ -173,7 +173,8 @@
 </div>
 <div class="px-4 py-8 sm:px-8">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
-<div id="markdown-source" style="display:none;"># Gunicorn과 Docker 기반 무중단 롤링 배포 및 CI/CD 파이프라인
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template"># Gunicorn과 Docker 기반 무중단 롤링 배포 및 CI/CD 파이프라인
 
 로컬 터미널에서 `uvicorn main:app --reload` 를 통해 개발을 아무리 훌륭하게 끝냈어도, 리눅스 프로덕션 서버에 그대로 띄우는 것은 재앙을 부릅니다.
 단일 Uvicorn 프로세스는 Python의 특징인 GIL(Global Interpreter Lock)과 단일 코어 사용의 제약으로 트래픽이 몰리면 속절없이 뻗어버립니다. 
@@ -198,7 +199,7 @@ gunicorn main:app   --workers 4   --worker-class uvicorn.workers.UvicornWorker  
 ## 2. Dockerfile 최적화와 멀티 스테이지 빌드 (Multi-stage Build)
 
 컨테이너가 무거우면(예: 이미지 사이즈 1.5GB) 롤링 업데이트 시 다운로드 지연이 발생하고 인프라 비용과 보안 취약점 공격 면적이 늘어납니다. 
-현업에서 사용하는 이상적인 Dockerfile은 **'빌드 결과물은 가볍게, 캐시 레이어는 적극적으로'** 철학을 따릅니다. 파이썬 최신 매니저인 `uv`나 `poetry`를 쓸 때 이상적인 형태는 아래와 같습니다.
+현업에서 사용하는 이상적인 Dockerfile은 **&#39;빌드 결과물은 가볍게, 캐시 레이어는 적극적으로&#39;** 철학을 따릅니다. 파이썬 최신 매니저인 `uv`나 `poetry`를 쓸 때 이상적인 형태는 아래와 같습니다.
 
 **최적화된 Dockerfile.prod**
 ```dockerfile
@@ -212,7 +213,7 @@ RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends gcc lib
 # requirements 최적화, 가상환경(/venv) 통째로 구워내기
 COPY requirements.txt .
 RUN python -m venv /venv
-ENV PATH="/venv/bin:$PATH"
+ENV PATH=&#34;/venv/bin:$PATH&#34;
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 스테이지 2: 초경량 프로덕션 이미지 (위에서 만든 /venv 폴더만 쏙 빼본다)
@@ -224,7 +225,7 @@ RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends libpq5 
 
 # 스테이지 1(builder)에서 생성된 가상 환경을 런타임 이미지로 복사해옵니다.
 COPY --from=builder /venv /venv
-ENV PATH="/venv/bin:$PATH"
+ENV PATH=&#34;/venv/bin:$PATH&#34;
 
 # 소스코드 전체 복사 및 권한 세팅 (root 사용 금지)
 COPY . .
@@ -234,7 +235,7 @@ USER fastapi_user
 EXPOSE 8000
 
 # Gunicorn+Uvicorn 조합으로 실행 명령
-CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000"]
+CMD [&#34;gunicorn&#34;, &#34;main:app&#34;, &#34;-w&#34;, &#34;4&#34;, &#34;-k&#34;, &#34;uvicorn.workers.UvicornWorker&#34;, &#34;-b&#34;, &#34;0.0.0.0:8000&#34;]
 ```
 
 이 다이어트된 이미지는 무중단 CI 시스템 상에서 빛의 속도로 배포됩니다.
@@ -265,7 +266,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: &#39;3.11&#39;
 
       - name: Install dependencies &amp; Pytest
         run: |
@@ -303,7 +304,7 @@ jobs:
 ```
 
 초록 불이 켜지며 성공적인 Actions 라벨이 붙는 순간, 개발자의 고된 밤샘은 끝나고 마이크로서비스 확장이 가능해집니다.
-</div>
+</script>
 <div class="prose max-w-none text-gray-800" id="rendered-content">
                     # Gunicorn과 Docker 기반 무중단 롤링 배포 및 CI/CD 파이프라인
 
