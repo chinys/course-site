@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2. [건산법 등록] 건설업의 등록체계와 결격사유 | 건설법규</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/notices/index.html">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/5.html">건설법규</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/42.html">
+                        1. [건산법 총칙] 건설산업기본법의 목적과 적용 범위
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/5/lessons/43.html">
+                        2. [건산법 등록] 건설업의 등록체계와 결격사유
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/44.html">
+                        3. [건산법 도급/하도급-1] 도급의 원칙과 다단계 하도급 금지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/45.html">
+                        4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금 직불 보장
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/46.html">
+                        5. [건산법 현장관리] 현장대리인 지정, 전자카드제 및 표지 실명제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/47.html">
+                        6. [하도급법-1] 하도급거래 공정화 법률의 적용과 서면발급
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/48.html">
+                        7. [하도급법-2] 하도급대금의 결정 및 지급 통제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/49.html">
+                        8. [도급계약서 양식] 민간건설공사 표준도급계약서 조항 분석
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/50.html">
+                        9. [하도급계약서 양식] 건설공사 하도급 표준 계약 양식 요건 및 협상
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/51.html">
+                        10. [안전 법령] 산업안전보건법 및 중대재해처벌법 (경영책임자 책임)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/52.html">
+                        11. [실무 심화] 불법 하도급 및 위장 도급의 법적 판단 기준
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/53.html">
+                        12. [실무 심화] 물품 납품 계약과 건설 도급 공사의 명확한 구별
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/54.html">
+                        13. [실무 심화] 건설기계 대여와 도급의 판별 및 통제 권한 증빙 매뉴얼
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/55.html">
+                        14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 모음
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">2. [건산법 등록] 건설업의 등록체계와 결격사유</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template">&lt;h2 class=&#34;text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3&#34;&gt;건설업 면허 체계의 법적 이해&lt;/h2&gt;
+    &lt;p class=&#34;text-lg text-gray-900 mb-6 leading-relaxed&#34;&gt;부실시공 방지 및 현장 안전 확보를 위한 제도적 장치로서 건설공사는 법정 요건을 갖추어 등록한 &lt;strong&gt;건설사업자&lt;/strong&gt;만이 수행할 수 있도록 규정하고 있습니다.&lt;/p&gt;
+
+    &lt;h3 class=&#34;text-xl font-bold text-gray-900 border-b-2 border-gray-200 pb-2 mb-4&#34;&gt;2.1. 건설업의 종류 및 등록 요건 (제 9 조)&lt;/h3&gt;
+    &lt;p class=&#34;text-gray-900 mb-4 leading-relaxed&#34;&gt;건설업은 &lt;strong&gt;종합적인 계획, 관리, 조정 하에 시설물을 시공하는 종합건설업&lt;/strong&gt;과 &lt;strong&gt;세부 공종별 전문공사를 시공하는 전문건설업&lt;/strong&gt;으로 분류됩니다. 건설업을 영위하려는 사업자는 자본금, 기술능력, 요건에 부합하는 시설 및 장비를 갖추어 주무관청 (국토교통부 또는 관할 지자체) 에 등록하여야 합니다.&lt;/p&gt;
+
+    &lt;div class=&#34;grid md:grid-cols-2 gap-6 mb-8&#34;&gt;
+        &lt;div class=&#34;border p-5 rounded-xl bg-white shadow-md border-blue-200 transition&#34;&gt;
+            &lt;h4 class=&#34;font-bold text-indigo-900 mb-4 text-lg border-b border-indigo-200 pb-2 flex items-center gap-2&#34;&gt;&lt;span&gt;🏗️&lt;/span&gt; 종합건설업 (5 개 업종)&lt;/h4&gt;
+            &lt;ul class=&#34;text-sm text-gray-900 list-none space-y-2&#34;&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-indigo-200&#34;&gt;&lt;/span&gt;건축공사업 (자본금 3.5 억원 이상, 관련 기술인 5 인 이상)&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-indigo-200&#34;&gt;&lt;/span&gt;토목공사업 (자본금 5 억원 이상, 관련 기술인 6 인 이상)&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-indigo-200&#34;&gt;&lt;/span&gt;토목건축공사업 (자본금 8.5 억원 이상, 관련 기술인 11 인 이상)&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-indigo-200&#34;&gt;&lt;/span&gt;산업설비공사업&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-indigo-200&#34;&gt;&lt;/span&gt;조경공사업&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&#34;border p-5 rounded-xl bg-white shadow-md border-teal-200 transition&#34;&gt;
+            &lt;h4 class=&#34;font-bold text-teal-900 mb-2 text-lg border-b border-teal-200 pb-2 flex items-center gap-2&#34;&gt;&lt;span&gt;🛠️&lt;/span&gt; 전문건설업 (대업종화 체계)&lt;/h4&gt;
+            &lt;p class=&#34;text-xs text-gray-900 mb-3 bg-teal-50 p-2 rounded shadow-inner&#34;&gt;2022 년 시행령 개정으로 전문건설업 업종이 대업종 단위로 통합 운영되고 있습니다.&lt;/p&gt;
+            &lt;ul class=&#34;text-sm text-gray-900 list-none space-y-2&#34;&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-teal-200&#34;&gt;&lt;/span&gt;지반조성·포장공사업&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-teal-200&#34;&gt;&lt;/span&gt;실내건축공사업&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-teal-200&#34;&gt;&lt;/span&gt;금속창호·지붕건축물조립공사업&lt;/li&gt;
+                &lt;li class=&#34;flex items-center gap-2&#34;&gt;&lt;span class=&#34;w-1.5 h-1.5 rounded-full bg-teal-200&#34;&gt;&lt;/span&gt;철근·콘크리트공사업 등 29 개 업종&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;bg-red-50 p-6 rounded-xl border border-red-200 mb-8 shadow-sm&#34;&gt;
+        &lt;h4 class=&#34;font-bold text-red-900 text-lg mb-3 flex items-center gap-2&#34;&gt;&lt;span class=&#34;text-2xl&#34;&gt;🚨&lt;/span&gt; 경미한 건설공사의 구별 기준&lt;/h4&gt;
+        &lt;p class=&#34;text-sm text-gray-900 mb-3 leading-relaxed&#34;&gt;법률에서 정하는 극히 소규모 공사에 한하여 예외적으로 건설업 등록이 없는 일반 사업자나 개인의 시공을 허용합니다.&lt;/p&gt;
+        &lt;div class=&#34;bg-white p-4 rounded-lg border border-red-100 mb-3 shadow-inner&#34;&gt;
+            &lt;ul class=&#34;text-sm font-semibold text-gray-900 list-disc pl-5 space-y-2&#34;&gt;
+                &lt;li&gt;&lt;strong&gt;종합공사:&lt;/strong&gt; 예정금액 &lt;strong&gt;5 천만원 미만&lt;/strong&gt; (부가가치세 포함)&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;전문공사:&lt;/strong&gt; 예정금액 &lt;strong&gt;1 천 5 백만원 미만&lt;/strong&gt; (부가가치세 포함)&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;p class=&#34;text-xs text-gray-900 leading-relaxed bg-white p-3 rounded-lg border border-red-100 mt-2&#34;&gt;
+            &lt;strong&gt;[법무 해석] 분할발주 (쪼개기 발주) 의 제한:&lt;/strong&gt; 무면허 시공을 우회하기 위해 다수의 계약으로 분할하여도, 동일 사업자가 동일 현장에서 연속하여 시공한 경우 법원은 이를 &lt;strong&gt;합산하여 판단&lt;/strong&gt;합니다. 기준 금액 초과 시 무등록 시공으로 형사 처벌되며, 가스, 철강 등 특수 공종은 금액과 무관하게 무조건 등록증을 요합니다.
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;h3 class=&#34;text-xl font-bold text-gray-900 border-b-2 border-gray-200 pb-2 mb-4&#34;&gt;2.2. 등록기준의 유지 및 실태조사 강화&lt;/h3&gt;
+    &lt;p class=&#34;text-gray-900 mb-4 leading-relaxed text-sm&#34;&gt;부실 건설사 (페이퍼컴퍼니) 제재를 위해 관할 관청의 &lt;strong&gt;실태조사 및 조기경보시스템&lt;/strong&gt; 운영이 강화되었습니다. 법정 실질자본금 미달 또는 독립된 사무실 미확보 등 등록기준 결격 요건 확인 시 직권으로 행정처분 (영업정지 등) 이 부과됩니다.&lt;/p&gt;
+
+    &lt;h3 class=&#34;text-xl font-bold text-red-900 border-b-2 border-gray-200 pb-2 mb-4&#34;&gt;2.3. 무면허 시공 및 명의대여 금지 규정 (제 21 조)&lt;/h3&gt;
+    &lt;p class=&#34;text-gray-900 mb-3 leading-relaxed&#34;&gt;건설업자가 타인에게 자신의 상호 또는 성명을 차용하게 하여 건설공사를 수급 또는 시공하게 하는 행위 (명의대여) 는 중대한 범죄에 해당합니다.&lt;/p&gt;
+    &lt;div class=&#34;bg-gray-50 text-gray-900 font-bold p-5 rounded-xl shadow-md border border-gray-300&#34;&gt;
+        &lt;p class=&#34;text-sm text-gray-900 leading-relaxed font-semibold&#34;&gt;&lt;strong class=&#34;text-gray-900 mr-2&#34;&gt;강행 규정 및 벌칙 (제 96 조):&lt;/strong&gt; 무등록 시공자, 명의 대여자 및 차용자, 관련 알선자 전원은 &lt;strong class=&#34;text-red-900 text-lg mx-1&#34;&gt;5 년 이하의 징역 또는 5 천만원 이하의 벌금&lt;/strong&gt;에 처해집니다.&lt;br&gt;더불어, 해당 위반 사업자는 행정 처분으로 &lt;strong&gt;필요적 등록 말소 (면허 영구 취소)&lt;/strong&gt; 대상이 됩니다.&lt;/p&gt;
+    &lt;/div&gt;</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2 class="text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3">건설업 면허 체계의 법적 이해</h2>
+<p class="text-lg text-gray-900 mb-6 leading-relaxed">부실시공 방지 및 현장 안전 확보를 위한 제도적 장치로서 건설공사는 법정 요건을 갖추어 등록한 <strong>건설사업자</strong>만이 수행할 수 있도록 규정하고 있습니다.</p>
+<h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-200 pb-2 mb-4">2.1. 건설업의 종류 및 등록 요건 (제 9 조)</h3>
+<p class="text-gray-900 mb-4 leading-relaxed">건설업은 <strong>종합적인 계획, 관리, 조정 하에 시설물을 시공하는 종합건설업</strong>과 <strong>세부 공종별 전문공사를 시공하는 전문건설업</strong>으로 분류됩니다. 건설업을 영위하려는 사업자는 자본금, 기술능력, 요건에 부합하는 시설 및 장비를 갖추어 주무관청 (국토교통부 또는 관할 지자체) 에 등록하여야 합니다.</p>
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="border p-5 rounded-xl bg-white shadow-md border-blue-200 transition">
+<h4 class="font-bold text-indigo-900 mb-4 text-lg border-b border-indigo-200 pb-2 flex items-center gap-2"><span>🏗️</span> 종합건설업 (5 개 업종)</h4>
+<ul class="text-sm text-gray-900 list-none space-y-2">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-200"></span>건축공사업 (자본금 3.5 억원 이상, 관련 기술인 5 인 이상)</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-200"></span>토목공사업 (자본금 5 억원 이상, 관련 기술인 6 인 이상)</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-200"></span>토목건축공사업 (자본금 8.5 억원 이상, 관련 기술인 11 인 이상)</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-200"></span>산업설비공사업</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-200"></span>조경공사업</li>
+</ul>
+</div>
+<div class="border p-5 rounded-xl bg-white shadow-md border-teal-200 transition">
+<h4 class="font-bold text-teal-900 mb-2 text-lg border-b border-teal-200 pb-2 flex items-center gap-2"><span>🛠️</span> 전문건설업 (대업종화 체계)</h4>
+<p class="text-xs text-gray-900 mb-3 bg-teal-50 p-2 rounded shadow-inner">2022 년 시행령 개정으로 전문건설업 업종이 대업종 단위로 통합 운영되고 있습니다.</p>
+<ul class="text-sm text-gray-900 list-none space-y-2">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>지반조성·포장공사업</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>실내건축공사업</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>금속창호·지붕건축물조립공사업</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-teal-200"></span>철근·콘크리트공사업 등 29 개 업종</li>
+</ul>
+</div>
+</div>
+<div class="bg-red-50 p-6 rounded-xl border border-red-200 mb-8 shadow-sm">
+<h4 class="font-bold text-red-900 text-lg mb-3 flex items-center gap-2"><span class="text-2xl">🚨</span> 경미한 건설공사의 구별 기준</h4>
+<p class="text-sm text-gray-900 mb-3 leading-relaxed">법률에서 정하는 극히 소규모 공사에 한하여 예외적으로 건설업 등록이 없는 일반 사업자나 개인의 시공을 허용합니다.</p>
+<div class="bg-white p-4 rounded-lg border border-red-100 mb-3 shadow-inner">
+<ul class="text-sm font-semibold text-gray-900 list-disc pl-5 space-y-2">
+<li><strong>종합공사:</strong> 예정금액 <strong>5 천만원 미만</strong> (부가가치세 포함)</li>
+<li><strong>전문공사:</strong> 예정금액 <strong>1 천 5 백만원 미만</strong> (부가가치세 포함)</li>
+</ul>
+</div>
+<p class="text-xs text-gray-900 leading-relaxed bg-white p-3 rounded-lg border border-red-100 mt-2">
+<strong>[법무 해석] 분할발주 (쪼개기 발주) 의 제한:</strong> 무면허 시공을 우회하기 위해 다수의 계약으로 분할하여도, 동일 사업자가 동일 현장에서 연속하여 시공한 경우 법원은 이를 <strong>합산하여 판단</strong>합니다. 기준 금액 초과 시 무등록 시공으로 형사 처벌되며, 가스, 철강 등 특수 공종은 금액과 무관하게 무조건 등록증을 요합니다.
+        </p>
+</div>
+<h3 class="text-xl font-bold text-gray-900 border-b-2 border-gray-200 pb-2 mb-4">2.2. 등록기준의 유지 및 실태조사 강화</h3>
+<p class="text-gray-900 mb-4 leading-relaxed text-sm">부실 건설사 (페이퍼컴퍼니) 제재를 위해 관할 관청의 <strong>실태조사 및 조기경보시스템</strong> 운영이 강화되었습니다. 법정 실질자본금 미달 또는 독립된 사무실 미확보 등 등록기준 결격 요건 확인 시 직권으로 행정처분 (영업정지 등) 이 부과됩니다.</p>
+<h3 class="text-xl font-bold text-red-900 border-b-2 border-gray-200 pb-2 mb-4">2.3. 무면허 시공 및 명의대여 금지 규정 (제 21 조)</h3>
+<p class="text-gray-900 mb-3 leading-relaxed">건설업자가 타인에게 자신의 상호 또는 성명을 차용하게 하여 건설공사를 수급 또는 시공하게 하는 행위 (명의대여) 는 중대한 범죄에 해당합니다.</p>
+<div class="bg-gray-50 text-gray-900 font-bold p-5 rounded-xl shadow-md border border-gray-300">
+<p class="text-sm text-gray-900 leading-relaxed font-semibold"><strong class="text-gray-900 mr-2">강행 규정 및 벌칙 (제 96 조):</strong> 무등록 시공자, 명의 대여자 및 차용자, 관련 알선자 전원은 <strong class="text-red-900 text-lg mx-1">5 년 이하의 징역 또는 5 천만원 이하의 벌금</strong>에 처해집니다.<br/>더불어, 해당 위반 사업자는 행정 처분으로 <strong>필요적 등록 말소 (면허 영구 취소)</strong> 대상이 됩니다.</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/42.html">
+                    ← Previous
+                </a>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/44.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -8,19 +8,13 @@ echo ==========================================
 :: Change working directory to project root (parent directory of scripts folder)
 cd /d "%~dp0.."
 
-echo [1/4] Running DB seed scripts (Law Course All Parts)...
-uv run python scripts\seeders\seed_law_ultimate_pt1.py
-uv run python scripts\seeders\seed_law_ultimate_pt2.py
-uv run python scripts\seeders\seed_law_ultimate_pt3.py
-uv run python scripts\seeders\seed_law_ultimate_pt4.py
+echo [1/3] Running DB seed scripts (Law Course - pt1 only)...
+uv run python scripts\seeders\seed_law_ultimate_pt1_keep_id.py
 
-echo [2/4] Extracting DB Content for validation...
-uv run python scripts\export_tools\_extract_db_content.py
+echo [2/3] Cleaning up duplicate lessons...
+uv run python scripts\db_tools\cleanup_law_lessons.py
 
-echo [3/4] Generating DOCX Contracts...
-uv run python scripts\export_tools\generate_docx.py
-
-echo [4/4] Exporting Static Web Site...
+echo [3/3] Exporting Static Web Site...
 uv run python scripts\export_tools\export_site.py
 
 echo ==========================================
