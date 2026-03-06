@@ -25,7 +25,9 @@
    - 내가 남긴 커밋(저장 기록)에 이름표를 붙이기 위해 컴퓨터(터미널)에 정보를 입력합니다.
      ```bash
      git config --global user.name "본인 이름(예: gildong)"
+     # (예시) git config --global user.name gildong
      git config --global user.email "가입 이메일(예: gd9999@gmail.com)"
+     # (예시) git config --global user.email gd9999@gmail.com  
      ```
 
 3. **설정 정보 확인**
@@ -40,55 +42,35 @@
 
 ## 3. GitHub Repository (원격 저장소) 생성
 
-1. **새 저장소 만들기**
+1. **로컬에서 커밋 완료하기**
+     ```bash
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```  
+2. **새 저장소 만들기**
    - GitHub 로그인 후 우측 상단의 `+` 버튼 &rarr; **New repository** 클릭.
-2. **환경 설정 (Configuration)**
+
+3. **환경 설정 (Configuration)**
    - **Repository name**: 영문, 숫자, 하이픈(-) 등을 조합해 신규 저장소 이름 입력.
    - **Choose visibility (공개 여부)**: 
      - `Public`: 누구나 볼 수 있음 (포트폴리오나 강의 사이트 등 외부 노출 시 필수).
      - `Private`: 비공개 (본인 및 초대한 사람만 볼 수 있음).
-   - **Initialize this repository with**:
+   - **다른 옵션(README, .gitignore 등)은 건드리지 않고 하단의 Create repository 버튼을 클릭**:
      - `Add a README`: 프로젝트 대문 역할을 하는 마크다운(.md) 설명서 파일 생성 (On/Off).
-     - `Add .gitignore`: GitHub에 업로드하지 않을 보안 파일(DB 비번, 인증키 등)이나 무거운 캐시 폴더 패턴을 정의하는 파일. (GitHub에서 만들어도 되지만, **VSCode 로컬에서 직접 생성하고 관리하는 것이 더 유연하고 좋습니다.**)
+     - `Add .gitignore`: GitHub에 업로드하지 않을 보안 파일(DB 비번, 인증키 등)이나 무거운 캐시 폴더 패턴을 정의하는 파일. (GitHub에서 만들어도 되지만, **VSCode 로컬에서 직접 생성하고 관리하는 것이 더 유연하고 좋음**)
      - `Add license`: 다른 사람이 내 코드를 퍼갈 때의 권한 명시 (초기엔 필수 아님).
 
+4. **로컬 코드를 GitHub로 보내기(Push)**
+     ```bash
+    git remote add origin https://github.com/본인계정/저장소이름.git
+     # (예시) git remote add origin https://github.com/gildong/course-site.git     
+    git branch -M main
+    git push -u origin main
+    ```
 ---
 
-## 4. 로컬(PC) 프로젝트와 원격 저장소(GitHub) 연동하기
-
-이제 내 컴퓨터에서 작업 중인 폴더를 클라우드 저장소와 결합(동기화)할 차례입니다. 저장소의 기본 관리 브랜치명은 주로 `main`입니다.
-
-1. **로컬 저장소 초기화 및 기본 설정 (필수 사전 작업)**
-   - 해당 프로젝트 폴더로 터미널 경로를 맞춘 뒤, 내 PC에서도 Git을 쓸 수 있도록 세팅합니다.
-     ```bash
-     git init
-     git add .
-     git commit -m "첫 커밋"
-     git branch -M main
-     ```
-
-2. **원격 저장소 주소 연결하기 (`origin` 추가)**
-   - `origin`은 해당 원격 저장소의 웹 주소를 짧게 대신 부르는 별칭(alias)입니다.
-     ```bash
-     git remote add origin https://github.com/본인계정/저장소이름.git
-     # (예시) git remote add origin https://github.com/gildong/course-site.git
-     ```
-
-3. **프로젝트 병합하기 (`push` 충돌/오류 예방 ⭐️)**
-   - 만약 GitHub 창에서 `README.md` 등을 미리 생성했다면, 로컬 PC에는 그 파일이 없어 바로 올리려 할 때 충돌 에러가 납니다. 먼저 '원격의 데이터'를 당겨와 합쳐줍니다.
-     ```bash
-     git pull origin main --allow-unrelated-histories
-     ```
-
-4. **원격 저장소(GitHub)에 밀어 올리기 (`push` 명령어)**
-   - 로컬에서 기록(commit)한 내용을 마침내 클라우드로 전송합니다.
-     ```bash
-     git push -u origin main
-     ```
-
----
-
-## 5. VSCode GUI의 초간편 사용 (Source Control)
+## 4. VSCode GUI의 초간편 사용 (Source Control)
 
 터미널 명령어의 원리를 이해했다면, VSCode 좌측의 **'소스 제어(Source Control, 나뭇가지 아이콘)'** 탭을 사용해 클릭만으로 훨씬 직관적이고 편하게 버전 관리를 할 수 있습니다.
 
@@ -116,7 +98,7 @@
 
 ---
 
-## 6. 필수 핵심 Git 명령어 백과사전
+## 5. 필수 핵심 Git 명령어 백과사전
 
 모든 명령어는 맨 앞에 `git` 키워드를 붙여서 사용합니다. (예: `git init`)
 
