@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from core.database import create_db_and_tables
-from routers import auth, admin, public
+from routers import auth, admin, public, admin_notices
 from routers.auth import NotAuthenticatedException
 
 app = FastAPI(title="Course Site FastAPI")
@@ -14,6 +14,7 @@ async def not_authenticated_exception_handler(request: Request, exc: NotAuthenti
 app.include_router(public.router)
 app.include_router(auth.router)
 app.include_router(admin.router)
+app.include_router(admin_notices.router)
 
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

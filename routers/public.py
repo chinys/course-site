@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from sqlmodel import Session, select
 from fastapi import Depends
 from core.database import get_session
-from models import Course, Lesson, Category
+from models import Course, Lesson, Category, Notice
 
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,14 +53,44 @@ def lesson_detail(request: Request, course_id: int, lesson_id: int, session: Ses
             break
             
     return templates.TemplateResponse(
-        request=request, 
-        name="public/lesson.html", 
+        request=request,
+        name="public/lesson.html",
         context={
             "categories": categories,
-            "course": course, 
-            "lesson": lesson, 
-            "prev_lesson": prev_lesson, 
+            "course": course,
+            "lesson": lesson,
+            "prev_lesson": prev_lesson,
             "next_lesson": next_lesson,
             "all_lessons": all_lessons
         }
+    )
+
+
+@router.get("/notices")
+def notices_list(request: Request, session: Session = Depends(get_session)):
+    """공지사항 목록"""
+    categories = session.exec(select(Category).order_by(Category.order)).all()
+    notices = session.exec(
+        select(Notice)
+        .where(Notice.is_active == True)
+        .order_by(Notice.is_pinned.desc(), Notice.created_at.desc())
+    ).all()
+    return templates.TemplateResponse(
+        request=request,
+        name="public/notices.html",
+        context={"categories": categories, "notices": notices}
+    )
+
+
+@router.get("/notices/{notice_id}")
+def notice_detail(request: Request, notice_id: int, session: Session = Depends(get_session)):
+    """공지사항 상세"""
+    categories = session.exec(select(Category).order_by(Category.order)).all()
+    notice = session.get(Notice, notice_id)
+    if not notice or not notice.is_active:
+        raise HTTPException(status_code=404, detail="Notice not found")
+    return templates.TemplateResponse(
+        request=request,
+        name="public/notice_detail.html",
+        context={"categories": categories, "notice": notice}
     )

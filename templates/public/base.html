@@ -20,8 +20,8 @@
                     </div>
                     <div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
                         <a href="/" class="text-indigo-100 font-medium hover:text-white transition-colors">Home</a>
-
-                        <!-- Dynamic Categories with Tailwind Dropdown (using CSS hover) -->
+                        
+                        <!-- 강좌 카테고리 메뉴 (드롭다운) -->
                         {% if categories %}
                         {% for cat in categories %}
                         <div class="relative group">
@@ -51,6 +51,8 @@
                         </div>
                         {% endfor %}
                         {% endif %}
+                        
+                        <a href="/notices" class="text-indigo-100 font-medium hover:text-white transition-colors">공지사항</a>
                     </div>
                 </div>
             </div>
