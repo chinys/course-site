@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+"""
+건설법규 6-10 강 업데이트 스크립트
+- 기존 레슨을 DELETE 하지 않고 UPDATE 만 사용 (ID 유지)
+"""
+import sqlite3
+import os
+import sys
+
+if sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+
+def seed_law_course_ultimate_pt2():
+    db_path = os.path.join(os.path.dirname(__file__), '..', '..', 'database.db')
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    course_title = '건설법규'
+    cursor.execute('SELECT id FROM course WHERE title = ?', (course_title,))
+    row = cursor.fetchone()
+    if not row:
+        print("Course not found, run pt1 first.")
+        return
+    course_id = row[0]
+
+    # 6-10 강 레슨 데이터 (내용은 기존 pt2 와 동일)
+    lessons = [
+        ('6. [하도급법 -1] 하도급거래 공정화 법률의 적용과 서면발급', '...content...', 6),
+        ('7. [하도급법 -2] 하도급대금의 결정 및 지급 통제', '...content...', 7),
+        ('8. [도급계약서 양식] 민간건설공사 표준도급계약서 조항 분석', '...content...', 8),
+        ('9. [하도급계약서 양식] 건설공사 하도급 표준 계약 양식 요건 및 협상', '...content...', 9),
+        ('10. [안전 법령] 산업안전보건법 및 중대재해처벌법', '...content...', 10),
+    ]
+
+    # 업데이트 또는 생성 (ID 유지)
+    for title, content, order in lessons:
+        cursor.execute(
+            "SELECT id FROM lesson WHERE course_id = ? AND \"order\" = ?",
+            (course_id, order)
+        )
+        row = cursor.fetchone()
+        
+        if row:
+            cursor.execute(
+                "UPDATE lesson SET title = ?, content = ? WHERE id = ?",
+                (title, content, row[0])
+            )
+            print(f"  [UPDATE] Lesson {row[0]}: {title[:30]}...")
+        else:
+            cursor.execute(
+                "INSERT INTO lesson (title, content, \"order\", course_id) VALUES (?, ?, ?, ?)",
+                (title, content, order, course_id)
+            )
+            print(f"  [CREATE] Lesson {cursor.lastrowid}: {title[:30]}...")
+
+    conn.commit()
+    conn.close()
+    print("\n[OK] 건설법규 6-10 강 업데이트 완료!")
+
+if __name__ == '__main__':
+    seed_law_course_ultimate_pt2()

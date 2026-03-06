@@ -21,13 +21,13 @@
   - `auth.py`: JWT 및 쿠키 기반 관리자 인증 로그인/로그아웃 처리
   - `admin.py`: 강좌/강의 CRUD API 및 수정 렌더링, 관리자 대시보드 뷰
   - `public.py`: 사용자 공개 뷰 (메인, 상세, 강의 열람 렌더링)
-- `scripts/`: 데이터베이스 초기 세팅, 유지보수, 문서 산출물 변환 기능 스크립트 모음
-  - `seeders/`: DB 초기 데이터 등록 및 강의 생성 (`seed_law_ultimate_pt4.py` 등)
-  - `templates/`: 계약서 등 HTML 조각 모듈 (`_section_a.py` 등)
-  - `export_tools/`: DOCX 변환 및 정적 웹사이트 빌드 추출 (`export_site.py`, `generate_docx.py` 등)
-  - `db_tools/`: DB 무결성 점검 및 텍스트 일괄 수정 (`check_db.py`, `replace_terms.py` 등)
-  - `media_tools/`: 썸네일/외부 에셋 다운로드 및 정리
-  - `update_all.bat`: DB 반영부터 DOCX 변환, 정적 사이트 추출까지 한 번에 실행하는 파이프라인
+- `scripts/`: 데이터베이스 관리, 콘텐츠 업데이트, 문서 변환, 정적 사이트 빌드 스크립트
+  - `seeders/`: DB 초기 데이터 등록 (건설법규, FastAPI, 공지사항)
+  - `templates/`: 계약서 HTML 템플릿 모듈 (A-E 섹션)
+  - `export_tools/`: DOCX 생성 및 정적 사이트 빌드
+  - `db_tools/`: DB 관리 도구 (관리자 생성, 정리, 검증)
+  - `media_tools/`: 이미지 다운로드 및 썸네일 생성
+  - `update_all.bat`: **전체 파이프라인 자동화 (권장)**
 - `templates/`: Jinja2 서버 사이드 렌더링용 HTML 템플릿 파일 모음 (`admin/`, `public/`)
 - `static/`: 클라이언트 제공 정적 파일 (`uploads/` 경로에 강의용 이미지, 썸네일 탑재)
   - `downloads/`: 건설법규 계약서 등 DOCX 다운로드 파일
