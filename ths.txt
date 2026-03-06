@@ -1,5 +1,0 @@
-<th class="border p-2 text-left">
-<th class="border p-2 text-left">
-<th class="border p-2 text-left">
-<th class="border p-2 text-left">
-<th class="border p-2 text-center" style="width: 110px;">
