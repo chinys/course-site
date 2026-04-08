@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1. 회계란 무엇일까? - 용돈기입장에서 시작! | 회계원리</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                회계관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/7.html" role="menuitem">회계원리</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/notices/index.html">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/7.html">회계원리</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/7/lessons/1.html">
+                        1. 회계란 무엇일까? - 용돈기입장에서 시작!
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/2.html">
+                        2. 재무상태표 - 회사의 건강검진표
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/3.html">
+                        3. 손익계산서 - 올해 얼마 벌었나?
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/4.html">
+                        4. ★ 거래의 8요소 - 회계의 핵심 비밀!
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/5.html">
+                        5. 분개 실전! - 거래를 회계로 번역하기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/6.html">
+                        6. T계정과 전기 - 계정별 정리함
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/7.html">
+                        7. 시산표 - 내가 실수 안 했는지 검증!
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/8.html">
+                        8. 매출원가 - 팔린 물건의 진짜 원가
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/9.html">
+                        9. 현금과 은행계정조정 - 장부와 통장이 다를 때
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/10.html">
+                        10. 대손충당금 - 못 받을 돈 미리 대비하기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/11.html">
+                        11. 재고자산 - 어떤 물건이 먼저 팔렸을까?
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/12.html">
+                        12. 감가상각 - 물건은 해마다 닳아간다
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/13.html">
+                        13. 사채(채권) - 회사가 큰 돈을 빌리는 법
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/14.html">
+                        14. 자본 - 진짜 내 돈의 흐름
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/15.html">
+                        15. 재무비율 분석 - 회사의 성적표 읽기
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/16.html">
+                        16. 외상거래와 어음 - 현금 없이 하는 장사
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/17.html">
+                        17. 결산 수정분개 - 발생주의 회계의 핵심
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/18.html">
+                        18. 전표 제도 - 입금·출금·대체전표
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/19.html">
+                        19. 현금흐름표 - 돈은 어디서 와서 어디로 갔나?
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/7/lessons/20.html">
+                        20. 종합 실전문제 - 한 달 장사 전과정 풀어보기
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">1. 회계란 무엇일까? - 용돈기입장에서 시작!</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template">&lt;h2&gt;🏠 회계 = 돈의 일기장&lt;/h2&gt;
+&lt;p&gt;여러분이 매일 쓰는 &lt;strong&gt;용돈기입장&lt;/strong&gt;을 떠올려 보세요. 오늘 받은 돈, 쓴 돈, 남은 돈을 적죠? 회계도 똑같습니다. 다만 회사 규모로 하는 것일 뿐!&lt;/p&gt;
+
+&lt;div style=&#39;display:flex; gap:16px; margin:24px 0; flex-wrap:wrap;&#39;&gt;
+  &lt;div style=&#39;flex:1; min-width:200px; background:#EEF2FF; border:2px solid #818CF8; border-radius:12px; padding:20px; text-align:center;&#39;&gt;
+    &lt;div style=&#39;font-size:48px; margin-bottom:8px;&#39;&gt;📥&lt;/div&gt;
+    &lt;div style=&#39;font-weight:bold; font-size:18px; color:#4338CA;&#39;&gt;들어온 돈&lt;/div&gt;
+    &lt;div style=&#39;color:#6366F1; margin-top:4px;&#39;&gt;= 수익 (Revenue)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;flex:1; min-width:200px; background:#FEF2F2; border:2px solid #F87171; border-radius:12px; padding:20px; text-align:center;&#39;&gt;
+    &lt;div style=&#39;font-size:48px; margin-bottom:8px;&#39;&gt;📤&lt;/div&gt;
+    &lt;div style=&#39;font-weight:bold; font-size:18px; color:#DC2626;&#39;&gt;나간 돈&lt;/div&gt;
+    &lt;div style=&#39;color:#EF4444; margin-top:4px;&#39;&gt;= 비용 (Expense)&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;flex:1; min-width:200px; background:#F0FDF4; border:2px solid #4ADE80; border-radius:12px; padding:20px; text-align:center;&#39;&gt;
+    &lt;div style=&#39;font-size:48px; margin-bottom:8px;&#39;&gt;💰&lt;/div&gt;
+    &lt;div style=&#39;font-weight:bold; font-size:18px; color:#16A34A;&#39;&gt;남은 돈&lt;/div&gt;
+    &lt;div style=&#39;color:#22C55E; margin-top:4px;&#39;&gt;= 이익 (Profit)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;🧮 회계의 황금 공식 (이것만은 꼭 외우세요!)&lt;/h3&gt;
+&lt;div style=&#39;background:linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color:white; padding:24px; border-radius:12px; text-align:center; font-size:22px; font-weight:bold; margin:16px 0; box-shadow:0 4px 6px rgba(0,0,0,0.1);&#39;&gt;
+  자산 = 부채 + 자본
+&lt;/div&gt;
+
+&lt;div style=&#39;display:flex; gap:12px; margin:20px 0; flex-wrap:wrap;&#39;&gt;
+  &lt;div style=&#39;flex:1; min-width:180px; background:#DBEAFE; padding:16px; border-radius:8px; border-left:4px solid #3B82F6;&#39;&gt;
+    &lt;strong style=&#39;color:#1E40AF;&#39;&gt;🏦 자산 (내가 가진 것)&lt;/strong&gt;&lt;br&gt;
+    &lt;span style=&#39;font-size:14px; color:#374151;&#39;&gt;현금, 건물, 자동차, 재고 상품 등 &lt;br&gt;→ 회사가 가진 모든 재산&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;flex:1; min-width:180px; background:#FEE2E2; padding:16px; border-radius:8px; border-left:4px solid #EF4444;&#39;&gt;
+    &lt;strong style=&#39;color:#991B1B;&#39;&gt;🏧 부채 (빌린 것 = 남의 돈)&lt;/strong&gt;&lt;br&gt;
+    &lt;span style=&#39;font-size:14px; color:#374151;&#39;&gt;은행 대출금, 외상값 등 &lt;br&gt;→ 나중에 갚아야 할 빚&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;flex:1; min-width:180px; background:#DCFCE7; padding:16px; border-radius:8px; border-left:4px solid #22C55E;&#39;&gt;
+    &lt;strong style=&#39;color:#166534;&#39;&gt;👤 자본 (진짜 내 돈)&lt;/strong&gt;&lt;br&gt;
+    &lt;span style=&#39;font-size:14px; color:#374151;&#39;&gt;사장님이 투자한 돈 + 벌어서 쌓은 이익 &lt;br&gt;→ 순수하게 내 몫&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;📊 숫자로 확인해 봅시다&lt;/h3&gt;
+&lt;table style=&#39;width:100%; border-collapse:collapse; margin-top:12px;&#39;&gt;
+  &lt;thead&gt;&lt;tr style=&#39;background:#F3F4F6;&#39;&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px;&#39;&gt;항목&lt;/th&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px;&#39;&gt;예시&lt;/th&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px;&#39;&gt;금액&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; color:#1E40AF; font-weight:bold;&#39;&gt;자산&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px;&#39;&gt;현금 + 건물 + 상품&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;&#39;&gt;1,000만원&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; color:#DC2626; font-weight:bold;&#39;&gt;부채&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px;&#39;&gt;은행 대출&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;&#39;&gt;400만원&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr style=&#39;background:#F0FDF4;&#39;&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; color:#16A34A; font-weight:bold;&#39;&gt;자본&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px;&#39;&gt;사장님 투자금&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;&#39;&gt;600만원&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr style=&#39;background:#EEF2FF;&#39;&gt;&lt;td colspan=&#39;2&#39; style=&#39;border:1px solid #E5E7EB; padding:10px; text-align:center; font-weight:bold;&#39;&gt;✅ 검증: 부채 + 자본&lt;/td&gt;&lt;td style=&#39;border:1px solid #E5E7EB; padding:10px; text-align:right; font-weight:bold; color:#4338CA;&#39;&gt;400 + 600 = 1,000 ✓&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3&gt;📜 회계는 어디서 시작되었을까? (복식부기의 유래)&lt;/h3&gt;
+
+&lt;div style=&#39;display:flex; gap:16px; margin:20px 0; flex-wrap:wrap;&#39;&gt;
+  &lt;div style=&#39;flex:1; min-width:300px; background:#FFF7ED; border:2px solid #FB923C; border-radius:12px; padding:20px;&#39;&gt;
+    &lt;div style=&#39;display:flex; align-items:center; gap:12px; margin-bottom:12px;&#39;&gt;
+      &lt;div style=&#39;font-size:48px;&#39;&gt;📖&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div style=&#39;font-weight:bold; font-size:18px; color:#9A3412;&#39;&gt;루카 파치올리 (Luca Pacioli)&lt;/div&gt;
+        &lt;div style=&#39;font-size:14px; color:#C2410C;&#39;&gt;1494년, 이탈리아 베네치아&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p style=&#39;font-size:14px; color:#374151; margin:0;&#39;&gt;이탈리아 수학자 &lt;strong&gt;루카 파치올리&lt;/strong&gt;가 1494년에 출간한 책 《산술, 기하, 비율 총감(Summa de Arithmetica)》에서 &lt;strong&gt;복식부기(Double-entry Bookkeeping)&lt;/strong&gt;를 세계 최초로 체계적으로 정리했습니다. 당시 베네치아 상인들이 이미 사용하던 방법을 교과서로 만든 것이죠. 그래서 파치올리를 &lt;strong&gt;&#34;회계의 아버지&#34;&lt;/strong&gt;라고 부릅니다.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;flex:1; min-width:300px; background:#F0FDF4; border:2px solid #4ADE80; border-radius:12px; padding:20px;&#39;&gt;
+    &lt;div style=&#39;display:flex; align-items:center; gap:12px; margin-bottom:12px;&#39;&gt;
+      &lt;div style=&#39;font-size:48px;&#39;&gt;💡&lt;/div&gt;
+      &lt;div&gt;
+        &lt;div style=&#39;font-weight:bold; font-size:18px; color:#166534;&#39;&gt;복식부기의 핵심 아이디어&lt;/div&gt;
+        &lt;div style=&#39;font-size:14px; color:#22C55E;&#39;&gt;거래에는 항상 원인과 결과가 있다!&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p style=&#39;font-size:14px; color:#374151; margin:0;&#39;&gt;가게에 돈이 들어왔다면(결과), 왜 들어왔는지(원인 = 물건을 팔았다)를 반드시 함께 기록합니다. 한 가지 사건을 &lt;strong&gt;왼쪽(차변)과 오른쪽(대변), 두 곳에 동시에 적어야&lt;/strong&gt; 하니까 &#34;복식(複式 = 두 겹)&#34;이라고 부르는 것입니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;🔤 차변(Debit)·대변(Credit)은 왜 그렇게 부를까?&lt;/h3&gt;
+
+&lt;table style=&#39;width:100%; border-collapse:collapse; margin:16px 0;&#39;&gt;
+  &lt;thead&gt;&lt;tr style=&#39;background:#F3F4F6;&#39;&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px; width:15%;&#39;&gt;용어&lt;/th&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px; width:20%;&#39;&gt;원래 뜻&lt;/th&gt;
+    &lt;th style=&#39;border:1px solid #D1D5DB; padding:10px;&#39;&gt;유래 설명&lt;/th&gt;
+  &lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px; font-weight:bold; color:#1E40AF; background:#DBEAFE;&#39;&gt;차변 (借辨)&lt;br&gt;Debit&lt;/td&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px;&#39;&gt;라틴어 &lt;strong&gt;debere&lt;/strong&gt;&lt;br&gt;&#34;빚지다, 받을 것&#34;&lt;/td&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px; font-size:14px;&#39;&gt;중세 이탈리아 상인의 장부에서 &#34;상대방이 &lt;strong&gt;나에게 빚진 것&lt;/strong&gt;(= 내가 받을 것)&#34;을 &lt;strong&gt;왼쪽&lt;/strong&gt;에 적었습니다. 한자로는 빌릴 借(차) + 나눌 辨(변) → &lt;strong&gt;&#34;빌려준 쪽&#34;&lt;/strong&gt;이라는 뜻입니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px; font-weight:bold; color:#DC2626; background:#FEE2E2;&#39;&gt;대변 (貸辨)&lt;br&gt;Credit&lt;/td&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px;&#39;&gt;라틴어 &lt;strong&gt;credere&lt;/strong&gt;&lt;br&gt;&#34;믿다, 맡기다&#34;&lt;/td&gt;
+      &lt;td style=&#39;border:1px solid #E5E7EB; padding:10px; font-size:14px;&#39;&gt;&#34;내가 &lt;strong&gt;상대방에게 맡긴 것&lt;/strong&gt;(= 내가 줄 것)&#34;을 &lt;strong&gt;오른쪽&lt;/strong&gt;에 적었습니다. 한자로는 빌려줄 貸(대) + 나눌 辨(변) → &lt;strong&gt;&#34;빌려받은 쪽&#34;&lt;/strong&gt;이라는 뜻입니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div style=&#39;background:#EEF2FF; border:2px solid #818CF8; border-radius:12px; padding:16px; margin:16px 0;&#39;&gt;
+  &lt;strong style=&#39;font-size:16px; color:#4338CA;&#39;&gt;📌 정리하면?&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
+  &lt;div style=&#39;display:flex; gap:16px; flex-wrap:wrap;&#39;&gt;
+    &lt;div style=&#39;flex:1; min-width:200px; text-align:center;&#39;&gt;
+      &lt;div style=&#39;font-size:32px; margin-bottom:4px;&#39;&gt;👈&lt;/div&gt;
+      &lt;strong style=&#39;color:#1E40AF;&#39;&gt;차변 (왼쪽) = Debit&lt;/strong&gt;&lt;br&gt;
+      &lt;span style=&#39;font-size:14px;&#39;&gt;자산이 늘거나, 비용이 발생하면 여기!&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&#39;flex:1; min-width:200px; text-align:center;&#39;&gt;
+      &lt;div style=&#39;font-size:32px; margin-bottom:4px;&#39;&gt;👉&lt;/div&gt;
+      &lt;strong style=&#39;color:#DC2626;&#39;&gt;대변 (오른쪽) = Credit&lt;/strong&gt;&lt;br&gt;
+      &lt;span style=&#39;font-size:14px;&#39;&gt;부채·자본이 늘거나, 수익이 발생하면 여기!&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&#39;text-align:center; margin-top:12px; font-size:14px; color:#6B7280;&#39;&gt;지금은 차변·대변이라는 말이 어색하지만, 앞으로 계속 쓰다 보면 자연스럽게 입에 붙게 됩니다! 😊&lt;/div&gt;
+&lt;/div&gt;</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2>🏠 회계 = 돈의 일기장</h2>
+<p>여러분이 매일 쓰는 <strong>용돈기입장</strong>을 떠올려 보세요. 오늘 받은 돈, 쓴 돈, 남은 돈을 적죠? 회계도 똑같습니다. 다만 회사 규모로 하는 것일 뿐!</p>
+<div style="display:flex; gap:16px; margin:24px 0; flex-wrap:wrap;">
+<div style="flex:1; min-width:200px; background:#EEF2FF; border:2px solid #818CF8; border-radius:12px; padding:20px; text-align:center;">
+<div style="font-size:48px; margin-bottom:8px;">📥</div>
+<div style="font-weight:bold; font-size:18px; color:#4338CA;">들어온 돈</div>
+<div style="color:#6366F1; margin-top:4px;">= 수익 (Revenue)</div>
+</div>
+<div style="flex:1; min-width:200px; background:#FEF2F2; border:2px solid #F87171; border-radius:12px; padding:20px; text-align:center;">
+<div style="font-size:48px; margin-bottom:8px;">📤</div>
+<div style="font-weight:bold; font-size:18px; color:#DC2626;">나간 돈</div>
+<div style="color:#EF4444; margin-top:4px;">= 비용 (Expense)</div>
+</div>
+<div style="flex:1; min-width:200px; background:#F0FDF4; border:2px solid #4ADE80; border-radius:12px; padding:20px; text-align:center;">
+<div style="font-size:48px; margin-bottom:8px;">💰</div>
+<div style="font-weight:bold; font-size:18px; color:#16A34A;">남은 돈</div>
+<div style="color:#22C55E; margin-top:4px;">= 이익 (Profit)</div>
+</div>
+</div>
+<h3>🧮 회계의 황금 공식 (이것만은 꼭 외우세요!)</h3>
+<div style="background:linear-gradient(135deg, #667EEA 0%, #764BA2 100%); color:white; padding:24px; border-radius:12px; text-align:center; font-size:22px; font-weight:bold; margin:16px 0; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
+  자산 = 부채 + 자본
+</div>
+<div style="display:flex; gap:12px; margin:20px 0; flex-wrap:wrap;">
+<div style="flex:1; min-width:180px; background:#DBEAFE; padding:16px; border-radius:8px; border-left:4px solid #3B82F6;">
+<strong style="color:#1E40AF;">🏦 자산 (내가 가진 것)</strong><br/>
+<span style="font-size:14px; color:#374151;">현금, 건물, 자동차, 재고 상품 등 <br/>→ 회사가 가진 모든 재산</span>
+</div>
+<div style="flex:1; min-width:180px; background:#FEE2E2; padding:16px; border-radius:8px; border-left:4px solid #EF4444;">
+<strong style="color:#991B1B;">🏧 부채 (빌린 것 = 남의 돈)</strong><br/>
+<span style="font-size:14px; color:#374151;">은행 대출금, 외상값 등 <br/>→ 나중에 갚아야 할 빚</span>
+</div>
+<div style="flex:1; min-width:180px; background:#DCFCE7; padding:16px; border-radius:8px; border-left:4px solid #22C55E;">
+<strong style="color:#166534;">👤 자본 (진짜 내 돈)</strong><br/>
+<span style="font-size:14px; color:#374151;">사장님이 투자한 돈 + 벌어서 쌓은 이익 <br/>→ 순수하게 내 몫</span>
+</div>
+</div>
+<h3>📊 숫자로 확인해 봅시다</h3>
+<table style="width:100%; border-collapse:collapse; margin-top:12px;">
+<thead><tr style="background:#F3F4F6;">
+<th style="border:1px solid #D1D5DB; padding:10px;">항목</th>
+<th style="border:1px solid #D1D5DB; padding:10px;">예시</th>
+<th style="border:1px solid #D1D5DB; padding:10px;">금액</th>
+</tr></thead>
+<tbody>
+<tr><td style="border:1px solid #E5E7EB; padding:8px; color:#1E40AF; font-weight:bold;">자산</td><td style="border:1px solid #E5E7EB; padding:8px;">현금 + 건물 + 상품</td><td style="border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;">1,000만원</td></tr>
+<tr><td style="border:1px solid #E5E7EB; padding:8px; color:#DC2626; font-weight:bold;">부채</td><td style="border:1px solid #E5E7EB; padding:8px;">은행 대출</td><td style="border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;">400만원</td></tr>
+<tr style="background:#F0FDF4;"><td style="border:1px solid #E5E7EB; padding:8px; color:#16A34A; font-weight:bold;">자본</td><td style="border:1px solid #E5E7EB; padding:8px;">사장님 투자금</td><td style="border:1px solid #E5E7EB; padding:8px; text-align:right; font-weight:bold;">600만원</td></tr>
+<tr style="background:#EEF2FF;"><td colspan="2" style="border:1px solid #E5E7EB; padding:10px; text-align:center; font-weight:bold;">✅ 검증: 부채 + 자본</td><td style="border:1px solid #E5E7EB; padding:10px; text-align:right; font-weight:bold; color:#4338CA;">400 + 600 = 1,000 ✓</td></tr>
+</tbody>
+</table>
+<h3>📜 회계는 어디서 시작되었을까? (복식부기의 유래)</h3>
+<div style="display:flex; gap:16px; margin:20px 0; flex-wrap:wrap;">
+<div style="flex:1; min-width:300px; background:#FFF7ED; border:2px solid #FB923C; border-radius:12px; padding:20px;">
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+<div style="font-size:48px;">📖</div>
+<div>
+<div style="font-weight:bold; font-size:18px; color:#9A3412;">루카 파치올리 (Luca Pacioli)</div>
+<div style="font-size:14px; color:#C2410C;">1494년, 이탈리아 베네치아</div>
+</div>
+</div>
+<p style="font-size:14px; color:#374151; margin:0;">이탈리아 수학자 <strong>루카 파치올리</strong>가 1494년에 출간한 책 《산술, 기하, 비율 총감(Summa de Arithmetica)》에서 <strong>복식부기(Double-entry Bookkeeping)</strong>를 세계 최초로 체계적으로 정리했습니다. 당시 베네치아 상인들이 이미 사용하던 방법을 교과서로 만든 것이죠. 그래서 파치올리를 <strong>"회계의 아버지"</strong>라고 부릅니다.</p>
+</div>
+<div style="flex:1; min-width:300px; background:#F0FDF4; border:2px solid #4ADE80; border-radius:12px; padding:20px;">
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+<div style="font-size:48px;">💡</div>
+<div>
+<div style="font-weight:bold; font-size:18px; color:#166534;">복식부기의 핵심 아이디어</div>
+<div style="font-size:14px; color:#22C55E;">거래에는 항상 원인과 결과가 있다!</div>
+</div>
+</div>
+<p style="font-size:14px; color:#374151; margin:0;">가게에 돈이 들어왔다면(결과), 왜 들어왔는지(원인 = 물건을 팔았다)를 반드시 함께 기록합니다. 한 가지 사건을 <strong>왼쪽(차변)과 오른쪽(대변), 두 곳에 동시에 적어야</strong> 하니까 "복식(複式 = 두 겹)"이라고 부르는 것입니다.</p>
+</div>
+</div>
+<h3>🔤 차변(Debit)·대변(Credit)은 왜 그렇게 부를까?</h3>
+<table style="width:100%; border-collapse:collapse; margin:16px 0;">
+<thead><tr style="background:#F3F4F6;">
+<th style="border:1px solid #D1D5DB; padding:10px; width:15%;">용어</th>
+<th style="border:1px solid #D1D5DB; padding:10px; width:20%;">원래 뜻</th>
+<th style="border:1px solid #D1D5DB; padding:10px;">유래 설명</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="border:1px solid #E5E7EB; padding:10px; font-weight:bold; color:#1E40AF; background:#DBEAFE;">차변 (借辨)<br/>Debit</td>
+<td style="border:1px solid #E5E7EB; padding:10px;">라틴어 <strong>debere</strong><br/>"빚지다, 받을 것"</td>
+<td style="border:1px solid #E5E7EB; padding:10px; font-size:14px;">중세 이탈리아 상인의 장부에서 "상대방이 <strong>나에게 빚진 것</strong>(= 내가 받을 것)"을 <strong>왼쪽</strong>에 적었습니다. 한자로는 빌릴 借(차) + 나눌 辨(변) → <strong>"빌려준 쪽"</strong>이라는 뜻입니다.</td>
+</tr>
+<tr>
+<td style="border:1px solid #E5E7EB; padding:10px; font-weight:bold; color:#DC2626; background:#FEE2E2;">대변 (貸辨)<br/>Credit</td>
+<td style="border:1px solid #E5E7EB; padding:10px;">라틴어 <strong>credere</strong><br/>"믿다, 맡기다"</td>
+<td style="border:1px solid #E5E7EB; padding:10px; font-size:14px;">"내가 <strong>상대방에게 맡긴 것</strong>(= 내가 줄 것)"을 <strong>오른쪽</strong>에 적었습니다. 한자로는 빌려줄 貸(대) + 나눌 辨(변) → <strong>"빌려받은 쪽"</strong>이라는 뜻입니다.</td>
+</tr>
+</tbody>
+</table>
+<div style="background:#EEF2FF; border:2px solid #818CF8; border-radius:12px; padding:16px; margin:16px 0;">
+<strong style="font-size:16px; color:#4338CA;">📌 정리하면?</strong><br/><br/>
+<div style="display:flex; gap:16px; flex-wrap:wrap;">
+<div style="flex:1; min-width:200px; text-align:center;">
+<div style="font-size:32px; margin-bottom:4px;">👈</div>
+<strong style="color:#1E40AF;">차변 (왼쪽) = Debit</strong><br/>
+<span style="font-size:14px;">자산이 늘거나, 비용이 발생하면 여기!</span>
+</div>
+<div style="flex:1; min-width:200px; text-align:center;">
+<div style="font-size:32px; margin-bottom:4px;">👉</div>
+<strong style="color:#DC2626;">대변 (오른쪽) = Credit</strong><br/>
+<span style="font-size:14px;">부채·자본이 늘거나, 수익이 발생하면 여기!</span>
+</div>
+</div>
+<div style="text-align:center; margin-top:12px; font-size:14px; color:#6B7280;">지금은 차변·대변이라는 말이 어색하지만, 앞으로 계속 쓰다 보면 자연스럽게 입에 붙게 됩니다! 😊</div>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<div></div>
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/7/lessons/2.html">
+                    Next →
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
