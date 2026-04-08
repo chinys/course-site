@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>15. [현장 개선안] 자재·시공 분리 및 단계별 개선 방안 (1~3단계) | 건설법규</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
+<nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex flex-1">
+<div class="flex-shrink-0 flex items-center">
+<a class="text-xl font-bold text-white" href="/course-site/build/index.html">Course Platform</a>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8 items-center">
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/index.html">Home</a>
+<!-- 강좌 카테고리 메뉴 (드롭다운) -->
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                건설관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/1.html" role="menuitem">건설 EPC</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/2.html" role="menuitem">철골공사(Steel Structure)</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/3.html" role="menuitem">철근공사(Rebar Work)</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                법무관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/5.html" role="menuitem">건설법규</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                회계관련
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/7.html" role="menuitem">회계원리</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                언어학습
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/4.html" role="menuitem">이미지영어</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="text-indigo-100 font-medium hover:text-white transition-colors flex items-center gap-1 focus:outline-none">
+                                프로그래밍
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+<div aria-orientation="vertical" class="py-1" role="menu">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-900" href="/course-site/build/courses/6.html" role="menuitem">FastAPI 실무 마스터</a>
+</div>
+</div>
+</div>
+<a class="text-indigo-100 font-medium hover:text-white transition-colors" href="/course-site/build/notices/index.html">공지사항</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<!-- Sidebar / Lessons list -->
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="bg-white shadow rounded-lg flex flex-col h-full">
+<div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
+<h3 class="text-lg leading-6 font-medium text-gray-900">
+<a class="hover:text-indigo-600" href="/course-site/build/courses/5.html">건설법규</a>
+</h3>
+</div>
+<ul class="divide-y divide-gray-200 overflow-y-auto flex-1 pb-5" role="list">
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/42.html">
+                        1. [건산법 총칙] 건설산업기본법의 목적과 적용 범위
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/43.html">
+                        2. [건산법 등록] 건설업의 등록체계와 결격사유
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/44.html">
+                        3. [건산법 도급/하도급-1] 도급의 원칙과 다단계 하도급 금지
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/45.html">
+                        4. [건산법 도급/하도급-2] 불공정 행위 금지 및 대금 직불 보장
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/46.html">
+                        5. [건산법 현장관리] 현장대리인 지정, 전자카드제 및 표지 실명제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/47.html">
+                        6. [하도급법-1] 하도급거래 공정화 법률의 적용과 서면발급
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/48.html">
+                        7. [하도급법-2] 하도급대금의 결정 및 지급 통제
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/49.html">
+                        8. [도급계약서 양식] 민간건설공사 표준도급계약서 조항 분석
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/50.html">
+                        9. [하도급계약서 양식] 건설공사 하도급 표준 계약 양식 요건 및 협상
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/51.html">
+                        10. [안전 법령] 산업안전보건법 및 중대재해처벌법 (경영책임자 책임)
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/52.html">
+                        11. [실무 심화] 불법 하도급 및 위장 도급의 법적 판단 기준
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/53.html">
+                        12. [실무 심화] 물품 납품 계약과 건설 도급 공사의 명확한 구별
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/54.html">
+                        13. [실무 심화] 건설기계 대여와 도급의 판별 및 통제 권한 증빙 매뉴얼
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50" href="/course-site/build/courses/5/lessons/55.html">
+                        14. [실무 핵심 양식] 강구조물 불법 재하도급 방지용 계약서 모음
+                    </a>
+</li>
+<li>
+<a class="block px-4 py-3 text-sm bg-indigo-50 border-l-4 border-indigo-600 text-indigo-700 font-medium" href="/course-site/build/courses/5/lessons/56.html">
+                        15. [현장 개선안] 자재·시공 분리 및 단계별 개선 방안 (1~3단계)
+                    </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Main Content -->
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
+<div class="bg-white shadow rounded-lg overflow-hidden">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<h1 class="text-2xl font-bold text-gray-900">15. [현장 개선안] 자재·시공 분리 및 단계별 개선 방안 (1~3단계)</h1>
+</div>
+<div class="px-4 py-8 sm:px-8">
+<!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
+<!-- Raw content for Markdown parser (hidden) -->
+<script id="markdown-source" type="text/template">&lt;h2 class=&#34;text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3&#34;&gt;자재·시공 분리 및 단계별 개선 방안&lt;/h2&gt;
+
+            &lt;div class=&#34;bg-green-50 border border-green-200 p-5 rounded-xl mb-6 shadow-sm&#34;&gt;
+                &lt;h3 class=&#34;font-bold text-green-900 text-lg mb-2&#34;&gt;✅ 이미 정착된 직영 구조 (개선 불필요)&lt;/h3&gt;
+                &lt;ul class=&#34;text-sm text-green-800 space-y-1 list-disc pl-5&#34;&gt;
+                    &lt;li&gt;&lt;strong&gt;철골설치 일용직 근로자:&lt;/strong&gt; 당사(甲)가 근로자 개인과 &lt;strong&gt;100% 직접 근로계약(D-2)&lt;/strong&gt; 체결 ✅&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;임금 지급:&lt;/strong&gt; 근로자 &lt;strong&gt;개별 계좌로 직접 송금&lt;/strong&gt; (팀장 경유 없음) ✅&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;장비 임대차:&lt;/strong&gt; 크레인, 고소작업차 등 &lt;strong&gt;대부분 장비업체와 직접 임대차계약(B-1)&lt;/strong&gt; 체결 ✅&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-red-50 border border-red-200 p-5 rounded-xl mb-6 shadow-sm&#34;&gt;
+                &lt;h3 class=&#34;font-bold text-red-900 text-lg mb-2&#34;&gt;🚨 개선 대상: 자재·시공 혼합 계약&lt;/h3&gt;
+                &lt;p class=&#34;text-sm text-red-800 leading-relaxed&#34;&gt;현재 다음 공종에서 &lt;strong&gt;자재 구매와 시공 노무를 묶어 팀장에게 포괄 계약&lt;/strong&gt;하고 있어 재하도급 소지가 있습니다:&lt;/p&gt;
+                &lt;ul class=&#34;text-sm text-red-800 space-y-1 list-disc pl-5 mt-2&#34;&gt;
+                    &lt;li&gt;&lt;strong&gt;데크설치:&lt;/strong&gt; 데크플레이트 구매 + 설치 일괄&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;안전망 설치/해체:&lt;/strong&gt; 안전망 구매 + 설치/해체 일괄&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;철골설치:&lt;/strong&gt; 일부 공구/부자재 + 설치비 포괄 단가&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-yellow-50 border border-yellow-200 p-5 rounded-xl mb-6 shadow-sm&#34;&gt;
+                &lt;h3 class=&#34;font-bold text-yellow-900 text-lg mb-2&#34;&gt;⚠️ 단계별 접근의 필요성&lt;/h3&gt;
+                &lt;p class=&#34;text-sm text-yellow-800 leading-relaxed&#34;&gt;&lt;strong&gt;당장 &#34;자재와 설치 분리&#34;를 선언하면:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul class=&#34;text-sm text-yellow-800 space-y-1 list-disc pl-5 mt-2&#34;&gt;
+                    &lt;li&gt;팀장들이 &lt;strong&gt;일부 자재/공구 마진과 실행이윤&lt;/strong&gt; 포기 저항&lt;/li&gt;
+                    &lt;li&gt;팀장 &lt;strong&gt;작업 거부 시 현장 공기 지연&lt;/strong&gt; &amp;mdash; 원청에게도 책임 소지&lt;/li&gt;
+                    &lt;li&gt;따라서 &lt;strong&gt;① 자재 구매 분리(1단계) → ② 순수 설치 노무비 전환(2단계) → ③ 합법 구조 정착(3단계)&lt;/strong&gt;로 점진적 이행&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;overflow-x-auto rounded-xl shadow-lg border border-gray-200&#34;&gt;
+                &lt;table class=&#34;w-full text-sm text-left border-collapse&#34;&gt;
+                    &lt;thead class=&#34;bg-indigo-100 text-indigo-900 text-xs uppercase tracking-wider&#34;&gt;
+                        &lt;tr&gt;
+                            &lt;th class=&#34;border border-gray-300 px-4 py-3 font-bold text-center&#34; style=&#34;width:18%;&#34;&gt;유형&lt;/th&gt;
+                            &lt;th class=&#34;border border-gray-300 px-4 py-3 font-bold&#34; style=&#34;width:30%;&#34;&gt;현재 실태 (당사 현장)&lt;/th&gt;
+                            &lt;th class=&#34;border border-gray-300 px-4 py-3 font-bold&#34; style=&#34;width:52%;&#34;&gt;단계별 개선안 (1→2→3단계)&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody class=&#34;divide-y divide-gray-200&#34;&gt;
+                        &lt;!-- Row 1: 데크설치 --&gt;
+                        &lt;tr class=&#34;bg-white hover:bg-gray-50 transition&#34;&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top&#34;&gt;
+                                &lt;div class=&#34;font-bold text-red-700 text-base mb-1&#34;&gt;유형 1&lt;/div&gt;
+                                &lt;div class=&#34;text-sm font-semibold text-gray-900&#34;&gt;데크설치&lt;br&gt;&lt;span class=&#34;text-xs text-gray-500&#34;&gt;(데크자재+설치 일괄)&lt;/span&gt;&lt;/div&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;ul class=&#34;list-disc pl-4 space-y-1&#34;&gt;
+                                    &lt;li&gt;팀장이 &lt;strong&gt;데크플레이트 구매 + 설치&lt;/strong&gt;를 일괄 수행&lt;/li&gt;
+                                    &lt;li&gt;세금계산서: &lt;strong&gt;&#34;데크 설치비&#34;&lt;/strong&gt; (자재비+노무비 혼합)&lt;/li&gt;
+                                    &lt;li&gt;팀장에게 &lt;strong&gt;m²당 포괄 단가&lt;/strong&gt; 지급 (자재비+설치비+이윤 포함)&lt;/li&gt;
+                                    &lt;li&gt;14번 계약서(A-1/A-4)상: &lt;strong&gt;당사(甲)가 제조사와 직접 계약&lt;/strong&gt;해야 하나 실제는 팀장 경유&lt;/li&gt;
+                                    &lt;li&gt;데크 &lt;strong&gt;품질 관리, A/S 책임 소재 불명확&lt;/strong&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;div class=&#34;space-y-2&#34;&gt;
+                                    &lt;div class=&#34;bg-green-50 border-l-4 border-green-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-green-800 text-xs&#34;&gt;✅ 1단계 (자재 구매 분리: 1~3개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;&lt;strong&gt;데크플레이트:&lt;/strong&gt; &lt;strong&gt;당사(甲)가 제조사와 직접 &#34;물품공급 계약(A-1)&#34;&lt;/strong&gt; 체결, 세금계산서 직접 수령&lt;/li&gt;
+                                            &lt;li&gt;팀장 계약에서 &lt;strong&gt;&#34;데크 자재비&#34; 분리&lt;/strong&gt; &amp;mdash; &lt;strong&gt;순수 설치 노무비만&lt;/strong&gt; 청구하도록 전환&lt;/li&gt;
+                                            &lt;li&gt;팀장 &lt;strong&gt;노무비 단가 조정&lt;/strong&gt;으로 자재 분리로 인한 수입 감소 보전 (과도기)&lt;/li&gt;
+                                            &lt;li&gt;데크 &lt;strong&gt;입고 검수, 품질 관리&lt;/strong&gt; 프로세스 당사 직접 관리로 전환&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-blue-50 border-l-4 border-blue-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-blue-800 text-xs&#34;&gt;🔄 2단계 (순수 노무비 전환: 3~6개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장과 &lt;strong&gt;&#34;데크 설치 노무제공 계약&#34;&lt;/strong&gt; 체결 (자재 구매 개입 금지 명시)&lt;/li&gt;
+                                            &lt;li&gt;세금계산서 품목을 &lt;strong&gt;&#34;데크 설치 노무비&#34;&lt;/strong&gt;로 한정&lt;/li&gt;
+                                            &lt;li&gt;설치 단가를 &lt;strong&gt;m²당 고정액&lt;/strong&gt;으로 전환 (변동성 제거)&lt;/li&gt;
+                                            &lt;li&gt;데크 &lt;strong&gt;재고 관리, 적기 조달&lt;/strong&gt; 당사 구매팀 전담&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-purple-50 border-l-4 border-purple-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-purple-800 text-xs&#34;&gt;🎯 3단계 (합법 구조 정착: 6~12개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장을 &lt;strong&gt;순수 노무제공자&lt;/strong&gt;로 전환 (자재 구매 개입 금지 계약서 명시)&lt;/li&gt;
+                                            &lt;li&gt;세금계산서 품목을 &lt;strong&gt;&#34;데크 설치 노무비&#34;&lt;/strong&gt;로 한정, 자재비 완전 분리&lt;/li&gt;
+                                            &lt;li&gt;팀장 사업자 &lt;strong&gt;업종 변경&lt;/strong&gt; 지원 (데크설치업 → 노무제공업)&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;회사 내부 검토&lt;/strong&gt;를 통해 계약 관계 정립&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;!-- Row 2: 안전망 설치/해체 --&gt;
+                        &lt;tr class=&#34;bg-gray-50 hover:bg-gray-100 transition&#34;&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top&#34;&gt;
+                                &lt;div class=&#34;font-bold text-red-700 text-base mb-1&#34;&gt;유형 2&lt;/div&gt;
+                                &lt;div class=&#34;text-sm font-semibold text-gray-900&#34;&gt;안전망 설치/해체&lt;br&gt;&lt;span class=&#34;text-xs text-gray-500&#34;&gt;(안전망자재+설치·해체 일괄)&lt;/span&gt;&lt;/div&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;ul class=&#34;list-disc pl-4 space-y-1&#34;&gt;
+                                    &lt;li&gt;팀장이 &lt;strong&gt;안전망 구매 + 설치/해체&lt;/strong&gt;를 일괄 수행&lt;/li&gt;
+                                    &lt;li&gt;세금계산서: &lt;strong&gt;&#34;안전망 공사비&#34;&lt;/strong&gt; (자재비+노무비 혼합)&lt;/li&gt;
+                                    &lt;li&gt;팀장에게 &lt;strong&gt;개소당 또는 ton당 포괄 단가&lt;/strong&gt; 지급&lt;/li&gt;
+                                    &lt;li&gt;안전망 &lt;strong&gt;품질 기준 적합 여부 불명확&lt;/strong&gt; (팀장 구매 제품)&lt;/li&gt;
+                                    &lt;li&gt;&lt;strong&gt;원청 안전 감사&lt;/strong&gt; 시 자재 조달 경로 증빙 요구 &amp;mdash; 팀장 구매는 적발 소지&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;div class=&#34;space-y-2&#34;&gt;
+                                    &lt;div class=&#34;bg-green-50 border-l-4 border-green-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-green-800 text-xs&#34;&gt;✅ 1단계 (자재 구매 분리: 1~3개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;&lt;strong&gt;안전망:&lt;/strong&gt; &lt;strong&gt;당사(甲)가 제조사와 직접 &#34;물품공급 계약(A-1)&#34;&lt;/strong&gt; 체결, KS 인증 제품 직접 구매&lt;/li&gt;
+                                            &lt;li&gt;팀장 계약에서 &lt;strong&gt;&#34;안전망 자재비&#34; 분리&lt;/strong&gt; &amp;mdash; &lt;strong&gt;순수 설치/해체 노무비만&lt;/strong&gt; 청구&lt;/li&gt;
+                                            &lt;li&gt;팀장 &lt;strong&gt;노무비 단가 조정&lt;/strong&gt;으로 자재 분리로 인한 수입 감소 보전&lt;/li&gt;
+                                            &lt;li&gt;안전망 &lt;strong&gt;입고 검수, KS 인증서 보관&lt;/strong&gt; 당사 직접 관리&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-blue-50 border-l-4 border-blue-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-blue-800 text-xs&#34;&gt;🔄 2단계 (순수 노무비 전환: 3~6개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장과 &lt;strong&gt;&#34;안전망 설치/해체 노무제공 계약&#34;&lt;/strong&gt; 체결&lt;/li&gt;
+                                            &lt;li&gt;세금계산서 품목을 &lt;strong&gt;&#34;안전망 설치/해체 노무비&#34;&lt;/strong&gt;로 한정&lt;/li&gt;
+                                            &lt;li&gt;설치/해체 단가를 &lt;strong&gt;개소당 고정액&lt;/strong&gt;으로 전환&lt;/li&gt;
+                                            &lt;li&gt;안전망 &lt;strong&gt;재고 관리, 재사용 제품 점검&lt;/strong&gt; 당사 전담&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-purple-50 border-l-4 border-purple-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-purple-800 text-xs&#34;&gt;🎯 3단계 (합법 구조 정착: 6~12개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;안전망 설치/해체 &lt;strong&gt;순수 노무제공 구조&lt;/strong&gt;로 정착&lt;/li&gt;
+                                            &lt;li&gt;안전망 조달 &lt;strong&gt;당사 직접 구매&lt;/strong&gt; 체계 완전 정착&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;안전망 재사용 관리 체계&lt;/strong&gt; 구축 (폐기 기준 명확화)&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;!-- Row 3: 철골설치 --&gt;
+                        &lt;tr class=&#34;bg-white hover:bg-gray-50 transition&#34;&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top&#34;&gt;
+                                &lt;div class=&#34;font-bold text-red-700 text-base mb-1&#34;&gt;유형 3&lt;/div&gt;
+                                &lt;div class=&#34;text-sm font-semibold text-gray-900&#34;&gt;철골설치&lt;br&gt;&lt;span class=&#34;text-xs text-gray-500&#34;&gt;(공구/부자재+설치비 포괄)&lt;/span&gt;&lt;/div&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;ul class=&#34;list-disc pl-4 space-y-1&#34;&gt;
+                                    &lt;li&gt;철골설치 일용직은 &lt;strong&gt;회사가 직접 근로계약&lt;/strong&gt; (양호 ✅)&lt;/li&gt;
+                                    &lt;li&gt;그러나 팀장에게 &lt;strong&gt;ton당 포괄 설치비&lt;/strong&gt; 지급 시 &lt;strong&gt;일부 공구/부자재 비용 포함&lt;/strong&gt;&lt;/li&gt;
+                                    &lt;li&gt;세금계산서: &lt;strong&gt;&#34;철골 설치비&#34;&lt;/strong&gt; (순수 노무비 vs 공구비 혼합)&lt;/li&gt;
+                                    &lt;li&gt;팀장이 &lt;strong&gt;용접봉, 가스, 소모성 공구&lt;/strong&gt; 등 구매 후 설치비에 포함 청구&lt;/li&gt;
+                                    &lt;li&gt;원청 감사 시 &lt;strong&gt;단가 내역서 요구&lt;/strong&gt; &amp;mdash; 공구비와 노무비 구분 불명확&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;div class=&#34;space-y-2&#34;&gt;
+                                    &lt;div class=&#34;bg-green-50 border-l-4 border-green-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-green-800 text-xs&#34;&gt;✅ 1단계 (공구비 분리: 1~3개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;&lt;strong&gt;소모성 공구/자재:&lt;/strong&gt; &lt;strong&gt;당사(甲)가 업체와 직접 구매&lt;/strong&gt; 계약, 세금계산서 직접 수령&lt;/li&gt;
+                                            &lt;li&gt;팀장 세금계산서를 &lt;strong&gt;&#34;철골 설치 노무비&#34;&lt;/strong&gt;로 한정 (공구비 제외)&lt;/li&gt;
+                                            &lt;li&gt;팀장 &lt;strong&gt;노무비 단가 조정&lt;/strong&gt;으로 공구비 분리로 인한 수입 감소 보전&lt;/li&gt;
+                                            &lt;li&gt;용접봉, 가스 등 &lt;strong&gt;주요 소모품 입고 관리&lt;/strong&gt; 당사 직접 관리로 전환&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-blue-50 border-l-4 border-blue-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-blue-800 text-xs&#34;&gt;🔄 2단계 (순수 노무비 전환: 3~6개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장과 &lt;strong&gt;&#34;철골 설치 노무제공 계약&#34;&lt;/strong&gt; 체결 (공구 구매 개입 금지 명시)&lt;/li&gt;
+                                            &lt;li&gt;설치 단가를 &lt;strong&gt;ton당 고정액&lt;/strong&gt;으로 전환 (변동성 제거)&lt;/li&gt;
+                                            &lt;li&gt;소모성 공구 &lt;strong&gt;재고 관리, 적기 조달&lt;/strong&gt; 당사 전담&lt;/li&gt;
+                                            &lt;li&gt;회사 경리팀과 &lt;strong&gt;팀장 정산 상담&lt;/strong&gt; 진행&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-purple-50 border-l-4 border-purple-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-purple-800 text-xs&#34;&gt;🎯 3단계 (합법 구조 정착: 6~12개월):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장과 &lt;strong&gt;순수 노무제공 계약&lt;/strong&gt; 완전 정착 (공구 구매 개입 금지)&lt;/li&gt;
+                                            &lt;li&gt;세금계산서 품목 &lt;strong&gt;&#34;철골 설치 노무비&#34;&lt;/strong&gt;로 한정&lt;/li&gt;
+                                            &lt;li&gt;소모성 공구 조달 &lt;strong&gt;당사 직접 구매&lt;/strong&gt; 체계 완전 정착&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;회사 내부 검토&lt;/strong&gt;를 통해 계약 관계 최종 확인&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;!-- Row 4: 원가 관리 --&gt;
+                        &lt;tr class=&#34;bg-gray-50 hover:bg-gray-100 transition&#34;&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top&#34;&gt;
+                                &lt;div class=&#34;font-bold text-red-700 text-base mb-1&#34;&gt;유형 4&lt;/div&gt;
+                                &lt;div class=&#34;text-sm font-semibold text-gray-900&#34;&gt;원가 관리·증빙&lt;br&gt;&lt;span class=&#34;text-xs text-gray-500&#34;&gt;(자재별 증빙 불가)&lt;/span&gt;&lt;/div&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;ul class=&#34;list-disc pl-4 space-y-1&#34;&gt;
+                                    &lt;li&gt;팀장 명의 세금계산서가 &lt;strong&gt;&#34;설치비&#34;로 포괄&lt;/strong&gt; &amp;mdash; 자재별 원가 파악 불가&lt;/li&gt;
+                                    &lt;li&gt;원청 &lt;strong&gt;원가 분석 요청&lt;/strong&gt; 시 자재비/노무비 구분 자료 제출困難&lt;/li&gt;
+                                    &lt;li&gt;팀장 구매 자재는 &lt;strong&gt;KS 인증서, 품질시험성적서&lt;/strong&gt; 관리 미흡&lt;/li&gt;
+                                    &lt;li&gt;&lt;strong&gt;하자 발생 시 A/S 책임 소재 불명확&lt;/strong&gt; (자재 업체 vs 설치 팀장)&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;div class=&#34;space-y-2&#34;&gt;
+                                    &lt;div class=&#34;bg-green-50 border-l-4 border-green-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-green-800 text-xs&#34;&gt;✅ 1단계 (즉시 시정):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;당사 직접 구매 자재에 대해 &lt;strong&gt;KS 인증서, 품질시험성적서&lt;/strong&gt; 확보&lt;/li&gt;
+                                            &lt;li&gt;자재 &lt;strong&gt;입고 검수 체크리스트&lt;/strong&gt; 작성 및 보관&lt;/li&gt;
+                                            &lt;li&gt;팀장 구매 자재는 &lt;strong&gt;실비 정산 후 계약 종료&lt;/strong&gt; 유도&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-blue-50 border-l-4 border-blue-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-blue-800 text-xs&#34;&gt;🔄 2단계 (구조 개선):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;자재 &lt;strong&gt;조달 경로 일원화&lt;/strong&gt; (당사 구매팀 전담)&lt;/li&gt;
+                                            &lt;li&gt;품질 증빙 서류 &lt;strong&gt;전자 문서 관리 시스템&lt;/strong&gt; 구축&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;A/S 책임 소재 명확화&lt;/strong&gt; (자재 업체 ↔ 설치 팀장 구분)&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-purple-50 border-l-4 border-purple-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-purple-800 text-xs&#34;&gt;🎯 3단계 (합법 구조 정착):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;자재 조달 &lt;strong&gt;당사 직접 구매&lt;/strong&gt; 체계 완전 정착&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;단가 협상력 확보&lt;/strong&gt;를 위해 주요 자재 업체와 장기 계약&lt;/li&gt;
+                                            &lt;li&gt;원가 분석 시 &lt;strong&gt;자재비/노무비 명확히 구분&lt;/strong&gt; 가능한 구조 확립&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+
+                        &lt;!-- Row 5: 팀장 정산 --&gt;
+                        &lt;tr class=&#34;bg-white hover:bg-gray-50 transition&#34;&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top&#34;&gt;
+                                &lt;div class=&#34;font-bold text-red-700 text-base mb-1&#34;&gt;유형 5&lt;/div&gt;
+                                &lt;div class=&#34;text-sm font-semibold text-gray-900&#34;&gt;팀장 사업자 정산 관리&lt;br&gt;&lt;span class=&#34;text-xs text-gray-500&#34;&gt;(단계적 전환 필요)&lt;/span&gt;&lt;/div&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;ul class=&#34;list-disc pl-4 space-y-1&#34;&gt;
+                                    &lt;li&gt;팀장들은 &lt;strong&gt;사업자로서 신고 의무&lt;/strong&gt; 있음&lt;/li&gt;
+                                    &lt;li&gt;일부 자재/공구 마진과 회사에서 별도로 인정하는 실행이윤이 주요 수익원 &amp;mdash; 분리 시 신고 금액 변화&lt;/li&gt;
+                                    &lt;li&gt;&lt;strong&gt;자재 분리 시 세금 신고 구조 변화&lt;/strong&gt; &amp;mdash; 팀장 불안감&lt;/li&gt;
+                                    &lt;li&gt;팀장 &lt;strong&gt;작업 거부 시 현장 공기 지연&lt;/strong&gt; 치명적&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/td&gt;
+                            &lt;td class=&#34;border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs&#34;&gt;
+                                &lt;div class=&#34;space-y-2&#34;&gt;
+                                    &lt;div class=&#34;bg-green-50 border-l-4 border-green-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-green-800 text-xs&#34;&gt;✅ 1단계 (과도기 보전):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장 &lt;strong&gt;노무비 단가 조정&lt;/strong&gt;으로 자재 분리로 인한 수입 감소 보전&lt;/li&gt;
+                                            &lt;li&gt;&lt;strong&gt;팀장 설득:&lt;/strong&gt; &#34;자재 품질 관리 강화, 원청 감사 대응, 정산 관계 정립&#34; 명분&lt;/li&gt;
+                                            &lt;li&gt;자재 분리 후 &lt;strong&gt;첫 3개월은 기존 수입 유지&lt;/strong&gt; 목표&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-blue-50 border-l-4 border-blue-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-blue-800 text-xs&#34;&gt;🔄 2단계 (구조 개선):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;팀장 &lt;strong&gt;사업자 업종 변경&lt;/strong&gt; 지원 (노무제공업)&lt;/li&gt;
+                                            &lt;li&gt;회사 경리팀과 &lt;strong&gt;팀장 정산 상담&lt;/strong&gt; 진행 (신고 구조 변화 안내)&lt;/li&gt;
+                                            &lt;li&gt;관리보수를 &lt;strong&gt;고정액&lt;/strong&gt;으로 전환&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&#34;bg-purple-50 border-l-4 border-purple-500 p-2 rounded&#34;&gt;
+                                        &lt;strong class=&#34;text-purple-800 text-xs&#34;&gt;🎯 3단계 (합법 구조 정착):&lt;/strong&gt;
+                                        &lt;ul class=&#34;list-disc pl-4 mt-1 space-y-0.5&#34;&gt;
+                                            &lt;li&gt;우수 팀장 &lt;strong&gt;계약직 채용&lt;/strong&gt;&lt;/li&gt;
+                                            &lt;li&gt;잔여 팀장은 &lt;strong&gt;합법 노무제공자&lt;/strong&gt;로 전환&lt;/li&gt;
+                                            &lt;li&gt;회사와 &lt;strong&gt;전환 시 정산 방안&lt;/strong&gt; 협의&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;mt-10 bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-200 rounded-xl p-6 shadow-sm&#34;&gt;
+                &lt;h3 class=&#34;text-xl font-bold text-gray-900 mb-4 flex items-center gap-2&#34;&gt;
+                    &lt;span class=&#34;text-2xl&#34;&gt;📋&lt;/span&gt; 단계별 이행 체크리스트 (강구조물 전문건설 현장용)
+                &lt;/h3&gt;
+                &lt;div class=&#34;grid grid-cols-1 md:grid-cols-3 gap-4&#34;&gt;
+                    &lt;div class=&#34;bg-white p-4 rounded-lg border border-green-200 shadow-sm&#34;&gt;
+                        &lt;h4 class=&#34;font-bold text-green-700 text-base mb-2 border-b border-green-100 pb-2&#34;&gt;1단계: 자재 구매 분리&lt;br&gt;&lt;span class=&#34;text-xs font-normal text-gray-600&#34;&gt;(1~3개월)&lt;/span&gt;&lt;/h4&gt;
+                        &lt;ul class=&#34;text-xs text-gray-700 space-y-1.5 list-disc pl-4&#34;&gt;
+                            &lt;li&gt;데크: &lt;strong&gt;물품공급 계약(A-1/A-4)&lt;/strong&gt;로 제조사와 직접 계약&lt;/li&gt;
+                            &lt;li&gt;안전망: &lt;strong&gt;물품공급 계약(A-1/A-4)&lt;/strong&gt;로 제조사와 직접 계약&lt;/li&gt;
+                            &lt;li&gt;철골 소모성 공구: &lt;strong&gt;당사 직접 구매&lt;/strong&gt;로 전환&lt;/li&gt;
+                            &lt;li&gt;팀장 계약에서 &lt;strong&gt;자재비 분리&lt;/strong&gt;, 순수 설치 노무비만 청구&lt;/li&gt;
+                            &lt;li&gt;팀장 &lt;strong&gt;노무비 단가 조정&lt;/strong&gt;으로 수입 감소 보전&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;bg-white p-4 rounded-lg border border-blue-200 shadow-sm&#34;&gt;
+                        &lt;h4 class=&#34;font-bold text-blue-700 text-base mb-2 border-b border-blue-100 pb-2&#34;&gt;2단계: 순수 노무비 전환&lt;br&gt;&lt;span class=&#34;text-xs font-normal text-gray-600&#34;&gt;(3~6개월)&lt;/span&gt;&lt;/h4&gt;
+                        &lt;ul class=&#34;text-xs text-gray-700 space-y-1.5 list-disc pl-4&#34;&gt;
+                            &lt;li&gt;팀장과 &lt;strong&gt;&#34;노무제공 용역계약&#34;&lt;/strong&gt; 체결&lt;/li&gt;
+                            &lt;li&gt;설치 단가 &lt;strong&gt;고정액&lt;/strong&gt;으로 전환&lt;/li&gt;
+                            &lt;li&gt;세금계산서 품목 &lt;strong&gt;&#34;설치 노무비&#34;&lt;/strong&gt;로 한정&lt;/li&gt;
+                            &lt;li&gt;팀장 &lt;strong&gt;정산 상담&lt;/strong&gt; 진행&lt;/li&gt;
+                            &lt;li&gt;&lt;strong&gt;본사 관리팀&lt;/strong&gt; 분기별 현장 점검&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;bg-white p-4 rounded-lg border border-purple-200 shadow-sm&#34;&gt;
+                        &lt;h4 class=&#34;font-bold text-purple-700 text-base mb-2 border-b border-purple-100 pb-2&#34;&gt;3단계: 합법 구조 정착&lt;br&gt;&lt;span class=&#34;text-xs font-normal text-gray-600&#34;&gt;(6~12개월)&lt;/span&gt;&lt;/h4&gt;
+                        &lt;ul class=&#34;text-xs text-gray-700 space-y-1.5 list-disc pl-4&#34;&gt;
+                            &lt;li&gt;데크·안전망·철골 설치 인력 &lt;strong&gt;순수 노무제공 구조&lt;/strong&gt;로 정착&lt;/li&gt;
+                            &lt;li&gt;우수 팀장 &lt;strong&gt;계약직 채용&lt;/strong&gt;&lt;/li&gt;
+                            &lt;li&gt;자재 조달 &lt;strong&gt;당사 직접 구매&lt;/strong&gt; 체계 정착&lt;/li&gt;
+                            &lt;li&gt;팀장 사업자 &lt;strong&gt;업종 전환&lt;/strong&gt; 지원&lt;/li&gt;
+                            &lt;li&gt;&lt;strong&gt;회사 내부 검토&lt;/strong&gt;로 계약 관계 확인&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;mt-6 p-4 bg-orange-50 border border-orange-200 rounded-lg&#34;&gt;
+                &lt;p class=&#34;text-sm text-orange-800 font-semibold flex items-center gap-2&#34;&gt;
+                    &lt;span class=&#34;text-lg&#34;&gt;💡&lt;/span&gt;
+                    &lt;span&gt;&lt;strong&gt;팀장 설득 전략:&lt;/strong&gt; 1단계에서 자재 분리 시 &lt;strong&gt;&#34;노무비 단가 조정&#34;&lt;/strong&gt;으로 팀장 수입 감소를 보전해주면 반발을 크게 줄일 수 있습니다. 동시에 &lt;strong&gt;&#34;자재 품질 관리 강화, 원청 감사 대응, 정산 관계 정립&#34;&lt;/strong&gt; 등의 명분을 제시하면 협조적 전환이 가능합니다. 단계별 이행 시 &lt;strong&gt;서면 통보, 협의록, 이행 확인서&lt;/strong&gt;를 반드시 보관하여 내부 증빙을 확보하시기 바랍니다.&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;</script>
+<div class="prose max-w-none text-gray-800" id="rendered-content">
+<h2 class="text-3xl font-extrabold mb-6 text-gray-900 border-b-2 border-slate-200 pb-3">자재·시공 분리 및 단계별 개선 방안</h2>
+<div class="bg-green-50 border border-green-200 p-5 rounded-xl mb-6 shadow-sm">
+<h3 class="font-bold text-green-900 text-lg mb-2">✅ 이미 정착된 직영 구조 (개선 불필요)</h3>
+<ul class="text-sm text-green-800 space-y-1 list-disc pl-5">
+<li><strong>철골설치 일용직 근로자:</strong> 당사(甲)가 근로자 개인과 <strong>100% 직접 근로계약(D-2)</strong> 체결 ✅</li>
+<li><strong>임금 지급:</strong> 근로자 <strong>개별 계좌로 직접 송금</strong> (팀장 경유 없음) ✅</li>
+<li><strong>장비 임대차:</strong> 크레인, 고소작업차 등 <strong>대부분 장비업체와 직접 임대차계약(B-1)</strong> 체결 ✅</li>
+</ul>
+</div>
+<div class="bg-red-50 border border-red-200 p-5 rounded-xl mb-6 shadow-sm">
+<h3 class="font-bold text-red-900 text-lg mb-2">🚨 개선 대상: 자재·시공 혼합 계약</h3>
+<p class="text-sm text-red-800 leading-relaxed">현재 다음 공종에서 <strong>자재 구매와 시공 노무를 묶어 팀장에게 포괄 계약</strong>하고 있어 재하도급 소지가 있습니다:</p>
+<ul class="text-sm text-red-800 space-y-1 list-disc pl-5 mt-2">
+<li><strong>데크설치:</strong> 데크플레이트 구매 + 설치 일괄</li>
+<li><strong>안전망 설치/해체:</strong> 안전망 구매 + 설치/해체 일괄</li>
+<li><strong>철골설치:</strong> 일부 공구/부자재 + 설치비 포괄 단가</li>
+</ul>
+</div>
+<div class="bg-yellow-50 border border-yellow-200 p-5 rounded-xl mb-6 shadow-sm">
+<h3 class="font-bold text-yellow-900 text-lg mb-2">⚠️ 단계별 접근의 필요성</h3>
+<p class="text-sm text-yellow-800 leading-relaxed"><strong>당장 "자재와 설치 분리"를 선언하면:</strong></p>
+<ul class="text-sm text-yellow-800 space-y-1 list-disc pl-5 mt-2">
+<li>팀장들이 <strong>일부 자재/공구 마진과 실행이윤</strong> 포기 저항</li>
+<li>팀장 <strong>작업 거부 시 현장 공기 지연</strong> — 원청에게도 책임 소지</li>
+<li>따라서 <strong>① 자재 구매 분리(1단계) → ② 순수 설치 노무비 전환(2단계) → ③ 합법 구조 정착(3단계)</strong>로 점진적 이행</li>
+</ul>
+</div>
+<div class="overflow-x-auto rounded-xl shadow-lg border border-gray-200">
+<table class="w-full text-sm text-left border-collapse">
+<thead class="bg-indigo-100 text-indigo-900 text-xs uppercase tracking-wider">
+<tr>
+<th class="border border-gray-300 px-4 py-3 font-bold text-center" style="width:18%;">유형</th>
+<th class="border border-gray-300 px-4 py-3 font-bold" style="width:30%;">현재 실태 (당사 현장)</th>
+<th class="border border-gray-300 px-4 py-3 font-bold" style="width:52%;">단계별 개선안 (1→2→3단계)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<!-- Row 1: 데크설치 -->
+<tr class="bg-white hover:bg-gray-50 transition">
+<td class="border border-gray-300 px-4 py-4 align-top">
+<div class="font-bold text-red-700 text-base mb-1">유형 1</div>
+<div class="text-sm font-semibold text-gray-900">데크설치<br/><span class="text-xs text-gray-500">(데크자재+설치 일괄)</span></div>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<ul class="list-disc pl-4 space-y-1">
+<li>팀장이 <strong>데크플레이트 구매 + 설치</strong>를 일괄 수행</li>
+<li>세금계산서: <strong>"데크 설치비"</strong> (자재비+노무비 혼합)</li>
+<li>팀장에게 <strong>m²당 포괄 단가</strong> 지급 (자재비+설치비+이윤 포함)</li>
+<li>14번 계약서(A-1/A-4)상: <strong>당사(甲)가 제조사와 직접 계약</strong>해야 하나 실제는 팀장 경유</li>
+<li>데크 <strong>품질 관리, A/S 책임 소재 불명확</strong></li>
+</ul>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<div class="space-y-2">
+<div class="bg-green-50 border-l-4 border-green-500 p-2 rounded">
+<strong class="text-green-800 text-xs">✅ 1단계 (자재 구매 분리: 1~3개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li><strong>데크플레이트:</strong> <strong>당사(甲)가 제조사와 직접 "물품공급 계약(A-1)"</strong> 체결, 세금계산서 직접 수령</li>
+<li>팀장 계약에서 <strong>"데크 자재비" 분리</strong> — <strong>순수 설치 노무비만</strong> 청구하도록 전환</li>
+<li>팀장 <strong>노무비 단가 조정</strong>으로 자재 분리로 인한 수입 감소 보전 (과도기)</li>
+<li>데크 <strong>입고 검수, 품질 관리</strong> 프로세스 당사 직접 관리로 전환</li>
+</ul>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-2 rounded">
+<strong class="text-blue-800 text-xs">🔄 2단계 (순수 노무비 전환: 3~6개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장과 <strong>"데크 설치 노무제공 계약"</strong> 체결 (자재 구매 개입 금지 명시)</li>
+<li>세금계산서 품목을 <strong>"데크 설치 노무비"</strong>로 한정</li>
+<li>설치 단가를 <strong>m²당 고정액</strong>으로 전환 (변동성 제거)</li>
+<li>데크 <strong>재고 관리, 적기 조달</strong> 당사 구매팀 전담</li>
+</ul>
+</div>
+<div class="bg-purple-50 border-l-4 border-purple-500 p-2 rounded">
+<strong class="text-purple-800 text-xs">🎯 3단계 (합법 구조 정착: 6~12개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장을 <strong>순수 노무제공자</strong>로 전환 (자재 구매 개입 금지 계약서 명시)</li>
+<li>세금계산서 품목을 <strong>"데크 설치 노무비"</strong>로 한정, 자재비 완전 분리</li>
+<li>팀장 사업자 <strong>업종 변경</strong> 지원 (데크설치업 → 노무제공업)</li>
+<li><strong>회사 내부 검토</strong>를 통해 계약 관계 정립</li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2: 안전망 설치/해체 -->
+<tr class="bg-gray-50 hover:bg-gray-100 transition">
+<td class="border border-gray-300 px-4 py-4 align-top">
+<div class="font-bold text-red-700 text-base mb-1">유형 2</div>
+<div class="text-sm font-semibold text-gray-900">안전망 설치/해체<br/><span class="text-xs text-gray-500">(안전망자재+설치·해체 일괄)</span></div>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<ul class="list-disc pl-4 space-y-1">
+<li>팀장이 <strong>안전망 구매 + 설치/해체</strong>를 일괄 수행</li>
+<li>세금계산서: <strong>"안전망 공사비"</strong> (자재비+노무비 혼합)</li>
+<li>팀장에게 <strong>개소당 또는 ton당 포괄 단가</strong> 지급</li>
+<li>안전망 <strong>품질 기준 적합 여부 불명확</strong> (팀장 구매 제품)</li>
+<li><strong>원청 안전 감사</strong> 시 자재 조달 경로 증빙 요구 — 팀장 구매는 적발 소지</li>
+</ul>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<div class="space-y-2">
+<div class="bg-green-50 border-l-4 border-green-500 p-2 rounded">
+<strong class="text-green-800 text-xs">✅ 1단계 (자재 구매 분리: 1~3개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li><strong>안전망:</strong> <strong>당사(甲)가 제조사와 직접 "물품공급 계약(A-1)"</strong> 체결, KS 인증 제품 직접 구매</li>
+<li>팀장 계약에서 <strong>"안전망 자재비" 분리</strong> — <strong>순수 설치/해체 노무비만</strong> 청구</li>
+<li>팀장 <strong>노무비 단가 조정</strong>으로 자재 분리로 인한 수입 감소 보전</li>
+<li>안전망 <strong>입고 검수, KS 인증서 보관</strong> 당사 직접 관리</li>
+</ul>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-2 rounded">
+<strong class="text-blue-800 text-xs">🔄 2단계 (순수 노무비 전환: 3~6개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장과 <strong>"안전망 설치/해체 노무제공 계약"</strong> 체결</li>
+<li>세금계산서 품목을 <strong>"안전망 설치/해체 노무비"</strong>로 한정</li>
+<li>설치/해체 단가를 <strong>개소당 고정액</strong>으로 전환</li>
+<li>안전망 <strong>재고 관리, 재사용 제품 점검</strong> 당사 전담</li>
+</ul>
+</div>
+<div class="bg-purple-50 border-l-4 border-purple-500 p-2 rounded">
+<strong class="text-purple-800 text-xs">🎯 3단계 (합법 구조 정착: 6~12개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>안전망 설치/해체 <strong>순수 노무제공 구조</strong>로 정착</li>
+<li>안전망 조달 <strong>당사 직접 구매</strong> 체계 완전 정착</li>
+<li><strong>안전망 재사용 관리 체계</strong> 구축 (폐기 기준 명확화)</li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3: 철골설치 -->
+<tr class="bg-white hover:bg-gray-50 transition">
+<td class="border border-gray-300 px-4 py-4 align-top">
+<div class="font-bold text-red-700 text-base mb-1">유형 3</div>
+<div class="text-sm font-semibold text-gray-900">철골설치<br/><span class="text-xs text-gray-500">(공구/부자재+설치비 포괄)</span></div>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<ul class="list-disc pl-4 space-y-1">
+<li>철골설치 일용직은 <strong>회사가 직접 근로계약</strong> (양호 ✅)</li>
+<li>그러나 팀장에게 <strong>ton당 포괄 설치비</strong> 지급 시 <strong>일부 공구/부자재 비용 포함</strong></li>
+<li>세금계산서: <strong>"철골 설치비"</strong> (순수 노무비 vs 공구비 혼합)</li>
+<li>팀장이 <strong>용접봉, 가스, 소모성 공구</strong> 등 구매 후 설치비에 포함 청구</li>
+<li>원청 감사 시 <strong>단가 내역서 요구</strong> — 공구비와 노무비 구분 불명확</li>
+</ul>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<div class="space-y-2">
+<div class="bg-green-50 border-l-4 border-green-500 p-2 rounded">
+<strong class="text-green-800 text-xs">✅ 1단계 (공구비 분리: 1~3개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li><strong>소모성 공구/자재:</strong> <strong>당사(甲)가 업체와 직접 구매</strong> 계약, 세금계산서 직접 수령</li>
+<li>팀장 세금계산서를 <strong>"철골 설치 노무비"</strong>로 한정 (공구비 제외)</li>
+<li>팀장 <strong>노무비 단가 조정</strong>으로 공구비 분리로 인한 수입 감소 보전</li>
+<li>용접봉, 가스 등 <strong>주요 소모품 입고 관리</strong> 당사 직접 관리로 전환</li>
+</ul>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-2 rounded">
+<strong class="text-blue-800 text-xs">🔄 2단계 (순수 노무비 전환: 3~6개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장과 <strong>"철골 설치 노무제공 계약"</strong> 체결 (공구 구매 개입 금지 명시)</li>
+<li>설치 단가를 <strong>ton당 고정액</strong>으로 전환 (변동성 제거)</li>
+<li>소모성 공구 <strong>재고 관리, 적기 조달</strong> 당사 전담</li>
+<li>회사 경리팀과 <strong>팀장 정산 상담</strong> 진행</li>
+</ul>
+</div>
+<div class="bg-purple-50 border-l-4 border-purple-500 p-2 rounded">
+<strong class="text-purple-800 text-xs">🎯 3단계 (합법 구조 정착: 6~12개월):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장과 <strong>순수 노무제공 계약</strong> 완전 정착 (공구 구매 개입 금지)</li>
+<li>세금계산서 품목 <strong>"철골 설치 노무비"</strong>로 한정</li>
+<li>소모성 공구 조달 <strong>당사 직접 구매</strong> 체계 완전 정착</li>
+<li><strong>회사 내부 검토</strong>를 통해 계약 관계 최종 확인</li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 4: 원가 관리 -->
+<tr class="bg-gray-50 hover:bg-gray-100 transition">
+<td class="border border-gray-300 px-4 py-4 align-top">
+<div class="font-bold text-red-700 text-base mb-1">유형 4</div>
+<div class="text-sm font-semibold text-gray-900">원가 관리·증빙<br/><span class="text-xs text-gray-500">(자재별 증빙 불가)</span></div>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<ul class="list-disc pl-4 space-y-1">
+<li>팀장 명의 세금계산서가 <strong>"설치비"로 포괄</strong> — 자재별 원가 파악 불가</li>
+<li>원청 <strong>원가 분석 요청</strong> 시 자재비/노무비 구분 자료 제출困難</li>
+<li>팀장 구매 자재는 <strong>KS 인증서, 품질시험성적서</strong> 관리 미흡</li>
+<li><strong>하자 발생 시 A/S 책임 소재 불명확</strong> (자재 업체 vs 설치 팀장)</li>
+</ul>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<div class="space-y-2">
+<div class="bg-green-50 border-l-4 border-green-500 p-2 rounded">
+<strong class="text-green-800 text-xs">✅ 1단계 (즉시 시정):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>당사 직접 구매 자재에 대해 <strong>KS 인증서, 품질시험성적서</strong> 확보</li>
+<li>자재 <strong>입고 검수 체크리스트</strong> 작성 및 보관</li>
+<li>팀장 구매 자재는 <strong>실비 정산 후 계약 종료</strong> 유도</li>
+</ul>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-2 rounded">
+<strong class="text-blue-800 text-xs">🔄 2단계 (구조 개선):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>자재 <strong>조달 경로 일원화</strong> (당사 구매팀 전담)</li>
+<li>품질 증빙 서류 <strong>전자 문서 관리 시스템</strong> 구축</li>
+<li><strong>A/S 책임 소재 명확화</strong> (자재 업체 ↔ 설치 팀장 구분)</li>
+</ul>
+</div>
+<div class="bg-purple-50 border-l-4 border-purple-500 p-2 rounded">
+<strong class="text-purple-800 text-xs">🎯 3단계 (합법 구조 정착):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>자재 조달 <strong>당사 직접 구매</strong> 체계 완전 정착</li>
+<li><strong>단가 협상력 확보</strong>를 위해 주요 자재 업체와 장기 계약</li>
+<li>원가 분석 시 <strong>자재비/노무비 명확히 구분</strong> 가능한 구조 확립</li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 5: 팀장 정산 -->
+<tr class="bg-white hover:bg-gray-50 transition">
+<td class="border border-gray-300 px-4 py-4 align-top">
+<div class="font-bold text-red-700 text-base mb-1">유형 5</div>
+<div class="text-sm font-semibold text-gray-900">팀장 사업자 정산 관리<br/><span class="text-xs text-gray-500">(단계적 전환 필요)</span></div>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<ul class="list-disc pl-4 space-y-1">
+<li>팀장들은 <strong>사업자로서 신고 의무</strong> 있음</li>
+<li>일부 자재/공구 마진과 회사에서 별도로 인정하는 실행이윤이 주요 수익원 — 분리 시 신고 금액 변화</li>
+<li><strong>자재 분리 시 세금 신고 구조 변화</strong> — 팀장 불안감</li>
+<li>팀장 <strong>작업 거부 시 현장 공기 지연</strong> 치명적</li>
+</ul>
+</td>
+<td class="border border-gray-300 px-4 py-4 align-top text-gray-700 leading-relaxed text-xs">
+<div class="space-y-2">
+<div class="bg-green-50 border-l-4 border-green-500 p-2 rounded">
+<strong class="text-green-800 text-xs">✅ 1단계 (과도기 보전):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장 <strong>노무비 단가 조정</strong>으로 자재 분리로 인한 수입 감소 보전</li>
+<li><strong>팀장 설득:</strong> "자재 품질 관리 강화, 원청 감사 대응, 정산 관계 정립" 명분</li>
+<li>자재 분리 후 <strong>첫 3개월은 기존 수입 유지</strong> 목표</li>
+</ul>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-2 rounded">
+<strong class="text-blue-800 text-xs">🔄 2단계 (구조 개선):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>팀장 <strong>사업자 업종 변경</strong> 지원 (노무제공업)</li>
+<li>회사 경리팀과 <strong>팀장 정산 상담</strong> 진행 (신고 구조 변화 안내)</li>
+<li>관리보수를 <strong>고정액</strong>으로 전환</li>
+</ul>
+</div>
+<div class="bg-purple-50 border-l-4 border-purple-500 p-2 rounded">
+<strong class="text-purple-800 text-xs">🎯 3단계 (합법 구조 정착):</strong>
+<ul class="list-disc pl-4 mt-1 space-y-0.5">
+<li>우수 팀장 <strong>계약직 채용</strong></li>
+<li>잔여 팀장은 <strong>합법 노무제공자</strong>로 전환</li>
+<li>회사와 <strong>전환 시 정산 방안</strong> 협의</li>
+</ul>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-10 bg-gradient-to-r from-gray-50 to-blue-50 border border-gray-200 rounded-xl p-6 shadow-sm">
+<h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+<span class="text-2xl">📋</span> 단계별 이행 체크리스트 (강구조물 전문건설 현장용)
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white p-4 rounded-lg border border-green-200 shadow-sm">
+<h4 class="font-bold text-green-700 text-base mb-2 border-b border-green-100 pb-2">1단계: 자재 구매 분리<br/><span class="text-xs font-normal text-gray-600">(1~3개월)</span></h4>
+<ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+<li>데크: <strong>물품공급 계약(A-1/A-4)</strong>로 제조사와 직접 계약</li>
+<li>안전망: <strong>물품공급 계약(A-1/A-4)</strong>로 제조사와 직접 계약</li>
+<li>철골 소모성 공구: <strong>당사 직접 구매</strong>로 전환</li>
+<li>팀장 계약에서 <strong>자재비 분리</strong>, 순수 설치 노무비만 청구</li>
+<li>팀장 <strong>노무비 단가 조정</strong>으로 수입 감소 보전</li>
+</ul>
+</div>
+<div class="bg-white p-4 rounded-lg border border-blue-200 shadow-sm">
+<h4 class="font-bold text-blue-700 text-base mb-2 border-b border-blue-100 pb-2">2단계: 순수 노무비 전환<br/><span class="text-xs font-normal text-gray-600">(3~6개월)</span></h4>
+<ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+<li>팀장과 <strong>"노무제공 용역계약"</strong> 체결</li>
+<li>설치 단가 <strong>고정액</strong>으로 전환</li>
+<li>세금계산서 품목 <strong>"설치 노무비"</strong>로 한정</li>
+<li>팀장 <strong>정산 상담</strong> 진행</li>
+<li><strong>본사 관리팀</strong> 분기별 현장 점검</li>
+</ul>
+</div>
+<div class="bg-white p-4 rounded-lg border border-purple-200 shadow-sm">
+<h4 class="font-bold text-purple-700 text-base mb-2 border-b border-purple-100 pb-2">3단계: 합법 구조 정착<br/><span class="text-xs font-normal text-gray-600">(6~12개월)</span></h4>
+<ul class="text-xs text-gray-700 space-y-1.5 list-disc pl-4">
+<li>데크·안전망·철골 설치 인력 <strong>순수 노무제공 구조</strong>로 정착</li>
+<li>우수 팀장 <strong>계약직 채용</strong></li>
+<li>자재 조달 <strong>당사 직접 구매</strong> 체계 정착</li>
+<li>팀장 사업자 <strong>업종 전환</strong> 지원</li>
+<li><strong>회사 내부 검토</strong>로 계약 관계 확인</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-orange-50 border border-orange-200 rounded-lg">
+<p class="text-sm text-orange-800 font-semibold flex items-center gap-2">
+<span class="text-lg">💡</span>
+<span><strong>팀장 설득 전략:</strong> 1단계에서 자재 분리 시 <strong>"노무비 단가 조정"</strong>으로 팀장 수입 감소를 보전해주면 반발을 크게 줄일 수 있습니다. 동시에 <strong>"자재 품질 관리 강화, 원청 감사 대응, 정산 관계 정립"</strong> 등의 명분을 제시하면 협조적 전환이 가능합니다. 단계별 이행 시 <strong>서면 통보, 협의록, 이행 확인서</strong>를 반드시 보관하여 내부 증빙을 확보하시기 바랍니다.</span>
+</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/5/lessons/55.html">
+                    ← Previous
+                </a>
+<!-- End of course -->
+<a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" href="/course-site/build/courses/5.html">
+                    Finish
+                </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sourceEl = document.getElementById("markdown-source");
+        var renderEl = document.getElementById("rendered-content");
+        if (sourceEl && renderEl) {
+            // Unescape jinja's default HTML escaping
+            var txt = document.createElement("textarea");
+            txt.innerHTML = sourceEl.innerHTML;
+            var unescaped = txt.value.trim();
+
+            // Only parse if it's actually Markdown (starts with #)
+            // Existing courses contain HTML which would be ruined by marked.js due to indentations
+            if (unescaped.startsWith("# ") || unescaped.startsWith("## ")) {
+                renderEl.innerHTML = marked.parse(unescaped);
+            }
+        }
+    });
+</script>
+</main>
+<footer class="bg-white border-t border-gray-200 mt-auto py-3 shrink-0 z-10 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm text-gray-500">© 2026 Course Platform. All rights reserved.</p>
+<div>
+<a class="text-sm text-gray-400 hover:text-gray-700 transition" href="/admin" target="_blank">⚙️ 관리자 모드
+                    (Admin)</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
