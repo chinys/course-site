@@ -7,6 +7,45 @@
 <title>9. [실전] 식당 주문과 식사: Take, Have, For 의 향연 | 이미지영어</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<style>
+    @media print {
+        nav, footer, button, .no-print {
+            display: none !important;
+        }
+        /* Hide entire sidebar container */
+        .sidebar-container {
+            display: none !important;
+        }
+        /* Make main content area take full width */
+        .main-container {
+            flex: 1 !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            height: auto !important;
+            padding-right: 0 !important;
+        }
+        .main-wrapper {
+            flex-direction: column !important;
+            gap: 0 !important;
+        }
+        /* Hide prev/next navigation */
+        .nav-footer {
+            display: none !important;
+        }
+        /* Clean up main card */
+        .print-content {
+            box-shadow: none !important;
+            border: none !important;
+        }
+        body {
+            background: white !important;
+            min-height: auto !important;
+        }
+        main {
+            padding: 0 !important;
+        }
+    }
+</style>
 </head>
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
 <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
@@ -98,9 +137,9 @@
 </div>
 </nav>
 <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0 main-wrapper">
 <!-- Sidebar / Lessons list -->
-<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full sidebar-container no-print">
 <div class="bg-white shadow rounded-lg flex flex-col h-full">
 <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -212,12 +251,15 @@
 </div>
 </div>
 <!-- Main Content -->
-<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-<div class="bg-white shadow rounded-lg overflow-hidden">
-<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8 main-container">
+<div class="bg-white shadow rounded-lg overflow-hidden print-content">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200 flex justify-between items-center">
 <h1 class="text-2xl font-bold text-gray-900">9. [실전] 식당 주문과 식사: Take, Have, For 의 향연</h1>
+<button class="ml-4 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="window.print()">
+                    🖨️ 인쇄
+                </button>
 </div>
-<div class="px-4 py-8 sm:px-8">
+<div class="px-4 py-8 sm:px-8" id="print-area">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
 <!-- Raw content for Markdown parser (hidden) -->
 <script id="markdown-source" type="text/template">&lt;h2&gt;식당 영어를 지배하는 단어는 Take 와 Have 이다&lt;/h2&gt;
@@ -264,7 +306,7 @@
 </ul>
 </div>
 </div>
-<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between nav-footer no-print">
 <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/4/lessons/29.html">
                     ← Previous
                 </a>

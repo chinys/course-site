@@ -7,6 +7,45 @@
 <title>5. 시운전 및 인도 (Commissioning &amp; Handover) | 건설 EPC</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<style>
+    @media print {
+        nav, footer, button, .no-print {
+            display: none !important;
+        }
+        /* Hide entire sidebar container */
+        .sidebar-container {
+            display: none !important;
+        }
+        /* Make main content area take full width */
+        .main-container {
+            flex: 1 !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            height: auto !important;
+            padding-right: 0 !important;
+        }
+        .main-wrapper {
+            flex-direction: column !important;
+            gap: 0 !important;
+        }
+        /* Hide prev/next navigation */
+        .nav-footer {
+            display: none !important;
+        }
+        /* Clean up main card */
+        .print-content {
+            box-shadow: none !important;
+            border: none !important;
+        }
+        body {
+            background: white !important;
+            min-height: auto !important;
+        }
+        main {
+            padding: 0 !important;
+        }
+    }
+</style>
 </head>
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
 <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
@@ -98,9 +137,9 @@
 </div>
 </nav>
 <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0 main-wrapper">
 <!-- Sidebar / Lessons list -->
-<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full sidebar-container no-print">
 <div class="bg-white shadow rounded-lg flex flex-col h-full">
 <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -137,12 +176,15 @@
 </div>
 </div>
 <!-- Main Content -->
-<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-<div class="bg-white shadow rounded-lg overflow-hidden">
-<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8 main-container">
+<div class="bg-white shadow rounded-lg overflow-hidden print-content">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200 flex justify-between items-center">
 <h1 class="text-2xl font-bold text-gray-900">5. 시운전 및 인도 (Commissioning &amp; Handover)</h1>
+<button class="ml-4 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="window.print()">
+                    🖨️ 인쇄
+                </button>
 </div>
-<div class="px-4 py-8 sm:px-8">
+<div class="px-4 py-8 sm:px-8" id="print-area">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
 <!-- Raw content for Markdown parser (hidden) -->
 <script id="markdown-source" type="text/template">&lt;h2&gt;시운전 및 프로젝트 완료&lt;/h2&gt;&lt;p&gt;건축물이 물리적으로 완성된 후, 목적대로 기능이 제대로 작동하는지 검증하고 발주처에 넘겨주는 단계입니다.&lt;/p&gt;&lt;h3&gt;주요 프로세스&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;Pre-Commissioning:&lt;/strong&gt; 단위 기기별 단독 테스팅 및 배관 세척 (Flushing).&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Commissioning (시운전):&lt;/strong&gt; 전체 시스템을 연동하여 시스템 단위로 테스트하고 성능 보증치 (Performance Guarantee) 를 달성하는지 확인.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;펀치리스트 (Punch List) 잔여작업:&lt;/strong&gt; 발주처 합동 점검을 통해 발견된 미비점 완결.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;인수인계 (Handover):&lt;/strong&gt; 준공 도면 (As-built Drawing), O&amp;M 매뉴얼과 함께 시설물을 발주처에 이관.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;성공적인 시운전과 준공 승인이 곧 EPC 프로젝트의 긴 여정의 마무리입니다.&lt;/p&gt;&lt;img src=&#39;/static/uploads/epc_commissioning.png&#39; style=&#39;width:100%; max-width:600px; border-radius:8px; margin-top:20px;&#39; /&gt;</script>
@@ -150,7 +192,7 @@
 <h2>시운전 및 프로젝트 완료</h2><p>건축물이 물리적으로 완성된 후, 목적대로 기능이 제대로 작동하는지 검증하고 발주처에 넘겨주는 단계입니다.</p><h3>주요 프로세스</h3><ol><li><strong>Pre-Commissioning:</strong> 단위 기기별 단독 테스팅 및 배관 세척 (Flushing).</li><li><strong>Commissioning (시운전):</strong> 전체 시스템을 연동하여 시스템 단위로 테스트하고 성능 보증치 (Performance Guarantee) 를 달성하는지 확인.</li><li><strong>펀치리스트 (Punch List) 잔여작업:</strong> 발주처 합동 점검을 통해 발견된 미비점 완결.</li><li><strong>인수인계 (Handover):</strong> 준공 도면 (As-built Drawing), O&amp;M 매뉴얼과 함께 시설물을 발주처에 이관.</li></ol><p>성공적인 시운전과 준공 승인이 곧 EPC 프로젝트의 긴 여정의 마무리입니다.</p><img src="/course-site/build/static/uploads/epc_commissioning.png" style="width:100%; max-width:600px; border-radius:8px; margin-top:20px;"/>
 </div>
 </div>
-<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between nav-footer no-print">
 <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/1/lessons/4.html">
                     ← Previous
                 </a>

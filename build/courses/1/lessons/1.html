@@ -7,6 +7,45 @@
 <title>1. EPC 란 무엇인가? (Overview) | 건설 EPC</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<style>
+    @media print {
+        nav, footer, button, .no-print {
+            display: none !important;
+        }
+        /* Hide entire sidebar container */
+        .sidebar-container {
+            display: none !important;
+        }
+        /* Make main content area take full width */
+        .main-container {
+            flex: 1 !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            height: auto !important;
+            padding-right: 0 !important;
+        }
+        .main-wrapper {
+            flex-direction: column !important;
+            gap: 0 !important;
+        }
+        /* Hide prev/next navigation */
+        .nav-footer {
+            display: none !important;
+        }
+        /* Clean up main card */
+        .print-content {
+            box-shadow: none !important;
+            border: none !important;
+        }
+        body {
+            background: white !important;
+            min-height: auto !important;
+        }
+        main {
+            padding: 0 !important;
+        }
+    }
+</style>
 </head>
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
 <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
@@ -98,9 +137,9 @@
 </div>
 </nav>
 <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0 main-wrapper">
 <!-- Sidebar / Lessons list -->
-<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full sidebar-container no-print">
 <div class="bg-white shadow rounded-lg flex flex-col h-full">
 <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -137,12 +176,15 @@
 </div>
 </div>
 <!-- Main Content -->
-<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-<div class="bg-white shadow rounded-lg overflow-hidden">
-<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8 main-container">
+<div class="bg-white shadow rounded-lg overflow-hidden print-content">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200 flex justify-between items-center">
 <h1 class="text-2xl font-bold text-gray-900">1. EPC 란 무엇인가? (Overview)</h1>
+<button class="ml-4 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="window.print()">
+                    🖨️ 인쇄
+                </button>
 </div>
-<div class="px-4 py-8 sm:px-8">
+<div class="px-4 py-8 sm:px-8" id="print-area">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
 <!-- Raw content for Markdown parser (hidden) -->
 <script id="markdown-source" type="text/template">&lt;h2&gt;EPC 의 정의와 중요성&lt;/h2&gt;&lt;p&gt;EPC 란 설계 (Engineering), 조달 (Procurement), 시공 (Construction) 의 첫 글자를 딴 말로, 대형 건설 프로젝트나 플랜트 공사에서 도급인이 설계부터 부품·소재 조달, 공사를 원스톱으로 제공하는 형태를 말합니다.&lt;/p&gt;&lt;h3&gt;주요 특징&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;단일 책임:&lt;/strong&gt; 발주처는 EPC 계약자 1 곳과만 소통하므로 관리가 용이합니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;공기 단축:&lt;/strong&gt; 설계와 시공을 병행 추진 (Fast-Track) 할 수 있습니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;리스크 이전:&lt;/strong&gt; 예산 초과나 공기 지연 등의 리스크가 EPC 계약자에게 상당 부분 전가됩니다.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;이 매뉴얼에서는 건축 공사에 있어 EPC 각 단계별 세부 절차와 핵심 점검 사항을 다룹니다.&lt;/p&gt;&lt;img src=&#39;/static/uploads/epc_thumbnail.png&#39; style=&#39;width:100%; max-width:600px; border-radius:8px; margin-top:20px;&#39; /&gt;</script>
@@ -150,7 +192,7 @@
 <h2>EPC 의 정의와 중요성</h2><p>EPC 란 설계 (Engineering), 조달 (Procurement), 시공 (Construction) 의 첫 글자를 딴 말로, 대형 건설 프로젝트나 플랜트 공사에서 도급인이 설계부터 부품·소재 조달, 공사를 원스톱으로 제공하는 형태를 말합니다.</p><h3>주요 특징</h3><ul><li><strong>단일 책임:</strong> 발주처는 EPC 계약자 1 곳과만 소통하므로 관리가 용이합니다.</li><li><strong>공기 단축:</strong> 설계와 시공을 병행 추진 (Fast-Track) 할 수 있습니다.</li><li><strong>리스크 이전:</strong> 예산 초과나 공기 지연 등의 리스크가 EPC 계약자에게 상당 부분 전가됩니다.</li></ul><p>이 매뉴얼에서는 건축 공사에 있어 EPC 각 단계별 세부 절차와 핵심 점검 사항을 다룹니다.</p><img src="/course-site/build/static/uploads/epc_thumbnail.png" style="width:100%; max-width:600px; border-radius:8px; margin-top:20px;"/>
 </div>
 </div>
-<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between nav-footer no-print">
 <div></div>
 <a class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/1/lessons/2.html">
                     Next →

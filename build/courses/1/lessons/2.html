@@ -7,6 +7,45 @@
 <title>2. 설계 (Engineering) 단계 | 건설 EPC</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<style>
+    @media print {
+        nav, footer, button, .no-print {
+            display: none !important;
+        }
+        /* Hide entire sidebar container */
+        .sidebar-container {
+            display: none !important;
+        }
+        /* Make main content area take full width */
+        .main-container {
+            flex: 1 !important;
+            max-width: 100% !important;
+            overflow: visible !important;
+            height: auto !important;
+            padding-right: 0 !important;
+        }
+        .main-wrapper {
+            flex-direction: column !important;
+            gap: 0 !important;
+        }
+        /* Hide prev/next navigation */
+        .nav-footer {
+            display: none !important;
+        }
+        /* Clean up main card */
+        .print-content {
+            box-shadow: none !important;
+            border: none !important;
+        }
+        body {
+            background: white !important;
+            min-height: auto !important;
+        }
+        main {
+            padding: 0 !important;
+        }
+    }
+</style>
 </head>
 <body class="bg-gray-50 min-h-screen lg:h-screen lg:overflow-hidden font-sans flex flex-col">
 <nav class="bg-indigo-600 shadow shrink-0 z-20 relative">
@@ -98,9 +137,9 @@
 </div>
 </nav>
 <main class="flex-grow w-full py-8 px-4 sm:px-6 lg:px-12 flex flex-col min-h-0">
-<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0">
+<div class="flex flex-col lg:flex-row gap-24 flex-1 min-h-0 main-wrapper">
 <!-- Sidebar / Lessons list -->
-<div class="w-full lg:w-[480px] shrink-0 lg:h-full">
+<div class="w-full lg:w-[480px] shrink-0 lg:h-full sidebar-container no-print">
 <div class="bg-white shadow rounded-lg flex flex-col h-full">
 <div class="px-4 py-5 sm:px-6 border-b border-gray-200 shrink-0">
 <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -137,12 +176,15 @@
 </div>
 </div>
 <!-- Main Content -->
-<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8">
-<div class="bg-white shadow rounded-lg overflow-hidden">
-<div class="px-4 py-6 sm:px-8 border-b border-gray-200">
+<div class="w-full lg:flex-1 lg:max-w-[1440px] min-w-0 lg:h-full lg:overflow-y-auto lg:pr-4 pb-8 main-container">
+<div class="bg-white shadow rounded-lg overflow-hidden print-content">
+<div class="px-4 py-6 sm:px-8 border-b border-gray-200 flex justify-between items-center">
 <h1 class="text-2xl font-bold text-gray-900">2. 설계 (Engineering) 단계</h1>
+<button class="ml-4 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onclick="window.print()">
+                    🖨️ 인쇄
+                </button>
 </div>
-<div class="px-4 py-8 sm:px-8">
+<div class="px-4 py-8 sm:px-8" id="print-area">
 <!-- Prose class from Tailwind Typography plugin to automatically format HTML -->
 <!-- Raw content for Markdown parser (hidden) -->
 <script id="markdown-source" type="text/template">&lt;h2&gt;설계 (Engineering) 단계의 핵심 업무&lt;/h2&gt;&lt;p&gt;설계 단계는 발주처의 요구사항을 구체적인 도면과 시방서로 변환하는 가장 기초적이고 중요한 단계입니다.&lt;/p&gt;&lt;h3&gt;주요 프로세스&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;개념 설계 (Conceptual Design):&lt;/strong&gt; 프로젝트의 타당성 검토와 기본 윤곽을 잡습니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;기본 설계 (Basic Engineering):&lt;/strong&gt; 주요 구조물의 치수, 설비의 용량 등을 확정하고 인허가 도면을 작성합니다.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;상세 설계 (Detailed Engineering):&lt;/strong&gt; 실제 시공이 가능하도록 철근 배근, 배관 상세 라우팅 등 모든 상세 도면 (Shop Drawing) 을 샵 드로잉 수준까지 작성합니다.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;strong&gt;주의사항:&lt;/strong&gt; 설계 오류나 누락은 후속 단계인 조달과 시공에서 막대한 비용 손실과 지연을 초래하므로 철저한 리뷰 (Design Review, 3D 간섭체크) 가 필수적입니다.&lt;/p&gt;&lt;img src=&#39;/static/uploads/epc_engineering.png&#39; style=&#39;width:100%; max-width:600px; border-radius:8px; margin-top:20px;&#39; /&gt;</script>
@@ -150,7 +192,7 @@
 <h2>설계 (Engineering) 단계의 핵심 업무</h2><p>설계 단계는 발주처의 요구사항을 구체적인 도면과 시방서로 변환하는 가장 기초적이고 중요한 단계입니다.</p><h3>주요 프로세스</h3><ol><li><strong>개념 설계 (Conceptual Design):</strong> 프로젝트의 타당성 검토와 기본 윤곽을 잡습니다.</li><li><strong>기본 설계 (Basic Engineering):</strong> 주요 구조물의 치수, 설비의 용량 등을 확정하고 인허가 도면을 작성합니다.</li><li><strong>상세 설계 (Detailed Engineering):</strong> 실제 시공이 가능하도록 철근 배근, 배관 상세 라우팅 등 모든 상세 도면 (Shop Drawing) 을 샵 드로잉 수준까지 작성합니다.</li></ol><p><strong>주의사항:</strong> 설계 오류나 누락은 후속 단계인 조달과 시공에서 막대한 비용 손실과 지연을 초래하므로 철저한 리뷰 (Design Review, 3D 간섭체크) 가 필수적입니다.</p><img src="/course-site/build/static/uploads/epc_engineering.png" style="width:100%; max-width:600px; border-radius:8px; margin-top:20px;"/>
 </div>
 </div>
-<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between">
+<div class="px-4 py-4 sm:px-8 border-t border-gray-200 bg-gray-50 flex justify-between nav-footer no-print">
 <a class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="/course-site/build/courses/1/lessons/1.html">
                     ← Previous
                 </a>
